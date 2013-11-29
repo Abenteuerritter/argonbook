@@ -1,10 +1,10 @@
-# Bootstrap
-app/bootstrap*
-
-# Symfony directories
+# Symfony
+/app/bootstrap.php.cache
+/app/cache/*
+/app/logs/*
+!app/cache/.gitkeep
+!app/logs/.gitkeep
 vendor/*
-*/logs/*
-*/cache/*
 web/uploads/*
 web/bundles/*
 
