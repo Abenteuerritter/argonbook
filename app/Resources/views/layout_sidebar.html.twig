@@ -1,0 +1,35 @@
+{% extends "::layout.html.twig" %}
+
+{% block wrapper %}
+<div class="row">
+  <div class="col-xs-12 col-sm-9">
+    {% block content %}{% endblock %}
+  </div>
+  <div class="col-xs-6 col-sm-3">
+    {% if not is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+    <h4>{{ 'sidebar.playerbox'|trans }}</h4>
+    <form action="{{ path("fos_user_security_check") }}" method="post" role="form">
+      <input type="hidden" name="_csrf_token" value="{{ form_csrf_provider.generateCsrfToken('authenticate') }}" />
+      <div class="form-group">
+        <input type="text" class="form-control" id="username" name="_username" placeholder="{{ 'security.login.username'|trans({}, 'FOSUserBundle') }}" required="required">
+      </div>
+      <div class="form-group">
+        <input type="password" class="form-control" id="password" name="_password" placeholder="{{ 'security.login.password'|trans({}, 'FOSUserBundle') }}" required="required">
+      </div>
+      <div class="checkbox">
+        <label>
+          <input type="checkbox" id="remember_me" name="_remember_me" value="on" />{{ 'security.login.remember_me'|trans({}, 'FOSUserBundle') }}
+        </label>
+      </div>
+      <button type="submit" class="btn btn-default btn-block" id="_submit" name="_submit">{{ 'security.login.submit'|trans({}, 'FOSUserBundle') }}</button>
+    </form>
+    <div class="well well-sm">
+      <ul>
+        <li><a href="{{ path("fos_user_registration_register") }}">{{ 'sidebar.register'|trans }}</a></li>
+        <li><a href="{{ path("fos_user_resetting_request") }}">{{ 'sidebar.reset_password'|trans }}</a></li>
+      </ul>
+    </div>
+    {% endif %}
+  </div>
+</div>
+{% endblock %}

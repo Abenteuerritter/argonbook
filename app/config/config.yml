@@ -4,7 +4,7 @@ imports:
 
 framework:
     #esi:             ~
-    #translator:      { fallback: %locale% }
+    translator:      { fallback: %locale% }
     secret:          %secret%
     router:
         resource: "%kernel.root_dir%/config/routing.yml"
@@ -25,6 +25,8 @@ framework:
 twig:
     debug:            %kernel.debug%
     strict_variables: %kernel.debug%
+    globals:
+        form_csrf_provider: "@form.csrf_provider"
 
 # Assetic Configuration
 assetic:
@@ -72,3 +74,9 @@ swiftmailer:
 # Bootstrap Configuration
 braincrafted_bootstrap:
     less_filter: less
+
+# FOSUser Configuration
+fos_user:
+    db_driver:     orm
+    firewall_name: main
+    user_class:    Argon\CommonBundle\Entity\Player
