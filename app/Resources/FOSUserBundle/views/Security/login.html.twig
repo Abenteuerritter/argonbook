@@ -48,7 +48,7 @@
 {% endif %}
 
 <form action="{{ path("fos_user_security_check") }}" method="post" role="form" class="form-signin">
-  <h2 class="form-signin-heading">{{ 'security.login.title'|trans({}, 'messages') }}</h2>
+  <h2 class="form-signin-heading">{{ 'security.login.title'|trans }}</h2>
   <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
 
   <input type="text" id="username" name="_username" value="{{ last_username }}" placeholder="{{ 'security.login.username'|trans }}" required="required" class="form-control">

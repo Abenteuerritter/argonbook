@@ -1,0 +1,9 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+<div class="fos_user_user_show">
+  <p>{{ 'profile.show.logged_in_as'|trans({'%username%': user.username}) }}</p>
+  <ul>
+    <li><a href="{{ path('fos_user_change_password') }}">{{ 'profile.show.change_password'|trans }}</a></li>
+    <li><a href="{{ path('fos_user_profile_edit') }}">{{ 'profile.show.edit_profile'|trans }}</a></li>
+  </ul>
+</div>

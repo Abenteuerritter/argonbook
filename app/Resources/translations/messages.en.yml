@@ -3,7 +3,3 @@ sidebar:
     playerbox:              Player-box
     register:               New player
     reset_password:         Forgot your password?
-
-security:
-    login:
-        title:              Please sign in

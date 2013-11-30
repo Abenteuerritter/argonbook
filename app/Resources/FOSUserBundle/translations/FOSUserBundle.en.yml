@@ -1,0 +1,10 @@
+
+security:
+    login:
+        title:              Please sign in
+
+profile:
+    show:
+        logged_in_as:       You are signed in as %username%.
+        change_password:    Edit your password
+        edit_profile:       Edit your profile
