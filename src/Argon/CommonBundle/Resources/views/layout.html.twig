@@ -1,0 +1,13 @@
+{% extends "::base.html.twig" %}
+
+{% block title 'ArgonBook' %}
+
+{% block body %}
+    {% for flashMessage in app.session.flashbag.get('notice') %}
+        <div class="flash-message">{{ flashMessage }}</div>
+    {% endfor %}
+
+    <div class="content">
+        {% block content %}{% endblock %}
+    </div>
+{% endblock %}

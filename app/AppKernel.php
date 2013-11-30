@@ -19,6 +19,7 @@ class AppKernel extends Kernel
 
             // ArgonBook bundles
             new Argon\CommonBundle\ArgonCommonBundle(),
+            new Argon\WebBundle\ArgonWebBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
