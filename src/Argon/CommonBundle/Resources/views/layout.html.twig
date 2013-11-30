@@ -2,12 +2,38 @@
 
 {% block title 'ArgonBook' %}
 
-{% block body %}
-    {% for flashMessage in app.session.flashbag.get('notice') %}
-        <div class="flash-message">{{ flashMessage }}</div>
-    {% endfor %}
+{% block stylesheets %}
+{% spaceless %}
+  <link href="{{ asset('/css/bootstrap.css') }}" rel="stylesheet" media="screen">
+  {% include 'BraincraftedBootstrapBundle::ie8-support.html.twig' %}
+{% endspaceless %}
 
-    <div class="content">
-        {% block content %}{% endblock %}
+{% endblock %}
+
+{% block body %}
+  {% for flashMessage in app.session.flashbag.get('notice') %}
+    <div class="flash-message">{{ flashMessage }}</div>
+  {% endfor %}
+
+  <div class="container">
+    <div class="header">
+      <ul class="nav nav-pills pull-right">
+        <li><a href="{{ path('homepage') }}">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+      <h3 class="text-muted">{{ 'ArgonBook' }}
+        <small>{{ 'Alternate Reality Games Oriented Network' }}</small>
+      </h3>
     </div>
+
+    <div class="row">
+      <div class="col-xs-12 col-sm-9">
+        {% block content %}{% endblock %}
+      </div>
+      <div class="col-xs-6 col-sm-3">
+        RIGHT
+      </div>
+    </div>
+  </div>
 {% endblock %}
