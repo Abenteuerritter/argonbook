@@ -1,6 +1,7 @@
-{% extends '::layout_sidebar.html.twig' %}
+{% extends 'ArgonWebBundle::layout.html.twig' %}
+{% trans_default_domain 'ArgonWebBundle' %}
 
-{% block title %}{{ parent() }} - Welcome{% endblock %}
+{% block title %}{{ parent() }} - {{ 'homepage.title'|trans }}{% endblock %}
 
 {% block content %}
 Welcome!

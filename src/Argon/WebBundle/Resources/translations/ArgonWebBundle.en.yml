@@ -1,0 +1,9 @@
+
+homepage:
+    title:                  Alternate Reality Games Oriented Network
+
+sidebar:
+    playerbox:              Player-box
+    user:
+        register:           New player
+        reset_password:     Forgot your password?
