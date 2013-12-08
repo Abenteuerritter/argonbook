@@ -4,17 +4,10 @@
       xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
                           http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
 
-    <entity name="Argon\GameBundle\Entity\Game">
+    <entity name="Argon\GameBundle\Entity\CharacterType">
         <id name="id" type="integer" column="id">
             <generator strategy="AUTO" />
         </id>
-        <field name="name" column="name" type="string" length="100" />
-        <field name="system" column="system" type="integer" nullable="true" />
-        <one-to-one field="character" target-entity="CharacterType">
-            <join-column name="character_id" referenced-column-name="id" />
-            <cascade>
-                <cascade-all/>
-            </cascade>
-        </one-to-one>
+        <field name="generalEnabled" column="general_enabled" type="boolean" />
     </entity>
 </doctrine-mapping>

@@ -6,7 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-class GameType extends AbstractType
+class CharacterTypeType extends AbstractType
 {
     /**
      * @param FormBuilderInterface $builder
@@ -15,9 +15,10 @@ class GameType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('name')
-            ->add('system')
-            ->add('character', 'character_type')
+            ->add('generalEnabled', null, array(
+                'required' => false,
+                'label'    => 'character_type.general',
+            ))
         ;
     }
 
@@ -27,7 +28,7 @@ class GameType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class'         => 'Argon\GameBundle\Entity\Game',
+            'data_class'         => 'Argon\GameBundle\Entity\CharacterType',
             'translation_domain' => 'forms',
         ));
     }
@@ -37,6 +38,6 @@ class GameType extends AbstractType
      */
     public function getName()
     {
-        return 'game';
+        return 'character_type';
     }
 }
