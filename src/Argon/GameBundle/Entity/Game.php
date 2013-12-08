@@ -9,5 +9,5 @@ class Game
 {
     protected $id;
 
-    protected $name;
+    public $name;
 }
