@@ -1,6 +1,14 @@
 _argon_web:
     resource: "@ArgonWebBundle/Resources/config/routing/pages.xml"
 
+_argon_web_admin:
+    resource: "@ArgonWebBundle/Resources/config/routing/admin.xml"
+    prefix: /admin
+
+_argon_game_admin:
+    resource: "@ArgonGameBundle/Resources/config/routing/admin.xml"
+    prefix: /admin
+
 _fos_user_security:
     resource: "@FOSUserBundle/Resources/config/routing/security.xml"
 

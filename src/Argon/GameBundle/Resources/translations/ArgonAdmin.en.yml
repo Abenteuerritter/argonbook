@@ -1,0 +1,6 @@
+
+game:
+    title:                  Games
+    name:                   Name
+    new:                    New game
+    empty:                  There are no created games yet.

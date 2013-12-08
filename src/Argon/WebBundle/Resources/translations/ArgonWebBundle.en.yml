@@ -7,3 +7,6 @@ sidebar:
     user:
         register:           New player
         reset_password:     Forgot your password?
+
+layout:
+    admin:                  Control Panel

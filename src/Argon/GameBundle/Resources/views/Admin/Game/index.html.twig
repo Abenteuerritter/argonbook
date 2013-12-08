@@ -1,0 +1,28 @@
+{% extends 'ArgonWebBundle::Admin/layout.html.twig' %}
+{% trans_default_domain 'ArgonAdmin' %}
+
+{% block title %}{{ parent() }} - {{ 'game.title'|trans }}{% endblock %}
+
+{% block content %}
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>{{ 'game.name'|trans }}</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for game in games %}
+        <tr>
+            <td>{{ game.name }}</td>
+        </tr>
+    {% else %}
+        <tr class="warning">
+            <td colspan="1">{{ 'game.empty'|trans }}</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+<div class="btn-group">
+  <a href="#" class="btn btn-default">{{ 'game.new'|trans }}</a>
+</div>
+{% endblock %}

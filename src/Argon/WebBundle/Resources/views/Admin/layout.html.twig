@@ -1,0 +1,16 @@
+{% extends "::layout.html.twig" %}
+{% trans_default_domain 'ArgonAdmin' %}
+
+{% block wrapper %}
+<div class="row">
+  <div class="col-xs-12 col-sm-3">
+    <div class="list-group">
+      <a href="{{ path('admin_dashboard') }}" class="list-group-item">{{ 'sidebar.dashboard'|trans }}</a>
+      <a href="{{ path('admin_game') }}" class="list-group-item">{{ 'sidebar.game'|trans }}</a>
+    </div>
+  </div>
+  <div class="col-xs-12 col-sm-9">
+    {% block content %}{% endblock %}
+  </div>
+</div>
+{% endblock %}
