@@ -1,0 +1,26 @@
+{% set active = 'character' %}
+{% extends 'ArgonWebBundle::Admin/layout.html.twig' %}
+{% trans_default_domain 'admin' %}
+
+{% block title %}{{ parent() }} - {{ 'character.title'|trans }}{% endblock %}
+
+{% block content %}
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>{{ 'character.name'|trans }}</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for character in entities %}
+        <tr>
+            <td>{{ character.name }}</td>
+        </tr>
+    {% else %}
+        <tr class="warning">
+            <td colspan="1">{{ 'character.empty'|trans }}</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

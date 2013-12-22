@@ -1,7 +1,7 @@
 
 sidebar:
     dashboard:              Dashboard
-    game:                   Games
+    character:              Characters
 
 dashboard:
     title:                  Dashboard

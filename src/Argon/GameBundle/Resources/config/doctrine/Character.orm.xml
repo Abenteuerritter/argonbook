@@ -4,10 +4,10 @@
       xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
                           http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
 
-    <entity name="Argon\GameBundle\Entity\CharacterType">
+    <entity name="Argon\GameBundle\Entity\Character">
         <id name="id" type="integer" column="id">
             <generator strategy="AUTO" />
         </id>
-        <field name="generalEnabled" column="general_enabled" type="boolean" />
+        <field name="name" column="name" type="string" length="60" />
     </entity>
 </doctrine-mapping>

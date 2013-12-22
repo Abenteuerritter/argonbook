@@ -4,14 +4,7 @@
     xsi:schemaLocation="http://symfony.com/schema/routing
         http://symfony.com/schema/routing/routing-1.0.xsd">
 
-    <route id="admin_game" path="/game" methods="GET">
-        <default key="_controller">ArgonGameBundle:Admin\Game:index</default>
-    </route>
-    <route id="admin_game_new" pattern="/game/new">
-        <default key="_controller">ArgonGameBundle:Admin\Game:new</default>
-    </route>
-    <route id="admin_game_create" pattern="/game/create">
-        <default key="_controller">ArgonGameBundle:Admin\Game:create</default>
-        <requirement key="_method">post</requirement>
+    <route id="admin_character" path="/characters" methods="GET">
+        <default key="_controller">ArgonGameBundle:Admin\Character:index</default>
     </route>
 </routes>

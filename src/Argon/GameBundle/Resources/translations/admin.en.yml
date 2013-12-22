@@ -1,6 +1,5 @@
 
-game:
-    title:                  Games
+character:
+    title:                  Characters
     name:                   Name
-    new:                    New game
-    empty:                  There are no created games yet.
+    empty:                  There are no characters in the system yet.
