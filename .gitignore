@@ -3,6 +3,7 @@
 /app/cache/*
 /app/logs/*
 /app/data/*
+/app/bin/*
 !app/cache/.gitkeep
 !app/logs/.gitkeep
 vendor/*
