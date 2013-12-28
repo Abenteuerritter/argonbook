@@ -13,5 +13,7 @@ class ArgonGameExtension extends Extension
     {
         $loader = new Loader\XmlFileLoader($container, new FileLocator(__DIR__ . '/../Resources/config'));
         $loader->load('services/forms.xml');
+        $loader->load('services/games.xml');
+        $loader->load('services/listeners.xml');
     }
 }

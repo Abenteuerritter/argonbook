@@ -3,10 +3,6 @@
 namespace Argon\GameBundle\Controller\Admin;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\HttpFoundation\Request;
-
-use Argon\CommonBundle\Entity\Player;
-use Argon\GameBundle\Entity\Character;
 
 class CharacterController extends Controller
 {

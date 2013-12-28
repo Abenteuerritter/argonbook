@@ -5,11 +5,9 @@
                         http://symfony.com/schema/dic/services/services-1.0.xsd">
 
     <services>
-        <service id="argon_game.form.character" class="Argon\GameBundle\Form\Type\CharacterType">
-            <tag name="form.type" alias="character" />
-        </service>
-        <service id="argon_game.form.character_game" class="Argon\GameBundle\Form\Character\CharacterGameType">
-            <tag name="form.type" alias="character_game" />
+        <service id="argon_game.listener.game_subscriber" class="Argon\GameBundle\Model\GameSubscriber">
+            <argument type="service" id="argon_game.provider.game_factory" />
+            <tag name="doctrine.event_subscriber" />
         </service>
     </services>
 </container>
