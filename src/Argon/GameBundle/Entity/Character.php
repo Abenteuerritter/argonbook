@@ -22,6 +22,11 @@ class Character extends GameProvider
     protected $name;
 
     /**
+     * @var string
+     */
+    protected $story;
+
+    /**
      * @param \Argon\CommonBundle\Entity\Player $player
      */
     public function setPlayer(\Argon\CommonBundle\Entity\Player $player)
@@ -51,5 +56,21 @@ class Character extends GameProvider
     public function getName()
     {
         return $this->name;
+    }
+
+    /**
+     * @param string $story
+     */
+    public function setStory($story)
+    {
+        $this->story = $story;
+    }
+
+    /**
+     * @return string
+     */
+    public function getStory()
+    {
+        return $this->story;
     }
 }
