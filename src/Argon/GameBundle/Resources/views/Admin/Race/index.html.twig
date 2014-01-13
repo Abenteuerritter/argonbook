@@ -1,0 +1,30 @@
+{% set active = 'race' %}
+{% extends 'ArgonWebBundle::Admin/layout.html.twig' %}
+{% trans_default_domain 'admin' %}
+
+{% block title %}{{ parent() }} - {{ 'race.title'|trans }}{% endblock %}
+
+{% block content %}
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>{{ 'race.code'|trans }}</th>
+            <th>{{ 'race.name'|trans }}</th>
+            <th>{{ 'race.multiplier'|trans }}</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for race in entities %}
+        <tr>
+            <td>{{ race.code }}</td>
+            <td>{{ race.name }}</td>
+            <td>{{ race.multiplier }}</td>
+        </tr>
+    {% else %}
+        <tr class="warning">
+            <td colspan="3">{{ 'race.empty'|trans }}</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

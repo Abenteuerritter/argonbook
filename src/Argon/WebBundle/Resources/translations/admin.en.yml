@@ -2,6 +2,7 @@
 sidebar:
     dashboard:              Dashboard
     character:              Characters
+    race:                   Races
 
 dashboard:
     title:                  Dashboard

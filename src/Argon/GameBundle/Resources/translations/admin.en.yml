@@ -3,3 +3,10 @@ character:
     title:                  Characters
     name:                   Name
     empty:                  There are no characters in the system yet.
+
+race:
+    title:                  Races
+    code:                   ;-)
+    name:                   Name
+    multiplier:             Multiplier
+    empty:                  There are no races in the system yet.

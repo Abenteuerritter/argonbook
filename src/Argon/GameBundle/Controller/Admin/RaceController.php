@@ -4,15 +4,15 @@ namespace Argon\GameBundle\Controller\Admin;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
-class CharacterController extends Controller
+class RaceController extends Controller
 {
     public function indexAction()
     {
         $entities = $this->getDoctrine()
-                         ->getRepository('ArgonGameBundle:Character')
+                         ->getRepository('ArgonGameBundle:Race')
                          ->findAll();
 
-        return $this->render('ArgonGameBundle:Admin\Character:index.html.twig', array(
+        return $this->render('ArgonGameBundle:Admin\Race:index.html.twig', array(
             'entities' => $entities,
         ));
     }

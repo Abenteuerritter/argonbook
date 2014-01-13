@@ -8,8 +8,13 @@
         <id name="id" type="integer" column="id">
             <generator strategy="AUTO" />
         </id>
+        <unique-constraints>
+            <unique-constraint columns="code" name="code_idx" />
+        </unique-constraints>
         <one-to-many field="children" target-entity="Argon\GameBundle\Entity\Race" mapped-by="parent" />
         <many-to-one field="parent" target-entity="Argon\GameBundle\Entity\Race" inversed-by="children" />
+        <field name="code" column="code" type="string" length="8" />
         <field name="name" column="name" type="string" length="60" />
+        <field name="multiplier" column="multiplier" type="integer" />
     </entity>
 </doctrine-mapping>
