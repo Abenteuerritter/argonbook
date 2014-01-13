@@ -4,6 +4,7 @@ namespace Argon\GameBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 
 use Argon\GameBundle\Entity\Character;
 
@@ -11,21 +12,29 @@ class CharacterController extends Controller
 {
     public function gameAction(Request $request)
     {
+        if (false === $this->get('security.context')->isGranted('ROLE_USER')) {
+            throw new AccessDeniedException();
+        }
+
         $form = $this->createForm('character_game', null, array(
             'action' => $this->generateUrl('character_game'),
             'method' => 'POST',
         ));
 
-        if ($request->isMethod('POST')) {
-            $data = $form->getData();
-            $game = $data['game'];
-
-            return $this->redirect($this->generateUrl('character_new', array(
-                'game' => $game,
-            )));
-        }
-
         $form->add('submit', 'submit');
+
+        if ($request->isMethod('POST')) {
+            $form->handleRequest($request);
+
+            if ($form->isValid()) {
+                $data = $form->getData();
+                $game = $data['game'];
+
+                return $this->redirect($this->generateUrl('character_new', array(
+                    'game' => $game,
+                )));
+            }
+        }
 
         return $this->render('ArgonGameBundle:Character:game.html.twig', array(
             'form' => $form->createView(),
@@ -34,6 +43,10 @@ class CharacterController extends Controller
 
     public function newAction(Request $request, $game)
     {
+        if (false === $this->get('security.context')->isGranted('ROLE_USER')) {
+            throw new AccessDeniedException();
+        }
+
         $player = $this->getUser();
 
         // {{{ TODO: Rewrite me with Parameter Converter
@@ -55,6 +68,8 @@ class CharacterController extends Controller
             'method' => 'POST',
         ));
 
+        $form->add('submit', 'submit');
+
         if ($request->isMethod('POST')) {
             $form->handleRequest($request);
 
@@ -70,9 +85,8 @@ class CharacterController extends Controller
             }
         }
 
-        $form->add('submit', 'submit');
-
         return $this->render('ArgonGameBundle:Character:new.html.twig', array(
+            'game' => $game,
             'form' => $form->createView(),
         ));
     }

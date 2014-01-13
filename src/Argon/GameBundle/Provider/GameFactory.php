@@ -23,6 +23,14 @@ class GameFactory
     }
 
     /**
+     * @return multitype:\Argon\GameBundle\Provider\GameInterface
+     */
+    public function getGames()
+    {
+        return $this->games;
+    }
+
+    /**
      * Creates a game of the given name. Returns null if the game doesn't
      * exists.
      *

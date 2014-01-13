@@ -6,8 +6,20 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
+use Argon\GameBundle\Form\ChoiceList\GameChoiceList;
+
 class CharacterGameType extends AbstractType
 {
+    /**
+     * @var \Argon\GameBundle\Form\ChoiceList\GameChoiceList
+     */
+    protected $gameChoiceList;
+
+    public function __construct(GameChoiceList $gameChoiceList)
+    {
+        $this->gameChoiceList = $gameChoiceList;
+    }
+
     /**
      * @param FormBuilderInterface $builder
      * @param array                $options
@@ -15,7 +27,7 @@ class CharacterGameType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder->add('game', 'choice', array(
-
+            'choice_list' => $this->gameChoiceList,
         ));
     }
 
