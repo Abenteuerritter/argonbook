@@ -12,7 +12,7 @@ class Race
     protected $id;
 
     /**
-     * @var \Doctrine\Common\Collections\ArrayCollection
+     * @var \Doctrine\Common\Collections\Collection
      */
     protected $children;
 
@@ -39,6 +39,46 @@ class Race
     public function __construct()
     {
         $this->children = new ArrayCollection();
+    }
+
+    /**
+     * @param \Argon\GameBundle\Entity\Race $children
+     */
+    public function addChildren(Race $children)
+    {
+        $this->children[] = $children;
+    }
+
+    /**
+     * @param \Argon\GameBundle\Entity\Race $children
+     */
+    public function removeChildren(Race $children)
+    {
+        $this->children->removeElement($children);
+    }
+
+    /**
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getChildren()
+    {
+        return $this->children;
+    }
+
+    /**
+     * @param \Argon\GameBundle\Entity\Race $parent
+     */
+    public function setParent(Race $parent = null)
+    {
+        $this->parent = $parent;
+    }
+
+    /**
+     * @return \Argon\GameBundle\Entity\Race
+     */
+    public function getParent()
+    {
+        return $this->parent;
     }
 
     /**
