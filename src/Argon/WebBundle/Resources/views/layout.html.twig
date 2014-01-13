@@ -7,6 +7,12 @@
     {% block content %}{% endblock %}
   </div>
   <div class="col-xs-12 col-sm-3">
+    {% if game is defined %}
+    <h3>{{ game.info.fullname }}</h3>
+      {% if game.info.description[app.request.locale] is defined %}
+      <p>{{ game.info.description[app.request.locale] }}</p>
+      {% endif %}
+    {% endif %}
     <h3>{{ 'sidebar.playerbox'|trans }}</h3>
     {% if not is_granted("IS_AUTHENTICATED_REMEMBERED") %}
     <form action="{{ path("fos_user_security_check") }}" method="post" role="form">

@@ -8,4 +8,9 @@ interface GameInterface
      * @return string
      */
     public function getName();
+
+    /**
+     * @return array
+     */
+    public function getInfo();
 }

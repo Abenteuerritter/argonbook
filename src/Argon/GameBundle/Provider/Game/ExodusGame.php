@@ -13,4 +13,19 @@ class ExodusGame implements GameInterface
     {
         return 'exodus';
     }
+
+    /**
+     * @return array
+     */
+    public function getInfo()
+    {
+        return array(
+            'fullname' => 'Exodus',
+            'category' => 'LARP',
+
+            'description' => array(
+                'en' => 'Description of Exodus in English',
+            ),
+        );
+    }
 }

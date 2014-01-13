@@ -27,8 +27,16 @@ class GameChoiceList extends LazyChoiceList
         $games = $this->gameFactory->getGames();
 
         foreach ($games as $game) {
-            $choices[] = $game->getName();
-            $labels[]  = $game->getName();
+            $info     = $game->getInfo();
+            $category = $info['category'];
+
+            if (!isset($choices[$category]) || !isset($labels[$category])) {
+                $choices[$category] = array();
+                $labels[$category]  = array();
+            }
+
+            $choices[$category][] = $game->getName();
+            $labels[$category][]  = array_key_exists('fullname', $info) ? $info['fullname'] : $game->getName();
         }
 
         return new ChoiceList($choices, $labels);
