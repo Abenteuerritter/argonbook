@@ -14,6 +14,9 @@ class CharacterGameType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+        $builder->add('game', 'choice', array(
+
+        ));
     }
 
     /**

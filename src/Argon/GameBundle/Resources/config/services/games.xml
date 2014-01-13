@@ -6,5 +6,9 @@
 
     <services>
         <service id="argon_game.provider.game_factory" class="Argon\GameBundle\Provider\GameFactory" />
+
+        <service id="argon_game.provider.game.exodus" class="Argon\GameBundle\Provider\Game\ExodusGame">
+            <tag name="argon_game.provider" alias="exodus_game" />
+        </service>
     </services>
 </container>

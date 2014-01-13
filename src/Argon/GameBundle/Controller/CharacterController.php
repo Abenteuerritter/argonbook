@@ -51,7 +51,7 @@ class CharacterController extends Controller
         $character->setGame($game);
 
         $form = $this->createForm('character', $character, array(
-            'action' => $this->generateUrl('character_create'),
+            'action' => $this->generateUrl('character_create', array('game' => $gameName)),
             'method' => 'POST',
         ));
 
@@ -63,7 +63,8 @@ class CharacterController extends Controller
                 $em->persist($character);
                 $em->flush();
 
-                // TODO Add flash message
+                $request->getSession()->getFlashBag()
+                        ->add('notice', 'character.created');
 
                 return $this->redirect($this->generateUrl('homepage'));
             }

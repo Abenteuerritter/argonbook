@@ -2,6 +2,8 @@
 
 namespace Argon\GameBundle\Model;
 
+use Argon\GameBundle\Provider\GameInterface;
+
 /**
  * Provides game interface to an entity.
  */
