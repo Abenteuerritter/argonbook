@@ -9,4 +9,5 @@ race:
     code:                   ;-)
     name:                   Name
     multiplier:             Multiplier
+    children:               "{0} no children| {1}one children| ]1,Inf]%children% children"
     empty:                  There are no races in the system yet.

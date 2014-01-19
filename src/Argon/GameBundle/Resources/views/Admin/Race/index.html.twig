@@ -16,7 +16,11 @@
     <tbody>
     {% for race in entities %}
         <tr>
-            <td>{{ race.code }}</td>
+            <td>{{ race.code }}
+            {% if race.children|length %}
+                <a href="{{ path('admin_race', {'parent': race.code}) }}">&rarr;</a>
+            {% endif %}
+            </td>
             <td>{{ race.name }}</td>
             <td>{{ race.multiplier }}</td>
         </tr>
