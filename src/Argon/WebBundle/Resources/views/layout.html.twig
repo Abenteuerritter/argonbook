@@ -37,9 +37,9 @@
     <hr>
     {% endif %}
     <div class="list-group">
-      <a href="#" class="list-group-item">
-        <h4 class="list-group-item-heading">{{ 'sidebar.player.characters'|trans }}</h4>
-        <p>{{ 'sidebar.player.characters_description'|trans }}</p>
+      <a href="{{ path('character') }}" class="list-group-item{{ active == 'character' ? ' active' : '' }}">
+        <h4 class="list-group-item-heading">{{ 'sidebar.player.characters.title'|trans }}</h4>
+        <p>{{ 'sidebar.player.characters.description'|trans }}</p>
       </a>
     </div>
   </div>

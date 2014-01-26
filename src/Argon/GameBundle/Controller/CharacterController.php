@@ -10,6 +10,12 @@ use Argon\GameBundle\Entity\Character;
 
 class CharacterController extends Controller
 {
+    public function indexAction(Request $request)
+    {
+        return $this->render('ArgonGameBundle:Character:index.html.twig', array(
+        ));
+    }
+
     public function gameAction(Request $request)
     {
         if (false === $this->get('security.context')->isGranted('ROLE_USER')) {

@@ -7,6 +7,10 @@ sidebar:
     user:
         register:           New player
         reset_password:     Forgot your password?
+    player:
+        characters:
+            title:          Charecters
+            description:    List of my charecters
 
 layout:
     admin:                  Control Panel

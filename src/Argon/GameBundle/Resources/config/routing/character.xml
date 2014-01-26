@@ -4,6 +4,9 @@
     xsi:schemaLocation="http://symfony.com/schema/routing
                         http://symfony.com/schema/routing/routing-1.0.xsd">
 
+    <route id="character" path="/characters" methods="GET">
+        <default key="_controller">ArgonGameBundle:Character:index</default>
+    </route>
     <route id="character_game" path="/new" methods="GET">
         <default key="_controller">ArgonGameBundle:Character:game</default>
     </route>
