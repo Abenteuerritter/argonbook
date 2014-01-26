@@ -8,10 +8,10 @@
         <default key="_controller">ArgonGameBundle:Admin\Character:index</default>
     </route>
 
-    <route id="admin_race" path="races" methods="GET">
+    <route id="admin_race" path="/races" methods="GET">
         <default key="_controller">ArgonGameBundle:Admin\Race:index</default>
     </route>
-    <route id="admin_race_view" path="races/{code}" methods="GET">
+    <route id="admin_race_view" path="/race/{code}" methods="GET">
         <default key="_controller">ArgonGameBundle:Admin\Race:view</default>
     </route>
 </routes>
