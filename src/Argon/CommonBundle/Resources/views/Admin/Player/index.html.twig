@@ -1,0 +1,28 @@
+{% set active = 'player' %}
+{% extends 'ArgonWebBundle::Admin/layout.html.twig' %}
+{% trans_default_domain 'admin' %}
+
+{% block title %}{{ parent() }} - {{ 'player.title'|trans }}{% endblock %}
+
+{% block content %}
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>{{ 'player.username'|trans }}</th>
+            <th>{{ 'player.name'|trans }}</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for player in entities %}
+        <tr>
+            <td>{{ player.username }}</td>
+            <td>{{ player.name }}</td>
+        </tr>
+    {% else %}
+        <tr class="warning">
+            <td colspan="2">{{ 'player.empty'|trans }}</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

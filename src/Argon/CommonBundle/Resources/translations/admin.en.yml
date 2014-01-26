@@ -1,0 +1,6 @@
+
+player:
+    title:                  Players
+    username:               Username
+    name:                   Name
+    empty:                  There are no players in the system yet.

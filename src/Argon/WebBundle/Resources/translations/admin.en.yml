@@ -1,6 +1,7 @@
 
 sidebar:
     dashboard:              Dashboard
+    player:                 Players
     character:              Characters
     race:                   Races
 
