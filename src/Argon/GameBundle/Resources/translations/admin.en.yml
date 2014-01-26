@@ -6,8 +6,8 @@ character:
 
 race:
     title:                  Races
-    code:                   ;-)
+    code:                   Code
     name:                   Name
     multiplier:             Multiplier
-    children:               "{0} no children| {1}one children| ]1,Inf]%children% children"
+    children:               Children
     empty:                  There are no races in the system yet.

@@ -7,17 +7,29 @@ use Symfony\Component\HttpFoundation\Request;
 
 class RaceController extends Controller
 {
-    public function indexAction(Request $request)
+    public function indexAction()
     {
-        $repository = $this->getDoctrine()
-                           ->getRepository('ArgonGameBundle:Race');
+        $entities = $this->getRepository()->findAll();
 
-        $parentCode = $request->query->get('parent', null);
-        $parent     = $repository->findOneByCode($parentCode);
-        $entities   = $repository->findByParent($parent);
-
-        return $this->render('ArgonGameBundle:Admin\Race:index.html.twig', array(
+        return $this->render('ArgonGameBundle:Admin/Race:index.html.twig', array(
             'entities' => $entities,
         ));
+    }
+
+    public function viewAction($code)
+    {
+        $repository = $this->getRepository();
+        $entity     = $repository->findOneByCode($code);
+        $entities   = $repository->findByParent($entity);
+
+        return $this->render('ArgonGameBundle:Admin/Race:view.html.twig', array(
+            'entity'   => $entity,
+            'entities' => $entities,
+        ));
+    }
+
+    protected function getRepository()
+    {
+        return $this->getDoctrine()->getRepository('ArgonGameBundle:Race');
     }
 }

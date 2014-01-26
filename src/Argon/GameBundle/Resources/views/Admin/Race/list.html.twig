@@ -1,0 +1,20 @@
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>{{ 'race.code'|trans({}, 'admin') }}</th>
+            <th>{{ 'race.name'|trans({}, 'admin') }}</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for race in entities %}
+        <tr>
+            <td><a href="{{ path('admin_race_view', {'code': race.code}) }}">{{ race.code }}</a></td>
+            <td>{{ race.name }}</td>
+        </tr>
+    {% else %}
+        <tr class="warning">
+            <td colspan="2">{{ 'race.empty'|trans({}, 'admin') }}</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>

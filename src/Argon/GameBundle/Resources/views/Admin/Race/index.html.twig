@@ -5,30 +5,5 @@
 {% block title %}{{ parent() }} - {{ 'race.title'|trans }}{% endblock %}
 
 {% block content %}
-<table class="table table-striped">
-    <thead>
-        <tr>
-            <th>{{ 'race.code'|trans }}</th>
-            <th>{{ 'race.name'|trans }}</th>
-            <th>{{ 'race.multiplier'|trans }}</th>
-        </tr>
-    </thead>
-    <tbody>
-    {% for race in entities %}
-        <tr>
-            <td>{{ race.code }}
-            {% if race.children|length %}
-                <a href="{{ path('admin_race', {'parent': race.code}) }}">&rarr;</a>
-            {% endif %}
-            </td>
-            <td>{{ race.name }}</td>
-            <td>{{ race.multiplier }}</td>
-        </tr>
-    {% else %}
-        <tr class="warning">
-            <td colspan="3">{{ 'race.empty'|trans }}</td>
-        </tr>
-    {% endfor %}
-    </tbody>
-</table>
+    {{ include('ArgonGameBundle:Admin/Race:list.html.twig', {'entities': entities}) }}
 {% endblock %}
