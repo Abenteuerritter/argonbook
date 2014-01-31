@@ -13,6 +13,9 @@
         </many-to-one>
         <field name="gameName" column="game" type="string" length="8" />
         <field name="name" column="name" type="string" length="60" />
+        <many-to-one field="race" target-entity="\Argon\GameBundle\Entity\Race">
+            <join-column name="race_id" referenced-column-name="id" />
+        </many-to-one>
         <field name="story" column="story" type="text" />
     </entity>
 </doctrine-mapping>

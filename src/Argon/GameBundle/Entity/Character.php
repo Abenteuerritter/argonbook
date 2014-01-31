@@ -2,6 +2,8 @@
 
 namespace Argon\GameBundle\Entity;
 
+use Argon\CommonBundle\Entity\Player;
+use Argon\GameBundle\Entity\Race;
 use Argon\GameBundle\Model\GameProvider;
 
 class Character extends GameProvider
@@ -22,6 +24,11 @@ class Character extends GameProvider
     protected $name;
 
     /**
+     * @var \Argon\GameBundle\Entity\Race
+     */
+    protected $race;
+
+    /**
      * @var string
      */
     protected $story;
@@ -29,7 +36,7 @@ class Character extends GameProvider
     /**
      * @param \Argon\CommonBundle\Entity\Player $player
      */
-    public function setPlayer(\Argon\CommonBundle\Entity\Player $player)
+    public function setPlayer(Player $player)
     {
         $this->player = $player;
     }
@@ -56,6 +63,22 @@ class Character extends GameProvider
     public function getName()
     {
         return $this->name;
+    }
+
+    /**
+     * @param \Argon\GameBundle\Entity\Race $race
+     */
+    public function setRace(Race $race)
+    {
+        $this->race = $race;
+    }
+
+    /**
+     * @return \Argon\GameBundle\Entity\Race
+     */
+    public function getRace()
+    {
+        return $this->race;
     }
 
     /**

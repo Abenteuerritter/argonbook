@@ -36,12 +36,15 @@
     </div>
     <hr>
     {% endif %}
+    {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+    {% set active = active is defined ? active : '' %}
     <div class="list-group">
       <a href="{{ path('character') }}" class="list-group-item{{ active == 'character' ? ' active' : '' }}">
         <h4 class="list-group-item-heading">{{ 'sidebar.player.characters.title'|trans }}</h4>
         <p>{{ 'sidebar.player.characters.description'|trans }}</p>
       </a>
     </div>
+    {% endif %}
   </div>
 </div>
 {% endblock %}

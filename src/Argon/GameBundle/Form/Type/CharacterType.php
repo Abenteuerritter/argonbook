@@ -16,6 +16,7 @@ class CharacterType extends AbstractType
     {
         $builder
             ->add('name')
+            ->add('race')
             ->add('story')
         ;
     }

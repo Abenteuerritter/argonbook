@@ -41,6 +41,11 @@ class Race
         $this->children = new ArrayCollection();
     }
 
+    public function __toString()
+    {
+        return $this->name;
+    }
+
     /**
      * @param \Argon\GameBundle\Entity\Race $children
      */
