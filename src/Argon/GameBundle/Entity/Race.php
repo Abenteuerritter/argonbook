@@ -34,7 +34,7 @@ class Race
     /**
      * @var integer
      */
-    protected $multiplier;
+    protected $modifier;
 
     public function __construct()
     {
@@ -119,18 +119,18 @@ class Race
     }
 
     /**
-     * @param integer $multiplier
+     * @param integer $modifier
      */
-    public function setMultiplier($multiplier)
+    public function setModifier($modifier)
     {
-        $this->multiplier = $multiplier;
+        $this->modifier = $modifier;
     }
 
     /**
      * @return integer
      */
-    public function getMultiplier()
+    public function getModifier()
     {
-        return $this->multiplier;
+        return $this->modifier;
     }
 }

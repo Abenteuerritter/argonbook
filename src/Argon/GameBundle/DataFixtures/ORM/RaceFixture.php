@@ -27,12 +27,12 @@ class RaceFixture implements FixtureInterface
         $manager->flush();
     }
 
-    protected function createRace($code, $name, $multiplier, $parent = null)
+    protected function createRace($code, $name, $modifier, $parent = null)
     {
         $race = new Race();
         $race->setCode($code);
         $race->setName($name);
-        $race->setMultiplier($multiplier);
+        $race->setModifier($modifier);
         $race->setParent($parent);
 
         return $race;
