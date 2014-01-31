@@ -28,4 +28,12 @@ class ExodusGame implements GameInterface
             ),
         );
     }
+
+    /**
+     * @return array
+     */
+    public function getCharacterTypes()
+    {
+        return array('STR', 'DEX', 'WIS');
+    }
 }

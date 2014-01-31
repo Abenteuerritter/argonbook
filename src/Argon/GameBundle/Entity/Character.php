@@ -2,6 +2,8 @@
 
 namespace Argon\GameBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+
 use Argon\CommonBundle\Entity\Player;
 use Argon\GameBundle\Entity\Race;
 use Argon\GameBundle\Model\GameProvider;
@@ -24,6 +26,11 @@ class Character extends GameProvider
     protected $name;
 
     /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    protected $types;
+
+    /**
      * @var \Argon\GameBundle\Entity\Race
      */
     protected $race;
@@ -32,6 +39,11 @@ class Character extends GameProvider
      * @var string
      */
     protected $story;
+
+    public function __construct()
+    {
+        $this->types = new ArrayCollection();
+    }
 
     /**
      * @param \Argon\CommonBundle\Entity\Player $player
@@ -63,6 +75,30 @@ class Character extends GameProvider
     public function getName()
     {
         return $this->name;
+    }
+
+    /**
+     * @param \Argon\GameBundle\Entity\CharacterType $type
+     */
+    public function addCharacterType(CharacterType $type)
+    {
+        $this->types[] = $type;
+    }
+
+    /**
+     * @param \Argon\GameBundle\Entity\CharacterType $type
+     */
+    public function removeCharacterType(CharacterType $type)
+    {
+        $this->types->removeElement($type);
+    }
+
+    /**
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getCharacterType()
+    {
+        return $this->types;
     }
 
     /**
