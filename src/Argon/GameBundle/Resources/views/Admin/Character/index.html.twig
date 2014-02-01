@@ -8,9 +8,8 @@
 <table class="table table-striped">
     <thead>
         <tr>
-            <th>{{ 'character.name'|trans }}</th>
-            <th>{{ 'character.types'|trans }}</th>
-            <th>{{ 'character.race'|trans }}</th>
+            <th>{{ 'character.info'|trans }}</th>
+            <th>{{ 'character.abilities'|trans }}</th>
         </tr>
     </thead>
     <tbody>
@@ -20,29 +19,29 @@
                 {% if not game %}
                     <a href="{{ path('admin_character', {'game': character.gameName}) }}">{{ character.game.info.fullname }}</a> /
                 {% endif %}
-                {{ character.name }}
+                {{ character.name }}<br>
+                {{ character.race }}
             </td>
             <td>
                 <table class="table table-bordered">
                     <tbody>
-                    {% for type in character.types %}
+                    {% for ability in character.abilities %}
                         <tr>
-                            <td>{{ type.code }}</td>
-                            <td>{{ type.modifier }}</td>
+                            <td class="text-center">{{ ability.modifier }}</td>
+                            <td>{{ ability.code }}</td>
                         </tr>
                     {% else %}
                         <tr class="warning">
-                            <td colspan="2">{{ 'character_type.empty'|trans }}</td>
+                            <td colspan="2">{{ 'character_ability.empty'|trans }}</td>
                         </tr>
                     {% endfor %}
                     </tbody>
                 </table>
             </td>
-            <td>{{ character.race }}</td>
         </tr>
     {% else %}
         <tr class="warning">
-            <td colspan="3">{{ 'character.empty'|trans }}</td>
+            <td colspan="2">{{ 'character.empty'|trans }}</td>
         </tr>
     {% endfor %}
     </tbody>

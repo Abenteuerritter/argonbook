@@ -1,14 +1,12 @@
 
 character:
     title:                  Characters
-    game:                   Game
-    name:                   Name
-    types:                  Types
-    race:                   Race
+    info:                   Information
+    abilities:              Abilities
     empty:                  There are no characters in the system yet.
 
-character_type:
-    empty:                  There are no chracters types.
+character_ability:
+    empty:                  There are no abilities.
 
 race:
     title:                  Races

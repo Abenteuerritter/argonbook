@@ -96,7 +96,7 @@ class CharacterController extends Controller
                 $request->getSession()->getFlashBag()
                         ->add('success', 'character.created');
 
-                return $this->redirect($this->generateUrl('homepage'));
+                return $this->redirect($this->generateUrl('character'));
             }
         }
 

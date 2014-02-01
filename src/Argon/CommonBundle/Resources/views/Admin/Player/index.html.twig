@@ -10,6 +10,7 @@
         <tr>
             <th>{{ 'player.username'|trans }}</th>
             <th>{{ 'player.name'|trans }}</th>
+            <th class="text-right">{{ 'player.lastlogin'|trans }}</th>
         </tr>
     </thead>
     <tbody>
@@ -17,10 +18,11 @@
         <tr>
             <td>{{ player.username }}</td>
             <td>{{ player.name }}</td>
+            <td class="text-right">{{ player.lastLogin|date }}</td>
         </tr>
     {% else %}
         <tr class="warning">
-            <td colspan="2">{{ 'player.empty'|trans }}</td>
+            <td colspan="3">{{ 'player.empty'|trans }}</td>
         </tr>
     {% endfor %}
     </tbody>
