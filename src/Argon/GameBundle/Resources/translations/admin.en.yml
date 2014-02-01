@@ -8,6 +8,12 @@ character:
 character_ability:
     empty:                  There are no abilities.
 
+character_experience:
+    at:                     Date
+    value:                  Experience
+    reason:                 Reason
+    empty:                  This character has no experience.
+
 race:
     title:                  Races
     code:                   Code

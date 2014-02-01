@@ -19,7 +19,9 @@
                 {% if not game %}
                     <a href="{{ path('admin_character', {'game': character.gameName}) }}">{{ character.game.info.fullname }}</a> /
                 {% endif %}
-                {{ character.name }}<br>
+                {{ character.name }} (
+                    <a href="{{ path('admin_character_experience', {'id': character.id}) }}"><span class="glyphicon glyphicon-signal"></span> {{ character.experience }}</a>
+                )<br>
                 {{ character.race }}
             </td>
             <td>

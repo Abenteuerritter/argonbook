@@ -26,6 +26,11 @@ class Character extends GameProvider
     protected $name;
 
     /**
+     * @var integer
+     */
+    protected $experience = 0; // Initial experience
+
+    /**
      * @var \Doctrine\Common\Collections\Collection
      */
     protected $abilities;
@@ -43,6 +48,14 @@ class Character extends GameProvider
     public function __construct()
     {
         $this->abilities = new ArrayCollection();
+    }
+
+    /**
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
     }
 
     /**
@@ -75,6 +88,22 @@ class Character extends GameProvider
     public function getName()
     {
         return $this->name;
+    }
+
+    /**
+     * @param integer $experience
+     */
+    public function setExperience($experience)
+    {
+        $this->experience = $experience;
+    }
+
+    /**
+     * @return integer
+     */
+    public function getExperience()
+    {
+        return $this->experience;
     }
 
     /**

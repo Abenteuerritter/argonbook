@@ -1,0 +1,30 @@
+{% set active = 'character' %}
+{% extends 'ArgonWebBundle::Admin/layout.html.twig' %}
+{% trans_default_domain 'admin' %}
+
+{% block title %}{{ parent() }} - {{ 'character.title'|trans }} - {{ character.name }}{% endblock %}
+
+{% block content %}
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>{{ 'character_experience.at'|trans }}</th>
+            <th>{{ 'character_experience.value'|trans }}</th>
+            <th>{{ 'character_experience.reason'|trans }}</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for experience in entities %}
+        <tr>
+            <td>{{ experience.at|date }}</td>
+            <td>{{ experience.value }}</td>
+            <td>{{ experience.reason }}</td>
+        </tr>
+    {% else %}
+        <tr class="warning">
+            <td colspan="3">{{ 'character_experience.empty'|trans }}</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
