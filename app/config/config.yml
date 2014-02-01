@@ -2,6 +2,11 @@ imports:
     - { resource: parameters.yml }
     - { resource: security.yml }
 
+parameters:
+    project:
+        name:        argonbook
+        version:     0.1
+
 framework:
     #esi:             ~
     translator:      { fallback: %locale% }
