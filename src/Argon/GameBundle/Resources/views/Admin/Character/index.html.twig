@@ -8,9 +8,6 @@
 <table class="table table-striped">
     <thead>
         <tr>
-            {% if not game %}
-                <th>{{ 'character.game'|trans }}</th>
-            {% endif %}
             <th>{{ 'character.name'|trans }}</th>
             <th>{{ 'character.types'|trans }}</th>
             <th>{{ 'character.race'|trans }}</th>
@@ -19,10 +16,12 @@
     <tbody>
     {% for character in entities %}
         <tr>
-            {% if not game %}
-                <td><a href="{{ path('admin_character', {'game': character.gameName}) }}">{{ character.game.info.fullname }}</a></td>
-            {% endif %}
-            <td>{{ character.name }}</td>
+            <td>
+                {% if not game %}
+                    <a href="{{ path('admin_character', {'game': character.gameName}) }}">{{ character.game.info.fullname }}</a> /
+                {% endif %}
+                {{ character.name }}
+            </td>
             <td>
                 <table class="table table-bordered">
                     <tbody>
@@ -43,7 +42,7 @@
         </tr>
     {% else %}
         <tr class="warning">
-            <td colspan="{{ 3 + (game ? 1 : 0) }}">{{ 'character.empty'|trans }}</td>
+            <td colspan="3">{{ 'character.empty'|trans }}</td>
         </tr>
     {% endfor %}
     </tbody>
