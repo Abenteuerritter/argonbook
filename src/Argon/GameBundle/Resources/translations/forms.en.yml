@@ -1,0 +1,10 @@
+
+character_type:
+    help:                   Please set sequential modifiers to give priorities.
+    types:
+        STR:                Strengh
+        DEX:                Dexity
+        WIS:                Wisdom
+
+character:
+    race_empty_value:       Select your character's race

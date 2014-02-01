@@ -7,6 +7,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 
 use Argon\GameBundle\Entity\Character;
+use Argon\GameBundle\Entity\CharacterType;
 
 class CharacterController extends Controller
 {
@@ -69,6 +70,14 @@ class CharacterController extends Controller
         $character->setPlayer($player);
         $character->setGame($game);
 
+        foreach ($game->getCharacterTypes() as $characterTypeCode) {
+            $characterType = new CharacterType();
+            $characterType->setCode($characterTypeCode);
+            $characterType->setCharacter($character);
+
+            $character->addType($characterType);
+        }
+
         $form = $this->createForm('character', $character, array(
             'action' => $this->generateUrl('character_create', array('game' => $gameName)),
             'method' => 'POST',
@@ -85,7 +94,7 @@ class CharacterController extends Controller
                 $em->flush();
 
                 $request->getSession()->getFlashBag()
-                        ->add('notice', 'character.created');
+                        ->add('success', 'character.created');
 
                 return $this->redirect($this->generateUrl('homepage'));
             }

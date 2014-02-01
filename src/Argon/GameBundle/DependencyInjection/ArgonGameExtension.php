@@ -15,5 +15,6 @@ class ArgonGameExtension extends Extension
         $loader->load('services/forms.xml');
         $loader->load('services/games.xml');
         $loader->load('services/listeners.xml');
+        $loader->load('services/validators.xml');
     }
 }

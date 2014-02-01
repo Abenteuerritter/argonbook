@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<constraint-mapping xmlns="http://symfony.com/schema/dic/constraint-mapping"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/dic/constraint-mapping
+                        http://symfony.com/schema/dic/constraint-mapping/constraint-mapping-1.0.xsd">
+
+    <class name="Argon\GameBundle\Entity\Character">
+        <property name="player">
+            <constraint name="NotNull" />
+            <constraint name="Valid" />
+        </property>
+        <property name="name">
+            <constraint name="NotBlank" />
+        </property>
+        <property name="types">
+            <constraint name="Valid" />
+            <constraint name="Argon\GameBundle\Validator\Constraints\CharacterTypeSequence" />
+        </property>
+        <property name="race">
+            <constraint name="NotNull" />
+            <constraint name="Valid" />
+        </property>
+    </class>
+    <class name="Argon\GameBundle\Entity\CharacterType">
+        <property name="character">
+            <constraint name="NotNull" />
+            <constraint name="Valid" />
+        </property>
+        <property name="code">
+            <constraint name="NotBlank" />
+        </property>
+        <property name="modifier">
+            <constraint name="NotBlank" />
+            <constraint name="Type">
+                <option name="type">integer</option>
+            </constraint>
+        </property>
+    </class>
+</constraint-mapping>

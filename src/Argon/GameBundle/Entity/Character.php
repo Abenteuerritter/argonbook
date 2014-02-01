@@ -80,7 +80,7 @@ class Character extends GameProvider
     /**
      * @param \Argon\GameBundle\Entity\CharacterType $type
      */
-    public function addCharacterType(CharacterType $type)
+    public function addType(CharacterType $type)
     {
         $this->types[] = $type;
     }
@@ -88,7 +88,7 @@ class Character extends GameProvider
     /**
      * @param \Argon\GameBundle\Entity\CharacterType $type
      */
-    public function removeCharacterType(CharacterType $type)
+    public function removeType(CharacterType $type)
     {
         $this->types->removeElement($type);
     }
@@ -96,7 +96,7 @@ class Character extends GameProvider
     /**
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getCharacterType()
+    public function getTypes()
     {
         return $this->types;
     }

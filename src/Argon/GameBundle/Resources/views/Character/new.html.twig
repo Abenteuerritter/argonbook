@@ -1,5 +1,6 @@
 {% set active = 'character' %}
 {% extends 'ArgonWebBundle::layout.html.twig' %}
+{% form_theme form 'ArgonGameBundle:Form:fields.html.twig' %}
 {% trans_default_domain 'web' %}
 
 {% block title %}{{ parent() }} - {{ 'character.new'|trans }} - {{ game.name }}{% endblock %}

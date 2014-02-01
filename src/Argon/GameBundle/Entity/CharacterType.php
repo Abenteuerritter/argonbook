@@ -5,6 +5,11 @@ namespace Argon\GameBundle\Entity;
 class CharacterType
 {
     /**
+     * @var integer
+     */
+    protected $id;
+
+    /**
      * @var \Argon\GameBundle\Entity\Character
      */
     protected $character;

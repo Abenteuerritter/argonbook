@@ -11,10 +11,6 @@
 {% endblock %}
 
 {% block body %}
-  {% for flashMessage in app.session.flashbag.get('notice') %}
-    <div class="flash-message">{{ flashMessage }}</div>
-  {% endfor %}
-
   <div class="container">
     <div class="page-header">
       <ul class="nav nav-pills pull-right">
@@ -32,6 +28,12 @@
         <small>{{ 'Alternate Reality Games Oriented Network' }}</small>
       </h3>
     </div>
+
+    {% for flashClass, flashMessages in app.session.flashbag %}
+      {% for flashMessage in flashMessages %}
+        <div class="alert alert-{{ flashClass }}">{{ flashMessage|trans({}, 'web') }}</div>
+      {% endfor %}
+    {% endfor %}
 
     {% block wrapper %}
         {% block content %}{% endblock %}
