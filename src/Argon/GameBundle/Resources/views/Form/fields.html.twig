@@ -1,7 +1,7 @@
 {% block _character_abilities_widget %}
 {% spaceless %}
     {% if compound %}
-    <div {{ block('widget_container_attributes') }}>
+    <div {{ block('widget_container_attributes') }} class="form-horizontal">
         <span class="help-block">{{ 'character_ability.help'|trans({}, 'forms') }}</span>
         {% if form.parent is empty %}
             {{ block('global_form_errors') }}
