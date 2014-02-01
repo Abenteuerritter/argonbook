@@ -4,7 +4,7 @@
       xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
                           http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
 
-    <entity name="Argon\GameBundle\Entity\CharacterAbility" table="character_ability">
+    <entity name="Argon\GameBundle\Entity\CharacterAbility" table="pj_ability">
         <id name="id" type="integer" column="id">
             <generator strategy="AUTO" />
         </id>
