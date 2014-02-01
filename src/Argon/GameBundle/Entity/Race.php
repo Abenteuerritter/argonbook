@@ -3,8 +3,9 @@
 namespace Argon\GameBundle\Entity;
 
 use Doctrine\Common\Collections\ArrayCollection;
+use Gedmo\Translatable\Translatable;
 
-class Race
+class Race implements Translatable
 {
     /**
      * @var integer
@@ -35,6 +36,11 @@ class Race
      * @var integer
      */
     protected $modifier;
+
+    /**
+     * @var string
+     */
+    protected $locale;
 
     public function __construct()
     {
@@ -132,5 +138,13 @@ class Race
     public function getModifier()
     {
         return $this->modifier;
+    }
+
+    /**
+     * @param string $locale
+     */
+    public function setTranslatableLocale($locale)
+    {
+        $this->locale = $locale;
     }
 }

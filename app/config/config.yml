@@ -67,6 +67,12 @@ doctrine:
     orm:
         auto_generate_proxy_classes: %kernel.debug%
         auto_mapping: true
+        mappings:
+            gedmo_translatable:
+                type:       annotation
+                dir:        "%kernel.root_dir%/../vendor/gedmo/doctrine-extensions/lib/Gedmo/Translatable/Entity"
+                prefix:     Gedmo\Translatable\Entity
+                is_bundle:  false
 
 # Swiftmailer Configuration
 swiftmailer:
@@ -75,6 +81,13 @@ swiftmailer:
     username:  %mailer_user%
     password:  %mailer_password%
     spool:     { type: memory }
+
+# Doctrine Extensions Configuration
+stof_doctrine_extensions:
+    default_locale: "%locale%"
+    orm:
+        default:
+            translatable:   true
 
 # Bootstrap Configuration
 braincrafted_bootstrap:
