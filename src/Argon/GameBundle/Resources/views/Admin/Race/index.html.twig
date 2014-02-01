@@ -5,5 +5,9 @@
 {% block title %}{{ parent() }} - {{ 'race.title'|trans }}{% endblock %}
 
 {% block content %}
+<ol class="breadcrumb">
+    <li><a href="{{ path('admin_dashboard') }}">{{ 'dashboard.title'|trans }}</a></li>
+    <li class="active">{{ 'race.title'|trans }}</li>
+</ol>
     {{ include('ArgonGameBundle:Admin/Race:list.html.twig', {'entities': entities}) }}
 {% endblock %}

@@ -5,5 +5,8 @@
 {% block title %}{{ parent() }} - {{ 'dashboard.title'|trans }}{% endblock %}
 
 {% block content %}
+<ol class="breadcrumb">
+    <li class="active">{{ 'dashboard.title'|trans }}</li>
+</ol>
 Welcome!
 {% endblock %}

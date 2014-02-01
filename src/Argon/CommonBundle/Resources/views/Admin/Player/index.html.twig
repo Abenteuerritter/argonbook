@@ -5,6 +5,10 @@
 {% block title %}{{ parent() }} - {{ 'player.title'|trans }}{% endblock %}
 
 {% block content %}
+<ol class="breadcrumb">
+    <li><a href="{{ path('admin_dashboard') }}">{{ 'dashboard.title'|trans }}</a></li>
+    <li class="active">{{ 'player.title'|trans }}</li>
+</ol>
 <table class="table table-striped">
     <thead>
         <tr>

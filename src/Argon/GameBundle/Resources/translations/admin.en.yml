@@ -1,6 +1,7 @@
 
 character:
     title:                  Characters
+    of_game:                of %game%
     info:                   Information
     abilities:              Abilities
     empty:                  There are no characters in the system yet.
@@ -9,6 +10,7 @@ character_ability:
     empty:                  There are no abilities.
 
 character_experience:
+    title:                  Experience
     at:                     Date
     value:                  Experience
     reason:                 Reason
@@ -18,6 +20,6 @@ race:
     title:                  Races
     code:                   Code
     name:                   Name
-    multiplier:             Multiplier
+    modifier:               Modifier
     children:               Children
     empty:                  There are no races in the system yet.

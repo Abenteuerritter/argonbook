@@ -5,6 +5,14 @@
 {% block title %}{{ parent() }} - {{ 'character.title'|trans }}{% endblock %}
 
 {% block content %}
+<ol class="breadcrumb">
+    <li><a href="{{ path('admin_dashboard') }}">{{ 'dashboard.title'|trans }}</a></li>
+    {% if not game %}
+        <li class="active">{{ 'character.title'|trans }}</li>
+    {% else %}
+        <li class="active"><a href="{{ path('admin_character') }}">{{ 'character.title'|trans }}</a> {{ 'character.of_game'|trans({'%game%': game.info.fullname}) }}</li>
+    {% endif %}
+</ol>
 <table class="table table-striped">
     <thead>
         <tr>
