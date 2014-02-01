@@ -8,17 +8,42 @@
 <table class="table table-striped">
     <thead>
         <tr>
+            {% if not game %}
+                <th>{{ 'character.game'|trans }}</th>
+            {% endif %}
             <th>{{ 'character.name'|trans }}</th>
+            <th>{{ 'character.types'|trans }}</th>
+            <th>{{ 'character.race'|trans }}</th>
         </tr>
     </thead>
     <tbody>
     {% for character in entities %}
         <tr>
+            {% if not game %}
+                <td><a href="{{ path('admin_character', {'game': character.gameName}) }}">{{ character.game.info.fullname }}</a></td>
+            {% endif %}
             <td>{{ character.name }}</td>
+            <td>
+                <table class="table table-bordered">
+                    <tbody>
+                    {% for type in character.types %}
+                        <tr>
+                            <td>{{ type.code }}</td>
+                            <td>{{ type.modifier }}</td>
+                        </tr>
+                    {% else %}
+                        <tr class="warning">
+                            <td colspan="2">{{ 'character_type.empty'|trans }}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </td>
+            <td>{{ character.race }}</td>
         </tr>
     {% else %}
         <tr class="warning">
-            <td colspan="1">{{ 'character.empty'|trans }}</td>
+            <td colspan="{{ 3 + (game ? 1 : 0) }}">{{ 'character.empty'|trans }}</td>
         </tr>
     {% endfor %}
     </tbody>
