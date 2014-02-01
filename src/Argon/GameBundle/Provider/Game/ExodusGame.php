@@ -32,7 +32,7 @@ class ExodusGame implements GameInterface
     /**
      * @return array
      */
-    public function getCharacterTypes()
+    public function getAbilities()
     {
         return array('STR', 'DEX', 'WIS');
     }

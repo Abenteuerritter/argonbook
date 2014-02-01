@@ -2,7 +2,7 @@
 
 namespace Argon\GameBundle\Entity;
 
-class CharacterType
+class CharacterAbility
 {
     /**
      * @var integer

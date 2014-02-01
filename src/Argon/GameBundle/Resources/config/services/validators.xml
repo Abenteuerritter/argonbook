@@ -5,8 +5,8 @@
                         http://symfony.com/schema/dic/services/services-1.0.xsd">
 
     <services>
-        <service id="argon_game.validator.character_type_sequence" class="Argon\GameBundle\Validator\Constraints\CharacterTypeSequenceValidator">
-            <tag name="validator.constraint_validator" alias="character_type_sequence" />
+        <service id="argon_game.validator.character_ability_sequence" class="Argon\GameBundle\Validator\Constraints\CharacterAbilitySequenceValidator">
+            <tag name="validator.constraint_validator" alias="character_ability_sequence" />
         </service>
     </services>
 </container>

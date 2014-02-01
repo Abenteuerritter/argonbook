@@ -17,5 +17,5 @@ interface GameInterface
     /**
      * @return array
      */
-    public function getCharacterTypes();
+    public function getAbilities();
 }

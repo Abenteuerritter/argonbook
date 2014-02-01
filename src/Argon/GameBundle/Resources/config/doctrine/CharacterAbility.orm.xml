@@ -4,12 +4,12 @@
       xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
                           http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
 
-    <entity name="Argon\GameBundle\Entity\CharacterType" table="character_type">
+    <entity name="Argon\GameBundle\Entity\CharacterAbility" table="character_ability">
         <id name="id" type="integer" column="id">
             <generator strategy="AUTO" />
         </id>
         <field name="code" column="code" type="string" length="3" />
-        <many-to-one field="character" target-entity="Argon\GameBundle\Entity\Character" inversed-by="types">
+        <many-to-one field="character" target-entity="Argon\GameBundle\Entity\Character" inversed-by="abilities">
             <join-column name="character_id" referenced-column-name="id" />
         </many-to-one>
         <field name="modifier" column="modifier" type="integer" />

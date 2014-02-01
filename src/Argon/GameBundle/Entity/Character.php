@@ -28,7 +28,7 @@ class Character extends GameProvider
     /**
      * @var \Doctrine\Common\Collections\Collection
      */
-    protected $types;
+    protected $abilities;
 
     /**
      * @var \Argon\GameBundle\Entity\Race
@@ -42,7 +42,7 @@ class Character extends GameProvider
 
     public function __construct()
     {
-        $this->types = new ArrayCollection();
+        $this->abilities = new ArrayCollection();
     }
 
     /**
@@ -78,27 +78,27 @@ class Character extends GameProvider
     }
 
     /**
-     * @param \Argon\GameBundle\Entity\CharacterType $type
+     * @param \Argon\GameBundle\Entity\CharacterAbility $ability
      */
-    public function addType(CharacterType $type)
+    public function addAbility(CharacterAbility $ability)
     {
-        $this->types[] = $type;
+        $this->abilities[] = $ability;
     }
 
     /**
-     * @param \Argon\GameBundle\Entity\CharacterType $type
+     * @param \Argon\GameBundle\Entity\CharacterAbility $ability
      */
-    public function removeType(CharacterType $type)
+    public function removeAbility(CharacterAbility $ability)
     {
-        $this->types->removeElement($type);
+        $this->abilities->removeElement($ability);
     }
 
     /**
      * @return \Doctrine\Common\Collections\Collection
      */
-    public function getTypes()
+    public function getAbilities()
     {
-        return $this->types;
+        return $this->abilities;
     }
 
     /**

@@ -6,7 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-class CharacterTypeType extends AbstractType
+class CharacterAbilityType extends AbstractType
 {
     /**
      * @param FormBuilderInterface $builder
@@ -26,9 +26,9 @@ class CharacterTypeType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class'         => 'Argon\GameBundle\Entity\CharacterType',
+            'data_class'         => 'Argon\GameBundle\Entity\CharacterAbility',
             'translation_domain' => 'forms',
-            'intention'          => 'character_type',
+            'intention'          => 'character_ability',
         ));
     }
 
@@ -37,6 +37,6 @@ class CharacterTypeType extends AbstractType
      */
     public function getName()
     {
-        return 'character_type';
+        return 'character_ability';
     }
 }

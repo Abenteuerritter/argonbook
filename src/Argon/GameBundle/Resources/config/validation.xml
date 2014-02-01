@@ -12,9 +12,9 @@
         <property name="name">
             <constraint name="NotBlank" />
         </property>
-        <property name="types">
+        <property name="abilities">
             <constraint name="Valid" />
-            <constraint name="Argon\GameBundle\Validator\Constraints\CharacterTypeSequence" />
+            <constraint name="Argon\GameBundle\Validator\Constraints\CharacterAbilitySequence" />
         </property>
         <property name="race">
             <constraint name="NotNull" />

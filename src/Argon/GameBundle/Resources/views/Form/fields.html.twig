@@ -1,14 +1,14 @@
-{% block _character_types_widget %}
+{% block _character_abilities_widget %}
 {% spaceless %}
     {% if compound %}
     <div {{ block('widget_container_attributes') }}>
-        <span class="help-block">{{ 'character_type.help'|trans({}, 'forms') }}</span>
+        <span class="help-block">{{ 'character_ability.help'|trans({}, 'forms') }}</span>
         {% if form.parent is empty %}
             {{ block('global_form_errors') }}
         {% endif %}
         {% for child in form %}
             <div class="form-group">
-                {{ form_label(child, 'character_type.types.' ~ child.code.vars.value|trans({}, 'forms'), {'label_attr': {'class': 'col-sm-2'}}) }}
+                {{ form_label(child, 'character_ability.types.' ~ child.code.vars.value|trans({}, 'forms'), {'label_attr': {'class': 'col-sm-2'}}) }}
                 <div class="col-sm-10">
                     {{ form_widget(child.code) }}
                     {{ form_widget(child.modifier) }}
@@ -23,4 +23,4 @@
         {{ block('form_widget_simple') }}
     {% endif %}
 {% endspaceless %}
-{% endblock _character_types_widget %}
+{% endblock _character_abilities_widget %}

@@ -7,7 +7,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 
 use Argon\GameBundle\Entity\Character;
-use Argon\GameBundle\Entity\CharacterType;
+use Argon\GameBundle\Entity\CharacterAbility;
 
 class CharacterController extends Controller
 {
@@ -70,12 +70,12 @@ class CharacterController extends Controller
         $character->setPlayer($player);
         $character->setGame($game);
 
-        foreach ($game->getCharacterTypes() as $characterTypeCode) {
-            $characterType = new CharacterType();
-            $characterType->setCode($characterTypeCode);
-            $characterType->setCharacter($character);
+        foreach ($game->getAbilities() as $characterAbilityCode) {
+            $characterAbility = new CharacterAbility();
+            $characterAbility->setCode($characterAbilityCode);
+            $characterAbility->setCharacter($character);
 
-            $character->addType($characterType);
+            $character->addAbility($characterAbility);
         }
 
         $form = $this->createForm('character', $character, array(

@@ -1,5 +1,5 @@
 
-character_type:
+character_ability:
     help:                   Please set sequential modifiers to give priorities.
     types:
         STR:                Strengh

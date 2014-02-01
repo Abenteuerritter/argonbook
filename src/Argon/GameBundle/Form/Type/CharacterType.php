@@ -16,8 +16,8 @@ class CharacterType extends AbstractType
     {
         $builder
             ->add('name')
-            ->add('types', 'collection', array(
-                'type' => 'character_type',
+            ->add('abilities', 'collection', array(
+                'type' => 'character_ability',
             ))
             ->add('race', null, array(
                 'empty_value' => 'character.race_empty_value',

@@ -13,7 +13,7 @@
         </many-to-one>
         <field name="gameName" column="game" type="string" length="8" />
         <field name="name" column="name" type="string" length="60" />
-        <one-to-many field="types" target-entity="Argon\GameBundle\Entity\CharacterType" mapped-by="character">
+        <one-to-many field="abilities" target-entity="Argon\GameBundle\Entity\CharacterAbility" mapped-by="character">
             <cascade>
                 <cascade-persist/>
             </cascade>

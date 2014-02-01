@@ -5,14 +5,14 @@ namespace Argon\GameBundle\Validator\Constraints;
 use Symfony\Component\Validator\Constraint;
 use Symfony\Component\Validator\ConstraintValidator;
 
-class CharacterTypeSequenceValidator extends ConstraintValidator
+class CharacterAbilitySequenceValidator extends ConstraintValidator
 {
     public function validate($value, Constraint $constraint)
     {
         $sequence = array();
 
-        foreach ($value as $characterType) {
-            $modifier = $characterType->getModifier();
+        foreach ($value as $characterAbility) {
+            $modifier = $characterAbility->getModifier();
 
             if (is_int($modifier)) {
                 $sequence[$modifier] = true;
