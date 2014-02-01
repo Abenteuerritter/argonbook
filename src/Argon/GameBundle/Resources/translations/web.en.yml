@@ -2,3 +2,6 @@
 character:
     new:                    New Character
     created:                Your character has been created.
+
+character_experience:
+    created:                The character has new experience.

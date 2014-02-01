@@ -93,6 +93,22 @@ class Character extends GameProvider
     /**
      * @param integer $experience
      */
+    public function addExperience($experience)
+    {
+        $this->experience += $experience;
+    }
+
+    /**
+     * @param integer $experience
+     */
+    public function removeExperience($experience)
+    {
+        $this->experience -= $experience;
+    }
+
+    /**
+     * @param integer $experience
+     */
     public function setExperience($experience)
     {
         $this->experience = $experience;

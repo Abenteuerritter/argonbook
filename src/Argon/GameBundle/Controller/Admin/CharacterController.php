@@ -6,6 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
 use Argon\GameBundle\Entity\Character;
+use Argon\GameBundle\Entity\CharacterExperience;
 
 class CharacterController extends Controller
 {
@@ -41,6 +42,45 @@ class CharacterController extends Controller
         return $this->render('ArgonGameBundle:Admin\Character:experience.html.twig', array(
             'character' => $character,
             'entities'  => $entities,
+        ));
+    }
+
+    public function newExperienceAction(Character $character, Request $request)
+    {
+        $characterExperience = new CharacterExperience();
+        $characterExperience->setCharacter($character);
+
+        $form = $this->createForm('character_experience', $characterExperience, array(
+            'action' => $this->generateUrl('admin_character_experience_create', array('id' => $character->getId())),
+            'method' => 'POST',
+        ));
+
+        $form->add('submit', 'submit');
+
+        if ($request->isMethod('POST')) {
+            $form->handleRequest($request);
+
+            if ($form->isValid()) {
+                $character->addExperience(
+                    $characterExperience->getValue()
+                );
+
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($characterExperience);
+                $em->flush();
+
+                $request->getSession()->getFlashBag()
+                        ->add('success', 'character_experience.created');
+
+                return $this->redirect($this->generateUrl('admin_character_experience', array(
+                    'id' => $character->getId(),
+                )));
+            }
+        }
+
+        return $this->render('ArgonGameBundle:Admin\Character:newExperience.html.twig', array(
+            'character' => $character,
+            'form'      => $form->createView(),
         ));
     }
 }

@@ -1,0 +1,16 @@
+{% set active = 'character' %}
+{% extends 'ArgonWebBundle::Admin/layout.html.twig' %}
+{% trans_default_domain 'admin' %}
+
+{% block title %}{{ parent() }} - {{ 'character.title'|trans }} - {{ character.name }} - {{ 'character_experience.title'|trans }} - {{ 'character_experience.actions.new'|trans }}{% endblock %}
+
+{% block content %}
+<ol class="breadcrumb">
+    <li><a href="{{ path('admin_dashboard') }}">{{ 'dashboard.title'|trans }}</a></li>
+    <li><a href="{{ path('admin_character') }}">{{ 'character.title'|trans }}</a></li>
+    <li>{{ character.name }}</li>
+    <li><a href="{{ path('admin_character_experience', {'id': character.id}) }}"><span class="glyphicon glyphicon-signal"></span> {{ 'character_experience.title'|trans }}</a></li>
+    <li class="active">{{ 'character_experience.actions.new'|trans }}</li>
+</ol>
+{{ form(form) }}
+{% endblock %}

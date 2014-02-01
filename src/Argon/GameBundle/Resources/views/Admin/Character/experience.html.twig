@@ -9,22 +9,22 @@
     <li><a href="{{ path('admin_dashboard') }}">{{ 'dashboard.title'|trans }}</a></li>
     <li><a href="{{ path('admin_character') }}">{{ 'character.title'|trans }}</a></li>
     <li>{{ character.name }}</li>
-    <li class="active">{{ 'character_experience.title'|trans }}</li>
+    <li class="active"><span class="glyphicon glyphicon-signal"></span> {{ 'character_experience.title'|trans }}</li>
 </ol>
 <table class="table table-striped">
     <thead>
         <tr>
             <th>{{ 'character_experience.at'|trans }}</th>
-            <th>{{ 'character_experience.value'|trans }}</th>
             <th>{{ 'character_experience.reason'|trans }}</th>
+            <th class="text-right"><span class="glyphicon glyphicon-signal"></span></th>
         </tr>
     </thead>
     <tbody>
     {% for experience in entities %}
         <tr>
             <td>{{ experience.at|date }}</td>
-            <td>{{ experience.value }}</td>
             <td>{{ experience.reason }}</td>
+            <td class="text-right">{{ experience.value }}</td>
         </tr>
     {% else %}
         <tr class="warning">
@@ -32,5 +32,13 @@
         </tr>
     {% endfor %}
     </tbody>
+    <tfoot>
+        <tr>
+            <td colspan="2">
+                <a href="{{ path('admin_character_experience_new', {'id': character.id}) }}" class="btn btn-primary">{{ 'character_experience.actions.new'|trans }}</a>
+            </td>
+            <td class="text-right">{{ character.experience }}</td>
+        </tr>
+    </tfoot>
 </table>
 {% endblock %}

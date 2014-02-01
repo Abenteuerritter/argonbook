@@ -12,9 +12,10 @@ character_ability:
 character_experience:
     title:                  Experience
     at:                     Date
-    value:                  Experience
     reason:                 Reason
     empty:                  This character has no experience.
+    actions:
+        new:                Add experience
 
 race:
     title:                  Races
