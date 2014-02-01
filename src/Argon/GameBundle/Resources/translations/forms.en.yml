@@ -2,8 +2,10 @@
 character_ability:
     help:                   Please set sequential modifiers to give priorities.
     types:
-        STR:                Strengh
-        DEX:                Dexity
+        STR:                Strength
+        DEX:                Dexterity
+        CON:                Constitution
+        INT:                Intelligence
         WIS:                Wisdom
 
 character:
