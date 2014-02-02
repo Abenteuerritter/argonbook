@@ -102,6 +102,11 @@ lunetics_locale:
 
 # Bootstrap Configuration
 braincrafted_bootstrap:
+    auto_configure:
+        knp_menu: false
+        knp_paginator: false
+    #customize:
+    #    variables_file: %kernel.root_dir%/Resources/less/variables.less
     less_filter: less
 
 # FOSUser Configuration
