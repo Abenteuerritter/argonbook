@@ -89,6 +89,17 @@ stof_doctrine_extensions:
         default:
             translatable:   true
 
+# Locale Configuration
+lunetics_locale:
+    allowed_locales:        [de, en]
+    guessing_order:         [query, cookie, session, browser]
+    cookie:
+        set_on_change:      true
+    form:
+        languages_only:     true
+    switcher:
+        show_current_locale: true
+
 # Bootstrap Configuration
 braincrafted_bootstrap:
     less_filter: less
