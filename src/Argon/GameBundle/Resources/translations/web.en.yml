@@ -1,5 +1,6 @@
 
 character:
+    title:                  My characters
     info:                   Character
     empty:                  You don't have any character created yet.
     new:                    New Character
