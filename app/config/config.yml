@@ -32,6 +32,7 @@ twig:
     strict_variables: "%kernel.debug%"
     globals:
         form_csrf_provider: "@form.csrf_provider"
+        project:            "%project%"
 
 # Assetic Configuration
 assetic:
