@@ -92,7 +92,7 @@ stof_doctrine_extensions:
 # Locale Configuration
 lunetics_locale:
     allowed_locales:        [de, en]
-    guessing_order:         [query, cookie, session, browser]
+    guessing_order:         [query, cookie, session]
     cookie:
         set_on_change:      true
     form:
