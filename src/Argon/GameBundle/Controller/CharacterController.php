@@ -13,7 +13,17 @@ class CharacterController extends Controller
 {
     public function indexAction(Request $request)
     {
+        if (false === $this->get('security.context')->isGranted('ROLE_USER')) {
+            throw new AccessDeniedException();
+        }
+
+        $player   = $this->getUser();
+        $entities = $this->getDoctrine()
+                         ->getRepository('ArgonGameBundle:Character')
+                         ->findByPlayer($player);
+
         return $this->render('ArgonGameBundle:Character:index.html.twig', array(
+            'entities' => $entities,
         ));
     }
 

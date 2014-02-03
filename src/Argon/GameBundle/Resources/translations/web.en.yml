@@ -1,5 +1,7 @@
 
 character:
+    info:                   Character
+    empty:                  You don't have any character created yet.
     new:                    New Character
     created:                Your character has been created.
 

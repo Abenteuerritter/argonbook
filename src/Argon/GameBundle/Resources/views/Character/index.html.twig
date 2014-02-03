@@ -5,5 +5,37 @@
 {% block title %}{{ parent() }} - {{ 'character.title'|trans }}{% endblock %}
 
 {% block content %}
-<a href="{{ path('character_game') }}" class="btn btn-default">{{ 'character.new'|trans }}</a>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>{{ 'character.info'|trans }}</th>
+            <th>&nbsp;</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for character in entities %}
+        <tr>
+            <td>
+                {{ character.game.info.fullname }} / {{ character.name }} (
+                    <span class="glyphicon glyphicon-signal"></span> {{ character.experience }}
+                )<br>
+                {{ character.race }}
+            </td>
+            <td>
+            </td>
+        </tr>
+    {% else %}
+        <tr class="warning">
+            <td colspan="2">{{ 'character.empty'|trans }}</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+    <tfoot>
+        <tr>
+            <td colspan="2">
+                <a href="{{ path('character_game') }}" class="btn btn-default">{{ 'character.new'|trans }}</a>
+            </td>
+        </tr>
+    </tfoot>
+</table>
 {% endblock %}
