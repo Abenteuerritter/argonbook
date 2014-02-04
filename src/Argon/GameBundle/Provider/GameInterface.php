@@ -18,4 +18,9 @@ interface GameInterface
      * @return array
      */
     public function getAbilities();
+
+    /**
+     * @return integer
+     */
+    public function getInitialExperience();
 }

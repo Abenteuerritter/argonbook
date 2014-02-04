@@ -36,4 +36,12 @@ class ExodusGame implements GameInterface
     {
         return array('STR', 'DEX', 'WIS');
     }
+
+    /**
+     * @return integer
+     */
+    public function getInitialExperience()
+    {
+        return 3;
+    }
 }
