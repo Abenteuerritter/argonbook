@@ -9,7 +9,7 @@ sidebar:
         reset_password:     Forgot your password?
     player:
         characters:
-            title:          Charecters
+            title:          Characters
             description:    List of my charecters
 
 layout:
