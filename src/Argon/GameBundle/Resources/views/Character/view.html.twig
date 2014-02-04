@@ -1,0 +1,78 @@
+{% set active = 'character' %}
+{% extends 'ArgonWebBundle::layout.html.twig' %}
+{% trans_default_domain 'web' %}
+
+{% block title %}{{ parent() }} - {{ 'character.title'|trans }} - {{ character }}{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-8">
+        <div class="panel panel-default">
+            <div class="panel-heading">{{ 'character.info'|trans }}</div>
+            <div class="panel-body">
+        <div class="form-horizontal">
+            <div class="form-group">
+                <label class="col-sm-2 control-label">{{ 'character.name'|trans }}</label>
+                <div class="col-sm-10">
+                    <p class="form-control-static">{{ character.game.info.fullname }} / {{ character.name }}</p>
+                </div>
+                <label class="col-sm-2 control-label">{{ 'character.race'|trans }}</label>
+                <div class="col-sm-10">
+                    <p class="form-control-static">{{ character.race }}</p>
+                </div>
+            </div>
+        </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="panel panel-default">
+            <div class="panel-heading">{{ 'character.abilities'|trans }}</div>
+            <table class="table table-bordered">
+                <tbody>
+                {% for ability in character.abilities %}
+                    <tr>
+                        <td class="text-center">{{ ability.modifier }}</td>
+                        <td><abbr title="{{ ability.code }}">{{ ('character_ability.types.' ~ ability.code)|trans({}, 'forms') }}</abbr></td>
+                    </tr>
+                {% else %}
+                    <tr class="warning">
+                        <td colspan="2">{{ 'character_ability.empty'|trans }}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading">{{ 'character.experience'|trans }}</div>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>{{ 'character_experience.at'|trans }}</th>
+                <th>{{ 'character_experience.reason'|trans }}</th>
+                <th class="text-right"><span class="glyphicon glyphicon-signal"></span></th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for experience in experiences %}
+            <tr>
+                <td>{{ experience.at|date }}</td>
+                <td>{{ experience.reason }}</td>
+                <td class="text-right">{{ experience.value }}</td>
+            </tr>
+        {% else %}
+            <tr class="warning">
+                <td colspan="3">{{ 'character_experience.empty'|trans }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="3" class="text-right"><strong>{{ character.experience }}</strong></td>
+            </tr>
+        </tfoot>
+    </table>
+</div>
+{% endblock %}

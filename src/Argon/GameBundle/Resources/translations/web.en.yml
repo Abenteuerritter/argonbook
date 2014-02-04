@@ -2,9 +2,15 @@
 character:
     title:                  My characters
     info:                   Character
+    name:                   Name
+    race:                   Race
+    abilities:              Abilities
+    experience:             Experience
     empty:                  You don't have any character created yet.
     new:                    New Character
     created:                Your character has been created.
 
 character_experience:
     created:                The character has new experience.
+    at:                     Date
+    reason:                 Reason

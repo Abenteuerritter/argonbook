@@ -16,7 +16,7 @@
     {% for character in entities %}
         <tr>
             <td>
-                {{ character.game.info.fullname }} / {{ character.name }} (
+                {{ character.game.info.fullname }} / <a href="{{ path('character_view', {'id': character.id}) }}">{{ character.name }}</a> (
                     <span class="glyphicon glyphicon-signal"></span> {{ character.experience }}
                 )<br>
                 {{ character.race }}

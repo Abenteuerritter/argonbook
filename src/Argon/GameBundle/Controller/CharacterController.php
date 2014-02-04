@@ -115,4 +115,26 @@ class CharacterController extends Controller
             'form' => $form->createView(),
         ));
     }
+
+    public function viewAction(Character $character)
+    {
+        if (false === $this->get('security.context')->isGranted('ROLE_USER')) {
+            throw new AccessDeniedException();
+        }
+
+        $player = $this->getUser();
+
+        if ($player !== $character->getPlayer()) {
+            throw new AccessDeniedException();
+        }
+
+        $experiences = $this->getDoctrine()
+                            ->getRepository('ArgonGameBundle:CharacterExperience')
+                            ->findByCharacter($character);
+
+        return $this->render('ArgonGameBundle:Character:view.html.twig', array(
+            'character'   => $character,
+            'experiences' => $experiences,
+        ));
+    }
 }

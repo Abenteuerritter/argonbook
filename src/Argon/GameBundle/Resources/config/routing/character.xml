@@ -19,4 +19,8 @@
     <route id="character_create" path="/new/{game}" methods="POST">
         <default key="_controller">ArgonGameBundle:Character:new</default>
     </route>
+    <route id="character_view" path="/character/{id}" methods="GET">
+        <default key="_controller">ArgonGameBundle:Character:view</default>
+        <requirement key="id">\d+</requirement>
+    </route>
 </routes>

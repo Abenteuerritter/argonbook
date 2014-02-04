@@ -39,7 +39,7 @@
                     {% for ability in character.abilities %}
                         <tr>
                             <td class="text-center">{{ ability.modifier }}</td>
-                            <td>{{ ability.code }}</td>
+                            <td><abbr title="{{ ability.code }}">{{ ('character_ability.types.' ~ ability.code)|trans({}, 'forms') }}</abbr></td>
                         </tr>
                     {% else %}
                         <tr class="warning">
