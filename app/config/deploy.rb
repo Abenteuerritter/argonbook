@@ -17,9 +17,9 @@ role :app, domain, :primary => true
 role :web, domain
 
 set  :shared_files,    ["app/config/parameters.yml"]
-set  :shared_children, ["vendor"]
+set  :shared_children, ["app/data", "app/logs", "vendor"]
 
-set  :writable_dirs,        ["app/cache", "app/logs"]
+set  :writable_dirs,        ["app/data", "app/cache", "app/logs"]
 set  :webserver_user,       "www-data"
 
 set  :use_set_permissions,  true
