@@ -1,0 +1,13 @@
+{% set active = 'skill' %}
+{% extends 'ArgonWebBundle::Admin/layout.html.twig' %}
+{% trans_default_domain 'admin' %}
+
+{% block title %}{{ parent() }} - {{ 'skill.title'|trans }}{% endblock %}
+
+{% block content %}
+<ol class="breadcrumb">
+    <li><a href="{{ path('admin_dashboard') }}">{{ 'dashboard.title'|trans }}</a></li>
+    <li class="active">{{ 'skill.title'|trans }}</li>
+</ol>
+    {{ include('ArgonGameBundle:Admin/Skill:list.html.twig', {'entities': entities}) }}
+{% endblock %}

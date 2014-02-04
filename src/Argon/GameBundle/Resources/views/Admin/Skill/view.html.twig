@@ -1,0 +1,45 @@
+{% set active = 'skill' %}
+{% extends 'ArgonWebBundle::Admin/layout.html.twig' %}
+{% trans_default_domain 'admin' %}
+
+{% block title %}{{ parent() }} - {{ 'skill.title'|trans }} - {{ entity.code }}{% endblock %}
+
+{% block content %}
+<ol class="breadcrumb">
+    <li><a href="{{ path('admin_dashboard') }}">{{ 'dashboard.title'|trans }}</a></li>
+    <li><a href="{{ path('admin_skill') }}">{{ 'skill.title'|trans }}</a></li>
+    <li class="active">{{ entity.code }}</li>
+</ol>
+<div class="form-horizontal">
+    <div class="form-group">
+        <label class="col-sm-2 control-label">{{ 'skill.code'|trans }}</label>
+        <div class="col-sm-10">
+            <p class="form-control-static">{{ entity.code }}</p>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-2 control-label">{{ 'skill.name'|trans }}</label>
+        <div class="col-sm-10">
+            <p class="form-control-static">{{ entity.name }}</p>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-2 control-label">{{ 'skill.modifier'|trans }}</label>
+        <div class="col-sm-10">
+            <p class="form-control-static">{{ entity.modifier }}</p>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-2 control-label">{{ 'skill.max'|trans }}</label>
+        <div class="col-sm-10">
+            <p class="form-control-static">{{ entity.max|default('skill.max_empty'|trans) }}</p>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-sm-2 control-label">{{ 'skill.children'|trans }}</label>
+        <div class="col-sm-10">
+            {{ include('ArgonGameBundle:Admin\\Skill:list.html.twig', {'entities': entities}) }}
+        </div>
+    </div>
+</div>
+{% endblock %}

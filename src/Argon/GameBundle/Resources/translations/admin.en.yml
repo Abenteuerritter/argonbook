@@ -24,3 +24,13 @@ race:
     modifier:               Modifier
     children:               Children
     empty:                  There are no races in the system yet.
+
+skill:
+    title:                  Skills
+    code:                   Code
+    name:                   Name
+    modifier:               Modifier
+    max:                    Max
+    max_empty:              (no limit)
+    children:               Children
+    empty:                  There are no skills in the system yet.

@@ -4,6 +4,7 @@ sidebar:
     player:                 Players
     character:              Characters
     race:                   Races
+    skill:                  Skills
 
 dashboard:
     title:                  Dashboard
