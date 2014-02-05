@@ -13,16 +13,6 @@ class Race implements Translatable
     protected $id;
 
     /**
-     * @var \Doctrine\Common\Collections\Collection
-     */
-    protected $children;
-
-    /**
-     * @var \Argon\GameBundle\Entity\Race
-     */
-    protected $parent;
-
-    /**
      * @var string
      */
     protected $code;
@@ -42,54 +32,9 @@ class Race implements Translatable
      */
     protected $locale;
 
-    public function __construct()
-    {
-        $this->children = new ArrayCollection();
-    }
-
     public function __toString()
     {
         return $this->name;
-    }
-
-    /**
-     * @param \Argon\GameBundle\Entity\Race $children
-     */
-    public function addChildren(Race $children)
-    {
-        $this->children[] = $children;
-    }
-
-    /**
-     * @param \Argon\GameBundle\Entity\Race $children
-     */
-    public function removeChildren(Race $children)
-    {
-        $this->children->removeElement($children);
-    }
-
-    /**
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getChildren()
-    {
-        return $this->children;
-    }
-
-    /**
-     * @param \Argon\GameBundle\Entity\Race $parent
-     */
-    public function setParent(Race $parent = null)
-    {
-        $this->parent = $parent;
-    }
-
-    /**
-     * @return \Argon\GameBundle\Entity\Race
-     */
-    public function getParent()
-    {
-        return $this->parent;
     }
 
     /**

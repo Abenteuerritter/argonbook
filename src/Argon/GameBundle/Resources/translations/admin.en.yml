@@ -21,10 +21,8 @@ race:
     title:                  Races
     code:                   Code
     name:                   Name
+    name_empty:             (no translation)
     modifier:               Modifier
-    parent:                 Parent
-    parent_empty:           (root)
-    children:               Children
     empty:                  There are no races in the system yet.
 
 skill:

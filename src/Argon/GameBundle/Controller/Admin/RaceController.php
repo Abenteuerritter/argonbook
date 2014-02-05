@@ -18,13 +18,10 @@ class RaceController extends Controller
 
     public function viewAction($code)
     {
-        $repository = $this->getRepository();
-        $entity     = $repository->findOneByCode($code);
-        $entities   = $repository->findByParent($entity);
+        $entity = $this->getRepository()->findOneByCode($code);
 
         return $this->render('ArgonGameBundle:Admin/Race:view.html.twig', array(
-            'entity'   => $entity,
-            'entities' => $entities,
+            'entity' => $entity,
         ));
     }
 

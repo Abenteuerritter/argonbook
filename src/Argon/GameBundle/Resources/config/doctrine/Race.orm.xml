@@ -6,19 +6,17 @@
                           http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
 
     <entity name="Argon\GameBundle\Entity\Race" table="race">
+        <gedmo:translation entity="Gedmo\Translatable\Entity\Translation" locale="locale" />
         <id name="id" column="id" type="integer">
             <generator strategy="AUTO" />
         </id>
         <unique-constraints>
             <unique-constraint columns="code" name="code_idx" />
         </unique-constraints>
-        <one-to-many field="children" target-entity="Argon\GameBundle\Entity\Race" mapped-by="parent" />
-        <many-to-one field="parent" target-entity="Argon\GameBundle\Entity\Race" inversed-by="children" />
         <field name="code" column="code" type="string" length="8" />
         <field name="name" column="name" type="string" length="60">
             <gedmo:translatable />
         </field>
         <field name="modifier" column="modifier" type="integer" />
-        <gedmo:translation entity="Gedmo\Translatable\Entity\Translation" locale="locale" />
     </entity>
 </doctrine-mapping>
