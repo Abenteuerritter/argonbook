@@ -7,7 +7,11 @@
 {% block content %}
 <ol class="breadcrumb">
     <li><a href="{{ path('admin_dashboard') }}">{{ 'dashboard.title'|trans }}</a></li>
-    <li class="active">{{ 'skill.title'|trans }}</li>
+    {% if not ability %}
+        <li class="active">{{ 'skill.title'|trans }}</li>
+    {% else %}
+        <li class="active"><a href="{{ path('admin_skill') }}">{{ 'skill.title'|trans }}</a> {{ 'skill.of_ability'|trans({'%ability%': ('character_ability.types.' ~ ability)|trans({}, 'forms')}) }}</li>
+    {% endif %}
 </ol>
-    {{ include('ArgonGameBundle:Partial\\Skill:list.html.twig', {'entities': entities}) }}
+    {{ include('ArgonGameBundle:Partial\\Skill:list.html.twig', {'entities': entities, 'show_ability': ability is null}) }}
 {% endblock %}

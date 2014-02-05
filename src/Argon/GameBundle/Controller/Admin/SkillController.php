@@ -7,11 +7,18 @@ use Symfony\Component\HttpFoundation\Request;
 
 class SkillController extends Controller
 {
-    public function indexAction()
+    public function indexAction(Request $request)
     {
-        $entities = $this->getRepository()->findAll();
+        if ($request->query->has('ability')) {
+            $ability  = $request->query->get('ability');
+            $entities = $this->getRepository()->findByAbilityCode($ability);
+        } else {
+            $ability  = null;
+            $entities = $this->getRepository()->findAll();
+        }
 
         return $this->render('ArgonGameBundle:Admin/Skill:index.html.twig', array(
+            'ability'  => $ability,
             'entities' => $entities,
         ));
     }

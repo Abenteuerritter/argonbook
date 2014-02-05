@@ -29,6 +29,7 @@ race:
 
 skill:
     title:                  Skills
+    of_ability:             of %ability%
     ability:                Ability
     ability_empty:          (all)
     code:                   Code
