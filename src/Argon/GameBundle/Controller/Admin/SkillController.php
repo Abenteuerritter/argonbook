@@ -5,6 +5,8 @@ namespace Argon\GameBundle\Controller\Admin;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
+use Argon\GameBundle\Entity\Skill;
+
 class SkillController extends Controller
 {
     public function indexAction(Request $request)
@@ -23,15 +25,10 @@ class SkillController extends Controller
         ));
     }
 
-    public function viewAction($code)
+    public function viewAction(Skill $skill)
     {
-        $repository = $this->getRepository();
-        $entity     = $repository->findOneByCode($code);
-        $entities   = $repository->findByParent($entity);
-
         return $this->render('ArgonGameBundle:Admin/Skill:view.html.twig', array(
-            'entity'   => $entity,
-            'entities' => $entities,
+            'entity' => $skill,
         ));
     }
 

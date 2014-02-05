@@ -27,7 +27,8 @@
     <route id="admin_skill" path="/skills" methods="GET">
         <default key="_controller">ArgonGameBundle:Admin\Skill:index</default>
     </route>
-    <route id="admin_skill_view" path="/skill/{code}" methods="GET">
+    <route id="admin_skill_view" path="/skill/{slug}" methods="GET">
         <default key="_controller">ArgonGameBundle:Admin\Skill:view</default>
+        <requirement key="slug">.+</requirement>
     </route>
 </routes>

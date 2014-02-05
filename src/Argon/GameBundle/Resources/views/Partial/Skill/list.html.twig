@@ -4,7 +4,6 @@
             {% if show_ability %}
                 <th>{{ 'skill.ability'|trans({}, 'admin') }}</th>
             {% endif %}
-            <th>{{ 'skill.code'|trans({}, 'admin') }}</th>
             <th>{{ 'skill.name'|trans({}, 'admin') }}</th>
         </tr>
     </thead>
@@ -20,12 +19,11 @@
                 {% endif %}
             </td>
             {% endif %}
-            <td><a href="{{ path('admin_skill_view', {'code': skill.code}) }}">{{ skill.code }}</a></td>
-            <td>{{ skill.name }}</td>
+            <td><a href="{{ path('admin_skill_view', {'slug': skill.slug}) }}">{{ skill }}</a></td>
         </tr>
     {% else %}
         <tr class="warning">
-            <td colspan="{{ 2 + (show_ability ? 1 : 0) }}">{{ 'skill.empty'|trans({}, 'admin') }}</td>
+            <td colspan="{{ 1 + (show_ability ? 1 : 0) }}">{{ 'skill.empty'|trans({}, 'admin') }}</td>
         </tr>
     {% endfor %}
     </tbody>

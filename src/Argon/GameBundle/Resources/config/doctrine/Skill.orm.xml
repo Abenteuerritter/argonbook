@@ -11,9 +11,6 @@
         <id name="id" column="id" type="integer">
             <generator strategy="AUTO" />
         </id>
-        <unique-constraints>
-            <unique-constraint columns="code" name="code_idx" />
-        </unique-constraints>
         <field name="root" column="root" type="integer" nullable="true">
             <gedmo:tree-root />
         </field>
@@ -36,7 +33,14 @@
             </order-by>
         </one-to-many>
         <field name="abilityCode" column="ability_code" type="string" length="3" nullable="true" />
-        <field name="code" column="code" type="string" length="128" />
+        <field name="slug" type="string" length="128" unique="true">
+            <gedmo:slug fields="name" updatable="false" unique="true">
+                <gedmo:handler class="Gedmo\Sluggable\Handler\TreeSlugHandler">
+                    <gedmo:handler-option name="parentRelationField" value="parent" />
+                    <gedmo:handler-option name="separator" value="/" />
+                </gedmo:handler>
+            </gedmo:slug>
+        </field>
         <field name="name" column="name" type="string" length="128">
             <gedmo:translatable />
         </field>
