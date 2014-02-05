@@ -74,6 +74,11 @@ doctrine:
                 dir:        "%kernel.root_dir%/../vendor/gedmo/doctrine-extensions/lib/Gedmo/Translatable/Entity"
                 prefix:     Gedmo\Translatable\Entity
                 is_bundle:  false
+            gedmo_tree:
+                type:       annotation
+                dir:        "%kernel.root_dir%/../vendor/gedmo/doctrine-extensions/lib/Gedmo/Tree/Entity"
+                prefix:     Gedmo\Tree\Entity
+                is_bundle:  false
 
 # Swiftmailer Configuration
 swiftmailer:
@@ -89,6 +94,7 @@ stof_doctrine_extensions:
     orm:
         default:
             translatable:   true
+            tree:           true
 
 # Locale Configuration
 lunetics_locale:

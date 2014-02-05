@@ -6,14 +6,35 @@
                           http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
 
     <entity name="Argon\GameBundle\Entity\Skill" table="skill">
+        <gedmo:tree type="nested" />
+        <gedmo:translation entity="Gedmo\Translatable\Entity\Translation" locale="locale" />
         <id name="id" column="id" type="integer">
             <generator strategy="AUTO" />
         </id>
         <unique-constraints>
             <unique-constraint columns="code" name="code_idx" />
         </unique-constraints>
-        <one-to-many field="children" target-entity="Argon\GameBundle\Entity\Skill" mapped-by="parent" />
-        <many-to-one field="parent" target-entity="Argon\GameBundle\Entity\Skill" inversed-by="children" />
+        <field name="root" column="root" type="integer" nullable="true">
+            <gedmo:tree-root />
+        </field>
+        <field name="left" column="lft" type="integer">
+            <gedmo:tree-left />
+        </field>
+        <field name="right" column="rgt" type="integer">
+            <gedmo:tree-right />
+        </field>
+        <field name="level" column="lvl" type="integer">
+            <gedmo:tree-level />
+        </field>
+        <many-to-one field="parent" target-entity="Argon\GameBundle\Entity\Skill" inversed-by="children">
+            <join-column name="parent_id" referenced-column-name="id" on-delete="CASCADE"/>
+            <gedmo:tree-parent />
+        </many-to-one>
+        <one-to-many field="children" target-entity="Argon\GameBundle\Entity\Skill" mapped-by="parent">
+            <order-by>
+                <order-by-field name="left" direction="ASC" />
+            </order-by>
+        </one-to-many>
         <field name="abilityCode" column="ability_code" type="string" length="3" nullable="true" />
         <field name="code" column="code" type="string" length="128" />
         <field name="name" column="name" type="string" length="128">
@@ -21,6 +42,5 @@
         </field>
         <field name="modifier" column="modifier" type="integer" />
         <field name="max" column="max" type="integer" nullable="true" />
-        <gedmo:translation entity="Gedmo\Translatable\Entity\Translation" locale="locale" />
     </entity>
 </doctrine-mapping>

@@ -13,14 +13,34 @@ class Skill implements Translatable
     protected $id;
 
     /**
-     * @var \Doctrine\Common\Collections\Collection
+     * @var integer
      */
-    protected $children;
+    protected $root;
+
+    /**
+     * @var integer
+     */
+    protected $left;
+
+    /**
+     * @var integer
+     */
+    protected $right;
+
+    /**
+     * @var integer
+     */
+    protected $level;
 
     /**
      * @var \Argon\GameBundle\Entity\Skill
      */
     protected $parent;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    protected $children;
 
     /**
      * @var string
@@ -63,17 +83,97 @@ class Skill implements Translatable
     }
 
     /**
-     * @param \Argon\GameBundle\Entity\Race $children
+     * @param integer $root
      */
-    public function addChildren(Race $children)
+    public function setRoot($root = null)
+    {
+        $this->root = $root;
+    }
+
+    /**
+     * @return integer
+     */
+    public function getRoot()
+    {
+        return $this->root;
+    }
+
+    /**
+     * @param integer $left
+     */
+    public function setLeft($left)
+    {
+        $this->left = $left;
+    }
+
+    /**
+     * @return integer
+     */
+    public function getLeft()
+    {
+        return $this->left;
+    }
+
+    /**
+     * @param integer $right
+     */
+    public function setRight($right)
+    {
+        $this->right = $right;
+    }
+
+    /**
+     * @return integer
+     */
+    public function getRight()
+    {
+        return $this->right;
+    }
+
+    /**
+     * @param integer $level
+     */
+    public function setLevel($level)
+    {
+        $this->level = $level;
+    }
+
+    /**
+     * @return integer
+     */
+    public function getLevel()
+    {
+        return $this->level;
+    }
+
+    /**
+     * @param \Argon\GameBundle\Entity\Skill $parent
+     */
+    public function setParent(Skill $parent = null)
+    {
+        $this->parent = $parent;
+    }
+
+    /**
+     * @return \Argon\GameBundle\Entity\Skill
+     */
+    public function getParent()
+    {
+        return $this->parent;
+    }
+
+    /**
+     * @param \Argon\GameBundle\Entity\Skill $children
+     */
+    public function addChildren(Skill $children)
     {
         $this->children[] = $children;
     }
 
     /**
-     * @param \Argon\GameBundle\Entity\Race $children
-     */
-    public function removeChildren(Race $children)
+     * @param \Argon\GameBundle\Entity\Skill $children
+      */
+    public function removeChildren(Skill $children)
     {
         $this->children->removeElement($children);
     }
@@ -84,22 +184,6 @@ class Skill implements Translatable
     public function getChildren()
     {
         return $this->children;
-    }
-
-    /**
-     * @param \Argon\GameBundle\Entity\Race $parent
-     */
-    public function setParent(Race $parent = null)
-    {
-        $this->parent = $parent;
-    }
-
-    /**
-     * @return \Argon\GameBundle\Entity\Race
-     */
-    public function getParent()
-    {
-        return $this->parent;
     }
 
     /**
