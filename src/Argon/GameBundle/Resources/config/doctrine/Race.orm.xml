@@ -10,10 +10,9 @@
         <id name="id" column="id" type="integer">
             <generator strategy="AUTO" />
         </id>
-        <unique-constraints>
-            <unique-constraint columns="code" name="code_idx" />
-        </unique-constraints>
-        <field name="code" column="code" type="string" length="8" />
+        <field name="slug" type="string" length="60" unique="true">
+            <gedmo:slug fields="name" unique="true" />
+        </field>
         <field name="name" column="name" type="string" length="60">
             <gedmo:translatable />
         </field>

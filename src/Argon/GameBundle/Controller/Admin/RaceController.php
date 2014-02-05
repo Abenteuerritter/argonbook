@@ -5,6 +5,8 @@ namespace Argon\GameBundle\Controller\Admin;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
+use Argon\GameBundle\Entity\Race;
+
 class RaceController extends Controller
 {
     public function indexAction()
@@ -16,12 +18,10 @@ class RaceController extends Controller
         ));
     }
 
-    public function viewAction($code)
+    public function viewAction(Race $race)
     {
-        $entity = $this->getRepository()->findOneByCode($code);
-
         return $this->render('ArgonGameBundle:Admin/Race:view.html.twig', array(
-            'entity' => $entity,
+            'entity' => $race,
         ));
     }
 

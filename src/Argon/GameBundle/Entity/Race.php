@@ -14,7 +14,7 @@ class Race implements Translatable
     /**
      * @var string
      */
-    protected $code;
+    protected $slug;
 
     /**
      * @var string
@@ -37,19 +37,11 @@ class Race implements Translatable
     }
 
     /**
-     * @param string $code
-     */
-    public function setCode($code)
-    {
-        $this->code = $code;
-    }
-
-    /**
      * @return string
      */
-    public function getCode()
+    public function getSlug()
     {
-        return $this->code;
+        return $this->slug;
     }
 
     /**

@@ -20,7 +20,7 @@
     <route id="admin_race" path="/races" methods="GET">
         <default key="_controller">ArgonGameBundle:Admin\Race:index</default>
     </route>
-    <route id="admin_race_view" path="/race/{code}" methods="GET">
+    <route id="admin_race_view" path="/race/{slug}" methods="GET">
         <default key="_controller">ArgonGameBundle:Admin\Race:view</default>
     </route>
 

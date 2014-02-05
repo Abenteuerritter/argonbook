@@ -7,7 +7,7 @@
     <tbody>
     {% for race in entities %}
         <tr>
-            <td><a href="{{ path('admin_race_view', {'code': race.code}) }}" title="{{ race.code }}">{{ race.name|default(race.code) }}</a></td>
+            <td><a href="{{ path('admin_race_view', {'slug': race.slug}) }}">{{ race }}</a></td>
         </tr>
     {% else %}
         <tr class="warning">

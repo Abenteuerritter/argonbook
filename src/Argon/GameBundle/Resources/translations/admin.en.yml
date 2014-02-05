@@ -19,7 +19,6 @@ character_experience:
 
 race:
     title:                  Races
-    code:                   Code
     name:                   Name
     name_empty:             (no translation)
     modifier:               Modifier
