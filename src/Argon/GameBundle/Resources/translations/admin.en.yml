@@ -29,6 +29,8 @@ race:
 
 skill:
     title:                  Skills
+    ability:                Ability
+    ability_empty:          (all)
     code:                   Code
     name:                   Name
     modifier:               Modifier
