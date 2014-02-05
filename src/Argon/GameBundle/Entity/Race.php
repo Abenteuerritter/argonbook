@@ -2,7 +2,6 @@
 
 namespace Argon\GameBundle\Entity;
 
-use Doctrine\Common\Collections\ArrayCollection;
 use Gedmo\Translatable\Translatable;
 
 class Race implements Translatable
