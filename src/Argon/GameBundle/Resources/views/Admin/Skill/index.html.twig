@@ -9,5 +9,5 @@
     <li><a href="{{ path('admin_dashboard') }}">{{ 'dashboard.title'|trans }}</a></li>
     <li class="active">{{ 'skill.title'|trans }}</li>
 </ol>
-    {{ include('ArgonGameBundle:Admin/Skill:list.html.twig', {'entities': entities}) }}
+    {{ include('ArgonGameBundle:Partial\\Skill:list.html.twig', {'entities': entities}) }}
 {% endblock %}
