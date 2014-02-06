@@ -28,3 +28,10 @@ set  :interactive_mode,     false
 set  :keep_releases,        3
 
 logger.level = Logger::MAX_LEVEL
+
+after "deploy:restart" do
+  capifony_pretty_print "--> Ensuring cache directory permissions"
+  run "chown -R www-data:www-data #{latest_release}"
+  run "chmod -R 777 #{latest_release}/#{cache_path}"
+  run "service php5-fpm restart"
+end
