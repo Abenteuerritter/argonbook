@@ -5,6 +5,8 @@
                 <th>{{ 'skill.ability'|trans({}, 'admin') }}</th>
             {% endif %}
             <th>{{ 'skill.name'|trans({}, 'admin') }}</th>
+            <th class="text-right">{{ 'skill.modifier'|trans({}, 'admin') }}</th>
+            <th class="text-right">{{ 'skill.max'|trans({}, 'admin') }}</th>
         </tr>
     </thead>
     <tbody>
@@ -13,17 +15,24 @@
             {% if show_ability %}
             <td>
                 {% if skill.abilityCode %}
-                    <a href="{{ path('admin_skill', {'ability': skill.abilityCode}) }}" title="{{ skill.abilityCode }}">{{ ('character_ability.types.' ~ skill.abilityCode)|trans({}, 'forms') }}</a>
+                    <abbr title="{{ skill.abilityCode }}">{{ ('character_ability.types.' ~ skill.abilityCode)|trans({}, 'forms') }}</abbr>
+                    <a href="{{ path('admin_skill', {'ability': skill.abilityCode}) }}">&rarr;</a>
                 {% else %}
-                    &nbsp;
+                    <em>{{ 'skill.ability_empty'|trans({}, 'admin') }}</em>
                 {% endif %}
             </td>
             {% endif %}
             <td><a href="{{ path('admin_skill_view', {'slug': skill.slug}) }}">{{ skill }}</a></td>
+            <td class="text-right">{{ skill.modifier }}</td>
+            <td class="text-right">
+                {% if skill.max %}
+                    {{ skill.max }}
+                {% endif %}
+            </td>
         </tr>
     {% else %}
         <tr class="warning">
-            <td colspan="{{ 1 + (show_ability ? 1 : 0) }}">{{ 'skill.empty'|trans({}, 'admin') }}</td>
+            <td colspan="{{ 3 + (show_ability ? 1 : 0) }}">{{ 'skill.empty'|trans({}, 'admin') }}</td>
         </tr>
     {% endfor %}
     </tbody>
