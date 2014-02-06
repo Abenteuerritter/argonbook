@@ -13,5 +13,5 @@
         <li class="active"><a href="{{ path('admin_skill') }}">{{ 'skill.title'|trans }}</a> {{ 'skill.of_ability'|trans({'%ability%': ('character_ability.types.' ~ ability)|trans({}, 'forms')}) }}</li>
     {% endif %}
 </ol>
-    {{ include('ArgonGameBundle:Partial\\Skill:list.html.twig', {'entities': entities, 'show_ability': ability is null}) }}
+    {{ include('ArgonGameBundle:Admin\\Partial\\Skill:list.html.twig', {'entities': entities, 'show_ability': ability is null}) }}
 {% endblock %}
