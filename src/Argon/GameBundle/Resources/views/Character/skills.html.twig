@@ -1,0 +1,34 @@
+{% set active = 'character' %}
+{% extends 'ArgonWebBundle::layout.html.twig' %}
+{% trans_default_domain 'web' %}
+
+{% block title %}{{ parent() }} - {{ 'character.title'|trans }} - {{ character }} - {{ 'character.skills'|trans }}{% endblock %}
+
+{% block content %}
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>{{ 'skill.ability'|trans }}</th>
+            <th>{{ 'skill.name'|trans }}</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for skill in skills %}
+        <tr>
+            <td>
+                {% if skill.abilityCode %}
+                    <abbr title="{{ skill.abilityCode }}">{{ ('character_ability.types.' ~ skill.abilityCode)|trans({}, 'forms') }}</abbr>
+                {% else %}
+                    <em>{{ 'skill.ability_empty'|trans }}</em>
+                {% endif %}
+            </td>
+            <td>{{ skill }}</td>
+        </tr>
+    {% else %}
+        <tr class="warning">
+            <td colspan="2">{{ 'skill.empty'|trans }}</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

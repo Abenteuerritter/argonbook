@@ -23,4 +23,8 @@
         <default key="_controller">ArgonGameBundle:Character:view</default>
         <requirement key="id">\d+</requirement>
     </route>
+    <route id="character_skills" path="/character/{id}/skills" methods="GET">
+        <default key="_controller">ArgonGameBundle:Character:skills</default>
+        <requirement key="id">\d+</requirement>
+    </route>
 </routes>

@@ -9,7 +9,7 @@
     <thead>
         <tr>
             <th>{{ 'character.info'|trans }}</th>
-            <th>&nbsp;</th>
+            <th class="text-right">&nbsp;</th>
         </tr>
     </thead>
     <tbody>
@@ -21,7 +21,8 @@
                 )<br>
                 {{ character.race }}
             </td>
-            <td>
+            <td class="text-right">
+                <a href="{{ path('character_skills', {'id': character.id}) }}">{{ 'character.skills'|trans }} <span class="glyphicon glyphicon-screenshot"></span></a>
             </td>
         </tr>
     {% else %}

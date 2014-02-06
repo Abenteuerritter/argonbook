@@ -137,4 +137,26 @@ class CharacterController extends Controller
             'experiences' => $experiences,
         ));
     }
+
+    public function skillsAction(Character $character)
+    {
+        if (false === $this->get('security.context')->isGranted('ROLE_USER')) {
+            throw new AccessDeniedException();
+        }
+
+        $player = $this->getUser();
+
+        if ($player !== $character->getPlayer()) {
+            throw new AccessDeniedException();
+        }
+
+        $skills = $this->getDoctrine()
+                       ->getRepository('ArgonGameBundle:Skill')
+                       ->findAll();
+
+        return $this->render('ArgonGameBundle:Character:skills.html.twig', array(
+            'character' => $character,
+            'skills'    => $skills,
+        ));
+    }
 }
