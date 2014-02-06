@@ -17,12 +17,11 @@ role :app, domain, :primary => true
 role :web, domain
 
 set  :shared_files,    ["app/config/parameters.yml"]
-set  :shared_children, ["app/data", "app/logs", "vendor"]
+set  :shared_children, [app_path + "/data", app_path + "/logs", "vendor"]
 
 set  :writable_dirs,        ["app/data", "app/cache", "app/logs"]
 set  :webserver_user,       "www-data"
 
-set  :use_set_permissions,  true
 set  :use_composer,         true
 set  :use_sudo,             false
 set  :interactive_mode,     false
