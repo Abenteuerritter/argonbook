@@ -55,5 +55,11 @@
             </p>
         </div>
     </div>
+    <div class="form-group">
+        <label class="col-sm-2 control-label">{{ 'skill.requirements'|trans }}</label>
+        <div class="col-sm-10">
+            {{ include('ArgonGameBundle:Partial\\Skill:list.html.twig', {'entities': entity.requirements, 'show_ability': false}) }}
+        </div>
+    </div>
 </div>
 {% endblock %}

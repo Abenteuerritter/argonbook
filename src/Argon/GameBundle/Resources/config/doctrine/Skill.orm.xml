@@ -10,6 +10,16 @@
         <id name="id" column="id" type="integer">
             <generator strategy="AUTO" />
         </id>
+        <many-to-many field="requirements" target-entity="Argon\GameBundle\Entity\Skill">
+            <join-table name="skill_requirements">
+                <join-columns>
+                    <join-column name="skill_id" referenced-column-name="id" />
+                </join-columns>
+                <inverse-join-columns>
+                    <join-column name="requirement_id" referenced-column-name="id" />
+                </inverse-join-columns>
+            </join-table>
+        </many-to-many>
         <field name="abilityCode" column="ability_code" type="string" length="3" nullable="true" />
         <field name="slug" type="string" length="128" unique="true">
             <gedmo:slug fields="name" updatable="false" unique="true" />

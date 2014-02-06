@@ -9,6 +9,11 @@ use Argon\GameBundle\Entity\Skill;
 
 class SkillFixture implements FixtureInterface
 {
+    /**
+     * @var array
+     */
+    protected $skills = array();
+
     public function load(ObjectManager $manager)
     {
         // General / Allgemein
@@ -75,8 +80,6 @@ class SkillFixture implements FixtureInterface
         $this->createSkill($manager, 'WIS', 'Create Magic Object',         'Magische Objekt Erzeugen',            2, null, array('handcraft-profession'));
         $this->createSkill($manager, 'WIS', 'Tracking',                    'Verfolgen',                           2, null, array('hide-search'));
         $this->createSkill($manager, 'WIS', 'The Will',                    'Der Wille',                           2);
-
-        $manager->flush();
     }
 
     protected function createSkill(ObjectManager $manager, $ability, $name, $nameDE = null, $modifier = 1, $max = null, $required = array())
@@ -93,8 +96,13 @@ class SkillFixture implements FixtureInterface
             $repository->translate($skill, 'name', 'de', $nameDE);
         }
 
-        $manager->persist($skill);
+        foreach ($required as $requirement) {
+            $skill->addRequirement($this->skills[$requirement]);
+        }
 
-        return $skill;
+        $manager->persist($skill);
+        $manager->flush();
+
+        $this->skills[$skill->getSlug()] = $skill;
     }
 }

@@ -13,6 +13,11 @@ class Skill implements Translatable
     protected $id;
 
     /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    protected $requirements;
+
+    /**
      * @var string
      */
     protected $abilityCode;
@@ -44,12 +49,36 @@ class Skill implements Translatable
 
     public function __construct()
     {
-        $this->children = new ArrayCollection();
+        $this->requirements = new ArrayCollection();
     }
 
     public function __toString()
     {
         return $this->name;
+    }
+
+    /**
+     * @param \Argon\GameBundle\Entity\Skill $requirement
+     */
+    public function addRequirement(Skill $requirement)
+    {
+        $this->requirements[] = $requirement;
+    }
+
+    /**
+     * @param \Argon\GameBundle\Entity\Skill $requirement
+     */
+    public function removeRequirement(Skill $requirement)
+    {
+        $this->requirements->removeElement($requirement);
+    }
+
+    /**
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getRequirements()
+    {
+        return $this->requirements;
     }
 
     /**

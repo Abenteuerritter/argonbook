@@ -33,7 +33,5 @@ skill:
     modifier:               Modifier
     max:                    Max
     max_empty:              (no limit)
-    parent:                 Parent
-    parent_empty:           (root)
-    children:               Children
+    requirements:           Requirements
     empty:                  There are no skills in the system yet.
