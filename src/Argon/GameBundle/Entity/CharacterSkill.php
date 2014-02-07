@@ -84,4 +84,28 @@ class CharacterSkill
     {
         return $this->level;
     }
+
+    /**
+     * @return float
+     */
+    public function getPrice()
+    {
+        $abilityCode = $this->getSkill()->getAbilityCode();
+
+        if ($abilityCode === null) {
+            // If the skill is for all it just cost the what the skill cost
+            // normaly.
+            return $this->getSkill()->getModifier();
+        }
+
+        $characterAbility = $this->getCharacter()->getAbility($abilityCode);
+
+        if ($characterAbility === null) {
+            // The character doesn't have the ability of the this skill, so
+            // everything cost him 10 times more.
+            return 10 * $this->getSkill()->getModifier();
+        }
+
+        return $characterAbility->getModifier() * $this->getSkill()->getModifier();
+    }
 }

@@ -23,4 +23,5 @@ skill:
     ability:                Ability
     ability_empty:          (all)
     name:                   Name
+    price:                  Price
     empty:                  There are no skills in the system yet.

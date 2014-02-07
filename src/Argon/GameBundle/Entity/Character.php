@@ -158,6 +158,22 @@ class Character extends GameProvider
     }
 
     /**
+     * @return \Argon\GameBundle\Entity\CharacterAbility
+     */
+    public function getAbility($abilityCode)
+    {
+        $found = $this->abilities->filter(function ($characterAbility) use ($abilityCode) {
+            return $characterAbility->getCode() === $abilityCode;
+        });
+
+        if (count($found) > 0) {
+            return $found->first();
+        }
+
+        return null;
+    }
+
+    /**
      * @param \Argon\GameBundle\Entity\CharacterSkill $skill
      */
     public function addSkill(CharacterSkill $skill)
