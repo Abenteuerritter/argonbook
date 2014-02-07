@@ -150,12 +150,20 @@ class CharacterController extends Controller
             throw new AccessDeniedException();
         }
 
+        $form = $this->createForm('character_skills', null, array(
+            'action' => $this->generateUrl('character_skills', array('id' => $character->getId())),
+            'method' => 'POST',
+        ));
+
+        $form->add('submit', 'submit');
+
         $skills = $this->getDoctrine()
                        ->getRepository('ArgonGameBundle:Skill')
                        ->findAll();
 
         return $this->render('ArgonGameBundle:Character:skills.html.twig', array(
             'character' => $character,
+            'form'      => $form->createView(),
             'skills'    => $skills,
         ));
     }

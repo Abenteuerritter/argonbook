@@ -5,6 +5,7 @@
 {% block title %}{{ parent() }} - {{ 'character.title'|trans }} - {{ character }} - {{ 'character.skills'|trans }}{% endblock %}
 
 {% block content %}
+{{ form(form) }}
 <table class="table table-striped">
     <thead>
         <tr>
