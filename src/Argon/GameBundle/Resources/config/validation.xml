@@ -24,4 +24,50 @@
             <constraint name="Valid" />
         </property>
     </class>
+    <class name="Argon\GameBundle\Entity\CharacterAbility">
+        <property name="character">
+            <constraint name="NotNull" />
+            <constraint name="Valid" />
+        </property>
+        <property name="code">
+            <constraint name="NotBlank" />
+        </property>
+        <property name="modifier">
+            <constraint name="NotBlank" />
+            <constraint name="Type">
+                <option name="type">integer</option>
+            </constraint>
+        </property>
+    </class>
+    <class name="Argon\GameBundle\Entity\CharacterExperience">
+        <property name="character">
+            <constraint name="NotNull" />
+            <constraint name="Valid" />
+        </property>
+        <property name="at">
+            <constraint name="NotBlank" />
+            <constraint name="DateTime" />
+        </property>
+        <property name="value">
+            <constraint name="NotBlank" />
+            <constraint name="Type">
+                <option name="type">integer</option>
+            </constraint>
+        </property>
+    </class>
+    <class name="Argon\GameBundle\Entity\CharacterSkill">
+        <property name="character">
+            <constraint name="NotNull" />
+            <constraint name="Valid" />
+        </property>
+        <property name="skill">
+            <constraint name="NotNull" />
+            <constraint name="Valid" />
+        </property>
+        <property name="level">
+            <constraint name="Type">
+                <option name="type">integer</option>
+            </constraint>
+        </property>
+    </class>
 </constraint-mapping>

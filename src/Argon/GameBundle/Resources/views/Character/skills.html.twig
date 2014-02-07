@@ -31,6 +31,7 @@
                 <td class="text-right">{{ characterSkill.vars.value.getPrice() }}</td>
                 <td class="text-right">
                     {{ form_widget(characterSkill.level) }}
+                    {{ form_errors(characterSkill.level) }}
                 </td>
             </tr>
         {% else %}
