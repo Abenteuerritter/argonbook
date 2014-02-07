@@ -16,6 +16,9 @@ character_experience:
     at:                     Date
     reason:                 Reason
 
+character_skill:
+    updated:                Your skills were updated.
+
 skill:
     ability:                Ability
     ability_empty:          (all)

@@ -16,24 +16,12 @@
             <constraint name="Valid" />
             <constraint name="Argon\GameBundle\Validator\Constraints\CharacterAbilitySequence" />
         </property>
+        <property name="skills">
+            <constraint name="Valid" />
+        </property>
         <property name="race">
             <constraint name="NotNull" />
             <constraint name="Valid" />
-        </property>
-    </class>
-    <class name="Argon\GameBundle\Entity\CharacterType">
-        <property name="character">
-            <constraint name="NotNull" />
-            <constraint name="Valid" />
-        </property>
-        <property name="code">
-            <constraint name="NotBlank" />
-        </property>
-        <property name="modifier">
-            <constraint name="NotBlank" />
-            <constraint name="Type">
-                <option name="type">integer</option>
-            </constraint>
         </property>
     </class>
 </constraint-mapping>

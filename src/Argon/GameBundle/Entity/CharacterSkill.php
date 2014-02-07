@@ -30,6 +30,14 @@ class CharacterSkill
     }
 
     /**
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
      * @param \Argon\GameBundle\Entity\Character $character
      */
     public function setCharacter(Character $character)

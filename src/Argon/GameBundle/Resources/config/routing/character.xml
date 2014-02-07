@@ -27,4 +27,8 @@
         <default key="_controller">ArgonGameBundle:Character:skills</default>
         <requirement key="id">\d+</requirement>
     </route>
+    <route id="character_skills_update" path="/character/{id}/skills" methods="POST">
+        <default key="_controller">ArgonGameBundle:Character:skills</default>
+        <requirement key="id">\d+</requirement>
+    </route>
 </routes>

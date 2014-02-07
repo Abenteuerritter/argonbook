@@ -4,6 +4,8 @@ namespace Argon\GameBundle\Form\Character;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\Form\FormEvent;
+use Symfony\Component\Form\FormEvents;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 class CharacterSkillsType extends AbstractType
@@ -14,7 +16,7 @@ class CharacterSkillsType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('skills', 'collection', array(
+        $builder->add('characterSkills', 'collection', array(
             'type' => 'character_skill',
         ));
     }

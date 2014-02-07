@@ -8,6 +8,7 @@ use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 
 use Argon\GameBundle\Entity\Character;
 use Argon\GameBundle\Entity\CharacterAbility;
+use Argon\GameBundle\Entity\CharacterSkill;
 
 class CharacterController extends Controller
 {
@@ -138,7 +139,7 @@ class CharacterController extends Controller
         ));
     }
 
-    public function skillsAction(Character $character)
+    public function skillsAction(Character $character, Request $request)
     {
         if (false === $this->get('security.context')->isGranted('ROLE_USER')) {
             throw new AccessDeniedException();
@@ -150,16 +151,62 @@ class CharacterController extends Controller
             throw new AccessDeniedException();
         }
 
-        $form = $this->createForm('character_skills', null, array(
+        $characterSkills = array();
+        $skills          = $this->getDoctrine()
+                                ->getRepository('ArgonGameBundle:Skill')
+                                ->findAll();
+
+        foreach ($skills as $skill) {
+            $found = $character->getSkills()->filter(function ($characterSkill) use ($skill) {
+                return $characterSkill->getSkill() === $skill;
+            });
+
+            if (count($found) > 0) {
+                $characterSkill = $found->first();
+            } else {
+                $characterSkill = new CharacterSkill();
+                $characterSkill->setCharacter($character);
+                $characterSkill->setSkill($skill);
+            }
+
+            $characterSkills[$skill->getSlug()] = $characterSkill;
+        }
+
+        $form = $this->createForm('character_skills', array('characterSkills' => $characterSkills), array(
             'action' => $this->generateUrl('character_skills', array('id' => $character->getId())),
             'method' => 'POST',
         ));
 
         $form->add('submit', 'submit');
 
-        $skills = $this->getDoctrine()
-                       ->getRepository('ArgonGameBundle:Skill')
-                       ->findAll();
+        if ($request->isMethod('POST')) {
+            $form->handleRequest($request);
+
+            if ($form->isValid()) {
+                $manager = $this->getDoctrine()->getManager();
+
+                foreach ($characterSkills as $characterSkill) {
+                    if ($characterSkill->getLevel() === null || $characterSkill->getLevel() == 0) {
+                        if ($characterSkill->getId() !== null) {
+                            $manager->remove($characterSkill);
+                        }
+                    } else {
+                        if ($characterSkill->getId() === null) {
+                            $manager->persist($characterSkill);
+                        } else {
+                            // To be updated
+                        }
+                    }
+                }
+
+                $manager->flush();
+
+                $request->getSession()->getFlashBag()
+                        ->add('success', 'character_skill.updated');
+
+                return $this->redirect($this->generateUrl('character'));
+            }
+        }
 
         return $this->render('ArgonGameBundle:Character:skills.html.twig', array(
             'character' => $character,

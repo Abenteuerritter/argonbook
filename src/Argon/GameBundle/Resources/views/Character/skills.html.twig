@@ -5,31 +5,39 @@
 {% block title %}{{ parent() }} - {{ 'character.title'|trans }} - {{ character }} - {{ 'character.skills'|trans }}{% endblock %}
 
 {% block content %}
-{{ form(form) }}
-<table class="table table-striped">
-    <thead>
-        <tr>
-            <th>{{ 'skill.ability'|trans }}</th>
-            <th>{{ 'skill.name'|trans }}</th>
-        </tr>
-    </thead>
-    <tbody>
-    {% for skill in skills %}
-        <tr>
-            <td>
-                {% if skill.abilityCode %}
-                    <abbr title="{{ skill.abilityCode }}">{{ ('character_ability.types.' ~ skill.abilityCode)|trans({}, 'forms') }}</abbr>
-                {% else %}
-                    <em>{{ 'skill.ability_empty'|trans }}</em>
-                {% endif %}
-            </td>
-            <td>{{ skill }}</td>
-        </tr>
-    {% else %}
-        <tr class="warning">
-            <td colspan="2">{{ 'skill.empty'|trans }}</td>
-        </tr>
-    {% endfor %}
-    </tbody>
-</table>
+{{ form_start(form) }}
+    {{ form_errors(form) }}
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>{{ 'skill.ability'|trans }}</th>
+                <th>{{ 'skill.name'|trans }}</th>
+                <th style="text-right">&nbsp;</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for characterSkill in form.characterSkills %}
+        {% set skill = characterSkill.vars.value.skill %}
+            <tr>
+                <td>
+                    {% if skill.abilityCode %}
+                        <abbr title="{{ skill.abilityCode }}">{{ ('character_ability.types.' ~ skill.abilityCode)|trans({}, 'forms') }}</abbr>
+                    {% else %}
+                        <em>{{ 'skill.ability_empty'|trans }}</em>
+                    {% endif %}
+                </td>
+                <td>{{ skill }}</td>
+                <td style="text-right">
+                    {{ form_widget(characterSkill.level) }}
+                </td>
+            </tr>
+        {% else %}
+            <tr class="warning">
+                <td colspan="3">{{ 'skill.empty'|trans }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    {{ form_rest(form) }}
+{{ form_end(form) }}
 {% endblock %}

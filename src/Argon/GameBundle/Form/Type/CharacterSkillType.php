@@ -15,7 +15,9 @@ class CharacterSkillType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('level')
+            ->add('level', null, array(
+                'required' => false,
+            ))
         ;
     }
 
@@ -25,7 +27,7 @@ class CharacterSkillType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class'         => 'Argon\GameBundle\Entity\CharacterExperience',
+            'data_class'         => 'Argon\GameBundle\Entity\CharacterSkill',
             'translation_domain' => 'forms',
             'intention'          => 'character_skill',
         ));
