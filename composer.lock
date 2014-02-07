@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "3806833d17b5f33b90287ae70a9a4dd0",
+    "hash": "d78bcd5d0538952941324ffd73f87303",
     "packages": [
         {
             "name": "braincrafted/bootstrap-bundle",
@@ -1121,17 +1121,17 @@
         },
         {
             "name": "lunetics/locale-bundle",
-            "version": "dev-master",
+            "version": "v2.2.2",
             "target-dir": "Lunetics/LocaleBundle",
             "source": {
                 "type": "git",
                 "url": "https://github.com/lunetics/LocaleBundle.git",
-                "reference": "96045ddf1c51d4b10f20118af2a54a70f66ce325"
+                "reference": "d110ba5358e329b72ee53a34dd1da0f2281c87c7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/lunetics/LocaleBundle/zipball/96045ddf1c51d4b10f20118af2a54a70f66ce325",
-                "reference": "96045ddf1c51d4b10f20118af2a54a70f66ce325",
+                "url": "https://api.github.com/repos/lunetics/LocaleBundle/zipball/d110ba5358e329b72ee53a34dd1da0f2281c87c7",
+                "reference": "d110ba5358e329b72ee53a34dd1da0f2281c87c7",
                 "shasum": ""
             },
             "require": {
@@ -1185,7 +1185,7 @@
                 "multilanguage",
                 "router"
             ],
-            "time": "2014-01-26 21:35:43"
+            "time": "2014-02-06 17:52:51"
         },
         {
             "name": "monolog/monolog",
@@ -2030,7 +2030,6 @@
     ],
     "minimum-stability": "stable",
     "stability-flags": {
-        "lunetics/locale-bundle": 20,
         "friendsofsymfony/user-bundle": 20
     },
     "platform": {
