@@ -36,6 +36,11 @@ class Character extends GameProvider
     protected $abilities;
 
     /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    protected $skills;
+
+    /**
      * @var \Argon\GameBundle\Entity\Race
      */
     protected $race;
@@ -48,6 +53,7 @@ class Character extends GameProvider
     public function __construct()
     {
         $this->abilities = new ArrayCollection();
+        $this->skills = new ArrayCollection();
     }
 
     public function __toString()
@@ -149,6 +155,30 @@ class Character extends GameProvider
     public function getAbilities()
     {
         return $this->abilities;
+    }
+
+    /**
+     * @param \Argon\GameBundle\Entity\CharacterSkill $skill
+     */
+    public function addSkill(CharacterSkill $skill)
+    {
+        $this->skills[] = $skill;
+    }
+
+    /**
+     * @param \Argon\GameBundle\Entity\CharacterSkill $skill
+     */
+    public function removeSkill(CharacterSkill $skill)
+    {
+        $this->skills->removeElement($skill);
+    }
+
+    /**
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getSkills()
+    {
+        return $this->skills;
     }
 
     /**

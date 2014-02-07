@@ -16,11 +16,16 @@
         <field name="experience" column="experience" type="integer" />
         <one-to-many field="abilities" target-entity="Argon\GameBundle\Entity\CharacterAbility" mapped-by="character">
             <cascade>
-                <cascade-persist/>
+                <cascade-persist />
             </cascade>
             <order-by>
                 <order-by-field name="modifier" direction="ASC" />
             </order-by>
+        </one-to-many>
+        <one-to-many field="skills" target-entity="Argon\GameBundle\Entity\CharacterSkill" mapped-by="character">
+            <cascade>
+                <cascade-persist />
+            </cascade>
         </one-to-many>
         <many-to-one field="race" target-entity="\Argon\GameBundle\Entity\Race">
             <join-column name="race_id" referenced-column-name="id" />
