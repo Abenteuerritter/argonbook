@@ -18,6 +18,7 @@
         </property>
         <property name="skills">
             <constraint name="Valid" />
+            <constraint name="Argon\GameBundle\Validator\Constraints\CharacterSkillMax" />
         </property>
         <property name="race">
             <constraint name="NotNull" />

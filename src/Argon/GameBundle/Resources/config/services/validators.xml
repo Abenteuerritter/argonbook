@@ -8,5 +8,8 @@
         <service id="argon_game.validator.character_ability_sequence" class="Argon\GameBundle\Validator\Constraints\CharacterAbilitySequenceValidator">
             <tag name="validator.constraint_validator" alias="character_ability_sequence" />
         </service>
+        <service id="argon_game.validator.character_skill_max" class="Argon\GameBundle\Validator\Constraints\CharacterSkillMaxValidator">
+            <tag name="validator.constraint_validator" alias="character_skill_max" />
+        </service>
     </services>
 </container>
