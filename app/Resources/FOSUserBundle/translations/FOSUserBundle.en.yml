@@ -6,5 +6,7 @@ security:
 profile:
     show:
         logged_in_as:       You are signed in as %username%.
+        view_characters:    View my characters
+        goto_admin:         Go to the Control Panel
         change_password:    Edit your password
         edit_profile:       Edit your profile

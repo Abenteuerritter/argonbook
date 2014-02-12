@@ -1,9 +1,13 @@
 {% trans_default_domain 'FOSUserBundle' %}
 
-<div class="fos_user_user_show">
-  <p>{{ 'profile.show.logged_in_as'|trans({'%username%': user.username}) }}</p>
-  <ul>
-    <li><a href="{{ path('fos_user_change_password') }}">{{ 'profile.show.change_password'|trans }}</a></li>
-    <li><a href="{{ path('fos_user_profile_edit') }}">{{ 'profile.show.edit_profile'|trans }}</a></li>
+<div class="panel panel-default fos_user_user_show">
+  <div class="panel-heading">{{ 'profile.show.logged_in_as'|trans({'%username%': user.username}) }}</div>
+  <ul class="list-group">
+    <li class="list-group-item"><a href="{{ path('character') }}">{{ 'profile.show.view_characters'|trans }}</a></li>
+    {% if is_granted("ROLE_ADMIN") %}
+        <li class="list-group-item"><a href="{{ path('admin_dashboard') }}">{{ 'profile.show.goto_admin'|trans }}</a></li>
+    {% endif %}
+    <li class="list-group-item"><a href="{{ path('fos_user_change_password') }}">{{ 'profile.show.change_password'|trans }}</a></li>
+    <li class="list-group-item"><a href="{{ path('fos_user_profile_edit') }}">{{ 'profile.show.edit_profile'|trans }}</a></li>
   </ul>
 </div>

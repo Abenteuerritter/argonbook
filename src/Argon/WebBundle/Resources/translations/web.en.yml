@@ -14,5 +14,5 @@ sidebar:
 
 layout:
     home:                   Home
-    character_new:          New Character
+    character:              My Characters
     admin:                  Control Panel
