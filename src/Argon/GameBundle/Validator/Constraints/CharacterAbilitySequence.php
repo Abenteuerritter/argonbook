@@ -6,7 +6,7 @@ use Symfony\Component\Validator\Constraint;
 
 class CharacterAbilitySequence extends Constraint
 {
-    public $message = 'Missing number %number% from sequence.';
+    public $message = 'Missing number {{ number }} from sequence.';
 
     public function validatedBy()
     {

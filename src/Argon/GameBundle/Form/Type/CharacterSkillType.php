@@ -15,7 +15,7 @@ class CharacterSkillType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('level', null, array(
+            ->add('newLevel', 'integer', array(
                 'required' => false,
             ))
         ;

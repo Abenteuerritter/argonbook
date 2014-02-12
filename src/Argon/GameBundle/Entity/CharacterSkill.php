@@ -24,6 +24,11 @@ class CharacterSkill
      */
     protected $level;
 
+    /**
+     * @var integer
+     */
+    protected $newLevel;
+
     public function __construct()
     {
         $this->at = new \DateTime();
@@ -83,6 +88,38 @@ class CharacterSkill
     public function getLevel()
     {
         return $this->level;
+    }
+
+    /**
+     * @param integer $level
+     */
+    public function setNewLevel($level)
+    {
+        $this->newLevel = $level;
+    }
+
+    /**
+     * @return integer
+     */
+    public function getNewLevel()
+    {
+        return $this->newLevel;
+    }
+
+    /**
+     * @return float
+     */
+    public function getNewLevelCost()
+    {
+        return $this->newLevel * $this->getPrice();
+    }
+
+    /**
+     * @return integer
+     */
+    public function getNextLevel()
+    {
+        return $this->level + $this->newLevel;
     }
 
     /**

@@ -41,6 +41,11 @@ class Character extends GameProvider
     protected $skills;
 
     /**
+     * @var integer
+     */
+    protected $skillsExperience = 0;
+
+    /**
      * @var \Argon\GameBundle\Entity\Race
      */
     protected $race;
@@ -198,6 +203,38 @@ class Character extends GameProvider
     }
 
     /**
+     * @param integer $experience
+     */
+    public function addSkillsExperience($experience)
+    {
+        $this->skillsExperience += $experience;
+    }
+
+    /**
+     * @param integer $experience
+     */
+    public function removeSkillsExperience($experience)
+    {
+        $this->skillsExperience -= $experience;
+    }
+
+    /**
+     * @param integer $experience
+     */
+    public function setSkillsExperience($experience)
+    {
+        $this->skillsExperience = $experience;
+    }
+
+    /**
+     * @return integer
+     */
+    public function getSkillsExperience()
+    {
+        return $this->skillsExperience;
+    }
+
+    /**
      * @param \Argon\GameBundle\Entity\Race $race
      */
     public function setRace(Race $race)
@@ -227,5 +264,13 @@ class Character extends GameProvider
     public function getStory()
     {
         return $this->story;
+    }
+
+    /**
+     * @return integer
+     */
+    public function getAvailableExperience()
+    {
+        return $this->experience - $this->skillsExperience;
     }
 }

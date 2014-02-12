@@ -18,6 +18,7 @@
         </property>
         <property name="skills">
             <constraint name="Valid" />
+            <constraint name="Argon\GameBundle\Validator\Constraints\CharacterSkillsEnoughExperience" />
         </property>
         <property name="race">
             <constraint name="NotNull" />
@@ -66,6 +67,11 @@
             <constraint name="Valid" />
         </property>
         <property name="level">
+            <constraint name="Type">
+                <option name="type">integer</option>
+            </constraint>
+        </property>
+        <property name="newLevel">
             <constraint name="Type">
                 <option name="type">integer</option>
             </constraint>

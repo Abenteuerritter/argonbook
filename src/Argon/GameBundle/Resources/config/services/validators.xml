@@ -11,5 +11,8 @@
         <service id="argon_game.validator.character_skill_max" class="Argon\GameBundle\Validator\Constraints\CharacterSkillMaxValidator">
             <tag name="validator.constraint_validator" alias="character_skill_max" />
         </service>
+        <service id="argon_game.validator.character_skills_enough_experience" class="Argon\GameBundle\Validator\Constraints\CharacterSkillsEnoughExperienceValidator">
+            <tag name="validator.constraint_validator" alias="character_skills_enough_experience" />
+        </service>
     </services>
 </container>

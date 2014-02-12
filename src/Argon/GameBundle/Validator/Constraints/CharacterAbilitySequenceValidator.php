@@ -22,7 +22,7 @@ class CharacterAbilitySequenceValidator extends ConstraintValidator
         for ($i = 1; $i <= count($value); $i++) {
             if (!isset($sequence[$i]) || $sequence[$i] !== true) {
                 $this->context->addViolation($constraint->message, array(
-                    '%number%' => $i,
+                    '{{ number }}' => $i,
                 ));
                 return;
             }

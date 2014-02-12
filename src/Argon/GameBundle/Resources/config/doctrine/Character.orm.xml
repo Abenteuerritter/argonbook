@@ -27,6 +27,7 @@
                 <cascade-persist />
             </cascade>
         </one-to-many>
+        <field name="skillsExperience" column="skills_experience" type="integer" />
         <many-to-one field="race" target-entity="\Argon\GameBundle\Entity\Race">
             <join-column name="race_id" referenced-column-name="id" />
         </many-to-one>
