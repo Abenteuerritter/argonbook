@@ -28,7 +28,7 @@ skill:
     title:                  Skills
     of_ability:             of %ability%
     ability:                Ability
-    ability_empty:          (all)
+    ability_empty:          General
     name:                   Name
     modifier:               Modifier
     max:                    Max

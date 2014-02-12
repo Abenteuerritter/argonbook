@@ -10,3 +10,6 @@ character_ability:
 
 character:
     race_empty_value:       Select your character's race
+
+Game: Select a Game
+Name: Name your Character

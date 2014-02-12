@@ -20,8 +20,7 @@ character_skill:
     updated:                Your skills were updated.
 
 skill:
-    ability:                Ability
-    ability_empty:          (all)
+    ability_empty:          General
     name:                   Name
     price:                  Price
     empty:                  There are no skills in the system yet.

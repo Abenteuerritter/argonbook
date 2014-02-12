@@ -19,7 +19,9 @@
      #}
     <div class="page-header">
       <ul class="nav nav-pills pull-right">
+        <li><a href="{{ path('homepage') }}">{{ 'layout.home'|trans({}, 'web') }}</a></li>
         {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+            <li><a href="{{ path('character_game') }}">{{ 'layout.character_new'|trans({}, 'web') }}</a></li>
             <li><a href="{{ path('fos_user_profile_show') }}">{{ app.user.username }}</a></li>
             {% if is_granted("ROLE_ADMIN") %}
                 <li><a href="{{ path('admin_dashboard') }}">{{ 'layout.admin'|trans({}, 'web') }}</a></li>

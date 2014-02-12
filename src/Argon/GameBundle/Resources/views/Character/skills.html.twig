@@ -10,7 +10,7 @@
     <table class="table table-striped">
         <thead>
             <tr>
-                <th>{{ 'skill.ability'|trans }}</th>
+                <th>&nbsp;</th>
                 <th>{{ 'skill.name'|trans }}</th>
                 <th class="text-right">{{ 'skill.price'|trans }}</th>
                 <th class="text-right">&nbsp;</th>
@@ -19,12 +19,16 @@
         <tbody>
         {% for characterSkill in form.characterSkills %}
         {% set skill = characterSkill.vars.value.skill %}
-            <tr>
+            <tr class="ability-{{ skill.abilityCode|default('all')|lower }}">
                 <td>
                     {% if skill.abilityCode %}
-                        <abbr title="{{ skill.abilityCode }}">{{ ('character_ability.types.' ~ skill.abilityCode)|trans({}, 'forms') }}</abbr>
+                        <abbr title="{{ ('character_ability.types.' ~ skill.abilityCode)|trans({}, 'forms') }} ({{ skill.abilityCode }})">
+                            <span class="glyphicon glyphicon-asterisk"></span>
+                        </abbr>
                     {% else %}
-                        <em>{{ 'skill.ability_empty'|trans }}</em>
+                        <abbr title="{{ 'skill.ability_empty'|trans }}">
+                            <span class="glyphicon glyphicon-asterisk"></span>
+                        </abbr>
                     {% endif %}
                 </td>
                 <td>{{ skill }}</td>

@@ -13,4 +13,6 @@ sidebar:
             description:    List of my charecters
 
 layout:
+    home:                   Home
+    character_new:          New Character
     admin:                  Control Panel
