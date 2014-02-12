@@ -39,12 +39,17 @@ class GameSubscriber implements EventSubscriber
         $entityManager = $args->getEntityManager();
 
         if ($entity instanceof GameProvider && $entity instanceof Character) {
-            $value = $entity->getGame()->getInitialExperience();
+            $game  = $entity->getGame();
+            $value = $game->getInitialExperience();
 
             $experience = new CharacterExperience();
             $experience->setCharacter($entity);
             $experience->setValue($value);
-            $experience->setReason('');
+
+            // FIXME Use translator for this text
+            $experience->setReason(strtr('Welcome to {{ game }}', array(
+                '{{ game }}' => $game->getInfo()['fullname'],
+            )));
 
             $entity->addExperience($value);
             $entityManager->persist($experience);
