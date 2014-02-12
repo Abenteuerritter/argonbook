@@ -8,3 +8,5 @@ sidebar:
 
 dashboard:
     title:                  Dashboard
+    info:
+        version:            Version

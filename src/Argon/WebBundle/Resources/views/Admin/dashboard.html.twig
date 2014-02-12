@@ -8,5 +8,20 @@
 <ol class="breadcrumb">
     <li class="active">{{ 'dashboard.title'|trans }}</li>
 </ol>
-Welcome!
+<div class="row">
+    <div class="col-md-8">
+        Welcome!
+    </div>
+    <div class="col-md-4">
+        <div class="panel panel-default">
+            <div class="panel-heading">{{ 'dashboard.title'|trans }}</div>
+            <div class="panel-body">
+                <dl class="dl-horizontal">
+                  <dt>{{ 'dashboard.info.version'|trans }}</dt>
+                  <dd>{{ project.version }}</dd>
+                </dl>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}
