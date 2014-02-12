@@ -12,4 +12,9 @@ class CharacterSkillMax extends Constraint
     {
         return 'character_skill_max';
     }
+
+    public function getTargets()
+    {
+        return self::CLASS_CONSTRAINT;
+    }
 }

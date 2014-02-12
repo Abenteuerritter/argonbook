@@ -14,17 +14,15 @@ class CharacterSkillMaxValidator extends ConstraintValidator
             return;
         }
 
-        foreach ($value as $characterSkill) {
-            $max = $characterSkill->getSkill()->getMax();
+        $max = $value->getSkill()->getMax();
 
-            if ($max !== null) {
-                $range = new Range(array('max' => $max));
-                $range->maxMessage = strtr($constraint->message, array(
-                    '{{ skill }}' => $characterSkill->getSkill()->getName(),
-                ));
+        if ($max !== null) {
+            $range = new Range(array('max' => $max));
+            $range->maxMessage = strtr($constraint->message, array(
+                '{{ skill }}' => $value->getSkill()->getName(),
+            ));
 
-                $this->context->validateValue($characterSkill->getLevel(), $range);
-            }
+            $this->context->validateValue($value->getLevel(), $range);
         }
     }
 }
