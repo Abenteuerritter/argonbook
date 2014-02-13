@@ -183,10 +183,13 @@ class CharacterController extends Controller
             $form->handleRequest($request);
 
             if ($form->isValid()) {
+                $formData = $form->getData();
                 $manager = $this->getDoctrine()->getManager();
 
+                $characterSkills = $formData['characterSkills'];
+
                 foreach ($characterSkills as $characterSkill) {
-                    if ($characterSkill->getLevel() === null || $characterSkill->getLevel() == 0) {
+                    if ($characterSkill->isNextRemoved()) {
                         if ($characterSkill->getId() !== null) {
                             $manager->remove($characterSkill);
                         }

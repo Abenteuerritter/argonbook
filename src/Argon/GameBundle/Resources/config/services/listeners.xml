@@ -9,5 +9,9 @@
             <argument type="service" id="argon_game.provider.game_factory" />
             <tag name="doctrine.event_subscriber" />
         </service>
+        <service id="argon_game.listener.skill_level_up" class="Argon\GameBundle\EventListener\SkillLevelUpEventListener">
+            <tag name="doctrine.event_listener" event="preUpdate" />
+            <tag name="doctrine.event_listener" event="prePersist" />
+        </service>
     </services>
 </container>

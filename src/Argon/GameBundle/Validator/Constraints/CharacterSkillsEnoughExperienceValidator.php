@@ -15,6 +15,10 @@ class CharacterSkillsEnoughExperienceValidator extends ConstraintValidator
             return;
         }
 
+        if ($value->count() === 0) {
+            return;
+        }
+
         $experience = $value->first()->getCharacter()->getAvailableExperience();
 
         foreach ($value as $characterSkill) {

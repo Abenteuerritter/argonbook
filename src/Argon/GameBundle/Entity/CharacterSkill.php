@@ -123,6 +123,14 @@ class CharacterSkill
     }
 
     /**
+     * @return boolean
+     */
+    public function isNextRemoved()
+    {
+        return empty($this->level) && $this->getNextLevel() === 0;
+    }
+
+    /**
      * @return float
      */
     public function getPrice()
