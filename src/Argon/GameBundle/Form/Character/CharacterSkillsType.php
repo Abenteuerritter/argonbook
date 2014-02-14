@@ -8,6 +8,8 @@ use Symfony\Component\Form\FormEvent;
 use Symfony\Component\Form\FormEvents;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
+use Argon\GameBundle\Validator\Constraints\CharacterSkillsEnoughExperience;
+
 class CharacterSkillsType extends AbstractType
 {
     /**
@@ -18,6 +20,9 @@ class CharacterSkillsType extends AbstractType
     {
         $builder->add('characterSkills', 'collection', array(
             'type' => 'character_skill',
+            'constraints' => array(
+                new CharacterSkillsEnoughExperience(),
+            ),
         ));
     }
 

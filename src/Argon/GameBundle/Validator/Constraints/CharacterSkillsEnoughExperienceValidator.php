@@ -19,9 +19,15 @@ class CharacterSkillsEnoughExperienceValidator extends ConstraintValidator
             return;
         }
 
-        $experience = $value->first()->getCharacter()->getAvailableExperience();
-
         foreach ($value as $characterSkill) {
+            if (!isset($experience)) {
+                $experience = $characterSkill->getCharacter()->getAvailableExperience();
+            }
+
+            if (null === $characterSkill->getNewLevel()) {
+                continue;
+            }
+
             $cost = $characterSkill->getNewLevelCost();
 
             if ($experience >= $cost) {
