@@ -51,7 +51,8 @@ class SkillLevelUpEventListener
         $experience->setValue($value * -1);
 
         // FIXME Use translator for this text
-        $experience->setReason(strtr('Level UP {{ skill }}', array(
+        $experience->setReason(strtr('{{ skill }} level {{ level }}', array(
+            '{{ level }}' => $characterSkill->getNextLevel(),
             '{{ skill }}' => $characterSkill->getSkill(),
         )));
 
