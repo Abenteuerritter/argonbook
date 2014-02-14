@@ -39,8 +39,9 @@ class GameSubscriber implements EventSubscriber
         $entityManager = $args->getEntityManager();
 
         if ($entity instanceof GameProvider && $entity instanceof Character) {
-            $game  = $entity->getGame();
-            $value = $game->getInitialExperience();
+            $game     = $entity->getGame();
+            $gameInfo = $game->getInfo();
+            $value    = $game->getInitialExperience();
 
             $experience = new CharacterExperience();
             $experience->setCharacter($entity);
@@ -48,7 +49,7 @@ class GameSubscriber implements EventSubscriber
 
             // FIXME Use translator for this text
             $experience->setReason(strtr('Welcome to {{ game }}', array(
-                '{{ game }}' => $game->getInfo()['fullname'],
+                '{{ game }}' => $gameInfo['fullname'],
             )));
 
             $entity->addExperience($value);
