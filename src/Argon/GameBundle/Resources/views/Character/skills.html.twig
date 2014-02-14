@@ -12,8 +12,9 @@
             <tr>
                 <th>&nbsp;</th>
                 <th>{{ 'skill.name'|trans }}</th>
-                <th class="text-right">{{ 'skill.price'|trans }}</th>
+                <th class="text-right">{{ 'skill.level'|trans }}</th>
                 <th class="text-right">&nbsp;</th>
+                <th class="text-right">{{ 'skill.price'|trans }}</th>
             </tr>
         </thead>
         <tbody>
@@ -32,15 +33,16 @@
                     {% endif %}
                 </td>
                 <td>{{ skill }}</td>
-                <td class="text-right">{{ characterSkill.vars.value.getPrice() }}</td>
+                <td class="text-right">{{ characterSkill.vars.value.level }}</td>
                 <td class="text-right">
                     {{ form_widget(characterSkill.newLevel) }}
                     {{ form_errors(characterSkill.newLevel) }}
                 </td>
+                <td class="text-right">{{ characterSkill.vars.value.price }}</td>
             </tr>
         {% else %}
             <tr class="warning">
-                <td colspan="4">{{ 'skill.empty'|trans }}</td>
+                <td colspan="5">{{ 'skill.empty'|trans }}</td>
             </tr>
         {% endfor %}
         </tbody>
