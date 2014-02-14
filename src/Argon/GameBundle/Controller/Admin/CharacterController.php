@@ -83,4 +83,16 @@ class CharacterController extends Controller
             'form'      => $form->createView(),
         ));
     }
+
+    public function skillAction(Character $character)
+    {
+        $entities = $this->getDoctrine()
+                         ->getRepository('ArgonGameBundle:CharacterSkill')
+                         ->findByCharacter($character);
+
+        return $this->render('ArgonGameBundle:Admin\Character:skill.html.twig', array(
+            'character' => $character,
+            'entities'  => $entities,
+        ));
+    }
 }

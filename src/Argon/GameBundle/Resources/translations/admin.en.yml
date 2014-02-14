@@ -17,6 +17,9 @@ character_experience:
     actions:
         new:                Add experience
 
+character_skill:
+    title:                  Skills
+
 race:
     title:                  Races
     name:                   Name
@@ -34,4 +37,5 @@ skill:
     max:                    Max
     max_empty:              (no limit)
     requirements:           Requirements
+    level:                  Level
     empty:                  There are no skills in the system yet.
