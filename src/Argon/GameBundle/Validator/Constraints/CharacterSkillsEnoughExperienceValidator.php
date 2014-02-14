@@ -15,7 +15,7 @@ class CharacterSkillsEnoughExperienceValidator extends ConstraintValidator
             return;
         }
 
-        if ($value->count() === 0) {
+        if (count($value) === 0) {
             return;
         }
 

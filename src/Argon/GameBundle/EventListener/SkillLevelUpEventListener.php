@@ -48,7 +48,7 @@ class SkillLevelUpEventListener
         // {{{ Add negative experience to the history.
         $experience = new CharacterExperience();
         $experience->setCharacter($character);
-        $experience->setValue($value);
+        $experience->setValue($value * -1);
 
         // FIXME Use translator for this text
         $experience->setReason(strtr('Level UP {{ skill }}', array(
