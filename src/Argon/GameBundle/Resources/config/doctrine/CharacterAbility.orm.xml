@@ -8,6 +8,9 @@
         <id name="id" type="integer" column="id">
             <generator strategy="AUTO" />
         </id>
+        <unique-constraints>
+            <unique-constraint columns="character_id,code" name="ability_idx" />
+        </unique-constraints>
         <many-to-one field="character" target-entity="Argon\GameBundle\Entity\Character" inversed-by="abilities">
             <join-column name="character_id" referenced-column-name="id" />
         </many-to-one>
