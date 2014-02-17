@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "d78bcd5d0538952941324ffd73f87303",
+    "hash": "1530744d70d54f5569a1b39c0d7ecc45",
     "packages": [
         {
             "name": "braincrafted/bootstrap-bundle",
@@ -947,6 +947,17 @@
             "time": "2014-01-12 16:34:06"
         },
         {
+            "name": "google/closure-compiler",
+            "version": "20140110",
+            "dist": {
+                "type": "zip",
+                "url": "http://dl.google.com/closure-compiler/compiler-20140110.zip",
+                "reference": null,
+                "shasum": null
+            },
+            "type": "library"
+        },
+        {
             "name": "incenteev/composer-parameter-handler",
             "version": "v2.1.0",
             "target-dir": "Incenteev/ParameterHandler",
@@ -1047,6 +1058,17 @@
                 "sql"
             ],
             "time": "2014-01-12 16:20:24"
+        },
+        {
+            "name": "jquery/jquery",
+            "version": "1.10.2",
+            "dist": {
+                "type": "file",
+                "url": "http://code.jquery.com/jquery-1.10.2.js",
+                "reference": null,
+                "shasum": null
+            },
+            "type": "library"
         },
         {
             "name": "kriswallsmith/assetic",
@@ -1887,16 +1909,16 @@
         },
         {
             "name": "twbs/bootstrap",
-            "version": "v3.1.0",
+            "version": "v3.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/twbs/bootstrap.git",
-                "reference": "1409cde7e800ca83fd761f87e5ad8f0d259e38d1"
+                "reference": "a365d8689c3f3cee7f1acf86b61270ecca8e106d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/twbs/bootstrap/zipball/1409cde7e800ca83fd761f87e5ad8f0d259e38d1",
-                "reference": "1409cde7e800ca83fd761f87e5ad8f0d259e38d1",
+                "url": "https://api.github.com/repos/twbs/bootstrap/zipball/a365d8689c3f3cee7f1acf86b61270ecca8e106d",
+                "reference": "a365d8689c3f3cee7f1acf86b61270ecca8e106d",
                 "shasum": ""
             },
             "type": "library",
@@ -1925,7 +1947,7 @@
                 "bootstrap",
                 "css"
             ],
-            "time": "2014-01-30 16:30:37"
+            "time": "2014-02-13 17:24:59"
         },
         {
             "name": "twig/extensions",
@@ -1976,16 +1998,16 @@
         },
         {
             "name": "twig/twig",
-            "version": "v1.15.0",
+            "version": "v1.15.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/fabpot/Twig.git",
-                "reference": "85e4ff98000157ff753d934b9f13659a953f5666"
+                "reference": "1fb5784662f438d7d96a541e305e28b812e2eeed"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/fabpot/Twig/zipball/85e4ff98000157ff753d934b9f13659a953f5666",
-                "reference": "85e4ff98000157ff753d934b9f13659a953f5666",
+                "url": "https://api.github.com/repos/fabpot/Twig/zipball/1fb5784662f438d7d96a541e305e28b812e2eeed",
+                "reference": "1fb5784662f438d7d96a541e305e28b812e2eeed",
                 "shasum": ""
             },
             "require": {
@@ -2009,11 +2031,19 @@
             "authors": [
                 {
                     "name": "Fabien Potencier",
-                    "email": "fabien@symfony.com"
+                    "email": "fabien@symfony.com",
+                    "homepage": "http://fabien.potencier.org",
+                    "role": "Lead Developer"
                 },
                 {
-                    "name": "Armin Ronacher",
-                    "email": "armin.ronacher@active-4.com"
+                    "name": "Armin Ronacher2",
+                    "email": "armin.ronacher@active-4.com",
+                    "role": "Project Founder"
+                },
+                {
+                    "name": "Twig Team",
+                    "homepage": "https://github.com/fabpot/Twig/graphs/contributors",
+                    "role": "Contributors"
                 }
             ],
             "description": "Twig, the flexible, fast, and secure template language for PHP",
@@ -2021,7 +2051,18 @@
             "keywords": [
                 "templating"
             ],
-            "time": "2013-12-06 07:47:10"
+            "time": "2014-02-13 10:19:29"
+        },
+        {
+            "name": "yahoo/yuicompressor",
+            "version": "2.4.8",
+            "dist": {
+                "type": "zip",
+                "url": "https://github.com/yui/yuicompressor/releases/download/v2.4.8/yuicompressor-2.4.8.zip",
+                "reference": null,
+                "shasum": null
+            },
+            "type": "library"
         }
     ],
     "packages-dev": [

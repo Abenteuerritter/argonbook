@@ -6,6 +6,41 @@
     "autoload": {
         "psr-0": { "": "src/" }
     },
+    "repositories": [
+        {
+            "type": "package",
+            "package": {
+                "name": "jquery/jquery",
+                "version": "1.10.2",
+                "dist": {
+                    "url": "http://code.jquery.com/jquery-1.10.2.js",
+                    "type": "file"
+                }
+            }
+        },
+        {
+            "type": "package",
+            "package": {
+                "name": "google/closure-compiler",
+                "version": "20140110",
+                "dist": {
+                    "url": "http://dl.google.com/closure-compiler/compiler-20140110.zip",
+                    "type": "zip"
+                }
+            }
+        },
+        {
+            "type": "package",
+            "package": {
+                "name": "yahoo/yuicompressor",
+                "version": "2.4.8",
+                "dist": {
+                    "url": "https://github.com/yui/yuicompressor/releases/download/v2.4.8/yuicompressor-2.4.8.zip",
+                    "type": "zip"
+                }
+            }
+        }
+    ],
     "require": {
         "php": ">=5.3.3",
         "symfony/symfony": "~2.4",
@@ -14,6 +49,8 @@
         "doctrine/doctrine-fixtures-bundle": "~2.2",
         "stof/doctrine-extensions-bundle": "~1.1",
         "twig/extensions": "~1.0",
+        "google/closure-compiler": "20140110",
+        "yahoo/yuicompressor": "~2.4",
         "symfony/assetic-bundle": "~2.3",
         "symfony/swiftmailer-bundle": "~2.3",
         "symfony/monolog-bundle": "~2.4",
@@ -23,6 +60,7 @@
         "incenteev/composer-parameter-handler": "~2.0",
         "lunetics/locale-bundle": "~2.2",
         "twbs/bootstrap": "~3.1",
+        "jquery/jquery": "~1.10",
         "braincrafted/bootstrap-bundle": "~2.0",
         "friendsofsymfony/user-bundle": "~2.0@dev"
     },
