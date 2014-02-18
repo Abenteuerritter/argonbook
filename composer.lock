@@ -3,7 +3,7 @@
         "This file locks the dependencies of your project to a known state",
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file"
     ],
-    "hash": "1530744d70d54f5569a1b39c0d7ecc45",
+    "hash": "e01ac3ee8ce02de213a9edd90d51c72f",
     "packages": [
         {
             "name": "braincrafted/bootstrap-bundle",
@@ -1065,6 +1065,17 @@
             "dist": {
                 "type": "file",
                 "url": "http://code.jquery.com/jquery-1.10.2.js",
+                "reference": null,
+                "shasum": null
+            },
+            "type": "library"
+        },
+        {
+            "name": "jquery/jqueryui",
+            "version": "1.10.4",
+            "dist": {
+                "type": "zip",
+                "url": "http://jqueryui.com/resources/download/jquery-ui-1.10.4.zip",
                 "reference": null,
                 "shasum": null
             },

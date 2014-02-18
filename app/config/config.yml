@@ -50,6 +50,11 @@ assetic:
             jar: "%kernel.root_dir%/../vendor/google/closure-compiler/compiler.jar"
         yui_css:
             jar: "%kernel.root_dir%/../vendor/yahoo/yuicompressor/yuicompressor-2.4.8.jar"
+    assets:
+        jqueryui:
+            inputs:
+                - "%kernel.root_dir%/../vendor/jquery/jqueryui/ui/jquery-ui.js"
+            output: js/jqueryui.js
 
 # Doctrine Configuration
 doctrine:
