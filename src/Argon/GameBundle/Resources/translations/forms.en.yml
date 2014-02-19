@@ -1,6 +1,6 @@
 
 character_ability:
-    help:                   Please set sequential modifiers to give priorities.
+    help:                   Sort the abilities in order of priority.
     types:
         STR:                Strength
         DEX:                Dexterity
