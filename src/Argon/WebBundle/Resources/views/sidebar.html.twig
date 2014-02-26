@@ -1,0 +1,42 @@
+{% trans_default_domain 'web' %}
+
+{% if game is defined %}
+<h3>{{ game.info.fullname }}</h3>
+  {% if game.info.description[app.request.locale] is defined %}
+  <p>{{ game.info.description[app.request.locale] }}</p>
+  {% endif %}
+{% endif %}
+
+<h3>{{ 'sidebar.playerbox'|trans }}</h3>
+{% if not is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+<form action="{{ path("fos_user_security_check") }}" method="post" role="form">
+  <input type="hidden" name="_csrf_token" value="{{ form_csrf_provider.generateCsrfToken('authenticate') }}" />
+  <div class="form-group">
+    <input type="text" class="form-control" id="username" name="_username" placeholder="{{ 'security.login.username'|trans({}, 'FOSUserBundle') }}" required="required">
+  </div>
+  <div class="form-group">
+    <input type="password" class="form-control" id="password" name="_password" placeholder="{{ 'security.login.password'|trans({}, 'FOSUserBundle') }}" required="required">
+  </div>
+  <div class="checkbox">
+    <label>
+      <input type="checkbox" id="remember_me" name="_remember_me" value="on" />{{ 'security.login.remember_me'|trans({}, 'FOSUserBundle') }}
+    </label>
+  </div>
+  <button type="submit" class="btn btn-default btn-block" id="_submit" name="_submit">{{ 'security.login.submit'|trans({}, 'FOSUserBundle') }}</button>
+</form>
+<div class="list-group" style="margin-top: 20px;">{# FIXME #}
+  <a href="{{ path("fos_user_registration_register") }}" class="list-group-item">{{ 'sidebar.user.register'|trans }}</a>
+  <a href="{{ path("fos_user_resetting_request") }}" class="list-group-item">{{ 'sidebar.user.reset_password'|trans }}</a>
+</div>
+<hr>
+{% endif %}
+
+{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+{% set active = active is defined ? active : '' %}
+<div class="list-group">
+  <a href="{{ path('character') }}" class="list-group-item{{ active == 'character' ? ' active' : '' }}">
+    <h4 class="list-group-item-heading">{{ 'sidebar.player.characters.title'|trans }}</h4>
+    <p>{{ 'sidebar.player.characters.description'|trans }}</p>
+  </a>
+</div>
+{% endif %}
