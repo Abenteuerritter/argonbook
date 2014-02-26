@@ -1,6 +1,10 @@
 
 homepage:
     title:                  Alternate Reality Games Oriented Network
+    jumbotron:
+        title:              Register your Hero now!
+        description:        And give him the power of Space- and Time- travel!
+    register:               Register
 
 sidebar:
     playerbox:              Player-box
