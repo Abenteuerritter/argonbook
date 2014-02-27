@@ -7,7 +7,7 @@
 {% if not is_granted("IS_AUTHENTICATED_REMEMBERED") %}
 <div class="jumbotron">
   <h1 style="font-size: 400%;">{{ 'homepage.jumbotron.title'|trans }}</h1>
-  <a href="#" class="btn btn-success btn-lg pull-right">{{ 'homepage.register'|trans }}</a>
+  <a href="{{ path("fos_user_registration_register") }}" class="btn btn-success btn-lg pull-right">{{ 'homepage.register'|trans }}</a>
   <p>{{ 'homepage.jumbotron.description'|trans }}</p>
 </div>
 {% endif %}
