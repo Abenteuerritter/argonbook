@@ -29,11 +29,6 @@ class CharacterSkill
      */
     protected $newLevel;
 
-    public function __construct()
-    {
-        $this->at = new \DateTime();
-    }
-
     /**
      * @return integer
      */
