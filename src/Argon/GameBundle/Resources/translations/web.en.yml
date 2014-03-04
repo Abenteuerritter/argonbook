@@ -19,6 +19,7 @@ character_experience:
 
 character_skill:
     updated:                Your skills were updated.
+    empty:                  Your character has not skills yet.
 
 skill:
     ability_empty:          General
