@@ -22,7 +22,7 @@
     <div class="page-header">
       <ul class="nav nav-pills pull-right">
         {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-            {% if not is_granted('ROLE_PREVIOUS_ADMIN') %}
+            {% if is_granted('ROLE_USER') %}
               <li><a href="{{ path('fos_user_profile_show') }}">{{ 'layout.profile'|trans({}, 'web') }}</a></li>
             {% endif %}
             {% if is_granted("ROLE_ADMIN") %}

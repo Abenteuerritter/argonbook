@@ -8,13 +8,17 @@ homepage:
 
 sidebar:
     playerbox:              Player-box
+    characterbox:           Character-box
     user:
         register:           New player
         reset_password:     Forgot your password?
     player:
+        hello:              Welcome %name%!
         characters:
             title:          Characters
             description:    List of my charecters
+    character:
+        hello:              You are acting as character %name%.
 
 layout:
     home:                   Home
