@@ -3,6 +3,8 @@ security:
         FOS\UserBundle\Model\UserInterface: sha512
 
     role_hierarchy:
+        ROLE_CHARACTER:   []
+        ROLE_USER:        [ROLE_ALLOWED_TO_SWITCH_CHARACTER]
         ROLE_DIRECTOR:    [ROLE_USER]
         ROLE_ADMIN:       [ROLE_USER, ROLE_DIRECTOR]
         ROLE_SUPER_ADMIN: [ROLE_USER, ROLE_DIRECTOR, ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]
@@ -10,6 +12,8 @@ security:
     providers:
         fos_userbundle:
             id: fos_user.user_provider.username_email
+        argon_game_character:
+            id: argon_game.security.character_provider
 
     firewalls:
         dev:
@@ -23,6 +27,10 @@ security:
                 csrf_provider: form.csrf_provider
             logout:     ~
             anonymous:  ~
+            switch_user:
+                provider:      argon_game_character
+                parameter:     _switch
+                role:          ROLE_ALLOWED_TO_SWITCH_CHARACTER
 
     access_control:
         - { path: ^/admin, roles: ROLE_ADMIN }

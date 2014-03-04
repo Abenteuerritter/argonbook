@@ -18,5 +18,6 @@ sidebar:
 
 layout:
     home:                   Home
-    character:              My Characters
+    profile:                Profile
     admin:                  Control Panel
+    switch_exit:            Switch back to player

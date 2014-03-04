@@ -2,14 +2,18 @@
 
 namespace Argon\GameBundle\Entity;
 
+use Symfony\Component\Security\Core\User\UserInterface;
+
 use Doctrine\Common\Collections\ArrayCollection;
 
 use Argon\CommonBundle\Entity\Player;
 use Argon\GameBundle\Entity\Race;
 use Argon\GameBundle\Model\GameProvider;
 
-class Character extends GameProvider
+class Character extends GameProvider implements UserInterface
 {
+    const ROLE_CHARACTER = 'ROLE_CHARACTER';
+
     /**
      * @var integer
      */
@@ -19,6 +23,11 @@ class Character extends GameProvider
      * @var \Argon\CommonBundle\Entity\Player
      */
     protected $player;
+
+    /**
+     * @var string
+     */
+    protected $slug;
 
     /**
      * @var string
@@ -67,6 +76,51 @@ class Character extends GameProvider
     }
 
     /**
+     * (non-PHPdoc)
+     * @see \Symfony\Component\Security\Core\User\UserInterface::getRoles()
+     */
+    public function getRoles()
+    {
+        return array(self::ROLE_CHARACTER);
+    }
+
+    /**
+     * (non-PHPdoc)
+     * @see \Symfony\Component\Security\Core\User\UserInterface::getPassword()
+     */
+    public function getPassword()
+    {
+        return null;
+    }
+
+    /**
+     * (non-PHPdoc)
+     * @see \Symfony\Component\Security\Core\User\UserInterface::getSalt()
+     */
+    public function getSalt()
+    {
+        return null;
+    }
+
+    /**
+     * (non-PHPdoc)
+     * @see \Symfony\Component\Security\Core\User\UserInterface::getUsername()
+     */
+    public function getUsername()
+    {
+        return $this->getSlug();
+    }
+
+    /**
+     * (non-PHPdoc)
+     * @see \Symfony\Component\Security\Core\User\UserInterface::eraseCredentials()
+     */
+    public function eraseCredentials()
+    {
+        // Nothing
+    }
+
+    /**
      * @return integer
      */
     public function getId()
@@ -88,6 +142,14 @@ class Character extends GameProvider
     public function getPlayer()
     {
         return $this->player;
+    }
+
+    /**
+     * @return string
+     */
+    public function getSlug()
+    {
+        return $this->slug;
     }
 
     /**

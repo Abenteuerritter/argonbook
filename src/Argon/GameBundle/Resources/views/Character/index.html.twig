@@ -22,6 +22,7 @@
                 {{ character.race }}
             </td>
             <td class="text-right">
+                <a href="{{ path('homepage', {'_switch': character.slug}) }}">{{ 'character.switch'|trans }}</a>
                 <a href="{{ path('character_skills', {'id': character.id}) }}">{{ 'character.skills'|trans }} <span class="glyphicon glyphicon-screenshot"></span></a>
             </td>
         </tr>

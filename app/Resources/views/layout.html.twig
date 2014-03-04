@@ -21,16 +21,20 @@
      #}
     <div class="page-header">
       <ul class="nav nav-pills pull-right">
-        <li><a href="{{ path('homepage') }}">{{ 'layout.home'|trans({}, 'web') }}</a></li>
         {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-            <li><a href="{{ path('character') }}">{{ 'layout.character'|trans({}, 'web') }}</a></li>
-            <li><a href="{{ path('fos_user_profile_show') }}">{{ app.user.username }}</a></li>
-            {% if is_granted("ROLE_ADMIN") %}
-                <li><a href="{{ path('admin_dashboard') }}">{{ 'layout.admin'|trans({}, 'web') }}</a></li>
+            {% if not is_granted('ROLE_PREVIOUS_ADMIN') %}
+              <li><a href="{{ path('fos_user_profile_show') }}">{{ 'layout.profile'|trans({}, 'web') }}</a></li>
             {% endif %}
-            <li><a href="{{ path('fos_user_security_logout') }}">{{ 'layout.logout'|trans({}, 'FOSUserBundle') }}</a></li>
+            {% if is_granted("ROLE_ADMIN") %}
+              <li><a href="{{ path('admin_dashboard') }}">{{ 'layout.admin'|trans({}, 'web') }}</a></li>
+            {% endif %}
+            {% if is_granted('ROLE_PREVIOUS_ADMIN') %}
+              <li><a href="{{ path('homepage', {'_switch': '_exit'}) }}">{{ 'layout.switch_exit'|trans({}, 'web') }}</a></li>
+            {% else %}
+              <li><a href="{{ path('fos_user_security_logout') }}">{{ 'layout.logout'|trans({}, 'FOSUserBundle') }}</a></li>
+            {% endif %}
         {% else %}
-            <li><a href="{{ path('fos_user_security_login') }}">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a></li>
+          <li><a href="{{ path('fos_user_security_login') }}">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a></li>
         {% endif %}
       </ul>
       <h3 class="text-muted"><a href="{{ path('homepage') }}">{{ 'ArgonBook' }}</a>
