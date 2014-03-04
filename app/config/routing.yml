@@ -20,6 +20,10 @@ _argon_game_admin:
     resource: "@ArgonGameBundle/Resources/config/routing/admin.xml"
     prefix: /admin
 
+_argon_news_admin:
+    resource: "@ArgonNewsBundle/Resources/config/routing/admin.xml"
+    prefix: /admin
+
 #### FOSUserBundle
 
 _fos_user_security:

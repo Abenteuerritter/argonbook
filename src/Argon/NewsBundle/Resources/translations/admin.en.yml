@@ -1,0 +1,6 @@
+
+news:
+    posts:                  News
+    post:
+        title:              Title
+        empty:              There are no news posts in the system yet.

@@ -5,6 +5,7 @@ sidebar:
     character:              Characters
     race:                   Races
     skill:                  Skills
+    news:                   News
 
 dashboard:
     title:                  Dashboard

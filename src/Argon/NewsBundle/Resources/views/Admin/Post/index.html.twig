@@ -1,0 +1,32 @@
+{% set active = 'news' %}
+{% extends 'ArgonWebBundle::Admin/layout.html.twig' %}
+{% trans_default_domain 'admin' %}
+
+{% block title %}{{ parent() }} - {{ 'news.posts'|trans }}{% endblock %}
+
+{% block content %}
+<ol class="breadcrumb">
+    <li><a href="{{ path('admin_dashboard') }}">{{ 'dashboard.title'|trans }}</a></li>
+    <li class="active">{{ 'news.posts'|trans }}</li>
+</ol>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>{{ 'news.post.title'|trans({}, 'admin') }}</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for post in entities %}
+        <tr>
+            <td>
+            {#<a href="{{ path('admin_news_view', {'slug': post.slug}) }}">{{ post }}</a>#}
+            </td>
+        </tr>
+    {% else %}
+        <tr class="warning">
+            <td colspan="1">{{ 'news.post.empty'|trans({}, 'admin') }}</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
