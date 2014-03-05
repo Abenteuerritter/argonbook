@@ -1,4 +1,5 @@
 
 news:
     post:
+        create:             Create
         publish:            Publish

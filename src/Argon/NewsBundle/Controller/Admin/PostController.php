@@ -28,7 +28,9 @@ class PostController extends Controller
             'method' => 'POST',
         ));
 
-        $form->add('submit', 'submit');
+        $form->add('submit', 'submit', array(
+            'label' => 'news.post.create',
+        ));
 
         if ($request->isMethod('POST')) {
             $form->handleRequest($request);

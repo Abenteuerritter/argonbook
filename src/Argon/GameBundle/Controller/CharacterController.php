@@ -39,7 +39,9 @@ class CharacterController extends Controller
             'method' => 'POST',
         ));
 
-        $form->add('submit', 'submit');
+        $form->add('submit', 'submit', array(
+            'label' => 'character_game.submit',
+        ));
 
         if ($request->isMethod('POST')) {
             $form->handleRequest($request);
@@ -94,7 +96,9 @@ class CharacterController extends Controller
             'method' => 'POST',
         ));
 
-        $form->add('submit', 'submit');
+        $form->add('submit', 'submit', array(
+            'label' => 'character.submit',
+        ));
 
         if ($request->isMethod('POST')) {
             $form->handleRequest($request);
@@ -177,7 +181,9 @@ class CharacterController extends Controller
             'method' => 'POST',
         ));
 
-        $form->add('submit', 'submit');
+        $form->add('submit', 'submit', array(
+            'label' => 'character_skills.submit',
+        ));
 
         if ($request->isMethod('POST')) {
             $form->handleRequest($request);
