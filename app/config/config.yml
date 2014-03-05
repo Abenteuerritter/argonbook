@@ -5,7 +5,7 @@ imports:
 parameters:
     project:
         name:        argonbook
-        version:     0.9
+        version:     0.9.1
 
 framework:
     #esi:             ~
@@ -44,6 +44,7 @@ assetic:
         less:
             bin:        "/usr/bin/less"
             apply_to:   "\\.less$"
+            node_paths: ["/usr/local/lib/node_modules"]
         cssrewrite: ~
         closure:
             jar: "%kernel.root_dir%/../vendor/google/closure-compiler/compiler.jar"
