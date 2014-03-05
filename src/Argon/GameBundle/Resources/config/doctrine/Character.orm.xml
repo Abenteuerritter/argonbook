@@ -14,7 +14,13 @@
         </many-to-one>
         <field name="gameName" column="game" type="string" length="8" />
         <field name="slug" type="string" length="60" unique="true">
-            <gedmo:slug fields="name" unique="true" />
+            <gedmo:slug fields="name" unique="true">
+                <gedmo:handler class="Gedmo\Sluggable\Handler\RelativeSlugHandler">
+                    <gedmo:handler-option name="relationField" value="player"/>
+                    <gedmo:handler-option name="relationSlugField" value="usernameCanonical"/>
+                    <gedmo:handler-option name="separator" value="/"/>
+                </gedmo:handler>
+            </gedmo:slug>
         </field>
         <field name="name" column="name" type="string" length="60" />
         <field name="experience" column="experience" type="integer" />
