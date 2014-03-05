@@ -3,4 +3,12 @@ news:
     posts:                  News
     post:
         title:              Title
+        creator:            Creator
+        status:             Status
+        draft:              Draft
+        published_at:       Published at %date%
+        body:               Body
         empty:              There are no news posts in the system yet.
+        created:            Post created.
+    actions:
+        new:                New Post

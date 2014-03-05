@@ -22,7 +22,7 @@ class NewsPost
     /**
      * @var integer
      */
-    protected $status;
+    protected $status = self::STATUS_DRAFT;
 
     /**
      * @var string
@@ -58,6 +58,11 @@ class NewsPost
      * @var string
      */
     protected $locale;
+
+    public function __toString()
+    {
+        return $this->getTitle();
+    }
 
     /**
      * @return integer
@@ -169,5 +174,13 @@ class NewsPost
     public function setTranslatableLocale($locale)
     {
         $this->locale = $locale;
+    }
+
+    /**
+     * @return boolean
+     */
+    public function isPublished()
+    {
+        return $this->getStatus() === self::STATUS_PUBLISHED;
     }
 }

@@ -1,0 +1,44 @@
+{% set active = 'news' %}
+{% extends 'ArgonWebBundle::Admin/layout.html.twig' %}
+{% trans_default_domain 'admin' %}
+
+{% block title %}{{ parent() }} - {{ 'news.posts'|trans }} {{ post }}{% endblock %}
+
+{% block content %}
+<ol class="breadcrumb">
+  <li><a href="{{ path('admin_dashboard') }}">{{ 'dashboard.title'|trans }}</a></li>
+  <li><a href="{{ path('admin_news') }}">{{ 'news.posts'|trans }}</a></li>
+  <li class="active">{{ post }}</li>
+</ol>
+<div class="form-horizontal">
+  <div class="form-group">
+    <label class="col-sm-2 control-label">{{ 'news.post.title'|trans }}</label>
+    <div class="col-sm-10">
+      <p class="form-control-static">{{ post.title }}</p>
+    </div>
+
+    <label class="col-sm-2 control-label">{{ 'news.post.status'|trans }}</label>
+    <div class="col-sm-10">
+      <p class="form-control-static">
+      {% if post.isPublished %}
+        {{ 'news.post.published_at'|trans({'%date%': post.publishedAt}) }}
+      {% else %}
+        {{ 'news.post.draft'|trans }}
+      {% endif %}
+      </p>
+    </div>
+
+    <label class="col-sm-2 control-label">{{ 'news.post.creator'|trans }}</label>
+    <div class="col-sm-10">
+      <p class="form-control-static">
+        <abbr title="{{ post.creator.username }}">{{ post.creator.name|default(post.creator.username) }}</abbr>
+      </p>
+    </div>
+
+    <label class="col-sm-2 control-label">{{ 'news.post.body'|trans }}</label>
+    <div class="col-sm-10">
+      <p class="form-control-static">{{ post.body|nl2br }}</p>
+    </div>
+  </div>
+</div>
+{% endblock %}

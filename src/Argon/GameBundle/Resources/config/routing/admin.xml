@@ -13,7 +13,7 @@
     <route id="admin_character_experience_new" path="/character/{id}/experience/new" methods="GET">
         <default key="_controller">ArgonGameBundle:Admin\Character:newExperience</default>
     </route>
-    <route id="admin_character_experience_create" path="/character/{id}/experience/new" methods="POST">
+    <route id="admin_character_experience_create" path="/character/{id}/experience/create" methods="POST">
         <default key="_controller">ArgonGameBundle:Admin\Character:newExperience</default>
     </route>
     <route id="admin_character_skill" path="/character/{id}/skill" methods="GET">

@@ -7,4 +7,13 @@
     <route id="admin_news" path="/news" methods="GET">
         <default key="_controller">ArgonNewsBundle:Admin\Post:index</default>
     </route>
+    <route id="admin_news_new" path="/news/new" methods="GET">
+        <default key="_controller">ArgonNewsBundle:Admin\Post:new</default>
+    </route>
+    <route id="admin_news_create" path="/news/create" methods="POST">
+        <default key="_controller">ArgonNewsBundle:Admin\Post:new</default>
+    </route>
+    <route id="admin_news_view" path="/news/{slug}" methods="GET">
+        <default key="_controller">ArgonNewsBundle:Admin\Post:view</default>
+    </route>
 </routes>
