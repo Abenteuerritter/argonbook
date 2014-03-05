@@ -58,6 +58,38 @@ class PostController extends Controller
         ));
     }
 
+    public function publishAction(NewsPost $post, Request $request)
+    {
+        $post->setStatus(NewsPost::STATUS_PUBLISHED);
+        $form = $this->createForm('news_post_publish', $post, array(
+            'action' => $this->generateUrl('admin_news_publish', array('slug' => $post->getSlug())),
+            'method' => 'POST',
+        ));
+
+        $form->add('submit', 'submit', array(
+            'label' => 'news.post.publish',
+        ));
+
+        if ($request->isMethod('POST')) {
+            $form->handleRequest($request);
+
+            if ($form->isValid()) {
+                $em = $this->getDoctrine()->getManager();
+                $em->flush();
+
+                $request->getSession()->getFlashBag()
+                        ->add('success', 'news.post.published');
+
+                return $this->redirect($this->generateUrl('admin_news'));
+            }
+        }
+
+        return $this->render('ArgonNewsBundle:Admin\Post:publish.html.twig', array(
+            'post' => $post,
+            'form' => $form->createView(),
+        ));
+    }
+
     protected function getRepository()
     {
         return $this->getDoctrine()->getRepository('ArgonNewsBundle:NewsPost');

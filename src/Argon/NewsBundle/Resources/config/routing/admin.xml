@@ -16,4 +16,7 @@
     <route id="admin_news_view" path="/news/{slug}" methods="GET">
         <default key="_controller">ArgonNewsBundle:Admin\Post:view</default>
     </route>
+    <route id="admin_news_publish" path="/news/{slug}/publish" methods="GET,POST">
+        <default key="_controller">ArgonNewsBundle:Admin\Post:publish</default>
+    </route>
 </routes>

@@ -14,6 +14,7 @@
     <tr>
       <th>{{ 'news.post.title'|trans({}, 'admin') }}</th>
       <th class="text-right">{{ 'news.post.status'|trans({}, 'admin') }}</th>
+      <th class="text-right">&nbsp;</th>
     </tr>
   </thead>
   <tbody>
@@ -24,21 +25,26 @@
         </td>
         <td class="text-right">
           {% if post.isPublished %}
-            {{ 'news.post.published_at'|trans({'%date%': post.publishedAt}) }}
+            {{ 'news.post.published_at'|trans({'%date%': post.publishedAt|date}) }}
           {% else %}
             {{ 'news.post.draft'|trans }}
+          {% endif %}
+        </td>
+        <td class="text-right">
+          {% if not post.isPublished %}
+            <a href="{{ path('admin_news_publish', {'slug': post.slug}) }}">{{ 'news.actions.publish'|trans }}</a>
           {% endif %}
         </td>
       </tr>
   {% else %}
     <tr class="warning">
-      <td colspan="2">{{ 'news.post.empty'|trans({}, 'admin') }}</td>
+      <td colspan="3">{{ 'news.post.empty'|trans({}, 'admin') }}</td>
     </tr>
   {% endfor %}
   </tbody>
   <tfoot>
     <tr>
-      <td colspan="2">
+      <td colspan="3">
         <a href="{{ path('admin_news_new') }}" class="btn btn-default">{{ 'news.actions.new'|trans }}</a>
       </td>
     </tr>

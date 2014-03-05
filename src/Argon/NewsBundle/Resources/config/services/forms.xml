@@ -8,5 +8,8 @@
         <service id="argon_news.form.post" class="Argon\NewsBundle\Form\Type\PostType">
             <tag name="form.type" alias="news_post" />
         </service>
+        <service id="argon_news.form.post_publish" class="Argon\NewsBundle\Form\Type\PostPublishType">
+            <tag name="form.type" alias="news_post_publish" />
+        </service>
     </services>
 </container>
