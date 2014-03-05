@@ -22,6 +22,7 @@ set  :shared_children, [app_path + "/data", app_path + "/logs", "vendor"]
 set  :writable_dirs,        ["app/data", "app/cache", "app/logs"]
 set  :webserver_user,       "www-data"
 
+set  :dump_assetic_assets,  true
 set  :use_composer,         true
 set  :use_sudo,             false
 set  :interactive_mode,     false
