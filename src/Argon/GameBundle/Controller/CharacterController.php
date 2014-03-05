@@ -177,7 +177,7 @@ class CharacterController extends Controller
         }
 
         $form = $this->createForm('character_skills', array('characterSkills' => $characterSkills), array(
-            'action' => $this->generateUrl('character_skills', array('id' => $character->getId())),
+            'action' => $this->generateUrl('character_skills', array('slug' => $character->getSlug())),
             'method' => 'POST',
         ));
 

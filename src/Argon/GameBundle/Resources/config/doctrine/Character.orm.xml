@@ -18,7 +18,7 @@
                 <gedmo:handler class="Gedmo\Sluggable\Handler\RelativeSlugHandler">
                     <gedmo:handler-option name="relationField" value="player"/>
                     <gedmo:handler-option name="relationSlugField" value="usernameCanonical"/>
-                    <gedmo:handler-option name="separator" value="/"/>
+                    <gedmo:handler-option name="separator" value=":"/>
                 </gedmo:handler>
             </gedmo:slug>
         </field>
