@@ -44,7 +44,7 @@ assetic:
         less:
             bin:        "/usr/bin/less"
             apply_to:   "\\.less$"
-            node_paths: ["/usr/local/lib/node_modules"]
+            node_paths: ["/usr/local/lib/node_modules", "/usr/lib/node_modules/"]
         cssrewrite: ~
         closure:
             jar: "%kernel.root_dir%/../vendor/google/closure-compiler/compiler.jar"
@@ -52,8 +52,7 @@ assetic:
             jar: "%kernel.root_dir%/../vendor/yahoo/yuicompressor/yuicompressor-2.4.8.jar"
     assets:
         jqueryui:
-            inputs:
-                - "%kernel.root_dir%/../vendor/jquery/jqueryui/ui/jquery-ui.js"
+            inputs: ["%kernel.root_dir%/../vendor/jquery/jqueryui/ui/jquery-ui.js"]
             output: js/jqueryui.js
 
 # Doctrine Configuration
