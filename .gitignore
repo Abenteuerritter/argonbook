@@ -1,6 +1,7 @@
 *~
 
 # Symfony
+/app/Resources/less/bootstrap.less
 /app/bootstrap.php.cache
 /app/cache/*
 /app/logs/*
