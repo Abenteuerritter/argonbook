@@ -5,7 +5,7 @@
       xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
                           http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
 
-    <entity name="Argon\NewsBundle\Entity\NewsPost" table="news_post">
+    <entity name="Argon\NewsBundle\Entity\NewsPost" repository-class="Argon\NewsBundle\Repository\NewsPostRepository" table="news_post">
         <gedmo:translation entity="Gedmo\Translatable\Entity\Translation" locale="locale" />
         <id name="id" type="integer" column="id">
             <generator strategy="AUTO" />

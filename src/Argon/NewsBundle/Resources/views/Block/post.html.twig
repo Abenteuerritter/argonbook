@@ -1,0 +1,9 @@
+<div class="article">
+  <h3>{{ post.title }}</h3>
+  <div class="content">
+    {{ post.body|nl2br }}
+  </div>
+  <div class="footer">
+    {{ 'news.post.footer'|trans({'%creator%': post.creator, '%published%': post.publishedAt|date}, 'web') }}
+  </div>
+</div>
