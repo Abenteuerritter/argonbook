@@ -70,8 +70,9 @@
             var up   = $(buttonHTML('up')).click(function() { update(+1); return false; });
 
             function update(modifier) {
-                var buy  = parseInt(element.val()) + 1 * modifier;
-                var next = min + buy;
+                var level = element.val() === "" ? 0 : parseInt(element.val());
+                var buy   = level + 1 * modifier;
+                var next  = min + buy;
 
                 down.toggleClass('disabled', next <= min);
                 up.toggleClass('disabled', next >= max);
