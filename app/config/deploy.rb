@@ -30,6 +30,10 @@ set  :keep_releases,        3
 
 logger.level = Logger::MAX_LEVEL
 
+before "symfony:assetic:dump" do
+  run "cd #{latest_release} && php app/console braincrafted:bootstrap:generate --env=prod --no-debug"
+end
+
 after "deploy:restart" do
   capifony_pretty_print "--> Ensuring cache directory permissions"
   run "chown -R www-data:www-data #{latest_release}"
