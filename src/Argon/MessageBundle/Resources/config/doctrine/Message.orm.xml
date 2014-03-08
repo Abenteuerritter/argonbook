@@ -9,7 +9,7 @@
             <generator strategy="AUTO" />
         </id>
         <many-to-one field="sender" target-entity="Argon\GameBundle\Entity\Character" />
-        <many-to-one field="thread" target-entity="Argon\MessageBundle\Entity\Thread">
+        <many-to-one field="thread" target-entity="Argon\MessageBundle\Entity\Thread" inversed-by="messages">
             <join-columns>
                 <join-column name="thread_id" referenced-column-name="id" />
             </join-columns>
