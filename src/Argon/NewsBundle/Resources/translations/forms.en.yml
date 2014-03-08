@@ -3,3 +3,4 @@ news:
     post:
         create:             Create
         publish:            Publish
+        edit:               Edit

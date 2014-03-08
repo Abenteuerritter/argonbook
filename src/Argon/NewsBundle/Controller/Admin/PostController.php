@@ -92,6 +92,37 @@ class PostController extends Controller
         ));
     }
 
+    public function editAction(NewsPost $post, Request $request)
+    {
+        $form = $this->createForm('news_post', $post, array(
+            'action' => $this->generateUrl('admin_news_update', array('slug' => $post->getSlug())),
+            'method' => 'POST',
+        ));
+
+        $form->add('submit', 'submit', array(
+            'label' => 'news.post.edit',
+        ));
+
+        if ($request->isMethod('POST')) {
+            $form->handleRequest($request);
+
+            if ($form->isValid()) {
+                $em = $this->getDoctrine()->getManager();
+                $em->flush();
+
+                $request->getSession()->getFlashBag()
+                        ->add('success', 'news.post.updated');
+
+                return $this->redirect($this->generateUrl('admin_news'));
+            }
+        }
+
+        return $this->render('ArgonNewsBundle:Admin\Post:edit.html.twig', array(
+            'post' => $post,
+            'form' => $form->createView(),
+        ));
+    }
+
     protected function getRepository()
     {
         return $this->getDoctrine()->getRepository('ArgonNewsBundle:NewsPost');

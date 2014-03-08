@@ -31,9 +31,12 @@
           {% endif %}
         </td>
         <td class="text-right">
-          {% if not post.isPublished %}
-            <a href="{{ path('admin_news_publish', {'slug': post.slug}) }}">{{ 'news.actions.publish'|trans }}</a>
-          {% endif %}
+          <ul class="nav nav-pills pull-right">
+            {% if not post.isPublished %}
+              <li><a href="{{ path('admin_news_publish', {'slug': post.slug}) }}">{{ 'news.actions.publish'|trans }}</a></li>
+            {% endif %}
+            <li><a href="{{ path('admin_news_edit', {'slug': post.slug}) }}">{{ 'news.actions.edit'|trans }}</a></li>
+          </ul>
         </td>
       </tr>
   {% else %}

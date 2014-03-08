@@ -12,3 +12,4 @@ news:
     actions:
         new:                New Post
         publish:            Publish
+        edit:               Edit

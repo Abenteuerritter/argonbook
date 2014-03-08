@@ -19,4 +19,10 @@
     <route id="admin_news_publish" path="/news/{slug}/publish" methods="GET,POST">
         <default key="_controller">ArgonNewsBundle:Admin\Post:publish</default>
     </route>
+    <route id="admin_news_edit" path="/news/{slug}/edit" methods="GET">
+        <default key="_controller">ArgonNewsBundle:Admin\Post:edit</default>
+    </route>
+    <route id="admin_news_update" path="/news/{slug}/update" methods="POST">
+        <default key="_controller">ArgonNewsBundle:Admin\Post:edit</default>
+    </route>
 </routes>
