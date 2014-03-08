@@ -55,22 +55,34 @@
 {{ parent() }}
 <script type="text/javascript">
     $.fn.skillLevel = function() {
-        return this.hide().each(function() {
-            var element = $(this);
+        return this.each(function() {
+            var element = $(this).hide();
+            var elevel  = element.parent().prev().find('span');
 
-            var level = element.attr('data-level');
-            var max   = element.attr('data-max');
+            var min = parseInt(element.attr('data-level'));
+            var max = parseInt(element.attr('data-max'));
 
-            var up = $('<a href="#"><span class="glyphicon glyphicon-chevron-up"></span></a>').click(function() {
-                //
-            });
+            function buttonHTML(dir) {
+                return '<a href="#" class="btn"><span class="glyphicon glyphicon-chevron-' + dir + '"></span></a>';
+            }
 
-            var down = $('<a href="#"><span class="glyphicon glyphicon-chevron-down"></span></a>');
+            var down = $(buttonHTML('down')).click(function () { update(-1); return false; });
+            var up   = $(buttonHTML('up')).click(function() { update(+1); return false; });
 
-            element.parent()
-                .append(up)
-                .append(down)
-            ;
+            function update(modifier) {
+                var buy  = parseInt(element.val()) + 1 * modifier;
+                var next = min + buy;
+
+                down.toggleClass('disabled', next <= min);
+                up.toggleClass('disabled', next >= max);
+
+                element.val(buy);
+                elevel.html(next);
+            }
+
+            element.parent().append(up).append(down);
+
+            update(0);
         });
     };
     $(function() {
