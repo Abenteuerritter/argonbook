@@ -28,8 +28,12 @@
             <argument type="service" id="argon_game.form.game_choice_list" />
             <tag name="form.type" alias="character_game" />
         </service>
-        <service id="argon_game.form.character_skilsl" class="Argon\GameBundle\Form\Character\CharacterSkillsType">
+        <service id="argon_game.form.character_skills" class="Argon\GameBundle\Form\Character\CharacterSkillsType">
             <tag name="form.type" alias="character_skills" />
+        </service>
+        <service id="argon_game.form.character_username" class="Argon\GameBundle\Form\Character\CharacterUsernameType">
+            <argument type="service" id="argon_game.character_to_username_transformer" />
+            <tag name="form.type" alias="character_username" />
         </service>
     </services>
 </container>

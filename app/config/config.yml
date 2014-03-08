@@ -137,3 +137,5 @@ fos_message:
     db_driver:     orm
     thread_class:  Argon\MessageBundle\Entity\Thread
     message_class: Argon\MessageBundle\Entity\Message
+    new_thread_form:
+        type: argon_message.form.new_thread
