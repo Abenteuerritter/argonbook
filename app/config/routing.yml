@@ -44,3 +44,9 @@ _fos_user_resetting:
 _fos_user_change_password:
     resource: "@FOSUserBundle/Resources/config/routing/change_password.xml"
     prefix: /profile
+
+#### FOSMessageBundle
+
+_fos_message:
+    resource: "@FOSMessageBundle/Resources/config/routing.xml"
+    prefix: /inbox

@@ -6,11 +6,13 @@ use Symfony\Component\Security\Core\User\UserInterface;
 
 use Doctrine\Common\Collections\ArrayCollection;
 
+use FOS\MessageBundle\Model\ParticipantInterface;
+
 use Argon\CommonBundle\Entity\Player;
 use Argon\GameBundle\Entity\Race;
 use Argon\GameBundle\Model\GameProvider;
 
-class Character extends GameProvider implements UserInterface
+class Character extends GameProvider implements UserInterface, ParticipantInterface
 {
     const ROLE_CHARACTER = 'ROLE_CHARACTER';
 

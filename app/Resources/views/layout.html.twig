@@ -4,7 +4,7 @@
 
 {% block stylesheets %}
 {% spaceless %}
-{% stylesheets 'css/bootstrap.css' filter='?yui_css' %}
+{% stylesheets 'css/bootstrap.css' 'css/jqueryui.css' filter='?yui_css' %}
     <link href="{{ asset_url }}" rel="stylesheet" type="text/css" media="screen" />
 {% endstylesheets %}
   {% include 'BraincraftedBootstrapBundle::ie8-support.html.twig' %}

@@ -76,7 +76,8 @@
         "jquery/jquery": "~1.10",
         "jquery/jqueryui": "~1.10",
         "braincrafted/bootstrap-bundle": "~2.0",
-        "friendsofsymfony/user-bundle": "~2.0@dev"
+        "friendsofsymfony/user-bundle": "~2.0@dev",
+        "friendsofsymfony/message-bundle": "~1.2"
     },
     "scripts": {
         "post-install-cmd": [

@@ -51,9 +51,13 @@ assetic:
         yui_css:
             jar: "%kernel.root_dir%/../vendor/yahoo/yuicompressor/yuicompressor-2.4.8.jar"
     assets:
-        jqueryui:
+        jqueryui-js:
             inputs: ["%kernel.root_dir%/../vendor/jquery/jqueryui/ui/jquery-ui.js"]
             output: js/jqueryui.js
+        jqueryui-css:
+            inputs: ["%kernel.root_dir%/../vendor/jquery/jqueryui/themes/base/*"]
+            output: css/jqueryui.css
+            filters: [cssrewrite]
 
 # Doctrine Configuration
 doctrine:
@@ -127,3 +131,9 @@ fos_user:
     db_driver:     orm
     firewall_name: main
     user_class:    Argon\CommonBundle\Entity\Player
+
+# FOSMessage
+fos_message:
+    db_driver:     orm
+    thread_class:  Argon\MessageBundle\Entity\Thread
+    message_class: Argon\MessageBundle\Entity\Message
