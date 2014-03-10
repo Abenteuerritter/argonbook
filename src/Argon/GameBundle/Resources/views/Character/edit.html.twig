@@ -7,7 +7,7 @@
 {% block content %}
 {{ form_start(form) }}
     {{ form_errors(form) }}
-    {{ form_widget(form.story, {'attr': {'placeholder': 'character.story_placeholder'|trans}}) }}
+    {{ form_row(form.story, {'attr': {'placeholder': 'character.story_placeholder'|trans}}) }}
     {{ form_rest(form) }}
 {{ form_end(form) }}
 {% endblock %}
