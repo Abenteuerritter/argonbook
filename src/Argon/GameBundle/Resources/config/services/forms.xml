@@ -24,6 +24,9 @@
             <tag name="form.type" alias="character_skill" />
         </service>
 
+        <service id="argon_game.form.character_edit" class="Argon\GameBundle\Form\Character\CharacterEditType">
+            <tag name="form.type" alias="character_edit" />
+        </service>
         <service id="argon_game.form.character_game" class="Argon\GameBundle\Form\Character\CharacterGameType">
             <argument type="service" id="argon_game.form.game_choice_list" />
             <tag name="form.type" alias="character_game" />

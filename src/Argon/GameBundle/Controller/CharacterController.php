@@ -177,7 +177,7 @@ class CharacterController extends Controller
         }
 
         $form = $this->createForm('character_skills', array('characterSkills' => $characterSkills), array(
-            'action' => $this->generateUrl('character_skills', array('slug' => $character->getSlug())),
+            'action' => $this->generateUrl('character_skills_update', array('slug' => $character->getSlug())),
             'method' => 'POST',
         ));
 
@@ -221,6 +221,47 @@ class CharacterController extends Controller
             'character' => $character,
             'form'      => $form->createView(),
             'skills'    => $skills,
+        ));
+    }
+
+    public function editAction(Character $character, Request $request)
+    {
+        if (false === $this->get('security.context')->isGranted('ROLE_USER')) {
+            throw new AccessDeniedException();
+        }
+
+        $player = $this->getUser();
+
+        if ($player !== $character->getPlayer()) {
+            throw new AccessDeniedException();
+        }
+
+        $form = $this->createForm('character_edit', $character, array(
+            'action' => $this->generateUrl('character_edit_update', array('slug' => $character->getSlug())),
+            'method' => 'POST',
+        ));
+
+        $form->add('submit', 'submit', array(
+            'label' => 'character.edit_submit',
+        ));
+
+        if ($request->isMethod('POST')) {
+            $form->handleRequest($request);
+
+            if ($form->isValid()) {
+                $manager = $this->getDoctrine()->getManager();
+                $manager->flush();
+
+                $request->getSession()->getFlashBag()
+                        ->add('success', 'character.updated');
+
+                return $this->redirect($this->generateUrl('character'));
+            }
+        }
+
+        return $this->render('ArgonGameBundle:Character:edit.html.twig', array(
+            'character' => $character,
+            'form'      => $form->createView(),
         ));
     }
 }

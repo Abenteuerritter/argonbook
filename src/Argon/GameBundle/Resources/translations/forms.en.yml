@@ -11,6 +11,7 @@ character_ability:
 character:
     race_empty_value:       Select your character's race
     submit:                 Create Character
+    edit_submit:            Edit Character
 
 character_game:
     submit:                 Next

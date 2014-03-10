@@ -1,0 +1,13 @@
+{% set active = 'character' %}
+{% extends 'ArgonWebBundle::layout.html.twig' %}
+{% trans_default_domain 'web' %}
+
+{% block title %}{{ parent() }} - {{ 'character.title'|trans }} - {{ character }} - {{ 'character.edit'|trans }}{% endblock %}
+
+{% block content %}
+{{ form_start(form) }}
+    {{ form_errors(form) }}
+    {{ form_widget(form.story, {'attr': {'placeholder': 'character.story_placeholder'|trans}}) }}
+    {{ form_rest(form) }}
+{{ form_end(form) }}
+{% endblock %}

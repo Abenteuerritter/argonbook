@@ -10,7 +10,9 @@ character:
     skills:                 Skills
     empty:                  You don't have any character created yet.
     new:                    New Character
+    edit:                   Edit
     created:                Your character has been created.
+    updated:                Your character has been updated.
 
 character_experience:
     created:                The character has new experience.

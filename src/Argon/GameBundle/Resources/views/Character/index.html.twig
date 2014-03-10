@@ -23,6 +23,7 @@
             </td>
             <td class="text-right">
                 <a href="{{ path('homepage', {'_switch': character.slug}) }}" class="btn btn-link">{{ 'character.switch'|trans }} <span class="glyphicon glyphicon-log-in"></span></a>
+                <a href="{{ path('character_edit', {'slug': character.slug}) }}" class="btn btn-link">{{ 'character.edit'|trans }} <span class="glyphicon glyphicon-edit"></span></a>
                 <a href="{{ path('character_skills', {'slug': character.slug}) }}" class="btn btn-link">{{ 'character.skills'|trans }} <span class="glyphicon glyphicon-screenshot"></span></a>
             </td>
         </tr>
