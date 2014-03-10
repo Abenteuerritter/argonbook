@@ -4,7 +4,6 @@ character:
     of_game:                of %game%
     info:                   Information
     abilities:              Abilities
-    story_placeholder:      What do your character know?
     empty:                  There are no characters in the system yet.
 
 character_ability:
