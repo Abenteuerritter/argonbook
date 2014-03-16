@@ -11,5 +11,6 @@
   <li><a href="{{ path('admin_news_view', {'slug': post.slug}) }}">{{ post }}</a></li>
   <li class="active">{{ 'news.actions.publish'|trans }}</li>
 </ol>
+<div class="alert alert-warning">{{ 'news.post.publish_confirm'|trans({'%post%': post}) }}</div>
 {{ form(form) }}
 {% endblock %}

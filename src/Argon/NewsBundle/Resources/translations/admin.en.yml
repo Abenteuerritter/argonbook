@@ -7,6 +7,7 @@ news:
         status:             Status
         draft:              Draft
         published_at:       Published at %date%
+        publish_confirm:    Do you really want to publish %post%?
         body:               Body
         empty:              There are no news posts in the system yet.
     actions:
