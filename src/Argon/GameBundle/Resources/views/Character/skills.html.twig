@@ -12,8 +12,7 @@
             <tr>
                 <th>&nbsp;</th>
                 <th>{{ 'skill.name'|trans }}</th>
-                <th class="text-right">{{ 'skill.level'|trans }}</th>
-                <th>&nbsp;</th>
+                <th>{{ 'skill.level'|trans }}</th>
                 <th class="text-right">{{ 'skill.price'|trans }}</th>
             </tr>
         </thead>
@@ -33,16 +32,18 @@
                     {% endif %}
                 </td>
                 <td>{{ skill }}</td>
-                <td class="text-right"><span id="{{ skill.slug }}_level">{{ characterSkill.vars.value.level }}</span></td>
                 <td>
-                    {{ form_widget(characterSkill.newLevel, {'attr': {'data-level': characterSkill.vars.value.level|default(0), 'data-max': skill.max|default(-1)}}) }}
+                    <div class="input-group">
+                        <span id="{{ skill.slug }}_level" class="input-group-addon">{{ characterSkill.vars.value.level }}</span>
+                        {{ form_widget(characterSkill.newLevel, {'attr': {'data-level': characterSkill.vars.value.level|default(0), 'data-max': skill.max|default(-1)}}) }}
+                    </div>
                     {{ form_errors(characterSkill.newLevel) }}
                 </td>
                 <td class="text-right">{{ characterSkill.vars.value.price }}</td>
             </tr>
         {% else %}
             <tr class="warning">
-                <td colspan="5">{{ 'skill.empty'|trans }}</td>
+                <td colspan="4">{{ 'skill.empty'|trans }}</td>
             </tr>
         {% endfor %}
         </tbody>
@@ -57,17 +58,19 @@
     $.fn.skillLevel = function() {
         return this.each(function() {
             var element = $(this).hide();
-            var elevel  = element.parent().prev().find('span');
+            var elevel  = element.parent().find('span');
 
             var min = parseInt(element.attr('data-level'));
             var max = parseInt(element.attr('data-max'));
 
             function buttonHTML(dir) {
-                return '<a href="#" class="btn"><span class="glyphicon glyphicon-chevron-' + dir + '"></span></a>';
+                return '<button class="btn btn-default"><span class="glyphicon glyphicon-chevron-' + dir + '"></span></button>';
             }
 
             var down = $(buttonHTML('down')).click(function () { update(-1); return false; });
             var up   = $(buttonHTML('up')).click(function() { update(+1); return false; });
+
+            var buttons = $('<span class="input-group-btn"></span>').append(up).append(down);
 
             function update(modifier) {
                 var level = element.val() === "" ? 0 : parseInt(element.val());
@@ -81,7 +84,7 @@
                 elevel.html(next);
             }
 
-            element.parent().append(up).append(down);
+            element.parent().append(buttons);
 
             update(0);
         });
