@@ -24,6 +24,9 @@ class BlockController extends Controller
         ));
     }
 
+    /**
+     * @return \Argon\NewsBundle\Repository\NewsPostRepository
+     */
     protected function getRepository()
     {
         return $this->getDoctrine()->getRepository('ArgonNewsBundle:NewsPost');

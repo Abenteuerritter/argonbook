@@ -12,6 +12,8 @@ class NewsPostRepository extends EntityRepository
             ->createQueryBuilder('np')
             ->addSelect('c')
             ->innerJoin('np.creator', 'c')
+            ->where('np.publishedAt IS NOT NULL')
+            ->orderBy('np.publishedAt','DESC')
             ->setMaxResults($limit)
             ->getQuery()
             ->getResult()
