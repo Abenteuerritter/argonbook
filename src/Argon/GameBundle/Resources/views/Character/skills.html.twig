@@ -5,6 +5,14 @@
 {% block title %}{{ parent() }} - {{ 'character.title'|trans }} - {{ character }} - {{ 'character.skills'|trans }}{% endblock %}
 
 {% block content %}
+<div class="progress">
+  <div class="progress-bar progress-bar-success" style="width: {{ ((character.skillsExperience * 100) / character.experience)|round }}%">
+    <span class="sr-only">{{ character.skillsExperience }}</span>
+  </div>
+  <div class="progress-bar progress-bar-info" style="width: 0%">
+    <span class="sr-only" id="progress">0</span>
+  </div>
+</div>
 {{ form_start(form) }}
     {{ form_errors(form) }}
     <table class="table table-striped">
@@ -55,7 +63,9 @@
 {% block javascripts %}
 {{ parent() }}
 <script type="text/javascript">
-    $.fn.skillLevel = function() {
+    $.fn.skillLevel = function(experience, available) {
+        var total = 0;
+
         return this.each(function() {
             var element = $(this).hide();
             var elevel  = element.parent().find('span');
@@ -73,6 +83,8 @@
             var buttons = $('<span class="input-group-btn"></span>').append(up).append(down);
 
             function update(modifier) {
+                total += modifier;
+
                 var level = element.val() === "" ? 0 : parseInt(element.val());
                 var buy   = level + 1 * modifier;
                 var next  = min + buy;
@@ -82,6 +94,14 @@
 
                 element.val(buy);
                 elevel.html(next);
+
+                $('#progress')
+                    .html(total)
+                    .parent().css('width', Math.round((total * 100) / experience).toString() + '%');
+
+                if (total >= available) {
+                    //
+                }
             }
 
             element.parent().append(buttons);
@@ -90,7 +110,10 @@
         });
     };
     $(function() {
-        $('input[type="number"]').skillLevel();
+        $('input[type="number"]').skillLevel(
+            {{ character.experience|default(0) }},
+            {{ character.availableExperience|default(0) }}
+        );
     });
 </script>
 {% endblock %}
