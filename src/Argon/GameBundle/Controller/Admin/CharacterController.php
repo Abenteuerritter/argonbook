@@ -22,14 +22,18 @@ class CharacterController extends Controller
             $gameFactory = $this->container->get('argon_game.provider.game_factory');
             $game        = $gameFactory->create($gameName);
 
-            $entities = $repository->findByGameName($gameName);
+            $query = $repository->createQueryByGameName($gameName);
         } else {
-            $entities = $repository->findAll();
+            $query = $repository->createQuery();
         }
+
+        $pagination = $this->get('knp_paginator')->paginate($query,
+            $this->get('request')->query->get('page', 1)
+        );
 
         return $this->render('ArgonGameBundle:Admin\Character:index.html.twig', array(
             'game'     => $game,
-            'entities' => $entities,
+            'entities' => $pagination,
         ));
     }
 

@@ -22,4 +22,25 @@ class CharacterRepository extends EntityRepository
             ->getOneOrNullResult()
         ;
     }
+
+    /**
+     * @return \Doctrine\ORM\Query
+     */
+    public function createQuery()
+    {
+        return $this->createQueryBuilder('c')->getQuery();
+    }
+
+    /**
+     * @return \Doctrine\ORM\Query
+     */
+    public function createQueryByGameName($gameName)
+    {
+        return $this->createQueryBuilder('c')
+                    ->where('c.gameName = :gameName')
+                    ->setParameters(array(
+                        'gameName' => $gameName,
+                    ))
+                    ->getQuery();
+    }
 }
