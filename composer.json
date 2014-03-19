@@ -71,6 +71,7 @@
         "sensio/framework-extra-bundle": "~2.3",
         "sensio/generator-bundle": "~2.3",
         "incenteev/composer-parameter-handler": "~2.0",
+        "knplabs/knp-paginator-bundle": "~2.4",
         "lunetics/locale-bundle": "~2.2",
         "twbs/bootstrap": "~3.1",
         "jquery/jquery": "~1.10",
