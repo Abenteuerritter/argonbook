@@ -66,6 +66,11 @@ class Character extends GameProvider implements UserInterface, ParticipantInterf
      */
     protected $story;
 
+    /**
+     * @var \DateTime
+     */
+    protected $storyConfirmedAt;
+
     public function __construct()
     {
         $this->abilities = new ArrayCollection();
@@ -328,6 +333,22 @@ class Character extends GameProvider implements UserInterface, ParticipantInterf
     public function getStory()
     {
         return $this->story;
+    }
+
+    /**
+     * @param \DateTime $confirmedAt
+     */
+    public function setStoryConfirmedAt(\DateTime $confirmedAt)
+    {
+        $this->storyConfirmedAt = $confirmedAt;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getStoryConfirmedAt()
+    {
+        return $this->storyConfirmedAt;
     }
 
     /**
