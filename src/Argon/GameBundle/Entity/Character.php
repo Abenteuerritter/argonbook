@@ -304,6 +304,14 @@ class Character extends GameProvider implements UserInterface, ParticipantInterf
     }
 
     /**
+     * @return integer
+     */
+    public function getAvailableExperience()
+    {
+        return $this->experience - $this->skillsExperience;
+    }
+
+    /**
      * @param \Argon\GameBundle\Entity\Race $race
      */
     public function setRace(Race $race)
@@ -349,13 +357,5 @@ class Character extends GameProvider implements UserInterface, ParticipantInterf
     public function getStoryConfirmedAt()
     {
         return $this->storyConfirmedAt;
-    }
-
-    /**
-     * @return integer
-     */
-    public function getAvailableExperience()
-    {
-        return $this->experience - $this->skillsExperience;
     }
 }
