@@ -28,7 +28,14 @@ class CharacterRepository extends EntityRepository
      */
     public function createQuery()
     {
-        return $this->createQueryBuilder('c')->getQuery();
+        return $this->createQueryBuilder('c')
+                    ->addSelect('r')
+                    ->addSelect('ca')
+                    ->addSelect('cs')
+                    ->innerJoin('c.race', 'r')
+                    ->innerJoin('c.abilities', 'ca')
+                    ->leftJoin('c.skills', 'cs')
+                    ->getQuery();
     }
 
     /**
@@ -37,6 +44,12 @@ class CharacterRepository extends EntityRepository
     public function createQueryByGameName($gameName)
     {
         return $this->createQueryBuilder('c')
+                    ->addSelect('r')
+                    ->addSelect('ca')
+                    ->addSelect('cs')
+                    ->innerJoin('c.race', 'r')
+                    ->innerJoin('c.abilities', 'ca')
+                    ->leftJoin('c.skills', 'cs')
                     ->where('c.gameName = :gameName')
                     ->setParameters(array(
                         'gameName' => $gameName,
