@@ -358,4 +358,13 @@ class Character extends GameProvider implements UserInterface, ParticipantInterf
     {
         return $this->storyConfirmedAt;
     }
+
+    /**
+     * @var boolean
+     */
+    public function isStoryNotConfirmed()
+    {
+        return $this->getStory() !== null &&
+               $this->getStoryConfirmedAt() === null;
+    }
 }

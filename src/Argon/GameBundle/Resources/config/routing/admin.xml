@@ -7,6 +7,9 @@
     <route id="admin_character" path="/characters" methods="GET">
         <default key="_controller">ArgonGameBundle:Admin\Character:index</default>
     </route>
+    <route id="admin_character_confirm_story" path="/character/{id}/confirm-story" methods="GET">
+        <default key="_controller">ArgonGameBundle:Admin\Character:confirmStory</default>
+    </route>
     <route id="admin_character_experience" path="/character/{id}/experience" methods="GET">
         <default key="_controller">ArgonGameBundle:Admin\Character:experience</default>
     </route>

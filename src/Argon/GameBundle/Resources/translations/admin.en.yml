@@ -5,6 +5,8 @@ character:
     info:                   Information
     abilities:              Abilities
     empty:                  There are no characters in the system yet.
+    actions:
+        confirm_story:      Confirm Story
 
 character_ability:
     empty:                  There are no abilities.

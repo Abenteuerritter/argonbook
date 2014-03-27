@@ -18,6 +18,7 @@
         <tr>
             <th>{{ 'character.info'|trans }}</th>
             <th>{{ 'character.abilities'|trans }}</th>
+            <th class="text-right">&nbsp;</th>
         </tr>
     </thead>
     <tbody>
@@ -31,8 +32,8 @@
                 {{ character.name }} (
                     <a href="{{ path('admin_character_experience', {'id': character.id}) }}"><span class="glyphicon glyphicon-signal"></span> {{ character.availableExperience }}/{{ character.experience }}</a>
                     <a href="{{ path('admin_character_skill', {'id': character.id}) }}"><span class="glyphicon glyphicon-screenshot"></span> {{ character.skills|length }}</a>
-                )<br>
-                {{ character.race }}
+                )
+                <br>{{ character.race }}
             </td>
             <td>
                 <table class="table table-bordered">
@@ -50,10 +51,17 @@
                     </tbody>
                 </table>
             </td>
+            <td class="text-right">
+                <ul class="nav nav-pills pull-right">
+                {% if character.isStoryNotConfirmed %}
+                    <li><a href="{{ path('admin_character_confirm_story', {'id': character.id}) }}">{{ 'character.actions.confirm_story'|trans }}</a></li>
+                {% endif %}
+                </ul>
+            </td>
         </tr>
     {% else %}
         <tr class="warning">
-            <td colspan="2">{{ 'character.empty'|trans }}</td>
+            <td colspan="3">{{ 'character.empty'|trans }}</td>
         </tr>
     {% endfor %}
     </tbody>

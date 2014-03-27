@@ -99,4 +99,17 @@ class CharacterController extends Controller
             'entities'  => $entities,
         ));
     }
+
+    public function confirmStoryAction(Character $character)
+    {
+        if (!$character->isStoryNotConfirmed()) {
+            return $this->createNotFoundException(
+                sprintf('Story for %s not available to confirm.', (string) $character)
+            );
+        }
+
+        return $this->render('ArgonGameBundle:Admin\Character:confirmStory.html.twig', array(
+            'character' => $character,
+        ));
+    }
 }
