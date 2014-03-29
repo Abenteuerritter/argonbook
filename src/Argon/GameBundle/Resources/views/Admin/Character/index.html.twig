@@ -13,6 +13,7 @@
         <li class="active"><a href="{{ path('admin_character') }}">{{ 'character.title'|trans }}</a> {{ 'character.of_game'|trans({'%game%': game.info.fullname}) }}</li>
     {% endif %}
 </ol>
+{{ form(filter_form) }}
 <table class="table table-striped">
     <thead>
         <tr>

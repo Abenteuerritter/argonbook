@@ -14,6 +14,9 @@
         <service id="argon_game.form.character" class="Argon\GameBundle\Form\Type\CharacterType">
             <tag name="form.type" alias="character" />
         </service>
+        <service id="argon_game.form.character_filter" class="Argon\GameBundle\Form\Type\CharacterFilterType">
+            <tag name="form.type" alias="character_filter" />
+        </service>
         <service id="argon_game.form.character_experience" class="Argon\GameBundle\Form\Type\CharacterExperienceType">
             <tag name="form.type" alias="character_experience" />
         </service>

@@ -7,6 +7,7 @@ use Symfony\Component\HttpFoundation\Request;
 
 use Argon\GameBundle\Entity\Character;
 use Argon\GameBundle\Entity\CharacterExperience;
+use Argon\GameBundle\Entity\CharacterFilter;
 
 class CharacterController extends Controller
 {
@@ -14,6 +15,9 @@ class CharacterController extends Controller
     {
         $repository = $this->getDoctrine()
                            ->getRepository('ArgonGameBundle:Character');
+
+        $filter     = new CharacterFilter();
+        $filterForm = $this->createForm('character_filter', $filter);
 
         $game = null;
 
@@ -32,8 +36,9 @@ class CharacterController extends Controller
         );
 
         return $this->render('ArgonGameBundle:Admin\Character:index.html.twig', array(
-            'game'     => $game,
-            'entities' => $pagination,
+            'game'        => $game,
+            'entities'    => $pagination,
+            'filter_form' => $filterForm->createView(),
         ));
     }
 
