@@ -12,6 +12,7 @@ character:
     empty:                  You don't have any character created yet.
     new:                    New Character
     edit:                   Edit
+    story_confirmed:        The character story has been confirmed.
     created:                Your character has been created.
     updated:                Your character has been updated.
 

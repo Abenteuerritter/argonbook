@@ -100,7 +100,7 @@ class CharacterController extends Controller
         ));
     }
 
-    public function confirmStoryAction(Character $character)
+    public function confirmStoryAction(Character $character, Request $request)
     {
         if (!$character->isStoryNotConfirmed()) {
             return $this->createNotFoundException(
@@ -108,8 +108,45 @@ class CharacterController extends Controller
             );
         }
 
+        $form = $this->createForm('character_story_confirm', null, array(
+            'action' => $this->generateUrl('admin_character_confirm_story_update', array('id' => $character->getId())),
+            'method' => 'POST',
+        ));
+
+        $form->add('submit', 'submit');
+
+        if ($request->isMethod('POST')) {
+            $form->handleRequest($request);
+
+            if ($form->isValid()) {
+                $data = $form->getData();
+
+                $characterExperience = new CharacterExperience();
+                $characterExperience->setCharacter($character);
+                $characterExperience->setValue($data['experience']);
+                $characterExperience->setReason(
+                    $this->get('translator')->trans('character.story_confirm_reason', array(), 'admin')
+                );
+
+                $character->setStoryConfirmedAt(new \DateTime());
+                $character->addExperience(
+                    $characterExperience->getValue()
+                );
+
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($characterExperience);
+                $em->flush();
+
+                $request->getSession()->getFlashBag()
+                        ->add('success', 'character.story_confirmed');
+
+                return $this->redirect($this->generateUrl('admin_character'));
+            }
+        }
+
         return $this->render('ArgonGameBundle:Admin\Character:confirmStory.html.twig', array(
             'character' => $character,
+            'form'      => $form->createView(),
         ));
     }
 }

@@ -11,4 +11,6 @@
     <li>{{ character.name }}</li>
     <li class="active">{{ 'character.actions.confirm_story'|trans }}</li>
 </ol>
+{{ include('ArgonGameBundle:Character\\Partial:story.html.twig', {'character': character}) }}
+{{ form(form) }}
 {% endblock %}

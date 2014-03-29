@@ -38,5 +38,8 @@
             <argument type="service" id="argon_game.character_to_username_transformer" />
             <tag name="form.type" alias="character_username" />
         </service>
+        <service id="argon_game.form.character_story_confirm" class="Argon\GameBundle\Form\Character\CharacterStoryConfirmType">
+            <tag name="form.type" alias="character_story_confirm" />
+        </service>
     </services>
 </container>
