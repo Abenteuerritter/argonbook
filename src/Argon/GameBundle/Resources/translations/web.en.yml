@@ -9,10 +9,13 @@ character:
     switch:                 Switch
     skills:                 Skills
     story_placeholder:      What do your character know?
+    story_confirmed:        The character story has been confirmed.
+    story_not_confirmed:    |
+        Your story is not confirmed. Write something for the organizators to
+        check and assign you new experience points.
     empty:                  You don't have any character created yet.
     new:                    New Character
     edit:                   Edit
-    story_confirmed:        The character story has been confirmed.
     created:                Your character has been created.
     updated:                Your character has been updated.
 

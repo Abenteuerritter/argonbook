@@ -8,6 +8,11 @@
 {{ form_start(form) }}
     {{ form_errors(form) }}
     {{ form_row(form.story, {'attr': {'placeholder': 'character.story_placeholder'|trans}}) }}
+    {% if character.storyConfirmedAt is null %}
+        <div class="alert alert-info">{{ 'character.story_not_confirmed'|trans }}</div>
+    {% else %}
+        <div class="alert alert-info">{{ 'character.story_confirmed'|trans }}</div>
+    {% endif %}
     {{ form_rest(form) }}
 {{ form_end(form) }}
 {% endblock %}
