@@ -4,6 +4,8 @@ namespace Argon\GameBundle\Form\Character;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\Form\FormEvents;
+use Symfony\Component\Form\FormEvent;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 class CharacterEditType extends AbstractType
@@ -18,6 +20,21 @@ class CharacterEditType extends AbstractType
             ->add('story', null, array(
                 'required' => false,
             ))
+
+            ->addEventListener(FormEvents::POST_SET_DATA, function(FormEvent $event) {
+                /** @var \Argon\GameBundle\Entity\Character */
+                $character = $event->getData();
+
+                if ($character->getStoryConfirmedAt() === null) {
+                    $event
+                        ->getForm()
+                        ->add('storyDraft', null, array(
+                           'label'    => 'character.story_draft',
+                           'required' => false,
+                        ))
+                    ;
+                }
+            })
         ;
     }
 

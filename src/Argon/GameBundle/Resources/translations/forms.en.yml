@@ -9,6 +9,7 @@ character_ability:
         WIS:                Wisdom
 
 character:
+    story_draft:            Is the story only a draft?
     race_empty_value:       Select your character's race
     submit:                 Create Character
     edit_submit:            Edit Character

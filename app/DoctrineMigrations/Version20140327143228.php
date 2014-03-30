@@ -12,6 +12,7 @@ class Version20140327143228 extends AbstractMigration
         $this->abortIf($this->connection->getDatabasePlatform()->getName() != "mysql", "Migration can only be executed safely on 'mysql'.");
 
         $this->addSql("ALTER TABLE pj ADD story_confirmed_at DATETIME DEFAULT NULL");
+        $this->addSql("ALTER TABLE pj ADD story_draft TINYINT(1) NOT NULL");
     }
 
     public function down(Schema $schema)
@@ -19,5 +20,6 @@ class Version20140327143228 extends AbstractMigration
         $this->abortIf($this->connection->getDatabasePlatform()->getName() != "mysql", "Migration can only be executed safely on 'mysql'.");
 
         $this->addSql("ALTER TABLE pj DROP story_confirmed_at");
+        $this->addSql("ALTER TABLE pj DROP story_draft");
     }
 }

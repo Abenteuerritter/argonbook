@@ -67,6 +67,11 @@ class Character extends GameProvider implements UserInterface, ParticipantInterf
     protected $story;
 
     /**
+     * @var boolean
+     */
+    protected $storyDraft = false;
+
+    /**
      * @var \DateTime
      */
     protected $storyConfirmedAt;
@@ -344,6 +349,22 @@ class Character extends GameProvider implements UserInterface, ParticipantInterf
     }
 
     /**
+     * @param boolean $draft
+     */
+    public function setStoryDraft($draft)
+    {
+        $this->storyDraft = $draft;
+    }
+
+    /**
+     * @return boolean
+     */
+    public function getStoryDraft()
+    {
+        return $this->storyDraft;
+    }
+
+    /**
      * @param \DateTime $confirmedAt
      */
     public function setStoryConfirmedAt(\DateTime $confirmedAt)
@@ -365,6 +386,7 @@ class Character extends GameProvider implements UserInterface, ParticipantInterf
     public function isStoryNotConfirmed()
     {
         return $this->getStory() !== null &&
+               $this->getStoryDraft() === false &&
                $this->getStoryConfirmedAt() === null;
     }
 }
