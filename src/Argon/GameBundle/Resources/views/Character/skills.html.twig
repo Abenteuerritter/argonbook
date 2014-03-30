@@ -43,7 +43,13 @@
                 <td>
                     <div class="input-group">
                         <span id="{{ skill.slug }}_level" class="input-group-addon">{{ characterSkill.vars.value.level }}</span>
-                        {{ form_widget(characterSkill.newLevel, {'attr': {'data-level': characterSkill.vars.value.level|default(0), 'data-max': skill.max|default(-1)}}) }}
+                        {{
+                            form_widget(characterSkill.newLevel, {'attr': {
+                                'data-level' : characterSkill.vars.value.level|default(0),
+                                'data-max'   : skill.max|default(-1),
+                                'data-price' : characterSkill.vars.value.price
+                            }})
+                        }}
                     </div>
                     {{ form_errors(characterSkill.newLevel) }}
                 </td>
@@ -64,9 +70,29 @@
 {{ parent() }}
 <script type="text/javascript">
     $.fn.skillLevel = function(experience, available) {
-        var total = 0;
+        var elements = this;
 
-        return this.each(function() {
+        function updateTotal() {
+            var total = 0;
+
+            elements.each(function() {
+                var element = $(this);
+                var level   = element.val() === "" ? 0 : parseInt(element.val());
+                var price   = parseInt(element.attr('data-price'));
+
+                total += level * price;
+            });
+
+            $('#progress')
+                .html(total)
+                .parent().css('width', Math.round((total * 100) / experience).toString() + '%');
+
+            if (total >= available) {
+                //
+            }
+        };
+
+        elements.each(function() {
             var element = $(this).hide();
             var elevel  = element.parent().find('span');
 
@@ -77,14 +103,12 @@
                 return '<button class="btn btn-default"><span class="glyphicon glyphicon-chevron-' + dir + '"></span></button>';
             }
 
-            var down = $(buttonHTML('down')).click(function () { update(-1); return false; });
-            var up   = $(buttonHTML('up')).click(function() { update(+1); return false; });
+            var down = $(buttonHTML('down')).click(function () { update(-1); updateTotal(); return false; });
+            var up   = $(buttonHTML('up')).click(function() { update(+1); updateTotal(); return false; });
 
             var buttons = $('<span class="input-group-btn"></span>').append(up).append(down);
 
             function update(modifier) {
-                total += modifier;
-
                 var level = element.val() === "" ? 0 : parseInt(element.val());
                 var buy   = level + 1 * modifier;
                 var next  = min + buy;
@@ -94,20 +118,16 @@
 
                 element.val(buy);
                 elevel.html(next);
-
-                $('#progress')
-                    .html(total)
-                    .parent().css('width', Math.round((total * 100) / experience).toString() + '%');
-
-                if (total >= available) {
-                    //
-                }
             }
 
             element.parent().append(buttons);
 
             update(0);
         });
+
+        updateTotal();
+
+        return elements;
     };
     $(function() {
         $('input[type="number"]').skillLevel(
