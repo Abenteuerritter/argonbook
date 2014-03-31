@@ -5,7 +5,7 @@ imports:
 parameters:
     project:
         name:        argonbook
-        version:     0.12
+        version:     0.13
 
 framework:
     #esi:             ~
