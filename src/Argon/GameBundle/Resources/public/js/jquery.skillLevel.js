@@ -16,13 +16,10 @@
                 total += level * price;
             });
 
-            $('#progress')
-                .html(total)
-                .parent().css('width', Math.round((total * 100) / experience).toString() + '%');
-
-            if (total >= available) {
-                //
-            }
+            // While .trigger() will operate on all elements matched by the
+            // jQuery object, .triggerHandler() only affects the first matched
+            // element.
+            elements.triggerHandler('update-total', [total, experience]);
         };
 
         elements.each(function() {

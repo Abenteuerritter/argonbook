@@ -12,8 +12,8 @@
                 <div class="progress-bar progress-bar-success" style="width: {{ ((character.skillsExperience * 100) / character.experience)|round }}%">
                     <span class="sr-only">{{ character.skillsExperience }}</span>
                 </div>
-                <div class="progress-bar progress-bar-info" style="width: 0%">
-                    <span class="sr-only" id="progress">0</span>
+                <div class="progress-bar progress-bar-info progress-level" style="width: 0%">
+                    <span class="sr-only">0</span>
                 </div>
             </div>
             {{ form_widget(form.submit, {'attr': {'class': 'pull-right'}}) }}
@@ -81,10 +81,14 @@
 <script type="text/javascript">
     $(function() {
         $('.character-info').affixTop();
-        $('input[type="number"]').skillLevel(
-            {{ character.experience|default(0) }},
-            {{ character.availableExperience|default(0) }}
-        );
+        $('input[type="number"]')
+            .on('update-total', function(event, progress, total) {
+                $('.character-info .progress-level')
+                    .css('width', Math.round((progress * 100) / total).toString() + '%')
+                    .find('span').html(progress);
+            })
+            .skillLevel({{ character.experience|default(0) }}, {{ character.availableExperience|default(0) }})
+        ;
     });
 </script>
 {% endblock %}
