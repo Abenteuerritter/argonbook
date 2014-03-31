@@ -91,9 +91,9 @@
                 $('.character-info .progress-level')
                     .css('width', Math.round((progress * 100) / total).toString() + '%')
                     .find('span').html(progress);
-                $('.character-info .experience-available').html(total - progress);
+                $('.character-info .experience-available').html(total - progress - {{ character.skillsExperience|default(0) }});
             })
-            .skillLevel({{ character.experience|default(0) }}, {{ character.availableExperience|default(0) }})
+            .skillLevel({{ character.experience|default(0) }})
         ;
     });
 </script>

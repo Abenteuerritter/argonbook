@@ -2,7 +2,7 @@
  * ArgonBook game character skill level.
  */
 ;(function($, window, undefined) {
-    $.fn.skillLevel = function(experience, available) {
+    $.fn.skillLevel = function(experience) {
         var elements = this;
 
         function updateTotal() {
