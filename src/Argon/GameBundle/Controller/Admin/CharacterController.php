@@ -126,12 +126,15 @@ class CharacterController extends Controller
             if ($form->isValid()) {
                 $data = $form->getData();
 
+                if (empty($data['reason'])) {
+                    $data['reason'] = $this->get('translator')
+                        ->trans('character.story_confirm_reason', array(), 'admin');
+                }
+
                 $characterExperience = new CharacterExperience();
                 $characterExperience->setCharacter($character);
                 $characterExperience->setValue($data['experience']);
-                $characterExperience->setReason(
-                    $this->get('translator')->trans('character.story_confirm_reason', array(), 'admin')
-                );
+                $characterExperience->setReason($data['reason']);
 
                 $character->setStoryConfirmedAt(new \DateTime());
                 $character->addExperience(

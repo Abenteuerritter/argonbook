@@ -15,7 +15,12 @@ class CharacterStoryConfirmType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('experience', 'number')
+            ->add('experience', 'number', array(
+                'required' => true,
+            ))
+            ->add('reason', 'textarea', array(
+                'required' => false,
+            ))
         ;
     }
 
