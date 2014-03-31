@@ -24,7 +24,7 @@
 
         elements.each(function() {
             var element = $(this).hide();
-            var elevel  = element.parent().find('span');
+            var elevel  = element.parent().find('span.level');
 
             var min = parseInt(element.attr('data-level'));
             var max = parseInt(element.attr('data-max'));
@@ -44,10 +44,14 @@
                 var next  = min + buy;
 
                 down.toggleClass('disabled', next <= min);
-                up.toggleClass('disabled', next >= max);
+                if (max >= 0) {
+                    up.toggleClass('disabled', next >= max);
+                }
 
                 element.val(buy);
                 elevel.html(next);
+
+                element.trigger('update', [buy, [min, max]]);
             }
 
             element.parent().append(buttons);

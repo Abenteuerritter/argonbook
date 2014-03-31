@@ -52,7 +52,7 @@
                 <td>{{ skill }}</td>
                 <td>
                     <div class="input-group">
-                        <span id="{{ skill.slug }}_level" class="input-group-addon">{{ characterSkill.vars.value.level }}</span>
+                        <span id="{{ skill.slug }}_level" class="input-group-addon level">{{ characterSkill.vars.value.level }}</span>
                         {{
                             form_widget(characterSkill.newLevel, {'attr': {
                                 'data-level' : characterSkill.vars.value.level|default(0),
@@ -87,6 +87,16 @@
     $(function() {
         $('.character-info').affixTop();
         $('input[type="number"]')
+            .on('update', function(event, level, limits) {
+                var element = $(this);
+                var isMax   = limits[1] >= 0 && level + limits[0] >= limits[1];
+
+                element.parents('tr').toggleClass('warning', isMax);
+
+                if (isMax) {
+                    element.parent().find('span.level').html('<b>{{ 'character_skill.max'|trans }}</b>');
+                }
+            })
             .on('update-total', function(event, progress, total) {
                 $('.character-info .progress-level')
                     .css('width', Math.round((progress * 100) / total).toString() + '%')
