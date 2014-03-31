@@ -45,6 +45,22 @@
         </div>
     </div>
 </div>
+<div class="row">
+    <div class="col-md-{{ character.note ? 6 : 12 }}">
+        <div class="panel panel-default">
+            <div class="panel-heading">{{ 'character.story'|trans }}</div>
+            <div class="panel-body">{{ character.story|nl2br }}</div>
+        </div>
+    </div>
+    {% if character.note %}
+        <div class="col-md-6">
+            <div class="panel panel-default">
+                <div class="panel-heading">{{ 'character.note'|trans }}</div>
+                <div class="panel-body">{{ character.note|nl2br }}</div>
+            </div>
+        </div>
+    {% endif %}
+</div>
 <div class="panel panel-default">
     <div class="panel-heading">{{ 'character.experience'|trans }}</div>
     <table class="table table-striped">
