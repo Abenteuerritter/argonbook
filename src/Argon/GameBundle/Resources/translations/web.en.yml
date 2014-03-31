@@ -8,6 +8,7 @@ character:
     experience:             Experience
     switch:                 Switch
     skills:                 Skills
+    note:                   Notes of the Director
     story_placeholder:      What do your character know?
     story_confirmed:        The character story has been confirmed.
     story_not_confirmed:    |

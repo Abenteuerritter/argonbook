@@ -9,6 +9,12 @@ character:
         confirm_story:      Confirm Story
     story_confirm_reason:   Good Story!
 
+character_confirm_story:
+    note:                   Notes of the Director
+    note_help:              |
+      This will be shown to the player to add more information to the story.
+    reason_placeholder:     Why are you giving this experience?
+
 character_ability:
     empty:                  There are no abilities.
 

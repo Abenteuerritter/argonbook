@@ -76,6 +76,11 @@ class Character extends GameProvider implements UserInterface, ParticipantInterf
      */
     protected $storyConfirmedAt;
 
+    /**
+     * @var string
+     */
+    protected $note;
+
     public function __construct()
     {
         $this->abilities = new ArrayCollection();
@@ -388,5 +393,21 @@ class Character extends GameProvider implements UserInterface, ParticipantInterf
         return $this->getStory() !== null &&
                $this->getStoryDraft() === false &&
                $this->getStoryConfirmedAt() === null;
+    }
+
+    /**
+     * @param string $note
+     */
+    public function setNote($note)
+    {
+        $this->note = $note;
+    }
+
+    /**
+     * @return string
+     */
+    public function getNote()
+    {
+        return $this->note;
     }
 }

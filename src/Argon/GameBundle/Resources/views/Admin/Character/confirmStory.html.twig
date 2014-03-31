@@ -12,5 +12,19 @@
     <li class="active">{{ 'character.actions.confirm_story'|trans }}</li>
 </ol>
 {{ include('ArgonGameBundle:Character\\Partial:story.html.twig', {'character': character}) }}
-{{ form(form) }}
+{{ form_start(form) }}
+    {{ form_errors(form) }}
+
+    {{
+        form_row(form.note, {
+            'label'     : 'character_confirm_story.note'|trans,
+            'help_text' : 'character_confirm_story.note_help'|trans
+        })
+    }}
+
+    {{ form_row(form.experience) }}
+    {{ form_row(form.reason, {'attr': {'placeholder': 'character_confirm_story.reason_placeholder'|trans}}) }}
+
+    {{ form_rest(form) }}
+{{ form_end(form) }}
 {% endblock %}

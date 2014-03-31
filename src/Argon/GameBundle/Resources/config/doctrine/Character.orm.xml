@@ -44,5 +44,6 @@
         <field name="story" column="story" type="text" nullable="true" />
         <field name="storyDraft" column="story_draft" type="boolean" />
         <field name="storyConfirmedAt" column="story_confirmed_at" type="datetime" nullable="true" />
+        <field name="note" column="note" type="text" nullable="true" />
     </entity>
 </doctrine-mapping>

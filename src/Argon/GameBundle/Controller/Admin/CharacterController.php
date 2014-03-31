@@ -136,6 +136,7 @@ class CharacterController extends Controller
                 $characterExperience->setValue($data['experience']);
                 $characterExperience->setReason($data['reason']);
 
+                $character->setNote($data['note']);
                 $character->setStoryConfirmedAt(new \DateTime());
                 $character->addExperience(
                     $characterExperience->getValue()
