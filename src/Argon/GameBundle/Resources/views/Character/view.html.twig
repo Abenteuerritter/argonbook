@@ -86,7 +86,13 @@
         </tbody>
         <tfoot>
             <tr>
-                <td colspan="3" class="text-right"><strong>{{ character.availableExperience }}</strong></td>
+                <td colspan="3" class="text-right">
+                    <ul class="form-control-static list-inline">
+                        <li><big>{{ character.skillsExperience|default(0) }}</big> {{ 'character_experience.stats.used_skills'|trans }}</li>
+                        <li><big>{{ character.availableExperience|default(0) }}</big> {{ 'character_experience.stats.available'|trans }}</li>
+                        <li><big>{{ character.experience|default(0) }}</big> {{ 'character_experience.stats.total'|trans }}</li>
+                    </ul>
+                </td>
             </tr>
         </tfoot>
     </table>

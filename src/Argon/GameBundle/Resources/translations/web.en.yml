@@ -26,6 +26,7 @@ character_experience:
     at:                     Date
     reason:                 Reason
     stats:
+        used_skills:        used in skills
         available:          available
         total:              total
 
