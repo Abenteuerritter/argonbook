@@ -5,15 +5,20 @@
 {% block title %}{{ parent() }} - {{ 'character.title'|trans }} - {{ character }} - {{ 'character.skills'|trans }}{% endblock %}
 
 {% block content %}
-<div class="progress">
-  <div class="progress-bar progress-bar-success" style="width: {{ ((character.skillsExperience * 100) / character.experience)|round }}%">
-    <span class="sr-only">{{ character.skillsExperience }}</span>
-  </div>
-  <div class="progress-bar progress-bar-info" style="width: 0%">
-    <span class="sr-only" id="progress">0</span>
-  </div>
-</div>
 {{ form_start(form) }}
+    <div class="character-info panel panel-default">
+        <div class="panel-body">
+            <div class="progress">
+                <div class="progress-bar progress-bar-success" style="width: {{ ((character.skillsExperience * 100) / character.experience)|round }}%">
+                    <span class="sr-only">{{ character.skillsExperience }}</span>
+                </div>
+                <div class="progress-bar progress-bar-info" style="width: 0%">
+                    <span class="sr-only" id="progress">0</span>
+                </div>
+            </div>
+            {{ form_widget(form.submit, {'attr': {'class': 'pull-right'}}) }}
+        </div>
+    </div>
     {{ form_errors(form) }}
     <table class="table table-striped">
         <thead>
@@ -68,11 +73,14 @@
 
 {% block javascripts %}
 {{ parent() }}
-{% javascripts '@ArgonGameBundle/Resources/public/js/jquery.skillLevel.js' filter='?closure' %}
+{% javascripts '@ArgonGameBundle/Resources/public/js/jquery.skillLevel.js'
+               '@ArgonGameBundle/Resources/public/js/jquery.affixTop.js'
+        filter='?closure' %}
     <script src="{{ asset_url }}"></script>
 {% endjavascripts %}
 <script type="text/javascript">
     $(function() {
+        $('.character-info').affixTop();
         $('input[type="number"]').skillLevel(
             {{ character.experience|default(0) }},
             {{ character.availableExperience|default(0) }}
