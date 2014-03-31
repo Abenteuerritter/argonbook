@@ -25,6 +25,9 @@ character_experience:
     created:                The character has new experience.
     at:                     Date
     reason:                 Reason
+    stats:
+        available:          available
+        total:              total
 
 character_skill:
     updated:                Your skills were updated.

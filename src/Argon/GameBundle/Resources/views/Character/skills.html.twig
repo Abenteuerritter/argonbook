@@ -17,6 +17,11 @@
                 </div>
             </div>
             {{ form_widget(form.submit, {'attr': {'class': 'pull-right'}}) }}
+            <ul class="list-inline">
+                <li><span class="glyphicon glyphicon-signal"></span></li>
+                <li><big class="experience-available">{{ character.availableExperience|default(0) }}</big> {{ 'character_experience.stats.available'|trans }}</li>
+                <li><big>{{ character.experience|default(0) }}</big> {{ 'character_experience.stats.total'|trans }}</li>
+            </ul>
         </div>
     </div>
     {{ form_errors(form) }}
@@ -86,6 +91,7 @@
                 $('.character-info .progress-level')
                     .css('width', Math.round((progress * 100) / total).toString() + '%')
                     .find('span').html(progress);
+                $('.character-info .experience-available').html(total - progress);
             })
             .skillLevel({{ character.experience|default(0) }}, {{ character.availableExperience|default(0) }})
         ;
