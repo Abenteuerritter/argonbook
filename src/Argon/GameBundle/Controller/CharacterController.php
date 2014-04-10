@@ -6,6 +6,9 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Criteria;
+
 use Argon\GameBundle\Entity\Character;
 use Argon\GameBundle\Entity\CharacterAbility;
 use Argon\GameBundle\Entity\CharacterSkill;
@@ -155,7 +158,7 @@ class CharacterController extends Controller
             throw new AccessDeniedException();
         }
 
-        $characterSkills = array();
+        $characterSkills = new ArrayCollection();
         $skills          = $this->getDoctrine()
                                 ->getRepository('ArgonGameBundle:Skill')
                                 ->findAll();
@@ -173,8 +176,15 @@ class CharacterController extends Controller
                 $characterSkill->setSkill($skill);
             }
 
-            $characterSkills[$skill->getSlug()] = $characterSkill;
+            $characterSkills[] = $characterSkill;
         }
+
+        // {{{ Order By Price
+        $criteria = new Criteria();
+        $criteria->orderBy(array('price' => Criteria::ASC));
+
+        $characterSkills = $characterSkills->matching($criteria);
+        // }}}
 
         $form = $this->createForm('character_skills', array('characterSkills' => $characterSkills), array(
             'action' => $this->generateUrl('character_skills_update', array('slug' => $character->getSlug())),
