@@ -31,7 +31,7 @@
                 {% endif %}
                 <abbr title="{{ character.player.username }}">{{ character.player.name|default(character.player.username) }}</abbr> /
                 {{ character.name }} (
-                    <a href="{{ path('admin_character_experience', {'id': character.id}) }}"><span class="glyphicon glyphicon-signal"></span> {{ character.availableExperience }}/{{ character.experience }}</a>
+                    <a href="{{ path('admin_character_experience', {'id': character.id}) }}"><span class="glyphicon glyphicon-signal"></span> {{ character.skillsExperience }}/{{ character.experience }}</a>
                     <a href="{{ path('admin_character_skill', {'id': character.id}) }}"><span class="glyphicon glyphicon-screenshot"></span> {{ character.skills|length }}</a>
                 )
                 <br>{{ character.race }}

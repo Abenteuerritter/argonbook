@@ -17,7 +17,7 @@
         <tr>
             <td>
                 {{ character.game.info.fullname }} / <a href="{{ path('character_view', {'slug': character.slug}) }}">{{ character.name }}</a> (
-                    <span class="glyphicon glyphicon-signal"></span> {{ character.availableExperience }}/{{ character.experience }}
+                    <span class="glyphicon glyphicon-signal"></span> {{ character.skillsExperience }}/{{ character.experience }}
                 )<br>
                 {{ character.race }}
             </td>
