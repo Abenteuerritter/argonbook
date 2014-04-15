@@ -38,7 +38,7 @@ twig:
 assetic:
     debug:          "%kernel.debug%"
     use_controller: false
-    bundles:        ['ArgonGameBundle']
+    bundles:        ['ArgonWebBundle', 'ArgonGameBundle', 'ArgonNewsBundle']
     java:           "/usr/bin/java"
     filters:
         less:
@@ -51,10 +51,18 @@ assetic:
         yui_css:
             jar: "%kernel.root_dir%/../vendor/yahoo/yuicompressor/yuicompressor-2.4.8.jar"
     assets:
-        jqueryui-js:
+        argonbook_css:
+            inputs:
+                - "%kernel.root_dir%/Resources/less/argonbook.less"
+                - "@ArgonWebBundle/Resources/less/argonbook.less"
+                - "@ArgonGameBundle/Resources/less/argonbook.less"
+                - "@ArgonNewsBundle/Resources/less/argonbook.less"
+            output: css/argonbook.css
+            filters: [less, cssrewrite]
+        jqueryui_js:
             inputs: ["%kernel.root_dir%/../vendor/jquery/jqueryui/ui/jquery-ui.js"]
             output: js/jqueryui.js
-        jqueryui-css:
+        jqueryui_css:
             inputs: ["%kernel.root_dir%/../vendor/jquery/jqueryui/themes/base/*"]
             output: css/jqueryui.css
             filters: [cssrewrite]

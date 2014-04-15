@@ -21,14 +21,7 @@ class CharacterController extends Controller
             throw new AccessDeniedException();
         }
 
-        $player   = $this->getUser();
-        $entities = $this->getDoctrine()
-                         ->getRepository('ArgonGameBundle:Character')
-                         ->findByPlayer($player);
-
-        return $this->render('ArgonGameBundle:Character:index.html.twig', array(
-            'entities' => $entities,
-        ));
+        return $this->render('ArgonGameBundle:Character:index.html.twig');
     }
 
     public function gameAction(Request $request)

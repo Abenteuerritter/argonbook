@@ -1,15 +1,23 @@
 {% trans_default_domain 'FOSUserBundle' %}
 
-<form action="{{ path('fos_user_resetting_send_email') }}" method="POST" class="fos_user_resetting_request" role="form">
-  <div>
-    {% if invalid_username is defined %}
-      <div class="alert alert-danger">{{ 'resetting.request.invalid_username'|trans({'%username%': invalid_username}) }}</div>
-    {% endif %}
-    <div class="form-group">
-      <input type="text" id="username" name="username" placeholder="{{ 'resetting.request.username'|trans }}" required="required" class="form-control">
+<div class="jumbotron jumbotron-title">
+  <div class="container">
+    <h1>{{ 'resetting.request.title'|trans }}</h1>
+  </div>
+</div>
+
+<div class="container">
+  <form action="{{ path('fos_user_resetting_send_email') }}" method="POST" class="fos_user_resetting_request" role="form">
+    <div>
+      {% if invalid_username is defined %}
+        <div class="alert alert-danger">{{ 'resetting.request.invalid_username'|trans({'%username%': invalid_username}) }}</div>
+      {% endif %}
+      <div class="form-group">
+        <input type="text" id="username" name="username" placeholder="{{ 'resetting.request.username'|trans }}" required="required" class="form-control">
+      </div>
     </div>
-  </div>
-  <div>
-    <button type="submit" class="btn btn-primary">{{ 'resetting.request.submit'|trans }}</button>
-  </div>
-</form>
+    <div>
+      <button type="submit" class="btn btn-primary">{{ 'resetting.request.submit'|trans }}</button>
+    </div>
+  </form>
+</div>

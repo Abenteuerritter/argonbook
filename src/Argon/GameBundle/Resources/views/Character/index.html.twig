@@ -1,44 +1,17 @@
 {% set active = 'character' %}
-{% extends 'ArgonWebBundle::layout.html.twig' %}
+{% extends '::layout/twocolumns.html.twig' %}
 {% trans_default_domain 'web' %}
 
 {% block title %}{{ parent() }} - {{ 'character.title'|trans }}{% endblock %}
 
+{% block sections %}
+  <div class="section section-characters">
+    <div class="container">
+      <h1>{{ 'character.title'|trans }}</h1>
+    </div>
+  </div>
+{% endblock %}
+
 {% block content %}
-<table class="table table-striped">
-    <thead>
-        <tr>
-            <th>{{ 'character.info'|trans }}</th>
-            <th class="text-right">&nbsp;</th>
-        </tr>
-    </thead>
-    <tbody>
-    {% for character in entities %}
-        <tr>
-            <td>
-                {{ character.game.info.fullname }} / <a href="{{ path('character_view', {'slug': character.slug}) }}">{{ character.name }}</a> (
-                    <span class="glyphicon glyphicon-signal"></span> {{ character.skillsExperience }}/{{ character.experience }}
-                )<br>
-                {{ character.race }}
-            </td>
-            <td class="text-right">
-                <a href="{{ path('homepage', {'_switch': character.slug}) }}" class="btn btn-link">{{ 'character.switch'|trans }} <span class="glyphicon glyphicon-log-in"></span></a>
-                <a href="{{ path('character_edit', {'slug': character.slug}) }}" class="btn btn-link">{{ 'character.edit'|trans }} <span class="glyphicon glyphicon-edit"></span></a>
-                <a href="{{ path('character_skills', {'slug': character.slug}) }}" class="btn btn-link">{{ 'character.skills'|trans }} <span class="glyphicon glyphicon-screenshot"></span></a>
-            </td>
-        </tr>
-    {% else %}
-        <tr class="warning">
-            <td colspan="2">{{ 'character.empty'|trans }}</td>
-        </tr>
-    {% endfor %}
-    </tbody>
-    <tfoot>
-        <tr>
-            <td colspan="2">
-                <a href="{{ path('character_game') }}" class="btn btn-default">{{ 'character.new'|trans }}</a>
-            </td>
-        </tr>
-    </tfoot>
-</table>
+  {{ render(controller('ArgonGameBundle:Block:characters')) }}
 {% endblock %}

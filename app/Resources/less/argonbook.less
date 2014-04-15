@@ -1,52 +1,149 @@
+/*!
+ * Argonbook
+ */
 
-.ability-all .glyphicon-asterisk { color: #00FF00; }
-.ability-str .glyphicon-asterisk { color: #FF0000; }
-.ability-dex .glyphicon-asterisk { color: #FFFF33; }
-.ability-wis .glyphicon-asterisk { color: #00CCFF; }
+// Core variables and mixins
+@import "variables.less";
+@import "../../../vendor/twbs/bootstrap/less/mixins.less";
 
-.character-info.affix {
-  .border-top-radius(0);
-  border-top-style: none;
-  top: 0;
-  width: inherit;
-  z-index: 1030;
+
+html, body {
+  height: 100%;
 }
 
-.article {
-  position: relative;
-  padding: 15px;
-  margin: 0 -15px 15px;
-  background-color: #fafafa;
-  border-color: #e5e5e5 #eee #eee;
-  border-style: solid;
-  border-width: 1px 0;
-  box-shadow: inset 0 3px 6px rgba(0,0,0,.05);
-}
+//
+// Cover
+// --------------------------------------------------
 
-.article .footer {
-  margin: 15px -15px -15px -15px;
-  padding: 9px 14px;
-  background-color: #f7f7f9;
-  border-top: 1px solid #e1e1e8;
+.wrapper {
+  display: table;
+  width: 100%;
+  height: 100%; /* For at least Firefox */
+  min-height: 100%;
+
+  .wrapper-inner {
+    display: table-cell;
+    vertical-align: top;
+
+    .container {
+      margin-right: auto;
+      margin-left: auto;
+    }
+  }
 }
 
 @media (min-width: 768px) {
-  .article {
-    margin-right: 0;
-    margin-left: 0;
-    background-color: #fff;
-    border-color: #ddd;
-    border-width: 1px;
-    border-radius: 4px;
-    box-shadow: none;
-  }
-  .article .footer {
-    border-width: 1px;
-    border-bottom-right-radius: 4px;
-    border-bottom-left-radius: 4px;
+  .wrapper .wrapper-inner {
+    vertical-align: middle; /* Start the vertical centering */
+
+    .container {
+      width: 100%; /* Must be percentage or pixels for horizontal alignment */
+    }
   }
 }
 
-.article h3 {
-  margin-top: 0;
+@media (min-width: 992px) {
+  .wrapper .wrapper-inner {
+    .container {
+      width: 440px;
+    }
+  }
+}
+
+
+//
+// Header
+// --------------------------------------------------
+
+.page-header {
+  margin: 0;
+  padding: 0;
+  .nav {
+    > li {
+      float: left;
+
+      > a {
+        padding: 20px;
+      }
+      + li {
+        margin-left: 2px;
+      }
+
+      // Active state
+      &.active > a {
+        &,
+        &:hover,
+        &:focus {
+          color: @nav-pills-active-link-hover-color;
+          background-color: @nav-pills-active-link-hover-bg;
+        }
+      }
+    }
+  }
+}
+
+
+//
+// Login Form
+// --------------------------------------------------
+// The login form that will enclose the
+// username and password fields to glue
+// them toguether
+
+.fos_user_security_login .form-control {
+  position: relative;
+  font-size: 16px;
+  height: auto;
+  padding: 10px;
+  box-sizing: border-box;
+}
+.fos_user_security_login .form-control:focus {
+  z-index: 2;
+}
+.fos_user_security_login input[type="text"] {
+  margin-bottom: -1px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+.fos_user_security_login input[type="password"] {
+  margin-bottom: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+.fos_user_security_login .checkbox {
+  margin-bottom: 10px;
+  font-weight: normal;
+}
+.fos_user_security_login .list-group {
+  margin-top: 20px;
+  margin-bottom: 0;
+}
+
+
+//
+// Sections
+// --------------------------------------------------
+
+.section {
+  padding: @section-padding;
+  background-color: @section-bg;
+
+  p {
+    font-size: @section-font-size;
+    font-weight: 200;
+  }
+
+  .container {
+    max-width: 100%;
+  }
+
+  @media screen and (min-width: @screen-sm-min) {
+    padding-top:    (@section-padding * 1.6);
+    padding-bottom: (@section-padding * 1.6);
+
+    .container & {
+      padding-left:  (@section-padding * 2);
+      padding-right: (@section-padding * 2);
+    }
+  }
 }

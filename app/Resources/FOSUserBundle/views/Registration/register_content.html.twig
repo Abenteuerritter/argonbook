@@ -1,8 +1,17 @@
 {% trans_default_domain 'FOSUserBundle' %}
 
-<form action="{{ path('fos_user_registration_register') }}" {{ form_enctype(form) }} method="POST" class="fos_user_registration_register">
-  {{ form_widget(form) }}
-  <div>
-    <button type="submit" class="btn btn-primary">{{ 'registration.submit'|trans }}</button>
+<div class="jumbotron jumbotron-title">
+  <div class="container">
+    <h1>{{ 'registration.title'|trans }}</h1>
   </div>
-</form>
+</div>
+
+<div class="container">
+  <form action="{{ path('fos_user_registration_register') }}" {{ form_enctype(form) }} method="POST" class="fos_user_registration_register" role="form">
+    {{ form_rest(form) }}
+    <div>
+      <button type="submit" class="btn btn-primary">{{ 'registration.submit'|trans }}</button>
+      <a href="{{ path("fos_user_resetting_request") }}" class="btn btn-link">{{ 'layout.reset_password'|trans }}</a>
+    </div>
+  </form>
+</div>

@@ -17,10 +17,11 @@ class BlockController extends Controller
         ));
     }
 
-    public function postAction(NewsPost $post)
+    public function postAction(NewsPost $post, $position = null)
     {
         return $this->render('ArgonNewsBundle:Block:post.html.twig', array(
-            'post' => $post,
+            'post'     => $post,
+            'position' => $position,
         ));
     }
 

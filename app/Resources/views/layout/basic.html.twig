@@ -1,0 +1,55 @@
+{% extends "::layout.html.twig" %}
+
+{% block body %}
+  {#<div class="locale_switcher">{{ locale_switcher() }}</div>#}
+
+  <div class="page-header">
+    <div class="container">
+      <h3 class="pull-left">
+        <a href="{{ path('homepage') }}">{{ 'ArgonBook' }}</a>
+        <small>{{ 'Alternate Reality Games Oriented Network' }}</small>
+      </h3>
+      <ul class="nav pull-right">
+        <li><a href="{{ path('homepage') }}">{{ 'layout.home'|trans({}, 'ArgonWebBundle') }}</a></li>
+        {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+          {% if is_granted('ROLE_USER') %}
+            <li><a href="{{ path('fos_user_profile_show') }}">{{ 'layout.profile'|trans({}, 'FOSUserBundle') }}</a></li>
+          {% endif %}
+          {% if is_granted("ROLE_ADMIN") %}
+            <li><a href="{{ path('admin_dashboard') }}">{{ 'layout.admin'|trans({}, 'ArgonWebBundle') }}</a></li>
+          {% endif %}
+          {% if is_granted('ROLE_PREVIOUS_ADMIN') %}
+            <li><a href="{{ path('homepage', {'_switch': '_exit'}) }}">{{ 'layout.switch_exit'|trans({}, 'ArgonWebBundle') }}</a></li>
+          {% else %}
+            <li><a href="{{ path('fos_user_security_logout') }}">{{ 'layout.logout'|trans({}, 'FOSUserBundle') }}</a></li>
+          {% endif %}
+        {% else %}
+          <li><a href="{{ path('fos_user_security_login') }}">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a></li>
+        {% endif %}
+      </ul>
+    </div>
+  </div>
+
+  {% for flashClass, flashMessages in app.session.flashbag %}
+    {% for flashMessage in flashMessages %}
+      <div class="alert alert-{{ flashClass }}">{{ flashMessage|trans }}</div>
+    {% endfor %}
+  {% endfor %}
+
+  {% block wrapper %}
+    {% block content %}{% endblock %}
+  {% endblock %}
+{% endblock %}
+
+{#
+{% block wrapper %}
+<div class="row">
+  <div class="col-xs-12 col-sm-9">
+    {% block content %}{% endblock %}
+  </div>
+  <div class="col-xs-12 col-sm-3">
+    {% include('ArgonWebBundle::sidebar.html.twig') %}
+  </div>
+</div>
+{% endblock %}
+#}

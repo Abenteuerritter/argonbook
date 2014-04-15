@@ -1,0 +1,22 @@
+{% extends "::layout.html.twig" %}
+
+{% block body %}
+  {% for flashClass, flashMessages in app.session.flashbag %}
+    {% for flashMessage in flashMessages %}
+      <div class="alert alert-{{ flashClass }}">{{ flashMessage|trans }}</div>
+    {% endfor %}
+  {% endfor %}
+
+  {% block wrapper %}
+    <div class="wrapper">
+      <div class="wrapper-inner">
+        <div class="container">
+          <ul class="pager">
+            <li class="previous"><a href="{{ path('homepage') }}">&larr; {{ 'layout.go_back'|trans({}, 'ArgonWebBundle') }}</a></li>
+          </ul>
+          {% block content %}{% endblock %}
+        </div>
+      </div>
+    </div>
+  {% endblock %}
+{% endblock %}

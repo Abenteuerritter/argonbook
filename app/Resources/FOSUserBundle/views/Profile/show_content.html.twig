@@ -1,13 +1,50 @@
 {% trans_default_domain 'FOSUserBundle' %}
 
-<div class="panel panel-default fos_user_user_show">
-  <div class="panel-heading">{{ 'profile.show.logged_in_as'|trans({'%username%': user.username}) }}</div>
-  <ul class="list-group">
-    <li class="list-group-item"><a href="{{ path('character') }}">{{ 'profile.show.view_characters'|trans }}</a></li>
+<div class="jumbotron jumbotron-title">
+  <div class="container">
+    <h1>{{ 'profile.title'|trans }}</h1>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 col-lg-8">
+      <div class="panel panel-default">
+        <div class="panel-heading">{{ 'layout.logged_in_as'|trans({'%username%': user.username}) }}
+          <div class="pull-right">
+            <a href="{{ path('fos_user_change_password') }}">{{ 'profile.actions.change_password'|trans }} <span class="glyphicon glyphicon-eye-close"></span></a>
+            <a href="{{ path('fos_user_profile_edit') }}">{{ 'profile.actions.edit'|trans }} <span class="glyphicon glyphicon-edit"></span></a>
+          </div>
+        </div>
+        <div class="panel-body">
+          <dl class="dl-horizontal">
+            <dt>{{ 'profile.show.username'|trans }}</dt>
+            <dd>{{ user.username }}</dd>
+            <dt>{{ 'profile.show.email'|trans }}</dt>
+            <dd>{{ user.email }}</dd>
+          </dl>
+        </div>
+      </div>
+    </div>
     {% if is_granted("ROLE_ADMIN") %}
-        <li class="list-group-item"><a href="{{ path('admin_dashboard') }}">{{ 'profile.show.goto_admin'|trans }}</a></li>
+    <div class="col-md-4 col-lg-4">
+      <div class="panel panel-default">
+        <div class="panel-heading">{{ 'profile.admin.title'|trans }}
+          <a href="{{ path('admin_dashboard') }}" class="pull-right">{{ 'profile.admin.go'|trans }} <span class="glyphicon glyphicon-share-alt"></span></a>
+        </div>
+        <div class="panel-body">
+          <dl class="dl-horizontal">
+            <dt>{{ 'profile.admin.version'|trans }}</dt>
+            <dd>{{ project.version }}</dd>
+          </dl>
+        </div>
+      </div>
+    </div>
     {% endif %}
-    <li class="list-group-item"><a href="{{ path('fos_user_change_password') }}">{{ 'profile.show.change_password'|trans }}</a></li>
-    <li class="list-group-item"><a href="{{ path('fos_user_profile_edit') }}">{{ 'profile.show.edit_profile'|trans }}</a></li>
-  </ul>
+  </div>
+
+  <div class="panel panel-default">
+    <div class="panel-heading">{{ 'profile.characters.title'|trans }}</div>
+    {{ render(controller('ArgonGameBundle:Block:characters')) }}
+  </div>
 </div>

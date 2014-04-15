@@ -1,0 +1,19 @@
+// Core variables and mixins
+@import "../../../../../app/Resources/less/variables.less";
+@import "../../../../../vendor/twbs/bootstrap/less/mixins.less";
+
+// Colors for the Abilities
+.ability-all .glyphicon-asterisk { color: #00FF00; }
+.ability-str .glyphicon-asterisk { color: #FF0000; }
+.ability-dex .glyphicon-asterisk { color: #FFFF33; }
+.ability-wis .glyphicon-asterisk { color: #00CCFF; }
+
+// Affix of the Character Information
+// in the "Buy Skills" screen
+.character-info.affix {
+  .border-top-radius(0);
+  border-top-style: none;
+  width: inherit;
+  z-index: 1030;
+  top: 0;
+}

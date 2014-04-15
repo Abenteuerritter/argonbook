@@ -1,8 +1,17 @@
 {% trans_default_domain 'FOSUserBundle' %}
 
-<form action="{{ path('fos_user_profile_edit') }}" {{ form_enctype(form) }} method="POST" class="fos_user_profile_edit" role="form">
-  {{ form_widget(form) }}
-  <div>
-    <button type="submit" class="btn btn-primary">{{ 'profile.edit.submit'|trans }}</button>
+<div class="jumbotron jumbotron-title">
+  <div class="container">
+    <h1>{{ 'profile.edit.title'|trans }}</h1>
   </div>
-</form>
+</div>
+
+<div class="container">
+  <form action="{{ path('fos_user_profile_edit') }}" {{ form_enctype(form) }} method="POST" class="fos_user_profile_edit" role="form">
+    {{ form_rest(form) }}
+    <div>
+      <button type="submit" class="btn btn-primary">{{ 'profile.edit.submit'|trans }}</button>
+      <a href="{{ path('fos_user_profile_show') }}" class="btn btn-link">{{ 'profile.edit.cancel'|trans }}</a>
+    </div>
+  </form>
+</div>
