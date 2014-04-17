@@ -14,6 +14,7 @@
           <ul class="pager">
             <li class="previous"><a href="{{ path('homepage') }}">&larr; {{ 'layout.go_back'|trans({}, 'ArgonWebBundle') }}</a></li>
           </ul>
+          {% block sections %}{% endblock %}
           {% block content %}{% endblock %}
         </div>
       </div>
