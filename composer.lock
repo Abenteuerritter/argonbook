@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "d0ba63ddf8335641534356eed2fa0f02",
+    "hash": "83f988888a7fd511e01eb87231c8c8c8",
     "packages": [
         {
             "name": "braincrafted/bootstrap-bundle",
@@ -1374,16 +1374,16 @@
         },
         {
             "name": "kriswallsmith/assetic",
-            "version": "v1.2.0",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/kriswallsmith/assetic.git",
-                "reference": "df991c124a2212371443b586a1be767500036dee"
+                "reference": "0db20de988b7adc79375d33b2a566183af83c930"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kriswallsmith/assetic/zipball/df991c124a2212371443b586a1be767500036dee",
-                "reference": "df991c124a2212371443b586a1be767500036dee",
+                "url": "https://api.github.com/repos/kriswallsmith/assetic/zipball/0db20de988b7adc79375d33b2a566183af83c930",
+                "reference": "0db20de988b7adc79375d33b2a566183af83c930",
                 "shasum": ""
             },
             "require": {
@@ -1444,7 +1444,7 @@
                 "compression",
                 "minification"
             ],
-            "time": "2014-10-14 14:45:32"
+            "time": "2014-11-25 17:50:26"
         },
         {
             "name": "lunetics/locale-bundle",
@@ -2351,6 +2351,7 @@
         "doctrine/migrations": 20,
         "doctrine/doctrine-migrations-bundle": 20,
         "google/closure-compiler": 20,
+        "kriswallsmith/assetic": 20,
         "friendsofsymfony/user-bundle": 20
     },
     "prefer-stable": false,

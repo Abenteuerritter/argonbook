@@ -64,6 +64,7 @@
         "twig/extensions": "~1.0",
         "google/closure-compiler": "dev-master",
         "yahoo/yuicompressor": "~2.4",
+        "kriswallsmith/assetic": "~1.2@dev",
         "symfony/assetic-bundle": "~2.5",
         "symfony/swiftmailer-bundle": "~2.3",
         "symfony/monolog-bundle": "~2.6",
