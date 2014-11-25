@@ -61,7 +61,7 @@ assetic:
         jqueryui_js:
             inputs:
                 - "%kernel.root_dir%/../vendor/jquery/jqueryui/jquery-ui.js"
-            output: js/jqueryui.js
+            output: js/jquery-ui.js
         jqueryui_css:
             inputs:
                 - "%kernel.root_dir%/../vendor/jquery/jqueryui/jquery-ui.css"
