@@ -42,7 +42,6 @@ assetic:
     java:           "/usr/bin/java"
     filters:
         less:
-            bin:        "/usr/bin/less"
             apply_to:   "\\.less$"
             node_paths: ["/usr/local/lib/node_modules", "/usr/lib/node_modules/"]
         cssrewrite: ~
@@ -60,11 +59,13 @@ assetic:
             output: css/argonbook.css
             filters: [less, cssrewrite]
         jqueryui_js:
-            inputs: ["%kernel.root_dir%/../vendor/jquery/jqueryui/ui/jquery-ui.js"]
-            output: js/jqueryui.js
+            inputs:
+                - "%kernel.root_dir%/../vendor/jquery/jqueryui/jquery-ui.js"
+            output: js/jquery-ui.js
         jqueryui_css:
-            inputs: ["%kernel.root_dir%/../vendor/jquery/jqueryui/themes/base/*"]
-            output: css/jqueryui.css
+            inputs:
+                - "%kernel.root_dir%/../vendor/jquery/jqueryui/jquery-ui.css"
+            output: css/jquery-ui.css
             filters: [cssrewrite]
 
 # Doctrine Configuration

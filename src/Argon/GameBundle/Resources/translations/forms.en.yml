@@ -10,7 +10,7 @@ character_ability:
 
 character:
     story_draft:            Is the story only a draft?
-    race_empty_value:       Select your character's race
+    race_placeholder:       Select your character's race
     submit:                 Create Character
     edit_submit:            Edit Character
 
