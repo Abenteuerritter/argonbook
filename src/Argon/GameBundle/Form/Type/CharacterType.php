@@ -20,7 +20,7 @@ class CharacterType extends AbstractType
                 'type' => 'character_ability',
             ))
             ->add('race', null, array(
-                'empty_value' => 'character.race_placeholder',
+                'placeholder' => 'character.race_placeholder',
             ))
             ->add('story', null, array(
                 'required' => false,
