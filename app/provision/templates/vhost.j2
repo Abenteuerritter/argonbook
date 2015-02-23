@@ -1,0 +1,32 @@
+# VirtualHost for Argonbook
+# vi: set ts=4 sw=4 :
+
+{% if env|default("prod") == "prod" %}
+  {% set index = "app" %}
+{% else %}
+  {% set index = "app_" + env %}
+{% endif %}
+
+$HTTP["host"] =~ "(^|\.){{ domain|replace('.', '\.') }}$" {
+    global {
+        server.modules += (
+            "mod_accesslog",
+            "mod_fastcgi",
+            "mod_rewrite",
+        )
+    }
+    server.document-root    = "{{ working_dir }}/web"
+    accesslog.filename      = "/var/log/lighttpd/{{ domain }}.log"
+    index-file.names       += ( "{{ index }}.php" )
+    url.rewrite-if-not-file = ( "(.+)" => "/{{ index }}.php$1" )
+    fastcgi.server          = (
+        "/{{ index }}.php" => (
+            "localhost" => (
+                "socket"                => "/var/run/php5-fpm.sock",
+                "broken-scriptfilename" => "enable",
+                "min-procs"             => 0,
+                "max-procs"             => 1,
+            )
+        )
+    )
+}

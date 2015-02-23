@@ -1,0 +1,84 @@
+---
+
+- hosts: all
+  remote_user: vagrant
+  sudo: yes
+
+  vars:
+    working_dir: /srv/www/{{ domain }}/current
+
+  tasks:
+    # {{{ Common
+    - name: update server
+      apt: update_cache=yes cache_valid_time=3600
+    - name: install dependencies
+      apt: pkg={{ item }} state=latest
+      with_items:
+        - git
+    # }}}
+
+    # {{{ PHP
+    - name: install php
+      apt: pkg={{ item }} state=latest
+      with_items:
+        - php5-common
+        - php5-cli
+        - php5-intl
+        - php5-sqlite
+        - php5-fpm
+    - name: php5-fpm service state
+      service: name=php5-fpm state=started enabled=yes
+    # }}}
+
+    # {{{ HTTP
+    - name: install lighttpd
+      apt: pkg=lighttpd state=latest
+    - name: create virtual host
+      template: src=templates/vhost.j2
+                dest=/etc/lighttpd/conf-enabled/{{ domain }}.conf
+      notify:
+        - restart lighttpd
+    - name: http service state
+      service: name=lighttpd state=started enabled=yes
+    # }}}
+
+    # {{{ External Tools
+    - name: setup nodejs
+      shell: curl -sL https://deb.nodesource.com/setup | bash -
+      args:
+        creates: /etc/apt/sources.list.d/nodesource.list
+    - name: install nodejs
+      apt: pkg=nodejs state=latest
+    - name: install lesscss
+      npm: name=less global=yes state=latest
+    # }}}
+
+    # {{{ Composer
+    - name: download composer
+      shell: curl -sS https://getcomposer.org/installer | \
+             php -- --install-dir=/usr/local/bin --filename=composer
+      args:
+        creates: /usr/local/bin/composer
+    - name: composer install
+      composer: command=install no_dev={{ 'no' if env == 'dev' else 'yes' }}
+                working_dir={{ working_dir }}
+    # }}}
+
+    # {{{ Symfony Commands
+    - name: generate bootstrap less
+      shell: php {{ working_dir }}/app/console --env={{ env }} braincrafted:bootstrap:generate
+      args:
+        creates: "{{ working_dir }}/app/Resources/less/bootstrap.less"
+    - name: dump assetic
+      shell: php {{ working_dir }}/app/console --env={{ env }} assetic:dump
+      args:
+        creates: "{{ working_dir }}/web/css/argonbook.css"
+    # }}}
+
+  handlers:
+    - name: restart lighttpd
+      service: name=lighttpd state=restarted
+    - name: restart php5-fpm
+      service: name=php5-fpm state=restarted
+
+# vi: set ft=yaml sw=2 ts=2 :
