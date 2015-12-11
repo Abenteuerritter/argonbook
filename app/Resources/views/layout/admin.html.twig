@@ -13,7 +13,7 @@
     </div>
   </div>
 
-  {% for flashClass, flashMessages in app.session.flashbag %}
+  {% for flashClass, flashMessages in app.session.flashbag.all() %}
     {% for flashMessage in flashMessages %}
       <div class="alert alert-{{ flashClass }}">{{ flashMessage|trans({}, 'flash') }}</div>
     {% endfor %}
