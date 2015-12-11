@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "4cdda4bc637d38fa92bd465464ad64c7",
-    "content-hash": "445faa8fdf498a2c566c2d80a5c02eb1",
+    "hash": "4f16ddb32207b59173d1303d854439ca",
+    "content-hash": "ac5e959bd1c7d1607480e9db086f9b87",
     "packages": [
         {
             "name": "behat/transliterator",
@@ -1627,16 +1627,16 @@
         },
         {
             "name": "kriswallsmith/assetic",
-            "version": "dev-master",
+            "version": "v1.3.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/kriswallsmith/assetic.git",
-                "reference": "0c52d75a99b3a08402d0f3297e47f3df6703decc"
+                "reference": "9928f7c4ad98b234e3559d1049abd13387f86db5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kriswallsmith/assetic/zipball/0c52d75a99b3a08402d0f3297e47f3df6703decc",
-                "reference": "0c52d75a99b3a08402d0f3297e47f3df6703decc",
+                "url": "https://api.github.com/repos/kriswallsmith/assetic/zipball/9928f7c4ad98b234e3559d1049abd13387f86db5",
+                "reference": "9928f7c4ad98b234e3559d1049abd13387f86db5",
                 "shasum": ""
             },
             "require": {
@@ -1658,7 +1658,7 @@
                 "psr/log": "~1.0",
                 "ptachoire/cssembed": "~1.0",
                 "symfony/phpunit-bridge": "~2.7|~3.0",
-                "twig/twig": "~1.23|~2.0"
+                "twig/twig": "~1.8|~2.0"
             },
             "suggest": {
                 "leafo/lessphp": "Assetic provides the integration with the lessphp LESS compiler",
@@ -1700,7 +1700,7 @@
                 "compression",
                 "minification"
             ],
-            "time": "2015-11-24 14:41:57"
+            "time": "2015-11-12 13:51:40"
         },
         {
             "name": "lunetics/locale-bundle",
@@ -3142,7 +3142,6 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "kriswallsmith/assetic": 20,
         "friendsofsymfony/user-bundle": 20
     },
     "prefer-stable": false,
