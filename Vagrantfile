@@ -22,7 +22,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   end
 
   config.vm.provision "ansible" do |ansible|
-    ansible.verbose = 'vv'
     ansible.playbook = "app/provision/site.yml"
     ansible.extra_vars = {
       env: "dev",
