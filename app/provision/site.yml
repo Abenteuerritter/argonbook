@@ -26,6 +26,7 @@
         - php5-intl
         - php5-sqlite
         - php5-fpm
+        - php5-curl
     - name: php5-fpm service state
       service: name=php5-fpm state=started enabled=yes
     # }}}
