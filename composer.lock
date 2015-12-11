@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "1134d2519e0ef1ad8dc81d27fa44465c",
-    "content-hash": "3a7ac78d2bed2c87e3269628ed842177",
+    "hash": "b54de2318d76e534000fa07dc9fbc9fd",
+    "content-hash": "b3230be3513d70a84d1bd2ddf95bc953",
     "packages": [
         {
             "name": "behat/transliterator",
@@ -1324,10 +1324,10 @@
         },
         {
             "name": "google/closure-compiler",
-            "version": "dev-master",
+            "version": "v20151015",
             "dist": {
                 "type": "zip",
-                "url": "http://dl.google.com/closure-compiler/compiler-latest.zip",
+                "url": "http://dl.google.com/closure-compiler/compiler-20151015.zip",
                 "reference": null,
                 "shasum": null
             },
@@ -3146,7 +3146,6 @@
     "stability-flags": {
         "doctrine/migrations": 20,
         "doctrine/doctrine-migrations-bundle": 20,
-        "google/closure-compiler": 20,
         "kriswallsmith/assetic": 20,
         "friendsofsymfony/user-bundle": 20
     },
