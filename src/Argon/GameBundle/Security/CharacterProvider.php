@@ -4,10 +4,9 @@ namespace Argon\GameBundle\Security;
 
 use Symfony\Component\Security\Core\User\UserProviderInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
-use Symfony\Component\Security\Core\Role\SwitchUserRole;
 use Symfony\Component\Security\Core\Exception\UsernameNotFoundException;
 use Symfony\Component\Security\Core\Exception\UnsupportedUserException;
-use Symfony\Component\Security\Core\SecurityContext;
+use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 
 use Doctrine\Common\Persistence\ObjectManager;
 
@@ -21,18 +20,18 @@ class CharacterProvider implements UserProviderInterface
     protected $entityManager;
 
     /**
-     * @var \Symfony\Component\Security\Core\SecurityContext
+     * @var \Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface
      */
-    protected $securityContext;
+    protected $tokenStorage;
 
     /**
-     * @param \Doctrine\Common\Persistence\ObjectManager       $entityManager
-     * @param \Symfony\Component\Security\Core\SecurityContext $securityContext
+     * @param \Doctrine\Common\Persistence\ObjectManager                                          $entityManager
+     * @param \Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface $securityContext
      */
-    public function __construct(ObjectManager $entityManager, SecurityContext $securityContext)
+    public function __construct(ObjectManager $entityManager, TokenStorageInterface $tokenStorage)
     {
         $this->entityManager = $entityManager;
-        $this->securityContext = $securityContext;
+        $this->tokenStorage = $tokenStorage;
     }
 
     /**
@@ -41,17 +40,7 @@ class CharacterProvider implements UserProviderInterface
      */
     public function loadUserByUsername($username)
     {
-//         if ($this->securityContext->isGranted('ROLE_PREVIOUS_ADMIN')) {
-//             foreach ($this->securityContext->getToken()->getRoles() as $role) {
-//                 if ($role instanceof SwitchUserRole) {
-//                     $player = $role->getSource()->getUser();
-//                 }
-//             }
-//         } else {
-//             $player = $this->securityContext->getToken()->getUser();
-//         }
-
-        $player = $this->securityContext->getToken()->getUser();
+        $player = $this->tokenStorage->getToken()->getUser();
 
         if (!$player instanceof Player) {
             throw new UnsupportedUserException(

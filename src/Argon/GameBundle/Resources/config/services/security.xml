@@ -7,7 +7,7 @@
     <services>
         <service id="argon_game.security.character_provider" class="Argon\GameBundle\Security\CharacterProvider">
             <argument type="service" id="doctrine.orm.entity_manager" />
-            <argument type="service" id="security.context" />
+            <argument type="service" id="security.token_storage" />
         </service>
     </services>
 </container>
