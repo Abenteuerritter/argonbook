@@ -2,3 +2,11 @@
 character:
     created:                Your character has been created.
     updated:                Your character has been updated.
+
+    story_confirmed:        The character story has been confirmed.
+
+character_skill:
+    updated:                Your skills were updated.
+
+character_experience:
+    created:                The character has new experience.
