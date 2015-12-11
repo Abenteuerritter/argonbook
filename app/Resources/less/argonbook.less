@@ -126,20 +126,17 @@ html, body {
 // --------------------------------------------------
 
 .section {
-  padding: @section-padding;
+  padding: 1px;
   background-color: @section-bg;
 
   .container {
+    margin: @section-space auto;
     max-width: 100%;
   }
 
   @media screen and (min-width: @screen-sm-min) {
-    padding-top:    (@section-padding * 1.6);
-    padding-bottom: (@section-padding * 1.6);
-
     .container & {
-      padding-left:  (@section-padding * 2);
-      padding-right: (@section-padding * 2);
+      margin: (@section-space * 1.6) (@section-space * 2);
     }
   }
 }
