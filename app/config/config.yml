@@ -133,6 +133,7 @@ braincrafted_bootstrap:
     customize:
         variables_file: "%kernel.root_dir%/Resources/less/variables.less"
     less_filter: less
+    jquery_path: "%kernel.root_dir%/../vendor/jquery/jquery/jquery-1.11.3.min.js"
 
 # FOSUser Configuration
 fos_user:
