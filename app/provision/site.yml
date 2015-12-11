@@ -65,6 +65,13 @@
                 working_dir={{ working_dir }}
     # }}}
 
+    # {{{ Extra Commands
+    - name: download extra commands
+      get_url: url={{ item.value }} dest=/usr/local/bin/{{ item.key }} mode=0755
+      with_dict:
+        climb: https://github.com/vinkla/climb/releases/download/0.7.0/climb.phar
+    # }}}
+
     # {{{ Symfony Commands
     - name: generate bootstrap less
       shell: php {{ working_dir }}/app/console --env={{ env }} braincrafted:bootstrap:generate
