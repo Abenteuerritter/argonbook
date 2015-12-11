@@ -4,6 +4,3 @@ news:
     view_all_posts:         View all
     post:
         footer:             "%creator% on %published%"
-        published:          Post published.
-        created:            Post created.
-        updated:            Post updated.
