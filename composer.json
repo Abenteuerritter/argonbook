@@ -4,7 +4,8 @@
     "type": "project",
     "description": "Alternate Reality Games Oriented Network",
     "autoload": {
-        "psr-0": { "Argon": "src/" }
+        "psr-0": { "Argon": "src/" },
+        "classmap": [ "app/AppKernel.php", "app/AppCache.php" ]
     },
     "repositories": [
         {
