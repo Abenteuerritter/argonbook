@@ -26,7 +26,7 @@ class CharacterProvider implements UserProviderInterface
 
     /**
      * @param \Doctrine\Common\Persistence\ObjectManager                                          $entityManager
-     * @param \Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface $securityContext
+     * @param \Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface $tokenStorage
      */
     public function __construct(ObjectManager $entityManager, TokenStorageInterface $tokenStorage)
     {
