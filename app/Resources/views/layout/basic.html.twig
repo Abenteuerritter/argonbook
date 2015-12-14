@@ -1,4 +1,5 @@
 {% extends "::layout.html.twig" %}
+{% trans_default_domain 'web' %}
 
 {% block body %}
   {#<div class="locale_switcher">{{ locale_switcher() }}</div>#}
@@ -10,16 +11,16 @@
         <small>{{ 'Alternate Reality Games Oriented Network' }}</small>
       </h3>
       <ul class="nav pull-right">
-        <li><a href="{{ path('homepage') }}">{{ 'layout.home'|trans({}, 'ArgonWebBundle') }}</a></li>
+        <li><a href="{{ path('homepage') }}">{{ 'layout.home'|trans }}</a></li>
         {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
           {% if is_granted('ROLE_USER') %}
-            <li><a href="{{ path('fos_user_profile_show') }}">{{ 'layout.profile'|trans({}, 'FOSUserBundle') }}</a></li>
+            <li><a href="{{ path('fos_user_profile_show') }}">{{ 'layout.profile'|trans }}</a></li>
           {% endif %}
           {% if is_granted("ROLE_ADMIN") %}
-            <li><a href="{{ path('admin_dashboard') }}">{{ 'layout.admin'|trans({}, 'ArgonWebBundle') }}</a></li>
+            <li><a href="{{ path('admin_dashboard') }}">{{ 'layout.admin'|trans }}</a></li>
           {% endif %}
           {% if is_granted('ROLE_PREVIOUS_ADMIN') %}
-            <li><a href="{{ path('homepage', {'_switch': '_exit'}) }}">{{ 'layout.switch_exit'|trans({}, 'ArgonWebBundle') }}</a></li>
+            <li><a href="{{ path('homepage', {'_switch': '_exit'}) }}">{{ 'layout.switch_exit'|trans }}</a></li>
           {% else %}
             <li><a href="{{ path('fos_user_security_logout') }}">{{ 'layout.logout'|trans({}, 'FOSUserBundle') }}</a></li>
           {% endif %}
