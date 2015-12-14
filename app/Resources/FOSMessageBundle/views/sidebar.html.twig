@@ -1,9 +1,0 @@
-{% set active = active is defined ? active : '' %}
-<div class="list-group">
-  <a href="{{ path('fos_message_thread_new') }}" class="list-group-item{{ active == 'new' ? ' active' : '' }}">{{ 'send_new'|trans({}, 'FOSMessageBundle') }}</a>
-</div>
-<div class="list-group">
-  <a href="{{ path('fos_message_inbox') }}" class="list-group-item{{ active == 'inbox' ? ' active' : '' }}">{{ 'inbox'|trans({}, 'FOSMessageBundle') }} <span class="badge pull-right">{{ fos_message_nb_unread() }}</span></a>
-  <a href="{{ path('fos_message_sent') }}" class="list-group-item{{ active == 'sent' ? ' active' : '' }}">{{ 'sent'|trans({}, 'FOSMessageBundle') }}</a>
-  <a href="{{ path('fos_message_deleted') }}" class="list-group-item{{ active == 'deleted' ? ' active' : '' }}">{{ 'deleted'|trans({}, 'FOSMessageBundle') }}</a>
-</div>

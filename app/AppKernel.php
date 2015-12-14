@@ -23,14 +23,12 @@ class AppKernel extends Kernel
             new Lunetics\LocaleBundle\LuneticsLocaleBundle(),
             new Braincrafted\Bundle\BootstrapBundle\BraincraftedBootstrapBundle(),
             new FOS\UserBundle\FOSUserBundle(),
-            new FOS\MessageBundle\FOSMessageBundle(),
 
             // ArgonBook bundles
             new Argon\CommonBundle\ArgonCommonBundle(),
             new Argon\WebBundle\ArgonWebBundle(),
             new Argon\NewsBundle\ArgonNewsBundle(),
             new Argon\GameBundle\ArgonGameBundle(),
-            new Argon\MessageBundle\ArgonMessageBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

@@ -78,8 +78,7 @@
         "jquery/jqueryui": "~1.11",
         "twbs/bootstrap": "^3.3",
         "braincrafted/bootstrap-bundle": "^2.1",
-        "friendsofsymfony/user-bundle": "^2.0.0-alpha3",
-        "friendsofsymfony/message-bundle": "^1.2"
+        "friendsofsymfony/user-bundle": "^2.0.0-alpha3"
     },
     "require-dev": {
         "sensio/generator-bundle": "^3.0",

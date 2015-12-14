@@ -140,11 +140,3 @@ fos_user:
     db_driver:     orm
     firewall_name: main
     user_class:    Argon\CommonBundle\Entity\Player
-
-# FOSMessage
-fos_message:
-    db_driver:     orm
-    thread_class:  Argon\MessageBundle\Entity\Thread
-    message_class: Argon\MessageBundle\Entity\Message
-    new_thread_form:
-        type: argon_message.form.new_thread

@@ -25,7 +25,7 @@
       {{ 'sidebar.character.hello'|trans({'%name%': app.user.name}) }}
     </p>
     <div class="list-group">
-      <a href="{{ path('fos_message_inbox') }}" class="list-group-item">{{ 'sidebar.character.inbox'|trans }} <span class="badge pull-right">{{ fos_message_nb_unread() }}</span></a>
+      <a href="#" class="list-group-item">{{ 'sidebar.character.inbox'|trans }} <span class="badge pull-right">0</span></a>
     </div>
   {% endif %}
 {% endif %}
