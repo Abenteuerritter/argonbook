@@ -2,7 +2,9 @@
  * Argonbook
  */
 
-// Core variables and mixins
+//
+// Imports
+// --------------------------------------------------
 @import "variables.less";
 
 
@@ -58,6 +60,13 @@ html, body {
 .page-header {
   margin: 0;
   padding: 0;
+
+  @media (max-width: 640px) {
+    .page-title small {
+      display: none
+    }
+  }
+
   .nav {
     > li {
       float: left;
