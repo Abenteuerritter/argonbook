@@ -7,40 +7,21 @@
 </div>
 
 <div class="container">
-  <div class="row">
-    <div class="col-md-8 col-lg-8">
-      <div class="panel panel-default">
-        <div class="panel-heading">{{ 'layout.logged_in_as'|trans({'%username%': user.username}) }}
-          <div class="pull-right">
-            <a href="{{ path('fos_user_change_password') }}">{{ 'profile.actions.change_password'|trans }} <span class="glyphicon glyphicon-eye-close"></span></a>
-            <a href="{{ path('fos_user_profile_edit') }}">{{ 'profile.actions.edit'|trans }} <span class="glyphicon glyphicon-edit"></span></a>
-          </div>
-        </div>
-        <div class="panel-body">
-          <dl class="dl-horizontal">
-            <dt>{{ 'profile.show.username'|trans }}</dt>
-            <dd>{{ user.username }}</dd>
-            <dt>{{ 'profile.show.email'|trans }}</dt>
-            <dd>{{ user.email }}</dd>
-          </dl>
-        </div>
+  <div class="panel panel-default">
+    <div class="panel-heading">{{ 'layout.logged_in_as'|trans({'%username%': user.username}) }}
+      <div class="pull-right">
+        <a href="{{ path('fos_user_change_password') }}">{{ 'profile.actions.change_password'|trans }} <span class="glyphicon glyphicon-eye-close"></span></a>
+        <a href="{{ path('fos_user_profile_edit') }}">{{ 'profile.actions.edit'|trans }} <span class="glyphicon glyphicon-edit"></span></a>
       </div>
     </div>
-    {% if is_granted("ROLE_ADMIN") %}
-    <div class="col-md-4 col-lg-4">
-      <div class="panel panel-default">
-        <div class="panel-heading">{{ 'profile.admin.title'|trans }}
-          <a href="{{ path('admin_dashboard') }}" class="pull-right">{{ 'profile.admin.go'|trans }} <span class="glyphicon glyphicon-share-alt"></span></a>
-        </div>
-        <div class="panel-body">
-          <dl class="dl-horizontal">
-            <dt>{{ 'profile.admin.version'|trans }}</dt>
-            <dd>{{ project.version }}</dd>
-          </dl>
-        </div>
-      </div>
+    <div class="panel-body">
+      <dl class="dl-horizontal">
+        <dt>{{ 'profile.show.username'|trans }}</dt>
+        <dd>{{ user.username }}</dd>
+        <dt>{{ 'profile.show.email'|trans }}</dt>
+        <dd>{{ user.email }}</dd>
+      </dl>
     </div>
-    {% endif %}
   </div>
 
   <div class="panel panel-default">
