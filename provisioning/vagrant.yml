@@ -74,11 +74,11 @@
 
     # {{{ Symfony Commands
     - name: generate bootstrap less
-      shell: php {{ working_dir }}/app/console --env={{ env }} braincrafted:bootstrap:generate
+      shell: php {{ working_dir }}/bin/console --env={{ env }} braincrafted:bootstrap:generate
       args:
         creates: "{{ working_dir }}/app/Resources/less/bootstrap.less"
     - name: dump assetic
-      shell: php {{ working_dir }}/app/console --env={{ env }} assetic:dump
+      shell: php {{ working_dir }}/bin/console --env={{ env }} assetic:dump
       args:
         creates: "{{ working_dir }}/web/css/argonbook.css"
     # }}}
