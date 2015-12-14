@@ -1,16 +1,8 @@
 {% if entities|length %}
-  <div class="section section-news">
-    <div class="container">
-      <h2>{{ 'news.posts'|trans({}, 'web') }}
-      {#
-        <small class="pull-right">
-          <a href="#" class="btn btn-default">{{ 'news.view_all_posts'|trans({}, 'web') }}</a>
-        </small>
-      #}
-      </h2>
-    </div>
+  <div class="container">
+    <h2>{{ 'news.posts'|trans({}, 'web') }}</h2>
+    {% for post in entities %}
+      {{ render(controller('ArgonNewsBundle:Block:post', {'post': post, 'position': loop.index})) }}
+    {% endfor %}
   </div>
-  {% for post in entities %}
-    {{ render(controller('ArgonNewsBundle:Block:post', {'post': post, 'position': loop.index})) }}
-  {% endfor %}
 {% endif %}

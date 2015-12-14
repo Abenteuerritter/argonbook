@@ -1,10 +1,12 @@
 {% extends "::layout.html.twig" %}
 {% trans_default_domain 'admin' %}
 
-{% block body %}
+{% block header %}
+  {#<div class="locale_switcher">{{ locale_switcher() }}</div>#}
+
   <div class="page-header">
     <div class="container">
-      <h3 class="pull-left">
+      <h3 class="page-title pull-left">
         <a href="{{ path('admin_dashboard') }}">{{ 'layout.admin'|trans({}, 'ArgonWebBundle') }}</a>
       </h3>
       <ul class="nav pull-right">
@@ -12,43 +14,28 @@
       </ul>
     </div>
   </div>
+{% endblock %}
 
-  {% if app.session.flashbag.keys()|length %}
-  <div class="section section-empty">
-    <div class="container">
-    {% for flashClass, flashMessages in app.session.flashbag.all() %}
-      {% for flashMessage in flashMessages %}
-        <div class="alert alert-{{ flashClass }}">{{ flashMessage|trans({}, 'flash') }}</div>
-      {% endfor %}
-    {% endfor %}
-    </div>
-  </div>
-  {% endif %}
-
-  {% block wrapper %}
-    {% block sections %}{% endblock %}
-    <div class="section section-empty">
-      <div class="container">
-        <div class="row">
-          <div class="col-xs-12 col-sm-3">
-            <div class="list-group">
-              <a href="{{ path('admin_dashboard') }}" class="list-group-item{{ active == 'dashboard' ? ' active' : '' }}">{{ 'sidebar.dashboard'|trans }}</a>
-              <a href="{{ path('admin_player') }}" class="list-group-item{{ active == 'player' ? ' active' : '' }}">{{ 'sidebar.player'|trans }}</a>
-            </div>
-            <div class="list-group">
-              <a href="{{ path('admin_news') }}" class="list-group-item{{ active == 'news' ? ' active' : '' }}">{{ 'sidebar.news'|trans }}</a>
-            </div>
-            <div class="list-group">
-              <a href="{{ path('admin_character') }}" class="list-group-item{{ active == 'character' ? ' active' : '' }}">{{ 'sidebar.character'|trans }}</a>
-              <a href="{{ path('admin_race') }}" class="list-group-item{{ active == 'race' ? ' active' : '' }}">{{ 'sidebar.race'|trans }}</a>
-              <a href="{{ path('admin_skill') }}" class="list-group-item{{ active == 'skill' ? ' active' : '' }}">{{ 'sidebar.skill'|trans }}</a>
-            </div>
-          </div>
-          <div class="col-xs-12 col-sm-9">
-            {% block content %}{% endblock %}
-          </div>
+{% block wrapper %}
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-sm-3">
+        <div class="list-group">
+          <a href="{{ path('admin_dashboard') }}" class="list-group-item{{ active == 'dashboard' ? ' active' : '' }}">{{ 'sidebar.dashboard'|trans }}</a>
+          <a href="{{ path('admin_player') }}" class="list-group-item{{ active == 'player' ? ' active' : '' }}">{{ 'sidebar.player'|trans }}</a>
+        </div>
+        <div class="list-group">
+          <a href="{{ path('admin_news') }}" class="list-group-item{{ active == 'news' ? ' active' : '' }}">{{ 'sidebar.news'|trans }}</a>
+        </div>
+        <div class="list-group">
+          <a href="{{ path('admin_character') }}" class="list-group-item{{ active == 'character' ? ' active' : '' }}">{{ 'sidebar.character'|trans }}</a>
+          <a href="{{ path('admin_race') }}" class="list-group-item{{ active == 'race' ? ' active' : '' }}">{{ 'sidebar.race'|trans }}</a>
+          <a href="{{ path('admin_skill') }}" class="list-group-item{{ active == 'skill' ? ' active' : '' }}">{{ 'sidebar.skill'|trans }}</a>
         </div>
       </div>
+      <div class="col-xs-12 col-sm-9">
+        {% block content %}{% endblock %}
+      </div>
     </div>
-  {% endblock %}
+  </div>
 {% endblock %}

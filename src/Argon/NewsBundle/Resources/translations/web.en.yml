@@ -1,6 +1,5 @@
 
 news:
-    posts:                  ArgonBook News
-    view_all_posts:         View all
+    posts:                  Latest News
     post:
         footer:             "%creator% on %published%"
