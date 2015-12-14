@@ -2,25 +2,25 @@
 
 # Symfony
 /app/Resources/less/bootstrap.less
-/app/bootstrap.php.cache
-/bin/*
-!app/cache/.gitkeep
-!app/logs/.gitkeep
-vendor/*
-web/uploads/*
-web/bundles/*
-web/fonts/*
-web/css/*
-web/js/*
+/vendor/*
+
+# Web stuff
+/web/uploads/*
+/web/bundles/*
+/web/fonts/*
+/web/css/*
+/web/js/*
 
 # Application Data
 /var/*
 /var/cache/*
 /var/logs/*
+!/var/cache/.gitkeep
+!/var/logs/.gitkeep
 
 # Configuration files
-app/config/parameters.ini
-app/config/parameters.yml
+/app/config/parameters.ini
+/app/config/parameters.yml
 
 # Vagrant
 .vagrant/
