@@ -4,19 +4,10 @@
 
 // Core variables and mixins
 @import "variables.less";
-@import "../../../vendor/twbs/bootstrap/less/mixins.less";
 
 
 html, body {
   height: 100%;
-}
-
-//
-// Alert
-// --------------------------------------------------
-
-.alert {
-  margin-bottom: 0;
 }
 
 
@@ -127,29 +118,4 @@ html, body {
 .fos_user_security_login .list-group {
   margin-top: 20px;
   margin-bottom: 0;
-}
-
-
-//
-// Sections
-// --------------------------------------------------
-
-.section {
-  padding: 1px;
-  background-color: @section-bg;
-
-  .container {
-    margin: @section-space auto;
-    max-width: 100%;
-  }
-
-  @media screen and (min-width: @screen-sm-min) {
-    .container & {
-      margin: (@section-space * 1.6) (@section-space * 2);
-    }
-  }
-}
-
-.section-empty {
-  background-color: @body-bg;
 }

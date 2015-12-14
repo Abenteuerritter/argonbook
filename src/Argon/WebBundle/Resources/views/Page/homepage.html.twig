@@ -5,34 +5,7 @@
 
 {% block content %}
   {% if not is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-    <div class="section section-homepage">
-      <div class="container">
-        <div class="row">
-          <div class="col-sm-8 col-md-8 col-lg-8 col-xs-12">
-            <h1>{{ 'homepage.jumbotron.title'|trans }}</h1>
-            <a href="{{ path("fos_user_registration_register") }}" class="btn btn-success btn-lg pull-right">{{ 'homepage.register'|trans }}</a>
-            <p>{{ 'homepage.jumbotron.description'|trans }}</p>
-          </div>
-          <div class="col-sm-4 col-md-4 col-lg-4 hidden-xs">
-            <form action="{{ path("fos_user_security_check") }}" method="post" role="form">
-              <input type="hidden" name="_csrf_token" value="{{ form_csrf_provider.generateCsrfToken('authenticate') }}" />
-              <div class="form-group">
-                <input type="text" class="form-control" id="username" name="_username" placeholder="{{ 'security.login.username'|trans({}, 'FOSUserBundle') }}" required="required">
-              </div>
-              <div class="form-group">
-                <input type="password" class="form-control" id="password" name="_password" placeholder="{{ 'security.login.password'|trans({}, 'FOSUserBundle') }}" required="required">
-              </div>
-              <div class="checkbox">
-                <label>
-                  <input type="checkbox" id="remember_me" name="_remember_me" value="on" />{{ 'security.login.remember_me'|trans({}, 'FOSUserBundle') }}
-                </label>
-              </div>
-              <button type="submit" class="btn btn-default btn-block" id="_submit" name="_submit">{{ 'security.login.submit'|trans({}, 'FOSUserBundle') }}</button>
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
+
   {% endif %}
 
   {{ render(controller('ArgonNewsBundle:Block:latest')) }}
