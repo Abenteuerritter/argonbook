@@ -1,6 +1,6 @@
 parameters:
     database_driver:   pdo_sqlite
-    database_path:     %kernel.root_dir%/data/argonbook.db
+    database_path:     %kernel.root_dir%/../var/argonbook.db
     database_memory:   ~
     database_host:     ~
     database_port:     ~
