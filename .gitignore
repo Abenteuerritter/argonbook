@@ -3,9 +3,6 @@
 # Symfony
 /app/Resources/less/bootstrap.less
 /app/bootstrap.php.cache
-/app/cache/*
-/app/logs/*
-/app/data/*
 /bin/*
 !app/cache/.gitkeep
 !app/logs/.gitkeep
@@ -15,6 +12,11 @@ web/bundles/*
 web/fonts/*
 web/css/*
 web/js/*
+
+# Application Data
+/var/*
+/var/cache/*
+/var/logs/*
 
 # Configuration files
 app/config/parameters.ini
