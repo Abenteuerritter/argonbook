@@ -1,23 +1,30 @@
 {% trans_default_domain 'FOSUserBundle' %}
 
-<div class="jumbotron jumbotron-title">
-  <div class="container">
-    <h1>{{ 'resetting.request.title'|trans }}</h1>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h2>{{ 'resetting.request.title'|trans }}</h2>
+  </div>
+
+  <div class="panel-body">
+    <form action="{{ path('fos_user_resetting_send_email') }}" method="POST" class="fos_user_resetting_request" role="form">
+      <div>
+        {% if invalid_username is defined %}
+          <div class="alert alert-danger">{{ 'resetting.request.invalid_username'|trans({'%username%': invalid_username}) }}</div>
+        {% endif %}
+        <div class="form-group">
+          <input type="text" id="username" name="username" placeholder="{{ 'resetting.request.username'|trans }}" required="required" class="form-control">
+        </div>
+      </div>
+      <div>
+        <button type="submit" class="btn btn-primary">{{ 'resetting.request.submit'|trans }}</button>
+      </div>
+    </form>
   </div>
 </div>
 
-<div class="container">
-  <form action="{{ path('fos_user_resetting_send_email') }}" method="POST" class="fos_user_resetting_request" role="form">
-    <div>
-      {% if invalid_username is defined %}
-        <div class="alert alert-danger">{{ 'resetting.request.invalid_username'|trans({'%username%': invalid_username}) }}</div>
-      {% endif %}
-      <div class="form-group">
-        <input type="text" id="username" name="username" placeholder="{{ 'resetting.request.username'|trans }}" required="required" class="form-control">
-      </div>
-    </div>
-    <div>
-      <button type="submit" class="btn btn-primary">{{ 'resetting.request.submit'|trans }}</button>
-    </div>
-  </form>
+<div class="panel panel-default">
+  <div class="list-group">
+    <a href="{{ path("fos_user_security_login") }}" class="list-group-item">{{ 'layout.login'|trans }}</a>
+    <a href="{{ path("fos_user_registration_register") }}" class="list-group-item">{{ 'layout.register'|trans }}</a>
+  </div>
 </div>

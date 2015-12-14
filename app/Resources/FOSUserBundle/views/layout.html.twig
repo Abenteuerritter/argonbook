@@ -1,5 +1,17 @@
-{% extends '::layout/basic.html.twig' %}
+{% extends '::layout/cover.html.twig' %}
 
 {% block content %}
   {% block fos_user_content %}{% endblock %}
+{% endblock %}
+
+{% block javascripts %}
+  {{ parent() }}
+  <script type="text/javascript">
+    function shake(e, p, t) { e.css('left', p.shift() + 'px');
+      if (p.length > 0) { setTimeout(function() { shake(e, p, t); }, t); }
+    }
+    jQuery(function($) { var p, e = $('.panel-default'), r = e.find('.alert').length > 0;
+      if (r) { shake(e.css('position', 'relative'), (p = [15, 30, 15, 0, -15, -30, -15, 0]).concat(p.concat(p)), 20); }
+    });
+  </script>
 {% endblock %}

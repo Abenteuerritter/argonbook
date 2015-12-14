@@ -5,8 +5,6 @@ security:
 
 profile:
     title:                  Your account
-    characters:
-        title:              Characters
     edit:
         title:              Edit your profile
         cancel:             Cancel
