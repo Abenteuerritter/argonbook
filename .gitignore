@@ -2,6 +2,8 @@
 
 # Symfony
 /app/Resources/less/bootstrap.less
+/bin/symfony_requirements
+/web/config.php
 /vendor/*
 
 # Web stuff
@@ -15,8 +17,6 @@
 /var/*
 /var/cache/*
 /var/logs/*
-!/var/cache/.gitkeep
-!/var/logs/.gitkeep
 
 # Configuration files
 /app/config/parameters.ini
