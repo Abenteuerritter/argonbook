@@ -109,19 +109,19 @@ stof_doctrine_extensions:
     default_locale: "%locale%"
     orm:
         default:
-            sluggable:      true
-            translatable:   true
-            tree:           true
-            timestampable:  true
+            sluggable:     true
+            translatable:  true
+            tree:          true
+            timestampable: true
 
 # Locale Configuration
 lunetics_locale:
-    allowed_locales:        [de, en]
-    guessing_order:         [query, cookie, session]
+    allowed_locales:         [de, en]
+    guessing_order:          [query, cookie, session]
     cookie:
-        set_on_change:      true
+        set_on_change:       true
     form:
-        languages_only:     true
+        languages_only:      true
     switcher:
         show_current_locale: true
 
