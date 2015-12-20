@@ -4,16 +4,16 @@
 {% block header %}
   {#<div class="locale_switcher">{{ locale_switcher() }}</div>#}
 
-  <div class="page-header">
+  <nav class="navbar navbar-default">
     <div class="container">
-      <h3 class="page-title pull-left">
-        <a href="{{ path('admin_dashboard') }}">{{ 'layout.admin'|trans({}, 'web') }}</a>
-      </h3>
-      <ul class="nav pull-right">
+      <div class="navbar-header">
+        <a href="{{ path('admin_dashboard') }}" class="navbar-brand">{{ 'layout.admin'|trans({}, 'web') }}</a>
+      </div>
+      <ul class="nav navbar-nav navbar-right">
         <li><a href="{{ path('homepage') }}" title="{{ 'layout.are_you_lost'|trans({}, 'web') }}">{{ 'layout.go_back'|trans({}, 'web') }}</a></li>
       </ul>
     </div>
-  </div>
+  </nav>
 {% endblock %}
 
 {% block wrapper %}

@@ -58,45 +58,6 @@ abbr {
 
 
 //
-// Header
-// --------------------------------------------------
-
-.page-header {
-  margin: 0;
-  padding: 0;
-
-  @media (max-width: 640px) {
-    .page-title small {
-      display: none
-    }
-  }
-
-  .nav {
-    > li {
-      float: left;
-
-      > a {
-        padding: 20px;
-      }
-      + li {
-        margin-left: 2px;
-      }
-
-      // Active state
-      &.active > a {
-        &,
-        &:hover,
-        &:focus {
-          color: @nav-pills-active-link-hover-color;
-          background-color: @nav-pills-active-link-hover-bg;
-        }
-      }
-    }
-  }
-}
-
-
-//
 // Login Form
 // --------------------------------------------------
 // The login form that will enclose the

@@ -4,13 +4,12 @@
 {% block header %}
   {#<div class="locale_switcher">{{ locale_switcher() }}</div>#}
 
-  <div class="page-header">
+  <nav class="navbar navbar-default">
     <div class="container">
-      <h3 class="page-title pull-left">
-        <a href="{{ path('homepage') }}">{{ 'ArgonBook' }}</a>
-        <small>{{ 'Alternate Reality Games Oriented Network' }}</small>
-      </h3>
-      <ul class="nav pull-right">
+      <div class="navbar-header">
+        <a href="{{ path('homepage') }}" title="{{ 'Alternate Reality Games Oriented Network' }}" class="navbar-brand">{{ 'ArgonBook' }}</a>
+      </div>
+      <ul class="nav navbar-nav navbar-right">
         <li><a href="{{ path('homepage') }}">{{ 'layout.home'|trans }}</a></li>
         {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
           {% if is_granted('ROLE_USER') %}
@@ -29,5 +28,5 @@
         {% endif %}
       </ul>
     </div>
-  </div>
+  </nav>
 {% endblock %}
