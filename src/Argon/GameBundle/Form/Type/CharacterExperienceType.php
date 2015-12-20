@@ -33,6 +33,7 @@ class CharacterExperienceType extends AbstractType
     }
 
     /**
+     * @deprecated on Symfony 3+
      * @return string
      */
     public function getName()

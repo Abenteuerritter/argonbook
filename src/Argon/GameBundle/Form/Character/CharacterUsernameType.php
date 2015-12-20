@@ -46,6 +46,7 @@ class CharacterUsernameType extends AbstractType
     }
 
     /**
+     * @deprecated on Symfony 3+
      * @see Symfony\Component\Form\FormTypeInterface::getName()
      */
     public function getName()
