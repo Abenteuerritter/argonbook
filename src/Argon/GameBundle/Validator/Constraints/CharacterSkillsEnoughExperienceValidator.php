@@ -5,8 +5,6 @@ namespace Argon\GameBundle\Validator\Constraints;
 use Symfony\Component\Validator\Constraint;
 use Symfony\Component\Validator\ConstraintValidator;
 
-use Doctrine\Common\Persistence\ObjectManager;
-
 class CharacterSkillsEnoughExperienceValidator extends ConstraintValidator
 {
     public function validate($value, Constraint $constraint)

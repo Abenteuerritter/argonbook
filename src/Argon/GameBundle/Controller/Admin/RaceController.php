@@ -3,7 +3,6 @@
 namespace Argon\GameBundle\Controller\Admin;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\HttpFoundation\Request;
 
 use Argon\GameBundle\Entity\Race;
 
