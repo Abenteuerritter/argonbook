@@ -13,6 +13,11 @@ use Argon\GameBundle\Entity\Character;
 use Argon\GameBundle\Entity\CharacterAbility;
 use Argon\GameBundle\Entity\CharacterSkill;
 
+use Argon\GameBundle\Form\Character\CharacterEditType;
+use Argon\GameBundle\Form\Character\CharacterGameType;
+use Argon\GameBundle\Form\Character\CharacterSkillsType;
+use Argon\GameBundle\Form\Type\CharacterType;
+
 class CharacterController extends Controller
 {
     public function indexAction(Request $request)
@@ -30,7 +35,7 @@ class CharacterController extends Controller
             throw new AccessDeniedException();
         }
 
-        $form = $this->createForm('character_game', null, array(
+        $form = $this->createForm(CharacterGameType::class, null, array(
             'action' => $this->generateUrl('character_game'),
             'method' => 'POST',
         ));
@@ -87,7 +92,7 @@ class CharacterController extends Controller
             $character->addAbility($characterAbility);
         }
 
-        $form = $this->createForm('character', $character, array(
+        $form = $this->createForm(CharacterType::class, $character, array(
             'action' => $this->generateUrl('character_create', array('game' => $gameName)),
             'method' => 'POST',
         ));
@@ -179,7 +184,7 @@ class CharacterController extends Controller
         $characterSkills = $characterSkills->matching($criteria);
         // }}}
 
-        $form = $this->createForm('character_skills', array('characterSkills' => $characterSkills), array(
+        $form = $this->createForm(CharacterSkillsType::class, array('characterSkills' => $characterSkills), array(
             'action' => $this->generateUrl('character_skills_update', array('slug' => $character->getSlug())),
             'method' => 'POST',
         ));
@@ -239,7 +244,7 @@ class CharacterController extends Controller
             throw new AccessDeniedException();
         }
 
-        $form = $this->createForm('character_edit', $character, array(
+        $form = $this->createForm(CharacterEditType::class, $character, array(
             'action' => $this->generateUrl('character_edit_update', array('slug' => $character->getSlug())),
             'method' => 'POST',
         ));

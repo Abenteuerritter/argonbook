@@ -7,6 +7,9 @@ use Symfony\Component\HttpFoundation\Request;
 
 use Argon\NewsBundle\Entity\NewsPost;
 
+use Argon\NewsBundle\Form\Type\PostType;
+use Argon\NewsBundle\Form\Type\PostPublishType;
+
 class PostController extends Controller
 {
     public function indexAction()
@@ -23,7 +26,7 @@ class PostController extends Controller
         $post = new NewsPost();
         $post->setCreator($this->getUser());
 
-        $form = $this->createForm('news_post', $post, array(
+        $form = $this->createForm(PostType::class, $post, array(
             'action' => $this->generateUrl('admin_news_create'),
             'method' => 'POST',
         ));
@@ -63,7 +66,7 @@ class PostController extends Controller
     public function publishAction(NewsPost $post, Request $request)
     {
         $post->setStatus(NewsPost::STATUS_PUBLISHED);
-        $form = $this->createForm('news_post_publish', $post, array(
+        $form = $this->createForm(PostPublishType::class, $post, array(
             'action' => $this->generateUrl('admin_news_publish', array('slug' => $post->getSlug())),
             'method' => 'POST',
         ));
@@ -94,7 +97,7 @@ class PostController extends Controller
 
     public function editAction(NewsPost $post, Request $request)
     {
-        $form = $this->createForm('news_post', $post, array(
+        $form = $this->createForm(PostType::class, $post, array(
             'action' => $this->generateUrl('admin_news_update', array('slug' => $post->getSlug())),
             'method' => 'POST',
         ));

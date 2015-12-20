@@ -9,6 +9,10 @@ use Argon\GameBundle\Entity\Character;
 use Argon\GameBundle\Entity\CharacterExperience;
 use Argon\GameBundle\Entity\CharacterFilter;
 
+use Argon\GameBundle\Form\Type\CharacterFilterType;
+use Argon\GameBundle\Form\Type\CharacterExperienceType;
+use Argon\GameBundle\Form\Character\CharacterStoryConfirmType;
+
 class CharacterController extends Controller
 {
     public function indexAction(Request $request)
@@ -17,7 +21,7 @@ class CharacterController extends Controller
                            ->getRepository('ArgonGameBundle:Character');
 
         $filter     = new CharacterFilter();
-        $filterForm = $this->createForm('character_filter', $filter);
+        $filterForm = $this->createForm(CharacterFilterType::class, $filter);
 
         $game = null;
 
@@ -59,7 +63,7 @@ class CharacterController extends Controller
         $characterExperience = new CharacterExperience();
         $characterExperience->setCharacter($character);
 
-        $form = $this->createForm('character_experience', $characterExperience, array(
+        $form = $this->createForm(CharacterExperienceType::class, $characterExperience, array(
             'action' => $this->generateUrl('admin_character_experience_create', array('id' => $character->getId())),
             'method' => 'POST',
         ));
@@ -113,7 +117,7 @@ class CharacterController extends Controller
             );
         }
 
-        $form = $this->createForm('character_story_confirm', null, array(
+        $form = $this->createForm(CharacterStoryConfirmType::class, null, array(
             'action' => $this->generateUrl('admin_character_confirm_story_update', array('id' => $character->getId())),
             'method' => 'POST',
         ));
