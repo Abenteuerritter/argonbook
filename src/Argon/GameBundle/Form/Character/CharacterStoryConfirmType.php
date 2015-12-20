@@ -42,13 +42,4 @@ class CharacterStoryConfirmType extends AbstractType
             'intention'          => 'character_story_confirm',
         ));
     }
-
-    /**
-     * @deprecated on Symfony 3+
-     * @return string
-     */
-    public function getName()
-    {
-        return 'character_story_confirm';
-    }
 }

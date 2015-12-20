@@ -31,12 +31,4 @@ class PostType extends AbstractType
             'intention'          => 'news_post',
         ));
     }
-
-    /**
-     * @return string
-     */
-    public function getName()
-    {
-        return 'news_post';
-    }
 }

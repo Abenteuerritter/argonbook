@@ -31,13 +31,4 @@ class CharacterAbilityType extends AbstractType
             'intention'          => 'character_ability',
         ));
     }
-
-    /**
-     * @deprecated on Symfony 3+
-     * @return string
-     */
-    public function getName()
-    {
-        return 'character_ability';
-    }
 }

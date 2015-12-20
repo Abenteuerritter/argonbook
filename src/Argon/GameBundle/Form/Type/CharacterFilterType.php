@@ -29,13 +29,4 @@ class CharacterFilterType extends AbstractType
             'intention'          => 'character_filter',
         ));
     }
-
-    /**
-     * @deprecated on Symfony 3+
-     * @return string
-     */
-    public function getName()
-    {
-        return 'character_filter';
-    }
 }

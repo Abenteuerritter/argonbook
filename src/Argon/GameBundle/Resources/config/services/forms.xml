@@ -12,37 +12,37 @@
 
         <!-- Forms -->
         <service id="argon_game.form.character" class="Argon\GameBundle\Form\Type\CharacterType">
-            <tag name="form.type" alias="character" />
+            <tag name="form.type" />
         </service>
         <service id="argon_game.form.character_filter" class="Argon\GameBundle\Form\Type\CharacterFilterType">
-            <tag name="form.type" alias="character_filter" />
+            <tag name="form.type" />
         </service>
         <service id="argon_game.form.character_experience" class="Argon\GameBundle\Form\Type\CharacterExperienceType">
-            <tag name="form.type" alias="character_experience" />
+            <tag name="form.type" />
         </service>
         <service id="argon_game.form.character_ability" class="Argon\GameBundle\Form\Type\CharacterAbilityType">
-            <tag name="form.type" alias="character_ability" />
+            <tag name="form.type" />
         </service>
         <service id="argon_game.form.character_skill" class="Argon\GameBundle\Form\Type\CharacterSkillType">
-            <tag name="form.type" alias="character_skill" />
+            <tag name="form.type" />
         </service>
 
         <service id="argon_game.form.character_edit" class="Argon\GameBundle\Form\Character\CharacterEditType">
-            <tag name="form.type" alias="character_edit" />
+            <tag name="form.type" />
         </service>
         <service id="argon_game.form.character_game" class="Argon\GameBundle\Form\Character\CharacterGameType">
             <argument type="service" id="argon_game.form.game_choice_list" />
-            <tag name="form.type" alias="character_game" />
+            <tag name="form.type" />
         </service>
         <service id="argon_game.form.character_skills" class="Argon\GameBundle\Form\Character\CharacterSkillsType">
-            <tag name="form.type" alias="character_skills" />
+            <tag name="form.type" />
         </service>
         <service id="argon_game.form.character_username" class="Argon\GameBundle\Form\Character\CharacterUsernameType">
             <argument type="service" id="argon_game.character_to_username_transformer" />
-            <tag name="form.type" alias="character_username" />
+            <tag name="form.type" />
         </service>
         <service id="argon_game.form.character_story_confirm" class="Argon\GameBundle\Form\Character\CharacterStoryConfirmType">
-            <tag name="form.type" alias="character_story_confirm" />
+            <tag name="form.type" />
         </service>
     </services>
 </container>

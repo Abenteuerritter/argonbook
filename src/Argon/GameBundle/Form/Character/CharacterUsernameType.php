@@ -4,6 +4,7 @@ namespace Argon\GameBundle\Form\Character;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 
 use Argon\GameBundle\Form\DataTransformer\CharacterToUsernameTransformer;
 
@@ -42,15 +43,6 @@ class CharacterUsernameType extends AbstractType
      */
     public function getParent()
     {
-        return 'text';
-    }
-
-    /**
-     * @deprecated on Symfony 3+
-     * @see Symfony\Component\Form\FormTypeInterface::getName()
-     */
-    public function getName()
-    {
-        return 'character_username';
+        return TextType::class;
     }
 }
