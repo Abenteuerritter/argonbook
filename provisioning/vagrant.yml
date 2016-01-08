@@ -15,9 +15,12 @@
       apt: pkg={{ item }} state=latest
       with_items:
         - git
+        - curl
     # }}}
 
     # {{{ PHP
+    - name: add PHP repository
+      apt_repository: repo=ppa:ondrej/php5 update_cache=yes state=present
     - name: install php
       apt: pkg={{ item }} state=latest
       with_items:
