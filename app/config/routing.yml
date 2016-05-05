@@ -1,30 +1,3 @@
-_argon_web:
-    resource: "@ArgonWebBundle/Resources/config/routing/pages.xml"
-    prefix: /
-
-_argon_game_character:
-    resource: "@ArgonGameBundle/Resources/config/routing/character.xml"
-    prefix: /
-
-#### ADMIN
-
-_argon_common_admin:
-    resource: "@ArgonCommonBundle/Resources/config/routing/admin.xml"
-    prefix: /admin
-
-_argon_web_admin:
-    resource: "@ArgonWebBundle/Resources/config/routing/admin.xml"
-    prefix: /admin
-
-_argon_game_admin:
-    resource: "@ArgonGameBundle/Resources/config/routing/admin.xml"
-    prefix: /admin
-
-_argon_news_admin:
-    resource: "@ArgonNewsBundle/Resources/config/routing/admin.xml"
-    prefix: /admin
-
-#### FOSUserBundle
-
-_fos_user:
-    resource: "@FOSUserBundle/Resources/config/routing/all.xml"
+app:
+    resource: "@AppBundle/Controller/"
+    type:     annotation

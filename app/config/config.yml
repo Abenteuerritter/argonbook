@@ -1,100 +1,63 @@
 imports:
     - { resource: parameters.yml }
     - { resource: security.yml }
+    - { resource: services.yml }
 
+# Put parameters here that don't need to change on each machine where the app is deployed
+# http://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
-    project:
-        name:        argonbook
-        version:     0.16
+    locale: en
 
 framework:
     #esi:             ~
-    translator:      { fallback: "%locale%" }
+    #translator:      { fallbacks: ["%locale%"] }
     secret:          "%secret%"
     router:
         resource: "%kernel.root_dir%/config/routing.yml"
         strict_requirements: ~
     form:            ~
     csrf_protection: ~
-    validation:      { enabled: true, enable_annotations: false }
+    validation:      { enable_annotations: true }
+    #serializer:      { enable_annotations: true }
     templating:
         engines: ['twig']
-        #assets_version: SomeVersionScheme
     default_locale:  "%locale%"
+    trusted_hosts:   ~
     trusted_proxies: ~
-    session:         ~
+    session:
+        # http://symfony.com/doc/current/reference/configuration/framework.html#handler-id
+        handler_id:  session.handler.native_file
+        save_path:   "%kernel.root_dir%/../var/sessions/%kernel.environment%"
     fragments:       ~
-    http_method_override: false
+    http_method_override: true
+    assets: ~
 
 # Twig Configuration
 twig:
     debug:            "%kernel.debug%"
     strict_variables: "%kernel.debug%"
-    globals:
-        project:            "%project%"
-
-# Assetic Configuration
-assetic:
-    debug:          "%kernel.debug%"
-    use_controller: false
-    bundles:        ['ArgonWebBundle', 'ArgonGameBundle', 'ArgonNewsBundle']
-    java:           "/usr/bin/java"
-    filters:
-        less:
-            apply_to:   "\\.less$"
-            node_paths: ["/usr/local/lib/node_modules", "/usr/lib/node_modules/"]
-        cssrewrite: ~
-        closure:
-            jar: "%kernel.root_dir%/../vendor/google/closure-compiler/compiler.jar"
-        yui_css:
-            jar: "%kernel.root_dir%/../vendor/yahoo/yuicompressor/yuicompressor-2.4.8.jar"
-    assets:
-        argonbook_css:
-            inputs:
-                - "%kernel.root_dir%/Resources/less/argonbook.less"
-                - "@ArgonWebBundle/Resources/less/argonbook.less"
-                - "@ArgonGameBundle/Resources/less/argonbook.less"
-                - "@ArgonNewsBundle/Resources/less/argonbook.less"
-            output: css/argonbook.css
-            filters: [less, cssrewrite]
-        jqueryui_js:
-            inputs:
-                - "%kernel.root_dir%/../vendor/jquery/jqueryui/jquery-ui.js"
-            output: js/jquery-ui.js
-        jqueryui_css:
-            inputs:
-                - "%kernel.root_dir%/../vendor/jquery/jqueryui/jquery-ui.css"
-            output: css/jquery-ui.css
-            filters: [cssrewrite]
 
 # Doctrine Configuration
 doctrine:
     dbal:
-        driver:   "%database_driver%"
+        driver:   pdo_mysql
         host:     "%database_host%"
         port:     "%database_port%"
         dbname:   "%database_name%"
         user:     "%database_user%"
         password: "%database_password%"
         charset:  UTF8
-        # if using pdo_sqlite as your database driver, add the path in parameters.yml
-        # e.g. database_path: %kernel.root_dir%/data/data.db3
-        path:     "%database_path%"
+        # if using pdo_sqlite as your database driver:
+        #   1. add the path in parameters.yml
+        #     e.g. database_path: "%kernel.root_dir%/data/data.db3"
+        #   2. Uncomment database_path in parameters.yml.dist
+        #   3. Uncomment next line:
+        #     path:     "%database_path%"
 
     orm:
         auto_generate_proxy_classes: "%kernel.debug%"
+        naming_strategy: doctrine.orm.naming_strategy.underscore
         auto_mapping: true
-        mappings:
-            gedmo_translatable:
-                type:       annotation
-                dir:        "%kernel.root_dir%/../vendor/gedmo/doctrine-extensions/lib/Gedmo/Translatable/Entity"
-                prefix:     Gedmo\Translatable\Entity
-                is_bundle:  false
-            gedmo_tree:
-                type:       annotation
-                dir:        "%kernel.root_dir%/../vendor/gedmo/doctrine-extensions/lib/Gedmo/Tree/Entity"
-                prefix:     Gedmo\Tree\Entity
-                is_bundle:  false
 
 # Swiftmailer Configuration
 swiftmailer:
@@ -103,42 +66,3 @@ swiftmailer:
     username:  "%mailer_user%"
     password:  "%mailer_password%"
     spool:     { type: memory }
-
-# Doctrine Extensions Configuration
-stof_doctrine_extensions:
-    default_locale: "%locale%"
-    orm:
-        default:
-            sluggable:     true
-            translatable:  true
-            tree:          true
-            timestampable: true
-
-# Locale Configuration
-lunetics_locale:
-    allowed_locales:         [de, en]
-    guessing_order:          [query, cookie, session]
-    cookie:
-        set_on_change:       true
-    form:
-        languages_only:      true
-    switcher:
-        show_current_locale: true
-
-# Bootstrap Configuration
-braincrafted_bootstrap:
-    auto_configure:
-        knp_menu: false
-    customize:
-        variables_file: "%kernel.root_dir%/Resources/less/variables.less"
-    less_filter: less
-    jquery_path: "%kernel.root_dir%/../vendor/jquery/jquery/jquery-1.11.3.min.js"
-
-# FOSUser Configuration
-fos_user:
-    db_driver:       orm
-    firewall_name:   main
-    user_class:      Argon\CommonBundle\Entity\Player
-    from_email:
-        address:     no-reply@argonbook.eu
-        sender_name: ArgonBook

@@ -1,88 +1,36 @@
 {
-    "name": "abenteuerritter/argonbook",
-    "license": "MIT",
+    "name": "vagrant/test",
+    "license": "proprietary",
     "type": "project",
-    "description": "Alternate Reality Games Oriented Network",
     "autoload": {
-        "psr-0": { "Argon": "src/" },
-        "classmap": [ "app/AppKernel.php", "app/AppCache.php" ]
+        "psr-4": {
+            "": "src/"
+        },
+        "classmap": [
+            "app/AppKernel.php",
+            "app/AppCache.php"
+        ]
     },
-    "repositories": [
-        {
-            "type": "package",
-            "package": {
-                "name": "jquery/jquery",
-                "version": "1.11.3",
-                "dist": {
-                    "url": "http://code.jquery.com/jquery-1.11.3.min.js",
-                    "type": "file"
-                }
-            }
-        },
-        {
-            "type": "package",
-            "package": {
-                "name": "jquery/jqueryui",
-                "version": "1.11.4",
-                "dist": {
-                    "url": "http://jqueryui.com/resources/download/jquery-ui-1.11.4.zip",
-                    "type": "zip"
-                }
-            }
-        },
-        {
-            "type": "package",
-            "package": {
-                "name": "google/closure-compiler",
-                "version": "v20151015",
-                "dist": {
-                    "url": "http://dl.google.com/closure-compiler/compiler-20151015.zip",
-                    "type": "zip"
-                }
-            }
-        },
-        {
-            "type": "package",
-            "package": {
-                "name": "yahoo/yuicompressor",
-                "version": "2.4.8",
-                "dist": {
-                    "url": "https://github.com/yui/yuicompressor/releases/download/v2.4.8/yuicompressor-2.4.8.zip",
-                    "type": "zip"
-                }
-            }
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
         }
-    ],
+    },
     "require": {
         "php": ">=5.5.9",
-        "symfony/symfony": "~2.6",
+        "symfony/symfony": "3.0.*",
         "doctrine/orm": "^2.5",
         "doctrine/doctrine-bundle": "^1.6",
-        "doctrine/doctrine-fixtures-bundle": "^2.3",
-        "doctrine/migrations": "^1.1",
-        "doctrine/doctrine-migrations-bundle": "^1.1",
-        "stof/doctrine-extensions-bundle": "^1.2",
-        "knplabs/knp-paginator-bundle": "^2.5",
-        "lunetics/locale-bundle": "^2.4",
-        "twig/extensions": "^1.3",
-        "google/closure-compiler": "v20151015",
-        "yahoo/yuicompressor": "^2.4",
-        "kriswallsmith/assetic": "^1.3",
-        "symfony/assetic-bundle": "^2.7",
+        "doctrine/doctrine-cache-bundle": "^1.2",
         "symfony/swiftmailer-bundle": "^2.3",
         "symfony/monolog-bundle": "^2.8",
         "sensio/distribution-bundle": "^5.0",
-        "sensio/framework-extra-bundle": "^3.0",
-        "incenteev/composer-parameter-handler": "^2.1",
-        "jquery/jquery": "~1.11",
-        "jquery/jqueryui": "~1.11",
-        "twbs/bootstrap": "^3.3",
-        "braincrafted/bootstrap-bundle": "^2.1",
-        "friendsofsymfony/user-bundle": "^2.0.0-alpha3"
+        "sensio/framework-extra-bundle": "^3.0.2",
+        "incenteev/composer-parameter-handler": "^2.0"
     },
     "require-dev": {
         "sensio/generator-bundle": "^3.0",
-        "symfony/debug": "^2.8"
+        "symfony/phpunit-bridge": "^3.0"
     },
     "scripts": {
         "post-install-cmd": [
@@ -91,8 +39,7 @@
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::clearCache",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installAssets",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile",
-            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::prepareDeploymentTarget",
-            "Braincrafted\\Bundle\\BootstrapBundle\\Composer\\ScriptHandler::install"
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::prepareDeploymentTarget"
         ],
         "post-update-cmd": [
             "Incenteev\\ParameterHandler\\ScriptHandler::buildParameters",
@@ -100,11 +47,9 @@
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::clearCache",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installAssets",
             "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::installRequirementsFile",
-            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::prepareDeploymentTarget",
-            "Braincrafted\\Bundle\\BootstrapBundle\\Composer\\ScriptHandler::install"
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::prepareDeploymentTarget"
         ]
     },
-    "minimum-stability": "stable",
     "extra": {
         "symfony-app-dir": "app",
         "symfony-bin-dir": "bin",
