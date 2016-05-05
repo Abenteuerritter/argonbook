@@ -13,6 +13,25 @@
     - php5-fpm
     - php5-curl
 
+- name: conf.d
+  file: path=/etc/php5/conf.d mode=0755 state=directory
+  become: yes
+
+- name: configure
+  template:
+    src: php5/php.ini.j2
+    dest: /etc/php5/conf.d/90-custom.ini
+    mode: 0644
+  notify:
+    - restart fastcgi
+
+- name: configuration link
+  with_items: [cli, fpm]
+  file:
+    src: /etc/php5/conf.d/90-custom.ini
+    dest: /etc/php5/{{ item }}/conf.d/90-custom.ini
+    state: link
+
 - name: php5-fpm service state
   service: name=php5-fpm state=started enabled=yes
 

@@ -1,0 +1,25 @@
+; PHP Configuration for Argonbook
+
+[PHP]
+; Maximum amount of memory a script may consume.
+memory_limit = {{ php_memory_limit|default('128M') }}
+
+; Only try the literal path given and to stop processing
+; if the file is not found.
+cgi.fix_pathinfo = 0
+
+; Disable the treatment of URLs.
+allow_url_fopen = Off
+
+; Errors
+{% if phpdev is defined and phpdev|bool %}
+  error_reporting = E_ALL
+  display_errors = On
+{% else %}
+  error_reporting = E_ALL & ~E_DEPRECATED & ~E_STRICT
+  display_errors = Off
+{% endif %}
+
+[Date]
+; Default timezone used by the date functions.
+date.timezone = {{ php_timezone|default('UTC') }}
