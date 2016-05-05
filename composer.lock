@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "5b171d010703b47f2cfb33fa6047beeb",
-    "content-hash": "f530469ebc461c78bd3e764731925cea",
+    "hash": "db49b9f69bd6762fbd607d1284f26a81",
+    "content-hash": "2431d13181414453f9cee579b271a13d",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -886,6 +886,75 @@
                 "orm"
             ],
             "time": "2016-01-05 21:34:58"
+        },
+        {
+            "name": "friendsofsymfony/user-bundle",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/FriendsOfSymfony/FOSUserBundle.git",
+                "reference": "def27463609e24af410b2606f0062de46fab5662"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/FriendsOfSymfony/FOSUserBundle/zipball/def27463609e24af410b2606f0062de46fab5662",
+                "reference": "def27463609e24af410b2606f0062de46fab5662",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.9",
+                "symfony/form": "~2.3|~3.0",
+                "symfony/framework-bundle": "~2.3|~3.0",
+                "symfony/security-bundle": "~2.3|~3.0",
+                "symfony/twig-bundle": "~2.3|~3.0"
+            },
+            "require-dev": {
+                "doctrine/doctrine-bundle": "~1.3",
+                "swiftmailer/swiftmailer": "~4.3|~5",
+                "symfony/console": "~2.3|~3.0",
+                "symfony/phpunit-bridge": "~2.7|~3.0",
+                "symfony/validator": "~2.3|~3.0",
+                "symfony/yaml": "~2.3|~3.0",
+                "willdurand/propel-typehintable-behavior": "~1.0"
+            },
+            "suggest": {
+                "willdurand/propel-typehintable-behavior": "Needed when using the propel implementation"
+            },
+            "type": "symfony-bundle",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "FOS\\UserBundle\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Christophe Coevoet",
+                    "email": "stof@notk.org"
+                },
+                {
+                    "name": "FriendsOfSymfony Community",
+                    "homepage": "https://github.com/friendsofsymfony/FOSUserBundle/contributors"
+                },
+                {
+                    "name": "Thibault Duplessis",
+                    "email": "thibault.duplessis@gmail.com"
+                }
+            ],
+            "description": "Symfony FOSUserBundle",
+            "homepage": "http://friendsofsymfony.github.com",
+            "keywords": [
+                "User management"
+            ],
+            "time": "2016-04-28 10:51:07"
         },
         {
             "name": "incenteev/composer-parameter-handler",
@@ -2067,7 +2136,9 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "friendsofsymfony/user-bundle": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
