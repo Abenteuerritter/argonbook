@@ -1,0 +1,8 @@
+---
+
+- name: update server
+  apt: update_cache=yes upgrade=dist cache_valid_time=3600
+
+- name: install dependencies
+  apt: pkg={{ item }} state=latest
+  with_items: "{{ dependencies }}"

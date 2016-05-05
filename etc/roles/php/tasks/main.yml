@@ -1,0 +1,28 @@
+---
+
+- name: add PHP repository
+  apt_repository: repo=ppa:ondrej/php5 update_cache=yes state=present
+
+- name: install php
+  apt: pkg={{ item }} state=latest
+  with_items:
+    - php5-common
+    - php5-cli
+    - php5-intl
+    - php5-sqlite
+    - php5-fpm
+    - php5-curl
+
+- name: php5-fpm service state
+  service: name=php5-fpm state=started enabled=yes
+
+- name: install composer
+  shell: curl -sS https://getcomposer.org/installer | \
+         php -- --install-dir=/usr/local/bin --filename=composer.phar
+  args:
+    creates: /usr/local/bin/composer.phar
+
+- name: install phpdev tools
+  when: phpdev is defined and phpdev|bool
+  get_url: url={{ item.value }} dest=/usr/local/bin/{{ item.key }}.phar mode=0755
+  with_dict: "{{ phpdev_tools }}"

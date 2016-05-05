@@ -1,0 +1,13 @@
+---
+
+- name: install lighttpd
+  apt: pkg=lighttpd state=latest
+
+- name: create virtual host
+  template: src=lighttpd/conf-enabled/{{ domain }}.conf.j2
+            dest=/etc/lighttpd/conf-enabled/{{ domain }}.conf
+  notify:
+    - restart lighttpd
+
+- name: http service state
+  service: name=lighttpd state=started enabled=yes

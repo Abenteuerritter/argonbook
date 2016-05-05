@@ -1,0 +1,10 @@
+---
+
+- hosts: all
+  roles:
+    - { role: ubuntu, become: yes }
+
+- hosts: web
+  roles:
+    - { role: httpd, become: yes }
+    - { role: php, become: yes }

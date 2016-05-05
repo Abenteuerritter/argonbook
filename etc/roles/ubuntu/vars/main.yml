@@ -1,0 +1,11 @@
+---
+
+dependencies:
+  - curl
+  - python-software-properties
+  - python-setuptools
+  - python-pip
+  - python-apt
+  - python-pycurl
+  - apt-transport-https
+  - ca-certificates
