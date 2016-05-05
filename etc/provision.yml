@@ -6,5 +6,5 @@
 
 - hosts: web
   roles:
-    - { role: httpd, become: yes }
     - { role: php, become: yes }
+    - { role: httpd, become: yes }
