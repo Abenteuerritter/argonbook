@@ -4,6 +4,10 @@
   roles:
     - { role: ubuntu, become: yes }
 
+- hosts: db
+  roles:
+    - { role: db, become: yes }
+
 - hosts: web
   roles:
     - { role: php, become: yes }

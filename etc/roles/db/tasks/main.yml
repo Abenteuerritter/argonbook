@@ -1,0 +1,21 @@
+---
+
+- name: install requirements
+  apt: name=python-mysqldb state=latest
+
+- name: install mysql
+  with_items:
+    - mysql-server
+    - mysql-client
+  apt: name={{ item }} state=latest
+
+- name: configure
+  template:
+    src: mysql/my.cnf.j2
+    dest: /etc/mysql/conf.d/90-custom.cnf
+    mode: 0644
+  notify:
+    - restart mysql
+
+- name: mysql service state
+  service: name=mysql state=started enabled=yes

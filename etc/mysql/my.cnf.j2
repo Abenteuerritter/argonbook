@@ -1,0 +1,17 @@
+; MySQL Configuration for Argonbook
+
+[client]
+default_character_set = utf8
+
+[mysqld]
+character_set_server = utf8
+collation_server = utf8_general_ci
+
+; Disable and remove locking from the Query Cache
+query_cache_size = 0
+query_cache_type = 0
+
+{% if 'web' not in group_names %}
+; Memory usage for InnoDB pool
+innodb_buffer_pool_size = {{ (ansible_memtotal_mb * 0.8) | int }}M
+{% endif %}
