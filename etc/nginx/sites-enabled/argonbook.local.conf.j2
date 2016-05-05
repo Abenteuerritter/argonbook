@@ -1,0 +1,27 @@
+upstream argonbook {
+    server unix:/var/run/php5-fpm.sock;
+}
+
+server {
+    listen 80;
+    root /home/{{ ansible_ssh_user }}/argonbook/web;
+
+    access_log /var/log/nginx/argonbook-access.log;
+    error_log /var/log/nginx/argonbook-error.log;
+
+    client_max_body_size 6M;
+
+    location / {
+        index app_dev.php;
+        try_files $uri $uri/ /app_dev.php?$query_string;
+    }
+
+    location ~ ^/app_dev\.php(/|$) {
+        include fastcgi_params;
+        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+        fastcgi_buffer_size 16k;
+        fastcgi_buffers 4 16k;
+        fastcgi_read_timeout 300;
+        fastcgi_pass argonbook;
+    }
+}

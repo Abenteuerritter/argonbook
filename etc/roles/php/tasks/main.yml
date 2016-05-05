@@ -32,6 +32,18 @@
     dest: /etc/php5/{{ item }}/conf.d/90-custom.ini
     state: link
 
+- name: run php5-fpm as normal user
+  with_dict:
+    user: "{{ ansible_ssh_user }}"
+    group: "{{ ansible_ssh_user }}"
+  lineinfile:
+    dest: /etc/php5/fpm/pool.d/www.conf
+    regexp: "^{{ item.key }}"
+    line: "{{ item.key }} = {{ item.value }}"
+    state: present
+  notify:
+    - restart php5-fpm
+
 - name: php5-fpm service state
   service: name=php5-fpm state=started enabled=yes
 

@@ -1,13 +1,21 @@
 ---
 
-- name: install lighttpd
-  apt: pkg=lighttpd state=latest
+- name: install nginx
+  apt: pkg=nginx state=latest
 
-- name: create virtual host
-  template: src=lighttpd/conf-enabled/{{ domain }}.conf.j2
-            dest=/etc/lighttpd/conf-enabled/{{ domain }}.conf
+- name: remove default site
+  file: path=/etc/nginx/sites-enabled/default state=absent
   notify:
-    - restart lighttpd
+    - restart nginx
 
-- name: http service state
-  service: name=lighttpd state=started enabled=yes
+- name: create domain host
+  template: src=nginx/sites-enabled/{{ domain }}.conf.j2
+            dest=/etc/nginx/sites-enabled/{{ domain }}.conf
+  notify:
+    - restart nginx
+
+- name: nginx service state
+  service: name=nginx state=started enabled=yes
+
+- name: append user to www-data
+  user: name={{ ansible_ssh_user }} groups=www-data append=yes state=present
