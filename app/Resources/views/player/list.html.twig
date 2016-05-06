@@ -1,0 +1,9 @@
+{% extends 'layout.html.twig' %}
+{% trans_default_domain 'web' %}
+
+{% block title %}{{ parent() }} - {{ 'Playerlist'|trans }}{% endblock %}
+
+{% block content %}
+  Playerlist
+  {{ players|length }}
+{% endblock %}

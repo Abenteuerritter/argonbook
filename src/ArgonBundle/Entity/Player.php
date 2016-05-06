@@ -6,7 +6,7 @@ use FOS\UserBundle\Model\User;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="ArgonBundle\Repository\PlayerRepository")
  * @ORM\Table(name="player")
  */
 class Player extends User
