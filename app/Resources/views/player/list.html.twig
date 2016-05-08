@@ -1,9 +1,25 @@
-{% extends 'layout.html.twig' %}
-{% trans_default_domain 'web' %}
+{% extends "layout.html.twig" %}
+{% trans_default_domain "web" %}
 
-{% block title %}{{ parent() }} - {{ 'Playerlist'|trans }}{% endblock %}
+{% block title %}{{ parent() }} - {{ "Playerlist"|trans }}{% endblock %}
 
 {% block content %}
   Playerlist
   {{ players|length }}
+  <table>
+    <thead>
+      <tr>
+        <th>{{ "Username"|trans }}</th>
+        <th>{{ "Last login"|trans }}</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for player in players %}
+      <tr>
+        <td>{{ player.username }}</td>
+        <td>{{ player.lastLogin is empty ? "" : player.lastLogin|date() }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
 {% endblock %}

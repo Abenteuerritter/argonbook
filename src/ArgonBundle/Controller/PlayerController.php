@@ -13,7 +13,7 @@ class PlayerController extends Controller
      */
     public function playerlistAction(Request $request)
     {
-        $page    = $request->query->getInt('p', 0);
+        $page    = $request->query->getInt('p', 1);
         $players = $this->getDoctrine()->getRepository('ArgonBundle\Entity\Player')->findByPage($page);
 
         return $this->render('player/list.html.twig', array(
