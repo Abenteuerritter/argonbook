@@ -5,7 +5,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Welcome!{% endblock %}</title>
-    {% block stylesheets %}{% endblock %}
+    {% block stylesheets %}
+      {% stylesheets filter="scss" "../src/ArgonWeb/argonbook.scss" %}
+        <link rel="stylesheet" href="{{ asset_url }}">
+      {% endstylesheets %}
+    {% endblock %}
     <link href="{{ asset('favicon.ico') }}" rel="icon" type="image/x-icon" />
   </head>
   <body>
