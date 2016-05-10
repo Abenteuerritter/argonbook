@@ -5,4 +5,9 @@
 
 - name: install dependencies
   with_items: "{{ dependencies }}"
-  apt: pkg={{ item }} state=latest
+  apt: name={{ item }} state=latest
+
+- name: install  packages
+  when: packages is defined
+  with_items: "{{ packages }}"
+  apt: name={{ item }} state=latest
