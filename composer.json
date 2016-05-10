@@ -29,11 +29,30 @@
         "sensio/framework-extra-bundle": "^3.0.2",
         "incenteev/composer-parameter-handler": "^2.0",
         "doctrine/doctrine-fixtures-bundle": "^2.3",
-        "friendsofsymfony/user-bundle": "~2.0@dev"
+        "friendsofsymfony/user-bundle": "~2.0@dev",
+        "necolas/normalize.css": "^4.1"
     },
     "require-dev": {
         "symfony/phpunit-bridge": "^3.0"
     },
+    "repositories": [
+        {
+            "type": "package",
+            "package": {
+                "name": "necolas/normalize.css",
+                "version": "4.1.1",
+                "dist": {
+                    "type": "zip",
+                    "url": "https://github.com/necolas/normalize.css/archive/4.1.1.zip"
+                },
+                "source": {
+                    "type": "git",
+                    "url": "https://github.com/necolas/normalize.css",
+                    "reference": "4.1.1"
+                }
+            }
+        }
+    ],
     "scripts": {
         "post-install-cmd": [
             "Incenteev\\ParameterHandler\\ScriptHandler::buildParameters",

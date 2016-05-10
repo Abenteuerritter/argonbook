@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "1191a6d750135018b3de661e290c8435",
-    "content-hash": "2c8d0ada7ae0962103447469f00fb7c0",
+    "hash": "c68586126e7d90021de89bad5a4ff317",
+    "content-hash": "58ff8ab13b16c432189a73911d9fa11f",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -1211,6 +1211,22 @@
                 "psr-3"
             ],
             "time": "2016-04-12 18:29:35"
+        },
+        {
+            "name": "necolas/normalize.css",
+            "version": "4.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/necolas/normalize.css",
+                "reference": "4.1.1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://github.com/necolas/normalize.css/archive/4.1.1.zip",
+                "reference": "4.1.1",
+                "shasum": null
+            },
+            "type": "library"
         },
         {
             "name": "paragonie/random_compat",
