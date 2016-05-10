@@ -2,13 +2,13 @@
 
 - hosts: all
   roles:
-    - { role: ubuntu, become: yes }
+    - { role: ubuntu }
 
 - hosts: db
   roles:
-    - { role: db, become: yes }
+    - { role: db }
 
 - hosts: web
   roles:
-    - { role: php, become: yes }
-    - { role: httpd, become: yes }
+    - { role: php }
+    - { role: httpd }

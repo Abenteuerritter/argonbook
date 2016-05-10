@@ -4,7 +4,6 @@
   apt_repository: repo=ppa:ondrej/php5 update_cache=yes state=present
 
 - name: install php
-  apt: pkg={{ item }} state=latest
   with_items:
     - php5-common
     - php5-cli
@@ -13,6 +12,7 @@
     - php5-mysql
     - php5-curl
     - php5-fpm
+  apt: name={{ item }} state=latest
 
 - name: conf.d
   file: path=/etc/php5/conf.d mode=0755 state=directory
