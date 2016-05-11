@@ -1,27 +1,18 @@
-{% set active = 'dashboard' %}
-{% extends 'ArgonWebBundle::Admin/layout.html.twig' %}
-{% trans_default_domain 'admin' %}
+{% extends "ArgonWebBundle::layout.html.twig" %}
+{% trans_default_domain "ArgonWebBundle" %}
+{% set active = "dashboard" %}
 
-{% block title %}{{ parent() }} - {{ 'dashboard.title'|trans }}{% endblock %}
+{% block title %}{{ parent() }} - {{ "admin.dashboard.title"|trans }}{% endblock %}
 
 {% block content %}
-<ol class="breadcrumb">
-    <li class="active">{{ 'dashboard.title'|trans }}</li>
+<ol id="breadcrumb">
+  <li class="active">{{ "admin.dashboard.title"|trans }}</li>
 </ol>
-<div class="row">
-    <div class="col-md-8">
-        Welcome!
-    </div>
-    <div class="col-md-4">
-        <div class="panel panel-default">
-            <div class="panel-heading">{{ 'dashboard.title'|trans }}</div>
-            <div class="panel-body">
-                <dl class="dl-horizontal">
-                  <dt>{{ 'dashboard.info.version'|trans }}</dt>
-                  <dd>{{ project.version }}</dd>
-                </dl>
-            </div>
-        </div>
-    </div>
-</div>
+<article>
+  <h3>{{ "admin.dashboard.title"|trans }}</h3>
+  <dl>
+    <dt>{{ "admin.dashboard.info.version"|trans }}</dt>
+    <dd>{{ project.version }}</dd>
+  </dl>
+</article>
 {% endblock %}

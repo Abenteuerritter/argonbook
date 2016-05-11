@@ -5,6 +5,6 @@
                         http://symfony.com/schema/routing/routing-1.0.xsd">
 
     <route id="admin_player" path="/players" methods="GET">
-        <default key="_controller">ArgonCommonBundle:Admin\Player:index</default>
+        <default key="_controller">ArgonUserBundle:Admin\Player:index</default>
     </route>
 </routes>

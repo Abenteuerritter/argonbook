@@ -8,7 +8,7 @@ imports:
 parameters:
     project:
         name:        argonbook
-        version:     1.2
+        version:     1.3
     locale: en
 
 framework:
@@ -85,7 +85,7 @@ swiftmailer:
 fos_user:
     db_driver:       orm
     firewall_name:   main
-    user_class:      ArgonBundle\Entity\Player
+    user_class:      Argon\UserBundle\Entity\Player
     from_email:
         address:     no-reply@argonbook.eu
         sender_name: Argonbook

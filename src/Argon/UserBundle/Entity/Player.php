@@ -1,6 +1,6 @@
 <?php
 
-namespace Argon\CommonBundle\Entity;
+namespace Argon\UserBundle\Entity;
 
 use FOS\UserBundle\Model\User;
 

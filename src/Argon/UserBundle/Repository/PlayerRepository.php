@@ -1,6 +1,6 @@
 <?php
 
-namespace Argon\CommonBundle\Repository;
+namespace Argon\UserBundle\Repository;
 
 use Doctrine\ORM\EntityRepository;
 

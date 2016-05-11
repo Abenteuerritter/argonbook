@@ -1,6 +1,16 @@
-argon:
-    resource: "@ArgonBundle/Controller/"
-    type:     annotation
+_argon_web:
+    resource: "@ArgonWebBundle/Resources/config/routing/pages.xml"
+    prefix: /
 
+# ADMIN
+_argon_web_admin:
+    resource: "@ArgonWebBundle/Resources/config/routing/admin.xml"
+    prefix: /admin
+
+_argon_user_admin:
+    resource: "@ArgonUserBundle/Resources/config/routing/admin.xml"
+    prefix: /admin
+
+# FOSUserBundle
 fos_user:
     resource: "@FOSUserBundle/Resources/config/routing/all.xml"

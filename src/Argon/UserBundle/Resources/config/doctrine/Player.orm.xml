@@ -4,7 +4,7 @@
       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
                           http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
-    <entity name="Argon\CommonBundle\Entity\Player" repository-class="Argon\CommonBundle\Repository\PlayerRepository" table="player">
+    <entity name="Argon\UserBundle\Entity\Player" repository-class="Argon\UserBundle\Repository\PlayerRepository" table="player">
         <id name="id" type="integer" column="id">
             <generator strategy="AUTO" />
         </id>
