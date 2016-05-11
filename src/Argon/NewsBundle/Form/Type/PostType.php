@@ -27,7 +27,7 @@ class PostType extends AbstractType
     {
         $resolver->setDefaults(array(
             'data_class'         => 'Argon\NewsBundle\Entity\NewsPost',
-            'translation_domain' => 'forms',
+            'translation_domain' => 'ArgonNewsBundle',
             'intention'          => 'news_post',
         ));
     }

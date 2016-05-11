@@ -4,6 +4,7 @@ namespace Argon\NewsBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 class PostPublishType extends AbstractType
@@ -15,7 +16,7 @@ class PostPublishType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('status', 'hidden')
+            ->add('status', HiddenType::class)
         ;
     }
 
@@ -26,7 +27,7 @@ class PostPublishType extends AbstractType
     {
         $resolver->setDefaults(array(
             'data_class'         => 'Argon\NewsBundle\Entity\NewsPost',
-            'translation_domain' => 'forms',
+            'translation_domain' => 'ArgonNewsBundle',
             'intention'          => 'news_post_publish',
         ));
     }

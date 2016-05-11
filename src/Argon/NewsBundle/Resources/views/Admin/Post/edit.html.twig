@@ -1,15 +1,15 @@
-{% set active = 'news' %}
-{% extends 'ArgonWebBundle::Admin/layout.html.twig' %}
-{% trans_default_domain 'admin' %}
+{% extends "ArgonWebBundle::layout_admin.html.twig" %}
+{% trans_default_domain "ArgonNewsBundle" %}
+{% set active = "news" %}
 
-{% block title %}{{ parent() }} - {{ 'news.posts'|trans }} - {{ post }} - {{ 'news.actions.edit'|trans }}{% endblock %}
+{% block title %}{{ parent() }} - {{ "admin.news.posts"|trans }} - {{ post }} - {{ "admin.news.actions.edit"|trans }}{% endblock %}
 
 {% block content %}
-<ol class="breadcrumb">
-  <li><a href="{{ path('admin_dashboard') }}">{{ 'dashboard.title'|trans }}</a></li>
-  <li><a href="{{ path('admin_news') }}">{{ 'news.posts'|trans }}</a></li>
-  <li><a href="{{ path('admin_news_view', {'slug': post.slug}) }}">{{ post }}</a></li>
-  <li class="active">{{ 'news.actions.edit'|trans }}</li>
+<ol id="breadcrumb">
+  <li><a href="{{ path("admin_dashboard") }}">{{ "admin.dashboard.title"|trans }}</a></li>
+  <li><a href="{{ path("admin_news") }}">{{ "admin.news.posts"|trans }}</a></li>
+  <li><a href="{{ path("admin_news_view", {"slug": post.slug}) }}">{{ post }}</a></li>
+  <li class="active">{{ "admin.news.actions.edit"|trans }}</li>
 </ol>
 {{ form(form) }}
 {% endblock %}

@@ -8,7 +8,7 @@ imports:
 parameters:
     project:
         name:        argonbook
-        version:     1.3
+        version:     1.4
     locale: en
 
 framework:
@@ -63,6 +63,17 @@ doctrine:
         auto_generate_proxy_classes: "%kernel.debug%"
         naming_strategy: doctrine.orm.naming_strategy.underscore
         auto_mapping: true
+        mappings:
+            gedmo_translatable:
+                type:      annotation
+                dir:       "%kernel.root_dir%/../vendor/gedmo/doctrine-extensions/lib/Gedmo/Translatable/Entity"
+                prefix:    Gedmo\Translatable\Entity
+                is_bundle: false
+            gedmo_tree:
+                type:      annotation
+                dir:       "%kernel.root_dir%/../vendor/gedmo/doctrine-extensions/lib/Gedmo/Tree/Entity"
+                prefix:    Gedmo\Tree\Entity
+                is_bundle: false
 
 # Assetic Configuration
 assetic:
@@ -89,3 +100,13 @@ fos_user:
     from_email:
         address:     no-reply@argonbook.eu
         sender_name: Argonbook
+
+# Doctrine Extensions Configuration
+stof_doctrine_extensions:
+    default_locale: "%locale%"
+    orm:
+        default:
+            sluggable:     true
+            translatable:  true
+            tree:          true
+            timestampable: true

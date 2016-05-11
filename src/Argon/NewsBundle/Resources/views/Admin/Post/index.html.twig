@@ -1,19 +1,19 @@
-{% set active = 'news' %}
-{% extends 'ArgonWebBundle::Admin/layout.html.twig' %}
-{% trans_default_domain 'admin' %}
+{% extends "ArgonWebBundle::layout_admin.html.twig" %}
+{% trans_default_domain "ArgonNewsBundle" %}
+{% set active = "news" %}
 
-{% block title %}{{ parent() }} - {{ 'news.posts'|trans }}{% endblock %}
+{% block title %}{{ parent() }} - {{ "admin.news.posts"|trans }}{% endblock %}
 
 {% block content %}
-<ol class="breadcrumb">
-  <li><a href="{{ path('admin_dashboard') }}">{{ 'dashboard.title'|trans }}</a></li>
-  <li class="active">{{ 'news.posts'|trans }}</li>
+<ol id="breadcrumb">
+  <li><a href="{{ path("admin_dashboard") }}">{{ "admin.dashboard.title"|trans }}</a></li>
+  <li class="active">{{ "admin.news.posts"|trans }}</li>
 </ol>
 <table class="table table-striped">
   <thead>
     <tr>
-      <th>{{ 'news.post.title'|trans({}, 'admin') }}</th>
-      <th class="text-right">{{ 'news.post.status'|trans({}, 'admin') }}</th>
+      <th>{{ "admin.news.post.title"|trans }}</th>
+      <th class="text-right">{{ "admin.news.post.status"|trans }}</th>
       <th class="text-right">&nbsp;</th>
     </tr>
   </thead>
@@ -21,34 +21,34 @@
   {% for post in entities %}
       <tr>
         <td>
-          <a href="{{ path('admin_news_view', {'slug': post.slug}) }}">{{ post }}</a>
+          <a href="{{ path("admin_news_view", {"slug": post.slug}) }}">{{ post }}</a>
         </td>
         <td class="text-right">
           {% if post.isPublished %}
-            {{ 'news.post.published_at'|trans({'%date%': post.publishedAt|date}) }}
+            {{ "admin.news.post.published_at"|trans({"%date%": post.publishedAt|date}) }}
           {% else %}
-            {{ 'news.post.draft'|trans }}
+            {{ "admin.news.post.draft"|trans }}
           {% endif %}
         </td>
         <td class="text-right">
           <ul class="nav nav-pills pull-right">
             {% if not post.isPublished %}
-              <li><a href="{{ path('admin_news_publish', {'slug': post.slug}) }}">{{ 'news.actions.publish'|trans }}</a></li>
+              <li><a href="{{ path("admin_news_publish", {"slug": post.slug}) }}">{{ "admin.news.actions.publish"|trans }}</a></li>
             {% endif %}
-            <li><a href="{{ path('admin_news_edit', {'slug': post.slug}) }}">{{ 'news.actions.edit'|trans }}</a></li>
+            <li><a href="{{ path("admin_news_edit", {"slug": post.slug}) }}">{{ "admin.news.actions.edit"|trans }}</a></li>
           </ul>
         </td>
       </tr>
   {% else %}
     <tr class="warning">
-      <td colspan="3">{{ 'news.post.empty'|trans({}, 'admin') }}</td>
+      <td colspan="3">{{ "admin.news.post.empty"|trans }}</td>
     </tr>
   {% endfor %}
   </tbody>
   <tfoot>
     <tr>
       <td colspan="3">
-        <a href="{{ path('admin_news_new') }}" class="btn btn-default">{{ 'news.actions.new'|trans }}</a>
+        <a href="{{ path("admin_news_new") }}" class="btn btn-default">{{ "admin.news.actions.new"|trans }}</a>
       </td>
     </tr>
   </tfoot>

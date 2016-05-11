@@ -4,6 +4,7 @@ namespace Argon\NewsBundle\Controller\Admin;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
 use Argon\NewsBundle\Entity\NewsPost;
 
@@ -31,8 +32,8 @@ class PostController extends Controller
             'method' => 'POST',
         ));
 
-        $form->add('submit', 'submit', array(
-            'label' => 'news.post.create',
+        $form->add('submit', SubmitType::class, array(
+            'label' => 'admin.news.post.create',
         ));
 
         if ($request->isMethod('POST')) {
@@ -44,7 +45,7 @@ class PostController extends Controller
                 $em->flush();
 
                 $request->getSession()->getFlashBag()
-                        ->add('success', 'news.post.created');
+                        ->add('success', 'admin.news.post.created');
 
                 return $this->redirect($this->generateUrl('admin_news'));
             }
@@ -71,8 +72,8 @@ class PostController extends Controller
             'method' => 'POST',
         ));
 
-        $form->add('submit', 'submit', array(
-            'label' => 'news.post.publish',
+        $form->add('submit', SubmitType::class, array(
+            'label' => 'admin.news.post.publish',
         ));
 
         if ($request->isMethod('POST')) {
@@ -83,7 +84,7 @@ class PostController extends Controller
                 $em->flush();
 
                 $request->getSession()->getFlashBag()
-                        ->add('success', 'news.post.published');
+                        ->add('success', 'admin.news.post.published');
 
                 return $this->redirect($this->generateUrl('admin_news'));
             }
@@ -102,8 +103,8 @@ class PostController extends Controller
             'method' => 'POST',
         ));
 
-        $form->add('submit', 'submit', array(
-            'label' => 'news.post.edit',
+        $form->add('submit', SubmitType::class, array(
+            'label' => 'admin.news.post.edit',
         ));
 
         if ($request->isMethod('POST')) {
@@ -114,7 +115,7 @@ class PostController extends Controller
                 $em->flush();
 
                 $request->getSession()->getFlashBag()
-                        ->add('success', 'news.post.updated');
+                        ->add('success', 'admin.news.post.updated');
 
                 return $this->redirect($this->generateUrl('admin_news'));
             }

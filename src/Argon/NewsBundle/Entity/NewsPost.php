@@ -2,7 +2,7 @@
 
 namespace Argon\NewsBundle\Entity;
 
-use Argon\CommonBundle\Entity\Player as Creator;
+use Argon\UserBundle\Entity\Player as Creator;
 
 class NewsPost
 {
@@ -15,7 +15,7 @@ class NewsPost
     protected $id;
 
     /**
-     * @var \Argon\CommonBundle\Entity\Player
+     * @var \Argon\UserBundle\Entity\Player
      */
     protected $creator;
 
@@ -73,7 +73,7 @@ class NewsPost
     }
 
     /**
-     * @param \Argon\CommonBundle\Entity\Player $creator
+     * @param \Argon\UserBundle\Entity\Player $creator
      */
     public function setCreator(Creator $creator)
     {
@@ -81,7 +81,7 @@ class NewsPost
     }
 
     /**
-     * @return \Argon\CommonBundle\Entity\Player
+     * @return \Argon\UserBundle\Entity\Player
      */
     public function getCreator()
     {
