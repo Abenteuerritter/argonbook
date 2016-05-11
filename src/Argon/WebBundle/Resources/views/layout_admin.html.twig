@@ -1,0 +1,8 @@
+{% extends "ArgonWebBundle::layout.html.twig" %}
+{% trans_default_domain "ArgonWebBundle" %}
+
+{% block nav %}
+<ul>
+  <li><a href="{{ path("admin_player") }}">{{ "layout.admin.players"|trans }}</a></li>
+</ul>
+{% endblock %}

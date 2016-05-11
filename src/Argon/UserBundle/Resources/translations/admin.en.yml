@@ -1,7 +1,0 @@
-
-player:
-    title:                  Players
-    username:               Username
-    name:                   Name
-    lastlogin:              Last Login
-    empty:                  There are no players in the system yet.

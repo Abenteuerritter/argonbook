@@ -22,6 +22,7 @@
       <header>
         <section>
           <h1><a href="{{ path("homepage") }}" title="{{ "Alternate Reality Games Oriented Network" }}">{{ "Argonbook" }}</a></h1>
+          {% block nav %}
           <ul>
             {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
               {% if is_granted('ROLE_USER') %}
@@ -39,6 +40,7 @@
               <li><a href="{{ path("fos_user_security_login") }}">{{ "layout.login"|trans({}, "FOSUserBundle") }}</a></li>
             {% endif %}
           </ul>
+          {% endblock %}
         </section>
       </header>
       {% endblock %}
