@@ -34,10 +34,11 @@ security:
         ROLE_CHARACTER:   []
         ROLE_PLAYER:      [ROLE_ALLOWED_TO_SWITCH_CHARACTER]
         ROLE_DIRECTOR:    [ROLE_PLAYER]
-        ROLE_GM:          [ROLE_PLAYER, ROLE_DIRECTOR]
-        ROLE_WM:          [ROLE_PLAYER, ROLE_DIRECTOR, ROLE_GM, ROLE_ALLOWED_TO_SWITCH]
+        ROLE_GAMEMASTER:  [ROLE_PLAYER, ROLE_DIRECTOR]
+        ROLE_SUPER_ADMIN: [ROLE_PLAYER, ROLE_DIRECTOR, ROLE_GAMEMASTER, ROLE_ALLOWED_TO_SWITCH]
 
     access_control:
         - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/playerlist, role: ROLE_PLAYER }

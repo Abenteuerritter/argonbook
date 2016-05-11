@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="{{ app.request.locale }}">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{{ "layout.title"|trans }}{% endblock %}</title>
+    {% block stylesheets %}
+      {% stylesheets filter="cssrewrite,scss"
+            "../vendor/necolas/normalize.css/normalize.css"
+            "../app/Resources/scss/argonbook.scss"
+       %}
+        <link rel="stylesheet" href="{{ asset_url }}">
+      {% endstylesheets %}
+    {% endblock %}
+    <link href="{{ asset("favicon.ico") }}" rel="icon" type="image/x-icon" />
+  </head>
+  <body>
+    {% block body %}
+      {% block header %}
+      <header>
+        <section>
+          <h1><a href="{{ path("homepage") }}">{{ "layout.logo"|trans }}</a></h1>
+          <ul>
+            {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+              <li><a href="{{ path("playerlist") }}">{{ "layout.playerlist"|trans }}</a></li>
+              <li>{{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }}</li>
+              <li><a href="{{ path("fos_user_security_logout") }}">{{ "layout.logout"|trans({}, 'FOSUserBundle') }}</a></li>
+            {% else %}
+              <li><a href="{{ path("fos_user_registration_register") }}">{{ "layout.register"|trans({}, 'FOSUserBundle') }}</a></li>
+              <li><a href="{{ path("fos_user_security_login") }}">{{ "layout.login"|trans({}, 'FOSUserBundle') }}</a></li>
+            {% endif %}
+            </li>
+          </ul>
+        </section>
+      </header>
+      {% endblock %}
+
+      {% if app.request.hasPreviousSession %}
+        {% for class, messages in app.session.flashbag.all() %}
+          {% for message in messages %}
+            <div class="alert alert-{{ class }}">{{ message|trans({}, 'flash') }}</div>
+          {% endfor %}
+        {% endfor %}
+      {% endif %}
+
+      {% block wrapper %}
+      <main>
+        <section>
+          {% block content %}{% endblock %}
+        </section>
+      </main>
+      {% endblock %}
+
+      {% block footer %}{% endblock %}
+    {% endblock %}
+    {% block javascripts %}{% endblock %}
+  </body>
+</html>

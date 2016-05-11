@@ -16,7 +16,7 @@ class PlayerController extends Controller
         $page    = $request->query->getInt('p', 1);
         $players = $this->getDoctrine()->getRepository('ArgonBundle\Entity\Player')->findByPage($page);
 
-        return $this->render('player/list.html.twig', array(
+        return $this->render('playerlist.html.twig', array(
             'page'    => $page,
             'players' => $players,
         ));

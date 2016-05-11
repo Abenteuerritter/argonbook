@@ -1,9 +1,9 @@
-/*! _base.scss | style common tags with theme */
+/*! _base.scss | style common tags with theme and structure */
 
 body {
-  font-family:      Arial, sans-serif;
-  font-size:        13px;
-  line-height:      1.4;
+  font-family: arial, sans-serif;
+  font-size:   13px;
+  line-height: 1.4;
   color:            $color-foreground;
   background-color: $color-background;
 }
@@ -19,4 +19,11 @@ a {
   &:hover, &:focus {
     color: $color-link-hover;
   }
+}
+
+section {
+  margin: 0 auto;
+  padding: 0.67em;
+  @include clearfix;
+  @include zass-grid(false);
 }
