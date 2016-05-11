@@ -1,20 +1,20 @@
-{% set active = 'player' %}
-{% extends 'ArgonWebBundle::Admin/layout.html.twig' %}
-{% trans_default_domain 'admin' %}
+{% extends "ArgonWebBundle::layout.html.twig" %}
+{% trans_default_domain "ArgonUserBundle" %}
+{% set active = "player" %}
 
-{% block title %}{{ parent() }} - {{ 'player.title'|trans }}{% endblock %}
+{% block title %}{{ parent() }} - {{ "admin.player.title"|trans }}{% endblock %}
 
 {% block content %}
-<ol class="breadcrumb">
-    <li><a href="{{ path('admin_dashboard') }}">{{ 'dashboard.title'|trans }}</a></li>
-    <li class="active">{{ 'player.title'|trans }}</li>
+<ol id="breadcrumb">
+    <li><a href="{{ path("admin_dashboard") }}">{{ "dashboard.title"|trans }}</a></li>
+    <li class="active">{{ "admin.player.title"|trans }}</li>
 </ol>
-<table class="table table-striped">
+<table>
     <thead>
         <tr>
-            <th>{{ 'player.username'|trans }}</th>
-            <th>{{ 'player.name'|trans }}</th>
-            <th class="text-right">{{ 'player.lastlogin'|trans }}</th>
+            <th>{{ "admin.player.username"|trans }}</th>
+            <th>{{ "admin.player.name"|trans }}</th>
+            <th>{{ "admin.player.lastlogin"|trans }}</th>
         </tr>
     </thead>
     <tbody>
@@ -22,11 +22,11 @@
         <tr>
             <td>{{ player.username }}</td>
             <td>{{ player.name }}</td>
-            <td class="text-right">{{ player.lastLogin|date }}</td>
+            <td>{{ player.lastLogin|date }}</td>
         </tr>
     {% else %}
         <tr class="warning">
-            <td colspan="3">{{ 'player.empty'|trans }}</td>
+            <td colspan="3">{{ "player.empty"|trans }}</td>
         </tr>
     {% endfor %}
     </tbody>

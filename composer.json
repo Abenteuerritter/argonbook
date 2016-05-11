@@ -30,6 +30,7 @@
         "incenteev/composer-parameter-handler": "^2.0",
         "doctrine/doctrine-fixtures-bundle": "^2.3",
         "friendsofsymfony/user-bundle": "~2.0@dev",
+        "knplabs/knp-paginator-bundle": "^2.5",
         "necolas/normalize.css": "^4.1",
         "waiting-for-dev/zass": "dev-master"
     },
