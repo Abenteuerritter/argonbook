@@ -9,12 +9,12 @@
   <li><a href="{{ path("admin_dashboard") }}">{{ "admin.dashboard.title"|trans }}</a></li>
   <li class="active">{{ "admin.news.posts"|trans }}</li>
 </ol>
-<table class="table table-striped">
+<table>
   <thead>
     <tr>
       <th>{{ "admin.news.post.title"|trans }}</th>
-      <th class="text-right">{{ "admin.news.post.status"|trans }}</th>
-      <th class="text-right">&nbsp;</th>
+      <th>{{ "admin.news.post.status"|trans }}</th>
+      <th>&nbsp;</th>
     </tr>
   </thead>
   <tbody>
@@ -23,15 +23,15 @@
         <td>
           <a href="{{ path("admin_news_view", {"slug": post.slug}) }}">{{ post }}</a>
         </td>
-        <td class="text-right">
+        <td>
           {% if post.isPublished %}
             {{ "admin.news.post.published_at"|trans({"%date%": post.publishedAt|date}) }}
           {% else %}
             {{ "admin.news.post.draft"|trans }}
           {% endif %}
         </td>
-        <td class="text-right">
-          <ul class="nav nav-pills pull-right">
+        <td>
+          <ul>
             {% if not post.isPublished %}
               <li><a href="{{ path("admin_news_publish", {"slug": post.slug}) }}">{{ "admin.news.actions.publish"|trans }}</a></li>
             {% endif %}
@@ -48,7 +48,7 @@
   <tfoot>
     <tr>
       <td colspan="3">
-        <a href="{{ path("admin_news_new") }}" class="btn btn-default">{{ "admin.news.actions.new"|trans }}</a>
+        <a href="{{ path("admin_news_new") }}">{{ "admin.news.actions.new"|trans }}</a>
       </td>
     </tr>
   </tfoot>

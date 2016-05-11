@@ -1,8 +1,7 @@
+{% trans_default_domain "ArgonNewsBundle" %}
 {% if entities|length %}
-  <div class="container">
-    <h3>{{ 'news.posts'|trans({}, 'web') }}</h3>
-    {% for post in entities %}
-      {{ render(controller('ArgonNewsBundle:Block:post', {'post': post, 'position': loop.index})) }}
-    {% endfor %}
-  </div>
+  <h3>{{ "admin.news.posts"|trans }}</h3>
+  {% for post in entities %}
+    {{ render(controller("ArgonNewsBundle:Block:post", {"post": post, "position": loop.index})) }}
+  {% endfor %}
 {% endif %}

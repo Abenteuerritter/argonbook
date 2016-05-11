@@ -1,9 +1,10 @@
-<div class="article">
+{% trans_default_domain "ArgonNewsBundle" %}
+<article>
   <h4>{{ post.title }}</h4>
-  <div class="content">
+  <main>
     {{ post.body|nl2br }}
-  </div>
-  <div class="footer">
-    {{ 'news.post.footer'|trans({'%creator%': post.creator, '%published%': post.publishedAt|date}, 'web') }}
-  </div>
+  </main>
+  <footer>
+    {{ "admin.news.post.footer"|trans({"%creator%": post.creator, "%published%": post.publishedAt|date}) }}
+  </footer>
 </div>

@@ -10,38 +10,28 @@
   <li><a href="{{ path("admin_news") }}">{{ "admin.news.posts"|trans }}</a></li>
   <li class="active">{{ post }}</li>
 </ol>
-<div class="form-horizontal">
-  <div class="form-group">
-    <label class="col-sm-2 control-label">{{ "admin.news.post.title"|trans }}</label>
-    <div class="col-sm-10">
-      <p class="form-control-static">{{ post.title }}</p>
-    </div>
+<dl>
+  <dt>{{ "admin.news.post.title"|trans }}</dt>
+  <dd>{{ post.title }}</dd>
 
-    <label class="col-sm-2 control-label">{{ "admin.news.post.status"|trans }}</label>
-    <div class="col-sm-10">
-      <p class="form-control-static">
-      {% if post.isPublished %}
-        {{ "admin.news.post.published_at"|trans({"%date%": post.publishedAt|date}) }}
-      {% else %}
-        {{ "admin.news.post.draft"|trans }}
-      {% endif %}
-      </p>
-    </div>
+  <dt>{{ "admin.news.post.status"|trans }}</dt>
+  <dd>
+  {% if post.isPublished %}
+    {{ "admin.news.post.published_at"|trans({"%date%": post.publishedAt|date}) }}
+  {% else %}
+    {{ "admin.news.post.draft"|trans }}
+  {% endif %}
+  </dd>
 
-    <label class="col-sm-2 control-label">{{ "admin.news.post.creator"|trans }}</label>
-    <div class="col-sm-10">
-      <p class="form-control-static">
-        <abbr title="{{ post.creator.username }}">{{ post.creator.name|default(post.creator.username) }}</abbr>
-      </p>
-    </div>
+  <dt>{{ "admin.news.post.creator"|trans }}</dt>
+  <dd>
+    <abbr title="{{ post.creator.username }}">{{ post.creator.name|default(post.creator.username) }}</abbr>
+  </dd>
 
-    <label class="col-sm-2 control-label">{{ "admin.news.post.body"|trans }}</label>
-    <div class="col-sm-10">
-      <p class="form-control-static">{{ post.body|nl2br }}</p>
-    </div>
-  </div>
-</div>
-<ul class="nav nav-pills pull-right">
+  <dt>{{ "admin.news.post.body"|trans }}</dt>
+  <dd>{{ post.body|nl2br }}</dd>
+</dd>
+<ul>
   {% if not post.isPublished %}
     <li><a href="{{ path("admin_news_publish", {"slug": post.slug}) }}">{{ "admin.news.actions.publish"|trans }}</a></li>
   {% endif %}

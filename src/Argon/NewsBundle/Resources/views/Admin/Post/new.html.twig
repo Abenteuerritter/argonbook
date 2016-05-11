@@ -5,7 +5,7 @@
 {% block title %}{{ parent() }} - {{ "admin.news.posts"|trans }} {{ "admin.news.actions.new"|trans }}{% endblock %}
 
 {% block content %}
-<ol class="breadcrumb">
+<ol id="breadcrumb">
   <li><a href="{{ path('admin_dashboard') }}">{{ "admin.dashboard.title"|trans }}</a></li>
   <li><a href="{{ path('admin_news') }}">{{ "admin.news.posts"|trans }}</a></li>
   <li class="active">{{ "admin.news.actions.new"|trans }}</li>
