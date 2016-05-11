@@ -1,0 +1,21 @@
+@charset "UTF-8";
+
+// colors
+$color-background:  #FFFFFF;
+$color-foreground:  #000000;
+$color-link:        #0000FF;
+$color-link-active: #0000FF;
+$color-link-hover:  #0000FF;
+$color-header:      #FFFFFF;
+$color-header-logo: #000000;
+$color-header-line: #999999;
+
+// 3rd party
+@import "waiting-for-dev/zass/sass/zass"; // ☃
+
+// mixins
+@import "mixins/clearfix";
+
+// argonbook
+@import "default/base";
+@import "default/header";

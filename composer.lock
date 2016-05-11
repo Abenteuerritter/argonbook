@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "c68586126e7d90021de89bad5a4ff317",
-    "content-hash": "58ff8ab13b16c432189a73911d9fa11f",
+    "hash": "4be5b553cccbb2402847896fce85e168",
+    "content-hash": "3538c54e9cc796faaf194774727bf5fe",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -2186,6 +2186,23 @@
                 "templating"
             ],
             "time": "2016-01-25 21:22:18"
+        },
+        {
+            "name": "waiting-for-dev/zass",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/waiting-for-dev/zass",
+                "reference": "master"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://github.com/waiting-for-dev/zass/zipball/master",
+                "reference": "master",
+                "shasum": null
+            },
+            "type": "library",
+            "time": "2014-11-18 18:39:06"
         }
     ],
     "packages-dev": [
@@ -2248,7 +2265,8 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "friendsofsymfony/user-bundle": 20
+        "friendsofsymfony/user-bundle": 20,
+        "waiting-for-dev/zass": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,

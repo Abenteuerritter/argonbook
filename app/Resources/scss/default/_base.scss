@@ -1,0 +1,22 @@
+/*! _base.scss | style common tags with theme */
+
+body {
+  font-family:      Arial, sans-serif;
+  font-size:        13px;
+  line-height:      1.4;
+  color:            $color-foreground;
+  background-color: $color-background;
+}
+
+a {
+  text-decoration: none;
+  color: $color-link;
+
+  &:active {
+    color: $color-link-active;
+  }
+
+  &:hover, &:focus {
+    color: $color-link-hover;
+  }
+}

@@ -30,7 +30,8 @@
         "incenteev/composer-parameter-handler": "^2.0",
         "doctrine/doctrine-fixtures-bundle": "^2.3",
         "friendsofsymfony/user-bundle": "~2.0@dev",
-        "necolas/normalize.css": "^4.1"
+        "necolas/normalize.css": "^4.1",
+        "waiting-for-dev/zass": "dev-master"
     },
     "require-dev": {
         "symfony/phpunit-bridge": "^3.0"
@@ -49,6 +50,22 @@
                     "type": "git",
                     "url": "https://github.com/necolas/normalize.css",
                     "reference": "4.1.1"
+                }
+            }
+        },
+        {
+            "type": "package",
+            "package": {
+                "name": "waiting-for-dev/zass",
+                "version": "dev-master",
+                "dist": {
+                    "type": "zip",
+                    "url": "https://github.com/waiting-for-dev/zass/zipball/master"
+                },
+                "source": {
+                    "type": "git",
+                    "url": "https://github.com/waiting-for-dev/zass",
+                    "reference": "master"
                 }
             }
         }

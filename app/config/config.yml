@@ -70,7 +70,8 @@ assetic:
     use_controller: "%kernel.debug%"
     filters:
         cssrewrite: ~
-        scss:       ~
+        scss:
+            load_paths: ["%kernel.root_dir%/../vendor"]
 
 # Swiftmailer Configuration
 swiftmailer:

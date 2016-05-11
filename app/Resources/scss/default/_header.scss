@@ -1,0 +1,32 @@
+/*! _header.scss | header and nav layout and styling */
+
+header {
+  @include clearfix;
+  background-color: $color-header;
+  border-bottom:    2px dotted $color-header-line;
+  nav {
+    margin: 0 auto;
+    @include zass-grid(false);
+    h1 {
+      margin: 0;
+      @include zass-column(3);
+      a {
+        color: $color-header-logo;
+        text-decoration: none;
+      }
+    }
+    ul {
+      @include zass-column(9);
+      padding-left: 0;
+      float: right;
+      width: auto;
+      li {
+        text-align:      center;
+        text-transform:  lowercase;
+        list-style-type: none;
+        width: 60px;
+        float: left;
+      }
+    }
+  }
+}
