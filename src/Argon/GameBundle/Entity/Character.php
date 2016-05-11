@@ -6,7 +6,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
 
 use Doctrine\Common\Collections\ArrayCollection;
 
-use Argon\CommonBundle\Entity\Player;
+use Argon\UserBundle\Entity\Player;
 use Argon\GameBundle\Entity\Race;
 use Argon\GameBundle\Model\GameProvider;
 
@@ -20,7 +20,7 @@ class Character extends GameProvider implements UserInterface
     protected $id;
 
     /**
-     * @var \Argon\CommonBundle\Entity\Player
+     * @var \Argon\UserBundle\Entity\Player
      */
     protected $player;
 
@@ -144,7 +144,7 @@ class Character extends GameProvider implements UserInterface
     }
 
     /**
-     * @param \Argon\CommonBundle\Entity\Player $player
+     * @param \Argon\UserBundle\Entity\Player $player
      */
     public function setPlayer(Player $player)
     {
@@ -152,7 +152,7 @@ class Character extends GameProvider implements UserInterface
     }
 
     /**
-     * @return \Argon\CommonBundle\Entity\Player
+     * @return \Argon\UserBundle\Entity\Player
      */
     public function getPlayer()
     {

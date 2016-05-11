@@ -3,7 +3,10 @@
 
 {% block nav %}
 <ul>
-  <li><a href="{{ path("admin_player") }}">{{ "layout.admin.players"|trans }}</a></li>
+  <li><a href="{{ path("admin_player") }}">{{ "layout.admin.player"|trans }}</a></li>
   <li><a href="{{ path("admin_news") }}">{{ "layout.admin.news"|trans }}</a></li>
+  <li><a href="{{ path("admin_character") }}">{{ "layout.admin.character"|trans }}</a></li>
+  <li><a href="{{ path("admin_race") }}">{{ "layout.admin.race"|trans }}</a></li>
+  <li><a href="{{ path("admin_skill") }}">{{ "layout.admin.skill"|trans }}</a></li>
 </ul>
 {% endblock %}

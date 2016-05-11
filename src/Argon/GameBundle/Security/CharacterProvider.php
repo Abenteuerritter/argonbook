@@ -10,7 +10,7 @@ use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInt
 
 use Doctrine\Common\Persistence\ObjectManager;
 
-use Argon\CommonBundle\Entity\Player;
+use Argon\UserBundle\Entity\Player;
 
 class CharacterProvider implements UserProviderInterface
 {

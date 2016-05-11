@@ -23,6 +23,7 @@ class AppKernel extends Kernel
             new Argon\WebBundle\ArgonWebBundle(),
             new Argon\UserBundle\ArgonUserBundle(),
             new Argon\NewsBundle\ArgonNewsBundle(),
+            new Argon\GameBundle\ArgonGameBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {

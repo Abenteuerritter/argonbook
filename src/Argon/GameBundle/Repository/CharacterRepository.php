@@ -4,7 +4,7 @@ namespace Argon\GameBundle\Repository;
 
 use Doctrine\ORM\EntityRepository;
 
-use Argon\CommonBundle\Entity\Player;
+use Argon\UserBundle\Entity\Player;
 
 class CharacterRepository extends EntityRepository
 {
