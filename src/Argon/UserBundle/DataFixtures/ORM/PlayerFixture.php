@@ -22,7 +22,7 @@ class PlayerFixture implements FixtureInterface, ContainerAwareInterface
 
     public function load(ObjectManager $manager)
     {
-        $this->userManipulator->create('root', 'pass', 'root@localhost', true, true);
+        $this->userManipulator->create('root', 'toor', 'root@localhost', true, true);
         $manager->flush();
     }
 }
