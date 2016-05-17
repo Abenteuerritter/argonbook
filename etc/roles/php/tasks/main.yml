@@ -57,3 +57,11 @@
   when: phpdev is defined and phpdev|bool
   with_dict: "{{ phpdev_tools }}"
   get_url: url={{ item.value }} dest=/usr/local/bin/{{ item.key }}.phar mode=0755
+
+- name: install xdebug
+  when: phpdev is defined and phpdev|bool
+  apt: name=php5-xdebug state=latest
+
+- name: disable xdebug for cli
+  when: phpdev is defined and phpdev|bool
+  file: path=/etc/php5/cli/conf.d/20-xdebug.ini state=absent
