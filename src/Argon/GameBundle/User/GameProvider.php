@@ -1,6 +1,6 @@
 <?php
 
-namespace Argon\GameBundle\Model;
+namespace Argon\GameBundle\User;
 
 use Argon\GameBundle\Provider\GameInterface;
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace Argon\GameBundle\Model;
+namespace Argon\GameBundle\EventListener;
 
 use Doctrine\Common\EventSubscriber;
 use Doctrine\ORM\Events;

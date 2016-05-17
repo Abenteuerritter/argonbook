@@ -5,7 +5,7 @@
                         http://symfony.com/schema/dic/services/services-1.0.xsd">
 
     <services>
-        <service id="argon_game.listener.game_subscriber" class="Argon\GameBundle\Model\GameSubscriber">
+        <service id="argon_game.listener.game_subscriber" class="Argon\GameBundle\EventListener\GameSubscriber">
             <argument type="service" id="argon_game.provider.game_factory" />
             <tag name="doctrine.event_subscriber" />
         </service>

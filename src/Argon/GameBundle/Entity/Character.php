@@ -8,7 +8,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 
 use Argon\UserBundle\Entity\Player;
 use Argon\GameBundle\Entity\Race;
-use Argon\GameBundle\Model\GameProvider;
+use Argon\GameBundle\User\GameProvider;
 
 class Character extends GameProvider implements UserInterface
 {
