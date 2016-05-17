@@ -1,0 +1,28 @@
+/*! _base.scss | style common tags with theme and structure */
+
+body {
+  color: $foreground-color;
+  font: 13px/1.4 arial, helvetica, sans-serif;
+  background: $background-color url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAMAAACeL25MAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAAZQTFRF////zsrFFOhhzwAAAA9JREFUeNpiYGTAAAABBgAAJwAC/BnsgQAAAABJRU5ErkJggg==);
+}
+
+a {
+  text-decoration: none;
+  color: $anchor-color;
+
+  &:active {
+    color: $visited-color;
+  }
+
+  &:hover, &:focus {
+    color: $active-color;
+  }
+}
+
+section {
+  background-color: $background-color;
+  margin: 0 auto;
+  padding: 0.67em;
+  @include clearfix;
+  @include zass-grid(false);
+}

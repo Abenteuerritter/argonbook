@@ -1,19 +1,13 @@
 /*! _header.scss | header and nav layout and styling */
 
 header {
-  background-color: $color-header;
-  border-bottom: 2px $color-header-line solid;
-
-  section {
-    padding: 0;
-  }
+  border-bottom: 2px $header-line-color solid;
 
   h1 {
     @include zass-column(3);
     margin-top:    0;
     margin-bottom: 0;
     a {
-      color: $color-header-logo;
       text-decoration: none;
     }
   }

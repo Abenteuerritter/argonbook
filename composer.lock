@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "6a1e49ce8599fa1d5070c7e167f80a36",
-    "content-hash": "ebd61afe3350aea48c74c99c48824f29",
+    "hash": "6ce30c1a964dcb9183234a4d594a14d1",
+    "content-hash": "56426f51be8a87e4c7a86dd9c3dd9734",
     "packages": [
         {
             "name": "behat/transliterator",
@@ -46,6 +46,26 @@
                 "transliterator"
             ],
             "time": "2015-09-28 16:26:35"
+        },
+        {
+            "name": "capua/sass-utils",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/capua/sass-utils.git",
+                "reference": "master"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://github.com/capua/sass-utils/archive/master.zip",
+                "reference": "master",
+                "shasum": null
+            },
+            "type": "library",
+            "license": [
+                "MIT"
+            ],
+            "time": "2016-04-29 23:15:08"
         },
         {
             "name": "doctrine/annotations",
@@ -2504,12 +2524,12 @@
             "version": "dev-master",
             "source": {
                 "type": "git",
-                "url": "https://github.com/waiting-for-dev/zass",
+                "url": "https://github.com/waiting-for-dev/zass.git",
                 "reference": "master"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/waiting-for-dev/zass/zipball/master",
+                "url": "https://github.com/waiting-for-dev/zass/archive/master.zip",
                 "reference": "master",
                 "shasum": null
             },
@@ -2578,6 +2598,7 @@
     "minimum-stability": "stable",
     "stability-flags": {
         "friendsofsymfony/user-bundle": 20,
+        "capua/sass-utils": 20,
         "waiting-for-dev/zass": 20
     },
     "prefer-stable": false,

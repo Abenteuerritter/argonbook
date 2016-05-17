@@ -1,19 +1,9 @@
 {% extends "ArgonWebBundle::layout.html.twig" %}
 
-{% block stylesheets %}
-  {% stylesheets filter="cssrewrite,scss"
-        "../vendor/necolas/normalize.css/normalize.css"
-        "@ArgonWebBundle/Resources/scss/argonbook.scss"
-        "@ArgonUserBundle/Resources/scss/argonbook.scss"
-   %}
-    <link rel="stylesheet" href="{{ asset_url }}">
-  {% endstylesheets %}
-{% endblock %}
-
 {% block header %}{% endblock %}
 
 {% block wrapper %}
-<main>
+<main id="user">
   <section>
     <article>
       {% block fos_user_content %}{% endblock %}
