@@ -40,8 +40,7 @@ class CharacterStoryConfirmType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'translation_domain' => 'ArgonGameBundle',
-            'intention'          => 'character_story_confirm',
+            'intention' => 'character_story_confirm',
         ));
     }
 }

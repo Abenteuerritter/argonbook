@@ -26,9 +26,8 @@ class CharacterExperienceType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class'         => 'Argon\GameBundle\Entity\CharacterExperience',
-            'translation_domain' => 'ArgonGameBundle',
-            'intention'          => 'character_experience',
+            'data_class' => 'Argon\GameBundle\Entity\CharacterExperience',
+            'intention'  => 'character_experience',
         ));
     }
 }

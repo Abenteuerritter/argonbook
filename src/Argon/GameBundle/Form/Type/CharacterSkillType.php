@@ -28,9 +28,8 @@ class CharacterSkillType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class'         => 'Argon\GameBundle\Entity\CharacterSkill',
-            'translation_domain' => 'ArgonGameBundle',
-            'intention'          => 'character_skill',
+            'data_class' => 'Argon\GameBundle\Entity\CharacterSkill',
+            'intention'  => 'character_skill',
         ));
     }
 }

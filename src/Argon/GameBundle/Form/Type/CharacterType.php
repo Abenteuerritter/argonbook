@@ -35,9 +35,8 @@ class CharacterType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class'         => 'Argon\GameBundle\Entity\Character',
-            'translation_domain' => 'ArgonGameBundle',
-            'intention'          => 'character',
+            'data_class' => 'Argon\GameBundle\Entity\Character',
+            'intention'  => 'character',
         ));
     }
 }

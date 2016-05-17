@@ -26,9 +26,8 @@ class PostPublishType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class'         => 'Argon\NewsBundle\Entity\NewsPost',
-            'translation_domain' => 'ArgonNewsBundle',
-            'intention'          => 'news_post_publish',
+            'data_class' => 'Argon\NewsBundle\Entity\NewsPost',
+            'intention'  => 'news_post_publish',
         ));
     }
 }
