@@ -9,6 +9,7 @@ use Doctrine\ORM\Event\LifecycleEventArgs;
 use Argon\GameBundle\Provider\GameFactory;
 use Argon\GameBundle\Entity\Character;
 use Argon\GameBundle\Entity\CharacterExperience;
+use Argon\GameBundle\User\GameProvider;
 
 /**
  * Will initialize the game after the entity itself was loaded.

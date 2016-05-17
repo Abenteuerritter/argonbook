@@ -13,7 +13,7 @@
         {{ character.race }}
       </td>
       <td>
-        <a href="{{ path("homepage", {"_switch": character.slug}) }}">{{ "character.switch"|trans }}</a>
+        <a href="{{ path("character_view", {"slug": character.slug, "_switch": character.slug}) }}">{{ "character.switch"|trans }}</a>
         <a href="{{ path("character_edit", {"slug": character.slug}) }}">{{ "character.edit"|trans }}</a>
         <a href="{{ path("character_skills", {"slug": character.slug}) }}">{{ "character.skills"|trans }}</a>
       </td>

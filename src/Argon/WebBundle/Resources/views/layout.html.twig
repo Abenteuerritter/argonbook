@@ -54,7 +54,7 @@
       {% endif %}
 
       {% block wrapper %}
-      <main>
+      <main id="{{ active|default("default") }}">
         <section>
           {% block content %}{% endblock %}
         </section>
