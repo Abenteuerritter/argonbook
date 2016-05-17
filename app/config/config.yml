@@ -8,7 +8,7 @@ imports:
 parameters:
     project:
         name:        argonbook
-        version:     1.8
+        version:     1.9
     locale: en
 
 framework:
@@ -33,7 +33,7 @@ framework:
         save_path:   "%kernel.root_dir%/../var/sessions/%kernel.environment%"
     fragments:       ~
     http_method_override: true
-    assets: ~
+    assets:          ~
 
 # Twig Configuration
 twig:
