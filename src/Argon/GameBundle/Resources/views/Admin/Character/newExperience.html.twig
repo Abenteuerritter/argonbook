@@ -1,16 +1,16 @@
-{% set active = 'character' %}
-{% extends 'ArgonWebBundle::Admin/layout.html.twig' %}
-{% trans_default_domain 'admin' %}
+{% extends "ArgonWebBundle::layout_admin.html.twig" %}
+{% trans_default_domain "ArgonGameBundle" %}
+{% set active = "character" %}
 
-{% block title %}{{ parent() }} - {{ 'character.title'|trans }} - {{ character.name }} - {{ 'character_experience.title'|trans }} - {{ 'character_experience.actions.new'|trans }}{% endblock %}
+{% block title %}{{ parent() }} - {{ "admin.character.title"|trans }} - {{ character.name }} - {{ "admin.character_experience.title"|trans }} - {{ "admin.character_experience.new"|trans }}{% endblock %}
 
 {% block content %}
-<ol class="breadcrumb">
-    <li><a href="{{ path('admin_dashboard') }}">{{ 'dashboard.title'|trans }}</a></li>
-    <li><a href="{{ path('admin_character') }}">{{ 'character.title'|trans }}</a></li>
-    <li>{{ character.name }}</li>
-    <li><a href="{{ path('admin_character_experience', {'id': character.id}) }}"><span class="glyphicon glyphicon-signal"></span> {{ 'character_experience.title'|trans }}</a></li>
-    <li class="active">{{ 'character_experience.actions.new'|trans }}</li>
+<ol id="breadcrumb">
+  <li><a href="{{ path("admin_dashboard") }}">{{ "admin.dashboard.title"|trans }}</a></li>
+  <li><a href="{{ path("admin_character") }}">{{ "admin.character.title"|trans }}</a></li>
+  <li>{{ character.name }}</li>
+  <li><a href="{{ path("admin_character_experience", {"id": character.id}) }}">{{ "admin.character_experience.title"|trans }}</a></li>
+  <li class="active">{{ "admin.character_experience.new"|trans }}</li>
 </ol>
 {{ form(form) }}
 {% endblock %}

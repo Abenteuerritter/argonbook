@@ -22,7 +22,10 @@ class CharacterSkillMaxValidator extends ConstraintValidator
                 '{{ skill }}' => $value->getSkill()->getName(),
             ));
 
-            $this->context->validateValue($value->getNextLevel(), $range);
+            $violations = $this->context->getValidator()->validate($value->getNextLevel(), $range);
+            if (count($violations) > 0) {
+                return $violations;
+            }
         }
     }
 }

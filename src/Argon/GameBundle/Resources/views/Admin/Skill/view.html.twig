@@ -1,65 +1,57 @@
-{% set active = 'skill' %}
-{% extends 'ArgonWebBundle::Admin/layout.html.twig' %}
-{% trans_default_domain 'admin' %}
+{% extends "ArgonWebBundle::layout_admin.html.twig" %}
+{% trans_default_domain "ArgonGameBundle" %}
+{% set active = "skill" %}
 
-{% block title %}{{ parent() }} - {{ 'skill.title'|trans }} - {{ entity }}{% endblock %}
+{% block title %}{{ parent() }} - {{ "admin.skill.title"|trans }} - {{ entity }}{% endblock %}
 
 {% block content %}
-<ol class="breadcrumb">
-    <li><a href="{{ path('admin_dashboard') }}">{{ 'dashboard.title'|trans }}</a></li>
-    <li><a href="{{ path('admin_skill') }}">{{ 'skill.title'|trans }}</a></li>
-    {% set parts = [] %}
-    {% for part in entity.slug|split('/') %}
-        {% if loop.last %}
-            <li class="active">{{ part }}</li>
-        {% else %}
-            {% set parts = parts|merge([part]) %}
-            <li><a href="{{ path('admin_skill_view', {'slug': parts|join('/')}) }}">{{ part }}</a></li>
-        {% endif %}
-    {% endfor %}
+<ol id="breadcrumb">
+  <li><a href="{{ path("admin_dashboard") }}">{{ "admin.dashboard.title"|trans }}</a></li>
+  <li><a href="{{ path("admin_skill") }}">{{ "admin.skill.title"|trans }}</a></li>
+  {% set parts = [] %}
+  {% for part in entity.slug|split("/") %}
+    {% if loop.last %}
+      <li class="active">{{ part }}</li>
+    {% else %}
+      {% set parts = parts|merge([part]) %}
+      <li><a href="{{ path("admin_skill_view", {"slug": parts|join("/")}) }}">{{ part }}</a></li>
+    {% endif %}
+  {% endfor %}
 </ol>
-<div class="form-horizontal">
-    <div class="form-group">
-        <label class="col-sm-2 control-label">{{ 'skill.ability'|trans }}</label>
-        <div class="col-sm-10">
-            <p class="form-control-static">
-                {% if entity.abilityCode %}
-                    <abbr title="{{ entity.abilityCode }}">{{ ('character_ability.types.' ~ entity.abilityCode)|trans({}, 'forms') }}</abbr>
-                {% else %}
-                    <em>{{ 'skill.ability_empty'|trans }}</em>
-                {% endif %}
-            </p>
-        </div>
-    </div>
-    <div class="form-group">
-        <label class="col-sm-2 control-label">{{ 'skill.name'|trans }}</label>
-        <div class="col-sm-10">
-            <p class="form-control-static">{{ entity.name }}</p>
-        </div>
-    </div>
-    <div class="form-group">
-        <label class="col-sm-2 control-label">{{ 'skill.modifier'|trans }}</label>
-        <div class="col-sm-10">
-            <p class="form-control-static">{{ entity.modifier }}</p>
-        </div>
-    </div>
-    <div class="form-group">
-        <label class="col-sm-2 control-label">{{ 'skill.max'|trans }}</label>
-        <div class="col-sm-10">
-            <p class="form-control-static">
-                {% if entity.max %}
-                    {{ entity.max }}
-                {% else %}
-                    <em>{{ 'skill.max_empty'|trans }}</em>
-                {% endif %}
-            </p>
-        </div>
-    </div>
-    <div class="form-group">
-        <label class="col-sm-2 control-label">{{ 'skill.requirements'|trans }}</label>
-        <div class="col-sm-10">
-            {{ include('ArgonGameBundle:Admin\\Partial\\Skill:list.html.twig', {'entities': entity.requirements, 'show_ability': false}) }}
-        </div>
-    </div>
-</div>
+<dl>
+  <dt>
+    <label>{{ "admin.skill.ability"|trans }}</label>
+  </dt>
+  <dd>
+    {% if entity.abilityCode %}
+      <abbr title="{{ entity.abilityCode }}">{{ ("character_ability.types." ~ entity.abilityCode)|trans({}, "admin.forms") }}</abbr>
+    {% else %}
+      <em>{{ "admin.skill.ability_empty"|trans }}</em>
+    {% endif %}
+  </dd>
+  <dt>
+    <label>{{ "admin.skill.name"|trans }}</label>
+  </dt>
+  <dd>{{ entity.name }}</dd>
+  <dt>
+    <label>{{ "admin.skill.modifier"|trans }}</label>
+  </dt>
+  <dd>{{ entity.modifier }}</dd>
+  <dt>
+    <label>{{ "admin.skill.max"|trans }}</label>
+  </dt>
+  <dd>
+    {% if entity.max %}
+      {{ entity.max }}
+    {% else %}
+      <em>{{ "admin.skill.max_empty"|trans }}</em>
+    {% endif %}
+  </dd>
+  <dt>
+    <label>{{ "admin.skill.requirements"|trans }}</label>
+  </dt>
+  <dd>
+    {{ include("ArgonGameBundle:Admin\\Partial\\Skill:list.html.twig", {"entities": entity.requirements, "show_ability": false}) }}
+  </dd>
+</dl>
 {% endblock %}

@@ -1,6 +1,8 @@
 _argon_web:
     resource: "@ArgonWebBundle/Resources/config/routing/pages.xml"
-    prefix: /
+
+_argon_game_character:
+    resource: "@ArgonGameBundle/Resources/config/routing/character.xml"
 
 # ADMIN
 _argon_web_admin:

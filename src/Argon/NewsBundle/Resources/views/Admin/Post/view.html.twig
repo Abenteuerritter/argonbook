@@ -2,39 +2,39 @@
 {% trans_default_domain "ArgonNewsBundle" %}
 {% set active = "news" %}
 
-{% block title %}{{ parent() }} - {{ "admin.news.posts"|trans }} - {{ post }}{% endblock %}
+{% block title %}{{ parent() }} - {{ "admin.news.title"|trans }} - {{ post }}{% endblock %}
 
 {% block content %}
 <ol id="breadcrumb">
   <li><a href="{{ path("admin_dashboard") }}">{{ "admin.dashboard.title"|trans }}</a></li>
-  <li><a href="{{ path("admin_news") }}">{{ "admin.news.posts"|trans }}</a></li>
+  <li><a href="{{ path("admin_news") }}">{{ "admin.news.title"|trans }}</a></li>
   <li class="active">{{ post }}</li>
 </ol>
 <dl>
-  <dt>{{ "admin.news.post.title"|trans }}</dt>
+  <dt>{{ "admin.news.title"|trans }}</dt>
   <dd>{{ post.title }}</dd>
 
-  <dt>{{ "admin.news.post.status"|trans }}</dt>
+  <dt>{{ "admin.news.status"|trans }}</dt>
   <dd>
   {% if post.isPublished %}
-    {{ "admin.news.post.published_at"|trans({"%date%": post.publishedAt|date}) }}
+    {{ "admin.news.published_at"|trans({"%date%": post.publishedAt|date}) }}
   {% else %}
-    {{ "admin.news.post.draft"|trans }}
+    {{ "admin.news.draft"|trans }}
   {% endif %}
   </dd>
 
-  <dt>{{ "admin.news.post.creator"|trans }}</dt>
+  <dt>{{ "admin.news.creator"|trans }}</dt>
   <dd>
     <abbr title="{{ post.creator.username }}">{{ post.creator.name|default(post.creator.username) }}</abbr>
   </dd>
 
-  <dt>{{ "admin.news.post.body"|trans }}</dt>
+  <dt>{{ "admin.news.body"|trans }}</dt>
   <dd>{{ post.body|nl2br }}</dd>
 </dd>
 <ul>
   {% if not post.isPublished %}
-    <li><a href="{{ path("admin_news_publish", {"slug": post.slug}) }}">{{ "admin.news.actions.publish"|trans }}</a></li>
+    <li><a href="{{ path("admin_news_publish", {"slug": post.slug}) }}">{{ "admin.news.publish"|trans }}</a></li>
   {% endif %}
-  <li><a href="{{ path("admin_news_edit", {"slug": post.slug}) }}">{{ "admin.news.actions.edit"|trans }}</a></li>
+  <li><a href="{{ path("admin_news_edit", {"slug": post.slug}) }}">{{ "admin.news.edit"|trans }}</a></li>
 </ul>
 {% endblock %}

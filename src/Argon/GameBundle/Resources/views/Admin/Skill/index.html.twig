@@ -1,17 +1,17 @@
-{% set active = 'skill' %}
-{% extends 'ArgonWebBundle::Admin/layout.html.twig' %}
-{% trans_default_domain 'admin' %}
+{% extends "ArgonWebBundle::layout_admin.html.twig" %}
+{% trans_default_domain "ArgonGameBundle" %}
+{% set active = "skill" %}
 
-{% block title %}{{ parent() }} - {{ 'skill.title'|trans }}{% endblock %}
+{% block title %}{{ parent() }} - {{ "admin.skill.title"|trans }}{% endblock %}
 
 {% block content %}
-<ol class="breadcrumb">
-    <li><a href="{{ path('admin_dashboard') }}">{{ 'dashboard.title'|trans }}</a></li>
-    {% if not ability %}
-        <li class="active">{{ 'skill.title'|trans }}</li>
-    {% else %}
-        <li class="active"><a href="{{ path('admin_skill') }}">{{ 'skill.title'|trans }}</a> {{ 'skill.of_ability'|trans({'%ability%': ('character_ability.types.' ~ ability)|trans({}, 'forms')}) }}</li>
-    {% endif %}
+<ol id="breadcrumb">
+  <li><a href="{{ path("admin_dashboard") }}">{{ "admin.dashboard.title"|trans }}</a></li>
+  {% if not ability %}
+    <li class="active">{{ "admin.skill.title"|trans }}</li>
+  {% else %}
+    <li class="active"><a href="{{ path("admin_skill") }}">{{ "admin.skill.title"|trans }}</a> {{ "admin.skill.of_ability"|trans({"%ability%": ("character_ability.types." ~ ability)|trans}) }}</li>
+  {% endif %}
 </ol>
-    {{ include('ArgonGameBundle:Admin\\Partial\\Skill:list.html.twig', {'entities': entities, 'show_ability': ability is null}) }}
+{{ include("ArgonGameBundle:Admin\\Partial\\Skill:list.html.twig", {"entities": entities, "show_ability": ability is null}) }}
 {% endblock %}

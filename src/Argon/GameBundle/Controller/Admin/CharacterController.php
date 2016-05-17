@@ -4,6 +4,7 @@ namespace Argon\GameBundle\Controller\Admin;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
 use Argon\GameBundle\Entity\Character;
 use Argon\GameBundle\Entity\CharacterExperience;
@@ -36,7 +37,7 @@ class CharacterController extends Controller
         }
 
         $pagination = $this->get('knp_paginator')->paginate($query,
-            $this->get('request')->query->get('page', 1)
+            $request->query->getInt('page', 1)
         );
 
         return $this->render('ArgonGameBundle:Admin\Character:index.html.twig', array(
@@ -68,7 +69,7 @@ class CharacterController extends Controller
             'method' => 'POST',
         ));
 
-        $form->add('submit', 'submit');
+        $form->add('submit', SubmitType::class);
 
         if ($request->isMethod('POST')) {
             $form->handleRequest($request);
@@ -122,7 +123,7 @@ class CharacterController extends Controller
             'method' => 'POST',
         ));
 
-        $form->add('submit', 'submit');
+        $form->add('submit', SubmitType::class);
 
         if ($request->isMethod('POST')) {
             $form->handleRequest($request);

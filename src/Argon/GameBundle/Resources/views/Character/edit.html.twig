@@ -1,34 +1,25 @@
-{% set active = 'character' %}
-{% extends '::layout/twocolumns.html.twig' %}
-{% trans_default_domain 'web' %}
+{% extends "ArgonWebBundle::layout.html.twig" %}
+{% trans_default_domain "ArgonWebBundle" %}
+{% set active = "character" %}
 
-{% block title %}{{ parent() }} - {{ 'character.title'|trans }} - {{ character }} - {{ 'character.edit'|trans }}{% endblock %}
-
-{% block sections %}
-  <div class="section section-characters">
-    <div class="container">
-      <h1>{{ 'character.edit'|trans }}</h1>
-    </div>
-  </div>
-{% endblock %}
+{% block title %}{{ parent() }} - {{ "character.title"|trans }} - {{ character }} - {{ "character.edit"|trans }}{% endblock %}
 
 {% block content %}
+<h1>{{ "character.edit"|trans }}</h1>
 {{ form_start(form) }}
-    {{ form_errors(form) }}
-    {{ form_row(form.story, {'attr': {'placeholder': 'character.story_placeholder'|trans}}) }}
-    {% if character.storyConfirmedAt is null %}
-        <div class="alert alert-warning">{{ 'character.story_not_confirmed'|trans }}</div>
-    {% else %}
-        <div class="alert alert-success">{{ 'character.story_confirmed'|trans }}</div>
-        {% if character.note %}
-            <div class="panel panel-info">
-                <div class="panel-heading">
-                    <h3 class="panel-title">{{ 'character.note'|trans }}</h3>
-                </div>
-                <div class="panel-body">{{ character.note|nl2br }}</div>
-            </div>
-        {% endif %}
+  {{ form_errors(form) }}
+  {{ form_row(form.story, {"attr": {"placeholder": "character.story_placeholder"|trans}}) }}
+  {% if character.storyConfirmedAt is null %}
+    <div class="warning">{{ "character.story_not_confirmed"|trans }}</div>
+  {% else %}
+    <div class="success">{{ "character.story_confirmed"|trans }}</div>
+    {% if character.note %}
+      <dl>
+        <h3 class="panel-title">{{ "character.note"|trans }}</h3>
+        <p>{{ character.note|nl2br }}</p>
+      </dl>
     {% endif %}
-    {{ form_rest(form) }}
+  {% endif %}
+  {{ form_rest(form) }}
 {{ form_end(form) }}
 {% endblock %}

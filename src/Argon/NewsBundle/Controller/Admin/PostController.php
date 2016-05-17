@@ -33,7 +33,7 @@ class PostController extends Controller
         ));
 
         $form->add('submit', SubmitType::class, array(
-            'label' => 'admin.news.post.create',
+            'label' => 'admin.news.create',
         ));
 
         if ($request->isMethod('POST')) {
@@ -45,7 +45,7 @@ class PostController extends Controller
                 $em->flush();
 
                 $request->getSession()->getFlashBag()
-                        ->add('success', 'admin.news.post.created');
+                        ->add('success', 'admin.news.created');
 
                 return $this->redirect($this->generateUrl('admin_news'));
             }
@@ -73,7 +73,7 @@ class PostController extends Controller
         ));
 
         $form->add('submit', SubmitType::class, array(
-            'label' => 'admin.news.post.publish',
+            'label' => 'admin.news.publish',
         ));
 
         if ($request->isMethod('POST')) {
@@ -84,7 +84,7 @@ class PostController extends Controller
                 $em->flush();
 
                 $request->getSession()->getFlashBag()
-                        ->add('success', 'admin.news.post.published');
+                        ->add('success', 'admin.news.published');
 
                 return $this->redirect($this->generateUrl('admin_news'));
             }
@@ -104,7 +104,7 @@ class PostController extends Controller
         ));
 
         $form->add('submit', SubmitType::class, array(
-            'label' => 'admin.news.post.edit',
+            'label' => 'admin.news.edit',
         ));
 
         if ($request->isMethod('POST')) {

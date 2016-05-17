@@ -1,33 +1,29 @@
-{% set active = 'race' %}
-{% extends 'ArgonWebBundle::Admin/layout.html.twig' %}
-{% trans_default_domain 'admin' %}
+{% extends "ArgonWebBundle::layout_admin.html.twig" %}
+{% trans_default_domain "ArgonGameBundle" %}
+{% set active = "race" %}
 
-{% block title %}{{ parent() }} - {{ 'race.title'|trans }} - {{ entity }}{% endblock %}
+{% block title %}{{ parent() }} - {{ "admin.race.title"|trans }} - {{ entity }}{% endblock %}
 
 {% block content %}
-<ol class="breadcrumb">
-    <li><a href="{{ path('admin_dashboard') }}">{{ 'dashboard.title'|trans }}</a></li>
-    <li><a href="{{ path('admin_race') }}">{{ 'race.title'|trans }}</a></li>
-    <li class="active">{{ entity.slug }}</li>
+<ol id="breadcrumb">
+  <li><a href="{{ path("admin_dashboard") }}">{{ "admin.dashboard.title"|trans }}</a></li>
+  <li><a href="{{ path("admin_race") }}">{{ "admin.race.title"|trans }}</a></li>
+  <li class="active">{{ entity.slug }}</li>
 </ol>
-<div class="form-horizontal">
-    <div class="form-group">
-        <label class="col-sm-2 control-label">{{ 'race.name'|trans }}</label>
-        <div class="col-sm-10">
-            <p class="form-control-static">
-                {% if entity.name %}
-                    {{ entity.name }}
-                {% else %}
-                    <em>{{ 'race.name_empty'|trans({'%locale%': app.request.locale}) }}</em>
-                {% endif %}
-            </p>
-        </div>
-    </div>
-    <div class="form-group">
-        <label class="col-sm-2 control-label">{{ 'race.modifier'|trans }}</label>
-        <div class="col-sm-10">
-            <p class="form-control-static">{{ entity.modifier }}</p>
-        </div>
-    </div>
-</div>
+<dl>
+  <dt>
+    <label>{{ "admin.race.name"|trans }}</label>
+  </dt>
+  <dd>
+    {% if entity.name %}
+      {{ entity.name }}
+    {% else %}
+      <em>{{ "admin.race.name_empty"|trans({"%locale%": app.request.locale}) }}</em>
+    {% endif %}
+  </dd>
+  <dt>
+    <label>{{ "admin.race.modifier"|trans }}</label>
+  </dt>
+  <dd>{{ entity.modifier }}</dd>
+</dl>
 {% endblock %}

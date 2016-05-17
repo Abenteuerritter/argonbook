@@ -1,118 +1,69 @@
-{% set active = 'character' %}
-{% extends '::layout/twocolumns.html.twig' %}
-{% trans_default_domain 'web' %}
+{% extends "ArgonWebBundle::layout.html.twig" %}
+{% trans_default_domain "ArgonWebBundle" %}
+{% set active = "character" %}
 
-{% block title %}{{ parent() }} - {{ 'character.title'|trans }} - {{ character }} - {{ 'character.skills'|trans }}{% endblock %}
-
-{% block sections %}
-  <div class="section section-characters">
-    <div class="container">
-      <h1>{{ 'character.skills'|trans }}</h1>
-    </div>
-  </div>
-{% endblock %}
+{% block title %}{{ parent() }} - {{ "character.title"|trans }} - {{ character }} - {{ "character.skills"|trans }}{% endblock %}
 
 {% block content %}
+<h1>{{ "character.skills"|trans }}</h1>
 {{ form_start(form) }}
-    <div class="character-info panel panel-default">
-        <div class="panel-body">
-            <div class="progress">
-                <div class="progress-bar progress-bar-success" style="width: {{ ((character.skillsExperience * 100) / character.experience)|round }}%">
-                    <span class="sr-only">{{ character.skillsExperience }}</span>
-                </div>
-                <div class="progress-bar progress-bar-info progress-level" style="width: 0%">
-                    <span class="sr-only">0</span>
-                </div>
-            </div>
-            {{ form_widget(form.submit, {'attr': {'class': 'pull-right'}}) }}
-            <ul class="list-inline">
-                <li><span class="glyphicon glyphicon-signal"></span></li>
-                <li><big class="experience-available">{{ character.availableExperience|default(0) }}</big> {{ 'character_experience.stats.available'|trans }}</li>
-                <li><big>{{ character.experience|default(0) }}</big> {{ 'character_experience.stats.total'|trans }}</li>
-            </ul>
-        </div>
+  <div id="progress-experience">
+    <div style="width: {{ ((character.skillsExperience * 100) / character.experience)|round }}%">
+        <span class="sr-only">{{ character.skillsExperience }}</span>
     </div>
-    {{ form_errors(form) }}
-    <table class="table table-striped">
-        <thead>
-            <tr>
-                <th>&nbsp;</th>
-                <th>{{ 'skill.name'|trans }}</th>
-                <th>{{ 'skill.level'|trans }}</th>
-                <th class="text-right">{{ 'skill.price'|trans }}</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for characterSkill in form.characterSkills %}
-        {% set skill = characterSkill.vars.value.skill %}
-            <tr class="ability-{{ skill.abilityCode|default('all')|lower }}">
-                <td>
-                    {% if skill.abilityCode %}
-                        <abbr title="{{ ('character_ability.types.' ~ skill.abilityCode)|trans({}, 'forms') }} ({{ skill.abilityCode }})">
-                            <span class="glyphicon glyphicon-asterisk"></span>
-                        </abbr>
-                    {% else %}
-                        <abbr title="{{ 'skill.ability_empty'|trans }}">
-                            <span class="glyphicon glyphicon-asterisk"></span>
-                        </abbr>
-                    {% endif %}
-                </td>
-                <td>{{ skill }}</td>
-                <td>
-                    <div class="input-group">
-                        <span id="{{ skill.slug }}_level" class="input-group-addon level">{{ characterSkill.vars.value.level }}</span>
-                        {{
-                            form_widget(characterSkill.newLevel, {'attr': {
-                                'data-level' : characterSkill.vars.value.level|default(0),
-                                'data-max'   : skill.max|default(-1),
-                                'data-price' : characterSkill.vars.value.price
-                            }})
-                        }}
-                    </div>
-                    {{ form_errors(characterSkill.newLevel) }}
-                </td>
-                <td class="text-right">{{ characterSkill.vars.value.price }}</td>
-            </tr>
-        {% else %}
-            <tr class="warning">
-                <td colspan="4">{{ 'skill.empty'|trans }}</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-    {{ form_rest(form) }}
+    <div style="width: 0%">
+        <span class="sr-only">0</span>
+    </div>
+  </div>
+  {{ form_widget(form.submit) }}
+  <ul>
+    <li><big id="experience-available">{{ character.availableExperience|default(0) }}</big> {{ "character_experience.stats.available"|trans }}</li>
+    <li><big id="experience">{{ character.experience|default(0) }}</big> {{ "character_experience.stats.total"|trans }}</li>
+  </ul>
+  {{ form_errors(form) }}
+  <table>
+    <thead>
+      <tr>
+        <th>&nbsp;</th>
+        <th>{{ "skill.name"|trans }}</th>
+        <th>{{ "skill.level"|trans }}</th>
+        <th>{{ "skill.price"|trans }}</th>
+      </tr>
+    </thead>
+    <tbody>
+    {% for characterSkill in form.characterSkills %}
+    {% set skill = characterSkill.vars.value.skill %}
+      <tr class="ability-{{ skill.abilityCode|default("all")|lower }}">
+        <td>
+          {% if skill.abilityCode %}
+            <abbr title="{{ ("character_ability.types." ~ skill.abilityCode)|trans }} ({{ skill.abilityCode }})">*</abbr>
+          {% else %}
+            <abbr title="{{ "skill.ability_empty"|trans }}">*</abbr>
+          {% endif %}
+        </td>
+        <td>{{ skill }}</td>
+        <td>
+          <div class="input-group">
+            <span id="{{ skill.slug }}_level" class="input-group-addon level">{{ characterSkill.vars.value.level }}</span>
+            {{
+              form_widget(characterSkill.newLevel, {"attr": {
+                "data-level" : characterSkill.vars.value.level|default(0),
+                "data-max"   : skill.max|default(-1),
+                "data-price" : characterSkill.vars.value.price
+              }})
+            }}
+          </div>
+          {{ form_errors(characterSkill.newLevel) }}
+        </td>
+        <td>{{ characterSkill.vars.value.price }}</td>
+      </tr>
+    {% else %}
+      <tr class="warning">
+        <td colspan="4">{{ "skill.empty"|trans }}</td>
+      </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+  {{ form_rest(form) }}
 {{ form_end(form) }}
-{% endblock %}
-
-{% block javascripts %}
-{{ parent() }}
-{% javascripts '@ArgonGameBundle/Resources/public/js/jquery.skillLevel.js'
-               '@ArgonGameBundle/Resources/public/js/jquery.affixTop.js'
-        filter='?closure' %}
-    <script src="{{ asset_url }}"></script>
-{% endjavascripts %}
-<script type="text/javascript">
-    $(function() {
-        $('.character-info').affixTop();
-        $('input[type="number"]')
-            .on('update', function(event, level, limits) {
-                var element = $(this);
-                var isMax   = limits[1] >= 0 && level + limits[0] >= limits[1];
-
-                element.parents('tr').toggleClass('warning', isMax);
-
-                if (isMax) {
-                    element.parent().find('span.level').html('<b>{{ 'character_skill.max'|trans }}</b>');
-                }
-            })
-            .on('update-total', function(event, progress, total) {
-                $('.character-info .progress-level')
-                    .css('width', Math.round((progress * 100) / total).toString() + '%')
-                    .find('span').html(progress);
-                $('.character-info .experience-available').html(total - progress - {{ character.skillsExperience|default(0) }});
-            })
-            .skillLevel({{ character.experience|default(0) }})
-        ;
-    });
-</script>
 {% endblock %}

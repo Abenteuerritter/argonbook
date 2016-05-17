@@ -75,6 +75,9 @@
             <constraint name="Type">
                 <option name="type">integer</option>
             </constraint>
+            <constraint name="GreaterThan">
+                <option name="value">0</option>
+            </constraint>
         </property>
     </class>
 </constraint-mapping>

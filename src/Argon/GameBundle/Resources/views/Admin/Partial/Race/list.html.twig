@@ -1,18 +1,19 @@
-<table class="table table-striped">
-    <thead>
-        <tr>
-            <th>{{ 'race.name'|trans({}, 'admin') }}</th>
-        </tr>
-    </thead>
-    <tbody>
-    {% for race in entities %}
-        <tr>
-            <td><a href="{{ path('admin_race_view', {'slug': race.slug}) }}">{{ race }}</a></td>
-        </tr>
-    {% else %}
-        <tr class="warning">
-            <td colspan="1">{{ 'race.empty'|trans({}, 'admin') }}</td>
-        </tr>
-    {% endfor %}
-    </tbody>
+{% trans_default_domain "ArgonGameBundle" %}
+<table>
+  <thead>
+    <tr>
+      <th>{{ "admin.race.name"|trans }}</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for race in entities %}
+    <tr>
+      <td><a href="{{ path("admin_race_view", {"slug": race.slug}) }}">{{ race }}</a></td>
+    </tr>
+  {% else %}
+    <tr class="warning">
+      <td colspan="1">{{ "race.empty"|trans }}</td>
+    </tr>
+  {% endfor %}
+  </tbody>
 </table>

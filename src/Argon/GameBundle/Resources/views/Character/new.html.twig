@@ -1,54 +1,10 @@
-{% set active = 'character' %}
-{% extends '::layout/twocolumns.html.twig' %}
-{% form_theme form 'ArgonGameBundle:Form:fields.html.twig' %}
-{% trans_default_domain 'web' %}
+{% extends "ArgonWebBundle::layout.html.twig" %}
+{% trans_default_domain "ArgonWebBundle" %}
+{% set active = "character" %}
 
-{% block title %}{{ parent() }} - {{ 'character.new'|trans }} - {{ game.name }}{% endblock %}
-
-{% block sections %}
-  <div class="section section-characters">
-    <div class="container">
-      <h1>{{ 'character.new'|trans }}</h1>
-    </div>
-  </div>
-{% endblock %}
+{% block title %}{{ parent() }} - {{ "character.new"|trans }} - {{ game.name }}{% endblock %}
 
 {% block content %}
+<h1>{{ "character.new"|trans }}</h1>
 {{ form(form) }}
-{% endblock %}
-
-{% block stylesheets %}
-{{ parent() }}
-<style type="text/css">
-.position-1 { font-size: 200%; }
-.position-2 { font-size: 150%; }
-.position-3 { font-size: 100%; }
-</style>
-{% endblock %}
-
-{% block javascripts %}
-{{ parent() }}
-<script type="text/javascript">
-    $(function() {
-        var abilities = $("#character_abilities");
-        var children  = abilities.find('> .form-group');
-        var count     = children.length;
-
-        abilities.find('input[id$="_modifier"]').attr('type', 'hidden');
-        abilities.disableSelection();
-        abilities.sortable({
-            items: '> .form-group',
-            stop: function(event, ui) {
-                children = abilities.sortable('widget').find('> .form-group');
-                children.each(function(position, element) {
-                    for (var pos = 1; pos <= count; pos++) {
-                        $(element).removeClass('position-' + pos.toString());
-                    }
-                    $(element).addClass('position-' + (position + 1).toString());
-                    $('input[id$="_modifier"]', element).val(position + 1);
-                });
-            }
-        });
-    });
-</script>
 {% endblock %}

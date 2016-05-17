@@ -1,46 +1,42 @@
-{% set active = 'character' %}
-{% extends 'ArgonWebBundle::Admin/layout.html.twig' %}
-{% trans_default_domain 'admin' %}
+{% extends "ArgonWebBundle::layout_admin.html.twig" %}
+{% trans_default_domain "ArgonGameBundle" %}
+{% set active = "character" %}
 
-{% block title %}{{ parent() }} - {{ 'character.title'|trans }} - {{ character.name }} - {{ 'character_skill.title'|trans }}{% endblock %}
+{% block title %}{{ parent() }} - {{ "admin.character.title"|trans }} - {{ character.name }} - {{ "admin.character_skill.title"|trans }}{% endblock %}
 
 {% block content %}
-<ol class="breadcrumb">
-    <li><a href="{{ path('admin_dashboard') }}">{{ 'dashboard.title'|trans }}</a></li>
-    <li><a href="{{ path('admin_character') }}">{{ 'character.title'|trans }}</a></li>
+<ol id="breadcrumb">
+    <li><a href="{{ path("admin_dashboard") }}">{{ "admin.dashboard.title"|trans }}</a></li>
+    <li><a href="{{ path("admin_character") }}">{{ "admin.character.title"|trans }}</a></li>
     <li>{{ character.name }}</li>
-    <li class="active"><span class="glyphicon glyphicon-screenshot"></span> {{ 'character_skill.title'|trans }}</li>
+    <li class="active">{{ "admin.character_skill.title"|trans }}</li>
 </ol>
-<table class="table table-striped">
-    <thead>
-        <tr>
-            <th>&nbsp;</th>
-            <th>{{ 'skill.name'|trans }}</th>
-            <th class="text-right">{{ 'skill.level'|trans }}</th>
-        </tr>
-    </thead>
-    <tbody>
-    {% for skill in entities %}
-        <tr>
-            <td>
-                {% if skill.skill.abilityCode %}
-                    <abbr title="{{ ('character_ability.types.' ~ skill.skill.abilityCode)|trans({}, 'forms') }} ({{ skill.skill.abilityCode }})">
-                        <span class="glyphicon glyphicon-asterisk"></span>
-                    </abbr>
-                {% else %}
-                    <abbr title="{{ 'skill.ability_empty'|trans }}">
-                        <span class="glyphicon glyphicon-asterisk"></span>
-                    </abbr>
-                {% endif %}
-            </td>
-            <td>{{ skill.skill }}</td>
-            <td class="text-right">{{ skill.level }}</td>
-        </tr>
-    {% else %}
-        <tr class="warning">
-            <td colspan="3">{{ 'character_skill.empty'|trans }}</td>
-        </tr>
-    {% endfor %}
-    </tbody>
+<table>
+  <thead>
+    <tr>
+      <th>&nbsp;</th>
+      <th>{{ "admin.skill.name"|trans }}</th>
+      <th>{{ "admin.skill.level"|trans }}</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for skill in entities %}
+    <tr>
+      <td>
+        {% if skill.skill.abilityCode %}
+          <abbr title="{{ ("character_ability.types." ~ skill.skill.abilityCode)|trans }} ({{ skill.skill.abilityCode }})">*</abbr>
+        {% else %}
+          <abbr title="{{ "admin.skill.ability_empty"|trans }}">*</abbr>
+        {% endif %}
+      </td>
+      <td>{{ skill.skill }}</td>
+      <td>{{ skill.level }}</td>
+    </tr>
+  {% else %}
+    <tr class="warning">
+      <td colspan="3">{{ "admin.character_skill.empty"|trans }}</td>
+    </tr>
+  {% endfor %}
+  </tbody>
 </table>
 {% endblock %}

@@ -1,9 +1,10 @@
 ---
 
 phpdev_tools:
-  phpunit:  https://phar.phpunit.de/phpunit.phar
-  phploc:   https://phar.phpunit.de/phploc.phar
-  phpcpd:   https://phar.phpunit.de/phpcpd.phar
+  phpunit:   https://phar.phpunit.de/phpunit.phar
+  phpunit48: https://phar.phpunit.de/phpunit-4.8.0.phar
+  phploc:    https://phar.phpunit.de/phploc.phar
+  phpcpd:    https://phar.phpunit.de/phpcpd.phar
   #phpmd:    http://static.phpmd.org/php/latest/phpmd.phar
   #pdepend:  http://static.pdepend.org/php/latest/pdepend.phar
-  phpcs:    https://squizlabs.github.io/PHP_CodeSniffer/phpcs.phar
+  phpcs:     https://squizlabs.github.io/PHP_CodeSniffer/phpcs.phar

@@ -5,6 +5,7 @@ namespace Argon\GameBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Criteria;
@@ -22,25 +23,23 @@ class CharacterController extends Controller
 {
     public function indexAction(Request $request)
     {
-        if (false === $this->get('security.context')->isGranted('ROLE_USER')) {
-            throw new AccessDeniedException();
-        }
+        $this->denyAccessUnlessGranted('ROLE_PLAYER', null,
+            'You must be logged in to see your characters.');
 
         return $this->render('ArgonGameBundle:Character:index.html.twig');
     }
 
     public function gameAction(Request $request)
     {
-        if (false === $this->get('security.context')->isGranted('ROLE_USER')) {
-            throw new AccessDeniedException();
-        }
+        $this->denyAccessUnlessGranted('ROLE_PLAYER', null,
+            'You must be logged in to create a new character.');
 
         $form = $this->createForm(CharacterGameType::class, null, array(
             'action' => $this->generateUrl('character_game'),
             'method' => 'POST',
         ));
 
-        $form->add('submit', 'submit', array(
+        $form->add('submit', SubmitType::class, array(
             'label' => 'character_game.submit',
         ));
 
@@ -52,7 +51,7 @@ class CharacterController extends Controller
                 $game = $data['game'];
 
                 return $this->redirect($this->generateUrl('character_new', array(
-                    'game' => $game,
+                    'game' => $game->getName(),
                 )));
             }
         }
@@ -64,9 +63,8 @@ class CharacterController extends Controller
 
     public function newAction(Request $request, $game)
     {
-        if (false === $this->get('security.context')->isGranted('ROLE_USER')) {
-            throw new AccessDeniedException();
-        }
+        $this->denyAccessUnlessGranted('ROLE_PLAYER', null,
+            'You must be logged in to create a new character.');
 
         $player = $this->getUser();
 
@@ -97,7 +95,7 @@ class CharacterController extends Controller
             'method' => 'POST',
         ));
 
-        $form->add('submit', 'submit', array(
+        $form->add('submit', SubmitType::class, array(
             'label' => 'character.submit',
         ));
 
@@ -124,16 +122,6 @@ class CharacterController extends Controller
 
     public function viewAction(Character $character)
     {
-        if (false === $this->get('security.context')->isGranted('ROLE_USER')) {
-            throw new AccessDeniedException();
-        }
-
-        $player = $this->getUser();
-
-        if ($player !== $character->getPlayer()) {
-            throw new AccessDeniedException();
-        }
-
         $experiences = $this->getDoctrine()
                             ->getRepository('ArgonGameBundle:CharacterExperience')
                             ->findByCharacter($character);
@@ -146,9 +134,8 @@ class CharacterController extends Controller
 
     public function skillsAction(Character $character, Request $request)
     {
-        if (false === $this->get('security.context')->isGranted('ROLE_USER')) {
-            throw new AccessDeniedException();
-        }
+        $this->denyAccessUnlessGranted('ROLE_PLAYER', null,
+            'You must be logged in to update this character.');
 
         $player = $this->getUser();
 
@@ -189,7 +176,7 @@ class CharacterController extends Controller
             'method' => 'POST',
         ));
 
-        $form->add('submit', 'submit', array(
+        $form->add('submit', SubmitType::class, array(
             'label' => 'character_skills.submit',
         ));
 
@@ -234,9 +221,8 @@ class CharacterController extends Controller
 
     public function editAction(Character $character, Request $request)
     {
-        if (false === $this->get('security.context')->isGranted('ROLE_USER')) {
-            throw new AccessDeniedException();
-        }
+        $this->denyAccessUnlessGranted('ROLE_PLAYER', null,
+            'You must be logged in to update this character.');
 
         $player = $this->getUser();
 
@@ -249,7 +235,7 @@ class CharacterController extends Controller
             'method' => 'POST',
         ));
 
-        $form->add('submit', 'submit', array(
+        $form->add('submit', SubmitType::class, array(
             'label' => 'character.edit_submit',
         ));
 

@@ -4,7 +4,8 @@ namespace Argon\GameBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class CharacterType extends AbstractType
 {
@@ -16,8 +17,8 @@ class CharacterType extends AbstractType
     {
         $builder
             ->add('name')
-            ->add('abilities', 'collection', array(
-                'type' => 'character_ability',
+            ->add('abilities', CollectionType::class, array(
+                'entry_type' => CharacterAbilityType::class,
             ))
             ->add('race', null, array(
                 'placeholder' => 'character.race_placeholder',
@@ -29,13 +30,13 @@ class CharacterType extends AbstractType
     }
 
     /**
-     * @param OptionsResolverInterface $resolver
+     * @param OptionsResolver $resolver
      */
-    public function setDefaultOptions(OptionsResolverInterface $resolver)
+    public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
             'data_class'         => 'Argon\GameBundle\Entity\Character',
-            'translation_domain' => 'forms',
+            'translation_domain' => 'ArgonGameBundle',
             'intention'          => 'character',
         ));
     }

@@ -4,7 +4,8 @@ namespace Argon\GameBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+use Symfony\Component\Form\Extension\Core\Type\IntegerType;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class CharacterSkillType extends AbstractType
 {
@@ -15,20 +16,20 @@ class CharacterSkillType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('newLevel', 'integer', array(
+            ->add('newLevel', IntegerType::class, array(
                 'required' => false,
             ))
         ;
     }
 
     /**
-     * @param OptionsResolverInterface $resolver
+     * @param OptionsResolver $resolver
      */
-    public function setDefaultOptions(OptionsResolverInterface $resolver)
+    public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
             'data_class'         => 'Argon\GameBundle\Entity\CharacterSkill',
-            'translation_domain' => 'forms',
+            'translation_domain' => 'ArgonGameBundle',
             'intention'          => 'character_skill',
         ));
     }

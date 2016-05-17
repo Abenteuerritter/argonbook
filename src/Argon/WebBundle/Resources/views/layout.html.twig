@@ -26,18 +26,19 @@
           <ul>
             {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
               {% if is_granted('ROLE_USER') %}
+                <li><a href="{{ path("character") }}">{{ "layout.character"|trans }}</a></li>
                 <li><a href="{{ path("fos_user_profile_show") }}">{{ "layout.profile"|trans }}</a></li>
               {% endif %}
               {% if is_granted("ROLE_SUPER_ADMIN") %}
                 <li><a href="{{ path("admin_dashboard") }}">{{ "layout.admin"|trans }}</a></li>
               {% endif %}
               {% if is_granted("ROLE_PREVIOUS_ADMIN") %}
-                <li><a href="{{ path("homepage", {"_switch": "_exit"}) }}">{{ "layout.switch_exit"|trans }}</a></li>
+                <li><a href="{{ path("character_view", {"slug": app.user.slug, "_switch": "_exit"}) }}">{{ "layout.switch_exit"|trans }}</a></li>
               {% else %}
-                <li><a href="{{ path("fos_user_security_logout") }}">{{ "layout.logout"|trans({}, "FOSUserBundle") }}</a></li>
+                <li><a href="{{ path("fos_user_security_logout") }}">{{ "layout.logout"|trans }}</a></li>
               {% endif %}
             {% else %}
-              <li><a href="{{ path("fos_user_security_login") }}">{{ "layout.login"|trans({}, "FOSUserBundle") }}</a></li>
+              <li><a href="{{ path("fos_user_security_login") }}">{{ "layout.login"|trans }}</a></li>
             {% endif %}
           </ul>
           {% endblock %}

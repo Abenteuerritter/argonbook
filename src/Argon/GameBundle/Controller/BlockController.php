@@ -8,9 +8,7 @@ class BlockController extends Controller
 {
     public function charactersAction()
     {
-        if (false === $this->get('security.context')->isGranted('ROLE_USER')) {
-            throw new AccessDeniedException();
-        }
+        $this->denyAccessUnlessGranted('ROLE_PLAYER');
 
         $player   = $this->getUser();
         $entities = $this->getRepository()

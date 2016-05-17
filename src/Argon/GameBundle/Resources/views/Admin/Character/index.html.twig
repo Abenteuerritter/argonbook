@@ -1,71 +1,71 @@
-{% set active = 'character' %}
-{% extends 'ArgonWebBundle::Admin/layout.html.twig' %}
-{% trans_default_domain 'admin' %}
+{% extends "ArgonWebBundle::layout_admin.html.twig" %}
+{% trans_default_domain "ArgonGameBundle" %}
+{% set active = "character" %}
 
-{% block title %}{{ parent() }} - {{ 'character.title'|trans }}{% endblock %}
+{% block title %}{{ parent() }} - {{ "admin.character.title"|trans }}{% endblock %}
 
 {% block content %}
-<ol class="breadcrumb">
-    <li><a href="{{ path('admin_dashboard') }}">{{ 'dashboard.title'|trans }}</a></li>
-    {% if not game %}
-        <li class="active">{{ 'character.title'|trans }}</li>
-    {% else %}
-        <li class="active"><a href="{{ path('admin_character') }}">{{ 'character.title'|trans }}</a> {{ 'character.of_game'|trans({'%game%': game.info.fullname}) }}</li>
-    {% endif %}
+<ol id="breadcrumb">
+  <li><a href="{{ path("admin_dashboard") }}">{{ "admin.dashboard.title"|trans }}</a></li>
+  {% if not game %}
+    <li class="active">{{ "admin.character.title"|trans }}</li>
+  {% else %}
+    <li class="active"><a href="{{ path("admin_character") }}">{{ "admin.character.title"|trans }}</a> {{ "admin.character.of_game"|trans({"%game%": game.info.fullname}) }}</li>
+  {% endif %}
 </ol>
 {{ form(filter_form) }}
-<table class="table table-striped">
-    <thead>
-        <tr>
-            <th>{{ 'character.info'|trans }}</th>
-            <th>{{ 'character.abilities'|trans }}</th>
-            <th class="text-right">&nbsp;</th>
-        </tr>
-    </thead>
-    <tbody>
-    {% for character in entities %}
-        <tr>
-            <td>
-                {% if not game %}
-                    <a href="{{ path('admin_character', {'game': character.gameName}) }}">{{ character.game.info.fullname }}</a> /
-                {% endif %}
-                <abbr title="{{ character.player.username }}">{{ character.player.name|default(character.player.username) }}</abbr> /
-                {{ character.name }} (
-                    <a href="{{ path('admin_character_experience', {'id': character.id}) }}"><span class="glyphicon glyphicon-signal"></span> {{ character.skillsExperience }}/{{ character.experience }}</a>
-                    <a href="{{ path('admin_character_skill', {'id': character.id}) }}"><span class="glyphicon glyphicon-screenshot"></span> {{ character.skills|length }}</a>
-                )
-                <br>{{ character.race }}
-            </td>
-            <td>
-                <table class="table table-bordered">
-                    <tbody>
-                    {% for ability in character.abilities %}
-                        <tr>
-                            <td class="text-center">{{ ability.modifier }}</td>
-                            <td><abbr title="{{ ability.code }}">{{ ('character_ability.types.' ~ ability.code)|trans({}, 'forms') }}</abbr></td>
-                        </tr>
-                    {% else %}
-                        <tr class="warning">
-                            <td colspan="2">{{ 'character_ability.empty'|trans }}</td>
-                        </tr>
-                    {% endfor %}
-                    </tbody>
-                </table>
-            </td>
-            <td class="text-right">
-                <ul class="nav nav-pills pull-right">
-                {% if character.isStoryNotConfirmed %}
-                    <li><a href="{{ path('admin_character_confirm_story', {'id': character.id}) }}">{{ 'character.actions.confirm_story'|trans }}</a></li>
-                {% endif %}
-                </ul>
-            </td>
-        </tr>
-    {% else %}
-        <tr class="warning">
-            <td colspan="3">{{ 'character.empty'|trans }}</td>
-        </tr>
-    {% endfor %}
-    </tbody>
+<table>
+  <thead>
+    <tr>
+      <th>{{ "admin.character.info"|trans }}</th>
+      <th>{{ "admin.character.abilities"|trans }}</th>
+      <th>&nbsp;</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for character in entities %}
+    <tr>
+      <td>
+        {% if not game %}
+          <a href="{{ path("admin_character", {"game": character.gameName}) }}">{{ character.game.info.fullname }}</a> /
+        {% endif %}
+        <abbr title="{{ character.player.username }}">{{ character.player.name|default(character.player.username) }}</abbr> /
+        {{ character.name }} (
+          <a href="{{ path("admin_character_experience", {"id": character.id}) }}">{{ character.skillsExperience }}/{{ character.experience }}</a>
+          <a href="{{ path("admin_character_skill", {"id": character.id}) }}">{{ character.skills|length }}</a>
+        )
+        <br>{{ character.race }}
+      </td>
+      <td>
+        <table>
+          <tbody>
+            {% for ability in character.abilities %}
+              <tr>
+                <td>{{ ability.modifier }}</td>
+                <td><abbr title="{{ ability.code }}">{{ ("character_ability.types." ~ ability.code)|trans({}, "admin.forms") }}</abbr></td>
+              </tr>
+            {% else %}
+              <tr class="warning">
+                <td colspan="2">{{ "admin.character_ability.empty"|trans }}</td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </td>
+      <td>
+        <ul>
+          {% if character.isStoryNotConfirmed %}
+            <li><a href="{{ path("admin_character_confirm_story", {"id": character.id}) }}">{{ "admin.character.confirm_story"|trans }}</a></li>
+          {% endif %}
+        </ul>
+      </td>
+    </tr>
+  {% else %}
+    <tr class="warning">
+      <td colspan="3">{{ "admin.character.empty"|trans }}</td>
+    </tr>
+  {% endfor %}
+  </tbody>
 </table>
 {{ knp_pagination_render(entities) }}
 {% endblock %}

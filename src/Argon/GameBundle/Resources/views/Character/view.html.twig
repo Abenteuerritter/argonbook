@@ -1,143 +1,116 @@
-{% set active = 'character' %}
-{% extends '::layout/twocolumns.html.twig' %}
-{% trans_default_domain 'web' %}
+{% extends "ArgonWebBundle::layout.html.twig" %}
+{% trans_default_domain "ArgonWebBundle" %}
+{% set active = "character" %}
 
-{% block title %}{{ parent() }} - {{ 'character.title'|trans }} - {{ character }}{% endblock %}
-
-{% block sections %}
-  <div class="section section-characters">
-    <div class="container">
-      <h1>{{ character }}</h1>
-    </div>
-  </div>
-{% endblock %}
+{% block title %}{{ parent() }} - {{ "character.title"|trans }} - {{ character }}{% endblock %}
 
 {% block content %}
-<div class="row">
-    <div class="col-md-8">
-        <div class="panel panel-default">
-            <div class="panel-heading">{{ 'character.info'|trans }}</div>
-            <div class="panel-body">
-                <div class="form-horizontal">
-                    <div class="form-group">
-                        <label class="col-sm-2 control-label">{{ 'character.name'|trans }}</label>
-                        <div class="col-sm-10">
-                            <p class="form-control-static">{{ character.game.info.fullname }} / {{ character.name }}</p>
-                        </div>
-                        <label class="col-sm-2 control-label">{{ 'character.race'|trans }}</label>
-                        <div class="col-sm-10">
-                            <p class="form-control-static">{{ character.race }}</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-4">
-        <div class="panel panel-default">
-            <div class="panel-heading">{{ 'character.abilities'|trans }}</div>
-            <table class="table table-bordered">
-                <tbody>
-                {% for ability in character.abilities %}
-                    <tr>
-                        <td class="text-center">{{ ability.modifier }}</td>
-                        <td><abbr title="{{ ability.code }}">{{ ('character_ability.types.' ~ ability.code)|trans({}, 'forms') }}</abbr></td>
-                    </tr>
-                {% else %}
-                    <tr class="warning">
-                        <td colspan="2">{{ 'character_ability.empty'|trans }}</td>
-                    </tr>
-                {% endfor %}
-                </tbody>
-            </table>
-        </div>
-    </div>
-</div>
-<div class="row">
-    <div class="col-md-{{ character.note ? 6 : 12 }}">
-        <div class="panel panel-default">
-            <div class="panel-heading">{{ 'character.story'|trans }}</div>
-            <div class="panel-body">{{ character.story|nl2br }}</div>
-        </div>
-    </div>
-    {% if character.note %}
-        <div class="col-md-6">
-            <div class="panel panel-default">
-                <div class="panel-heading">{{ 'character.note'|trans }}</div>
-                <div class="panel-body">{{ character.note|nl2br }}</div>
-            </div>
-        </div>
-    {% endif %}
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading">{{ 'character.experience'|trans }}</div>
-    <table class="table table-striped">
-        <thead>
-            <tr>
-                <th>{{ 'character_experience.at'|trans }}</th>
-                <th>{{ 'character_experience.reason'|trans }}</th>
-                <th class="text-right"><span class="glyphicon glyphicon-signal"></span></th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for experience in experiences %}
-            <tr>
-                <td>{{ experience.at|date }}</td>
-                <td>{{ experience.reason }}</td>
-                <td class="text-right">{{ experience.value }}</td>
-            </tr>
-        {% else %}
-            <tr class="warning">
-                <td colspan="3">{{ 'character_experience.empty'|trans }}</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-        <tfoot>
-            <tr>
-                <td colspan="3" class="text-right">
-                    <ul class="form-control-static list-inline">
-                        <li><big>{{ character.skillsExperience|default(0) }}</big> {{ 'character_experience.stats.used_skills'|trans }}</li>
-                        <li><big>{{ character.availableExperience|default(0) }}</big> {{ 'character_experience.stats.available'|trans }}</li>
-                        <li><big>{{ character.experience|default(0) }}</big> {{ 'character_experience.stats.total'|trans }}</li>
-                    </ul>
-                </td>
-            </tr>
-        </tfoot>
-    </table>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading">{{ 'character.skills'|trans }}</div>
-    <table class="table table-striped">
-        <thead>
-            <tr>
-                <th>&nbsp;</th>
-                <th>{{ 'skill.name'|trans }}</th>
-                <th class="text-right">{{ 'skill.level'|trans }}</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for skill in character.skills %}
-            <tr>
-                <td>
-                    {% if skill.skill.abilityCode %}
-                        <abbr title="{{ ('character_ability.types.' ~ skill.skill.abilityCode)|trans({}, 'forms') }} ({{ skill.skill.abilityCode }})">
-                            <span class="glyphicon glyphicon-asterisk"></span>
-                        </abbr>
-                    {% else %}
-                        <abbr title="{{ 'skill.ability_empty'|trans }}">
-                            <span class="glyphicon glyphicon-asterisk"></span>
-                        </abbr>
-                    {% endif %}
-                </td>
-                <td>{{ skill.skill }}</td>
-                <td class="text-right">{{ skill.level }}</td>
-            </tr>
-        {% else %}
-            <tr class="warning">
-                <td colspan="3">{{ 'character_skill.empty'|trans }}</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
-</div>
+<h1>{{ character }}</h1>
+<article>
+  <h2>{{ "character.info"|trans }}</h2>
+  <dl>
+    <dt>
+      <label>{{ "character.name"|trans }}</label>
+    </dt>
+    <dd>{{ character.game.info.fullname }} / {{ character.name }}</dd>
+    <dt>
+      <label class="col-sm-2 control-label">{{ "character.race"|trans }}</label>
+    </dt>
+    <dd>{{ character.race }}</dd>
+  </dl>
+</article>
+<article>
+  <h2>{{ "character.abilities"|trans }}</h2>
+  <table>
+    <tbody>
+    {% for ability in character.abilities %}
+      <tr>
+        <td>{{ ability.modifier }}</td>
+        <td><abbr title="{{ ability.code }}">{{ ("character_ability.types." ~ ability.code)|trans }}</abbr></td>
+      </tr>
+    {% else %}
+      <tr class="warning">
+        <td colspan="2">{{ "character_ability.empty"|trans }}</td>
+      </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+</article>
+<article>
+  <h2>{{ "character.story"|trans }}</h2>
+  <p>{{ character.story|nl2br }}</p>
+</article>
+{% if character.note %}
+  <article>
+    <h2>{{ "character.note"|trans }}</h2>
+    <p>{{ character.note|nl2br }}</p>
+  </article>
+{% endif %}
+<article>
+  <h2>{{ "character.experience"|trans }}</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>{{ "character_experience.at"|trans }}</th>
+        <th>{{ "character_experience.reason"|trans }}</th>
+        <th>&nbsp;</th>
+      </tr>
+    </thead>
+    <tbody>
+    {% for experience in experiences %}
+      <tr>
+        <td>{{ experience.at|date }}</td>
+        <td>{{ experience.reason }}</td>
+        <td>{{ experience.value }}</td>
+      </tr>
+    {% else %}
+      <tr class="warning">
+        <td colspan="3">{{ "character_experience.empty"|trans }}</td>
+      </tr>
+    {% endfor %}
+    </tbody>
+    <tfoot>
+      <tr>
+        <td colspan="3">
+          <ul>
+            <li><big>{{ character.skillsExperience|default(0) }}</big> {{ "character_experience.stats.used_skills"|trans }}</li>
+            <li><big>{{ character.availableExperience|default(0) }}</big> {{ "character_experience.stats.available"|trans }}</li>
+            <li><big>{{ character.experience|default(0) }}</big> {{ "character_experience.stats.total"|trans }}</li>
+          </ul>
+        </td>
+      </tr>
+    </tfoot>
+  </table>
+</article>
+<article>
+  <h2>{{ "character.skills"|trans }}</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>&nbsp;</th>
+        <th>{{ "skill.name"|trans }}</th>
+        <th>{{ "skill.level"|trans }}</th>
+      </tr>
+    </thead>
+    <tbody>
+    {% for skill in character.skills %}
+      <tr>
+        <td>
+          {% if skill.skill.abilityCode %}
+            <abbr title="{{ ("character_ability.types." ~ skill.skill.abilityCode)|trans({}, "forms") }} ({{ skill.skill.abilityCode }})">*</abbr>
+          {% else %}
+            <abbr title="{{ "skill.ability_empty"|trans }}">*</abbr>
+          {% endif %}
+        </td>
+        <td>{{ skill.skill }}</td>
+        <td class="text-right">{{ skill.level }}</td>
+      </tr>
+    {% else %}
+      <tr class="warning">
+        <td colspan="3">{{ "character_skill.empty"|trans }}</td>
+      </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+</article>
 {% endblock %}

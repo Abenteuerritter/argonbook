@@ -1,44 +1,44 @@
-{% set active = 'character' %}
-{% extends 'ArgonWebBundle::Admin/layout.html.twig' %}
-{% trans_default_domain 'admin' %}
+{% extends "ArgonWebBundle::layout_admin.html.twig" %}
+{% trans_default_domain "ArgonGameBundle" %}
+{% set active = "character" %}
 
-{% block title %}{{ parent() }} - {{ 'character.title'|trans }} - {{ character.name }} - {{ 'character_experience.title'|trans }}{% endblock %}
+{% block title %}{{ parent() }} - {{ "admin.character.title"|trans }} - {{ character.name }} - {{ "admin.character_experience.title"|trans }}{% endblock %}
 
 {% block content %}
-<ol class="breadcrumb">
-    <li><a href="{{ path('admin_dashboard') }}">{{ 'dashboard.title'|trans }}</a></li>
-    <li><a href="{{ path('admin_character') }}">{{ 'character.title'|trans }}</a></li>
-    <li>{{ character.name }}</li>
-    <li class="active"><span class="glyphicon glyphicon-signal"></span> {{ 'character_experience.title'|trans }}</li>
+<ol id="breadcrumb">
+  <li><a href="{{ path("admin_dashboard") }}">{{ "admin.dashboard.title"|trans }}</a></li>
+  <li><a href="{{ path("admin_character") }}">{{ "admin.character.title"|trans }}</a></li>
+  <li>{{ character.name }}</li>
+  <li class="active">{{ "admin.character_experience.title"|trans }}</li>
 </ol>
-<table class="table table-striped">
-    <thead>
-        <tr>
-            <th>{{ 'character_experience.at'|trans }}</th>
-            <th>{{ 'character_experience.reason'|trans }}</th>
-            <th class="text-right"><span class="glyphicon glyphicon-signal"></span></th>
-        </tr>
-    </thead>
-    <tbody>
-    {% for experience in entities %}
-        <tr>
-            <td>{{ experience.at|date }}</td>
-            <td>{{ experience.reason }}</td>
-            <td class="text-right">{{ experience.value }}</td>
-        </tr>
-    {% else %}
-        <tr class="warning">
-            <td colspan="3">{{ 'character_experience.empty'|trans }}</td>
-        </tr>
-    {% endfor %}
-    </tbody>
-    <tfoot>
-        <tr>
-            <td colspan="2">
-                <a href="{{ path('admin_character_experience_new', {'id': character.id}) }}" class="btn btn-default">{{ 'character_experience.actions.new'|trans }}</a>
-            </td>
-            <td class="text-right"><strong>{{ character.availableExperience }}</strong></td>
-        </tr>
-    </tfoot>
+<table>
+  <thead>
+    <tr>
+      <th>{{ "admin.character_experience.at"|trans }}</th>
+      <th>{{ "admin.character_experience.reason"|trans }}</th>
+      <th><span class="glyphicon glyphicon-signal"></span></th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for experience in entities %}
+    <tr>
+      <td>{{ experience.at|date }}</td>
+      <td>{{ experience.reason }}</td>
+      <td>{{ experience.value }}</td>
+    </tr>
+  {% else %}
+    <tr class="warning">
+      <td colspan="3">{{ "admin.character_experience.empty"|trans }}</td>
+    </tr>
+  {% endfor %}
+  </tbody>
+  <tfoot>
+    <tr>
+      <td colspan="2">
+        <a href="{{ path("admin_character_experience_new", {"id": character.id}) }}">{{ "admin.character_experience.new"|trans }}</a>
+      </td>
+      <td><strong>{{ character.availableExperience }}</strong></td>
+    </tr>
+  </tfoot>
 </table>
 {% endblock %}

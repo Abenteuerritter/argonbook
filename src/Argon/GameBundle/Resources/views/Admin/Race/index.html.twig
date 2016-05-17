@@ -1,13 +1,13 @@
-{% set active = 'race' %}
-{% extends 'ArgonWebBundle::Admin/layout.html.twig' %}
-{% trans_default_domain 'admin' %}
+{% extends "ArgonWebBundle::layout_admin.html.twig" %}
+{% trans_default_domain "ArgonGameBundle" %}
+{% set active = "race" %}
 
-{% block title %}{{ parent() }} - {{ 'race.title'|trans }}{% endblock %}
+{% block title %}{{ parent() }} - {{ "admin.race.title"|trans }}{% endblock %}
 
 {% block content %}
-<ol class="breadcrumb">
-    <li><a href="{{ path('admin_dashboard') }}">{{ 'dashboard.title'|trans }}</a></li>
-    <li class="active">{{ 'race.title'|trans }}</li>
+<ol id="breadcrumb">
+  <li><a href="{{ path("admin_dashboard") }}">{{ "admin.dashboard.title"|trans }}</a></li>
+  <li class="active">{{ "admin.race.title"|trans }}</li>
 </ol>
-    {{ include('ArgonGameBundle:Admin\\Partial\\Race:list.html.twig', {'entities': entities}) }}
+{{ include("ArgonGameBundle:Admin\\Partial\\Race:list.html.twig", {"entities": entities}) }}
 {% endblock %}

@@ -6,30 +6,30 @@
 
 {% block content %}
 <ol id="breadcrumb">
-    <li><a href="{{ path("admin_dashboard") }}">{{ "admin.dashboard.title"|trans }}</a></li>
-    <li class="active">{{ "admin.player.title"|trans }}</li>
+  <li><a href="{{ path("admin_dashboard") }}">{{ "admin.dashboard.title"|trans }}</a></li>
+  <li class="active">{{ "admin.player.title"|trans }}</li>
 </ol>
 <table>
-    <thead>
-        <tr>
-            <th>{{ "admin.player.username"|trans }}</th>
-            <th>{{ "admin.player.name"|trans }}</th>
-            <th>{{ "admin.player.lastlogin"|trans }}</th>
-        </tr>
-    </thead>
-    <tbody>
-    {% for player in entities %}
-        <tr>
-            <td>{{ player.username }}</td>
-            <td>{{ player.name }}</td>
-            <td>{{ player.lastLogin|date }}</td>
-        </tr>
-    {% else %}
-        <tr class="warning">
-            <td colspan="3">{{ "player.empty"|trans }}</td>
-        </tr>
-    {% endfor %}
-    </tbody>
+  <thead>
+    <tr>
+      <th>{{ "admin.player.username"|trans }}</th>
+      <th>{{ "admin.player.name"|trans }}</th>
+      <th>{{ "admin.player.lastlogin"|trans }}</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for player in entities %}
+    <tr>
+      <td>{{ player.username }}</td>
+      <td>{{ player.name }}</td>
+      <td>{{ player.lastLogin|date }}</td>
+    </tr>
+  {% else %}
+    <tr class="warning">
+      <td colspan="3">{{ "admin.player.empty"|trans }}</td>
+    </tr>
+  {% endfor %}
+  </tbody>
 </table>
 {{ knp_pagination_render(entities) }}
 {% endblock %}

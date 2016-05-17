@@ -5,12 +5,6 @@
                         http://symfony.com/schema/dic/services/services-1.0.xsd">
 
     <services>
-        <!-- ChoiceList -->
-        <service id="argon_game.form.game_choice_list" class="Argon\GameBundle\Form\ChoiceList\GameChoiceList">
-            <argument type="service" id="argon_game.provider.game_factory" />
-        </service>
-
-        <!-- Forms -->
         <service id="argon_game.form.character" class="Argon\GameBundle\Form\Type\CharacterType">
             <tag name="form.type" />
         </service>
@@ -31,7 +25,7 @@
             <tag name="form.type" />
         </service>
         <service id="argon_game.form.character_game" class="Argon\GameBundle\Form\Character\CharacterGameType">
-            <argument type="service" id="argon_game.form.game_choice_list" />
+            <argument type="expression">service('argon_game.provider.game_factory').getGames()</argument>
             <tag name="form.type" />
         </service>
         <service id="argon_game.form.character_skills" class="Argon\GameBundle\Form\Character\CharacterSkillsType">

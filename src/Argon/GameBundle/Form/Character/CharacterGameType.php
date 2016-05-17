@@ -4,20 +4,21 @@ namespace Argon\GameBundle\Form\Character;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 
-use Argon\GameBundle\Form\ChoiceList\GameChoiceList;
+use Argon\GameBundle\Provider\GameInterface;
 
 class CharacterGameType extends AbstractType
 {
     /**
-     * @var \Argon\GameBundle\Form\ChoiceList\GameChoiceList
+     * @var GameInterface[]
      */
-    protected $gameChoiceList;
+    protected $games;
 
-    public function __construct(GameChoiceList $gameChoiceList)
+    public function __construct(array $games)
     {
-        $this->gameChoiceList = $gameChoiceList;
+        $this->games = $games;
     }
 
     /**
@@ -26,18 +27,39 @@ class CharacterGameType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('game', 'choice', array(
-            'choice_list' => $this->gameChoiceList,
+        $builder->add('game', ChoiceType::class, array(
+            'choices' => $this->games,
+            'choice_value' => function(GameInterface $game = null) {
+                if ($game) {
+                    return $game->getName();
+                }
+            },
+            'choice_label' => function(GameInterface $game) {
+                $info = $game->getInfo();
+
+                if (array_key_exists('fullname', $info)) {
+                    return $info['fullname'];
+                }
+
+                return $game->getName();
+            },
+            'group_by' => function(GameInterface $game) {
+                $info = $game->getInfo();
+
+                if (array_key_exists('category', $info)) {
+                    return $info['category'];
+                }
+            },
         ));
     }
 
     /**
-     * @param OptionsResolverInterface $resolver
+     * @param OptionsResolver $resolver
      */
-    public function setDefaultOptions(OptionsResolverInterface $resolver)
+    public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'translation_domain' => 'forms',
+            'translation_domain' => 'ArgonGameBundle',
             'intention'          => 'character_game',
         ));
     }

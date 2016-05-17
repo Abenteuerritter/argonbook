@@ -67,7 +67,7 @@ class Character extends GameProvider implements UserInterface
     /**
      * @var boolean
      */
-    protected $storyDraft = false;
+    protected $storyDraft = true;
 
     /**
      * @var \DateTime

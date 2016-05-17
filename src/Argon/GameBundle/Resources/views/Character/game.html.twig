@@ -1,17 +1,10 @@
-{% set active = 'character' %}
-{% extends '::layout/twocolumns.html.twig' %}
-{% trans_default_domain 'web' %}
+{% extends "ArgonWebBundle::layout.html.twig" %}
+{% trans_default_domain "ArgonWebBundle" %}
+{% set active = "character" %}
 
-{% block title %}{{ parent() }} - {{ 'character.new'|trans }}{% endblock %}
-
-{% block sections %}
-  <div class="section section-characters">
-    <div class="container">
-      <h1>{{ 'character.new'|trans }}</h1>
-    </div>
-  </div>
-{% endblock %}
+{% block title %}{{ parent() }} - {{ "character.new"|trans }}{% endblock %}
 
 {% block content %}
+<h1>{{ "character.new"|trans }}</h1>
 {{ form(form) }}
 {% endblock %}

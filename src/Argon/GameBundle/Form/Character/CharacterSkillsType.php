@@ -4,9 +4,11 @@ namespace Argon\GameBundle\Form\Character;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 
 use Argon\GameBundle\Validator\Constraints\CharacterSkillsEnoughExperience;
+use Argon\GameBundle\Form\Type\CharacterSkillType;
 
 class CharacterSkillsType extends AbstractType
 {
@@ -16,8 +18,8 @@ class CharacterSkillsType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('characterSkills', 'collection', array(
-            'type' => 'character_skill',
+        $builder->add('characterSkills', CollectionType::class, array(
+            'entry_type' => CharacterSkillType::class,
             'constraints' => array(
                 new CharacterSkillsEnoughExperience(),
             ),
@@ -25,12 +27,12 @@ class CharacterSkillsType extends AbstractType
     }
 
     /**
-     * @param OptionsResolverInterface $resolver
+     * @param OptionsResolver $resolver
      */
-    public function setDefaultOptions(OptionsResolverInterface $resolver)
+    public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'translation_domain' => 'forms',
+            'translation_domain' => 'ArgonGameBundle',
             'intention'          => 'character_skills',
         ));
     }

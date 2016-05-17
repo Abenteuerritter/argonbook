@@ -1,39 +1,40 @@
-<table class="table table-striped">
-    <thead>
-        <tr>
-            {% if show_ability %}
-                <th>{{ 'skill.ability'|trans({}, 'admin') }}</th>
-            {% endif %}
-            <th>{{ 'skill.name'|trans({}, 'admin') }}</th>
-            <th class="text-right">{{ 'skill.modifier'|trans({}, 'admin') }}</th>
-            <th class="text-right">{{ 'skill.max'|trans({}, 'admin') }}</th>
-        </tr>
-    </thead>
-    <tbody>
-    {% for skill in entities %}
-        <tr>
-            {% if show_ability %}
-            <td>
-                {% if skill.abilityCode %}
-                    <abbr title="{{ skill.abilityCode }}">{{ ('character_ability.types.' ~ skill.abilityCode)|trans({}, 'forms') }}</abbr>
-                    <a href="{{ path('admin_skill', {'ability': skill.abilityCode}) }}">&rarr;</a>
-                {% else %}
-                    <em>{{ 'skill.ability_empty'|trans({}, 'admin') }}</em>
-                {% endif %}
-            </td>
-            {% endif %}
-            <td><a href="{{ path('admin_skill_view', {'slug': skill.slug}) }}">{{ skill }}</a></td>
-            <td class="text-right">{{ skill.modifier }}</td>
-            <td class="text-right">
-                {% if skill.max %}
-                    {{ skill.max }}
-                {% endif %}
-            </td>
-        </tr>
-    {% else %}
-        <tr class="warning">
-            <td colspan="{{ 3 + (show_ability ? 1 : 0) }}">{{ 'skill.empty'|trans({}, 'admin') }}</td>
-        </tr>
-    {% endfor %}
-    </tbody>
+{% trans_default_domain "ArgonGameBundle" %}
+<table>
+  <thead>
+    <tr>
+      {% if show_ability %}
+        <th>{{ "admin.skill.ability"|trans }}</th>
+      {% endif %}
+      <th>{{ "admin.skill.name"|trans }}</th>
+      <th class="text-right">{{ "admin.skill.modifier"|trans }}</th>
+      <th class="text-right">{{ "admin.skill.max"|trans }}</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for skill in entities %}
+    <tr>
+      {% if show_ability %}
+      <td>
+        {% if skill.abilityCode %}
+          <abbr title="{{ skill.abilityCode }}">{{ ("character_ability.types." ~ skill.abilityCode)|trans }}</abbr>
+          <a href="{{ path("admin_skill", {"ability": skill.abilityCode}) }}">&rarr;</a>
+        {% else %}
+          <em>{{ "admin.skill.ability_empty"|trans }}</em>
+        {% endif %}
+      </td>
+      {% endif %}
+      <td><a href="{{ path("admin_skill_view", {"slug": skill.slug}) }}">{{ skill }}</a></td>
+      <td>{{ skill.modifier }}</td>
+      <td>
+        {% if skill.max %}
+          {{ skill.max }}
+        {% endif %}
+      </td>
+    </tr>
+  {% else %}
+      <tr class="warning">
+          <td colspan="{{ 3 + (show_ability ? 1 : 0) }}">{{ "admin.skill.empty"|trans }}</td>
+      </tr>
+  {% endfor %}
+  </tbody>
 </table>

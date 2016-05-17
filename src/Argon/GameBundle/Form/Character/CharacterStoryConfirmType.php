@@ -4,7 +4,9 @@ namespace Argon\GameBundle\Form\Character;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+use Symfony\Component\Form\Extension\Core\Type\NumberType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class CharacterStoryConfirmType extends AbstractType
 {
@@ -16,16 +18,16 @@ class CharacterStoryConfirmType extends AbstractType
     {
         $builder
             // {{{ Character
-            ->add('note', 'textarea', array(
+            ->add('note', TextareaType::class, array(
                 'required' => false,
             ))
             // }}}
 
             // {{{ CharacterExperience
-            ->add('experience', 'number', array(
+            ->add('experience', NumberType::class, array(
                 'required' => true,
             ))
-            ->add('reason', 'textarea', array(
+            ->add('reason', TextareaType::class, array(
                 'required' => false,
             ))
             // }}}
@@ -33,12 +35,12 @@ class CharacterStoryConfirmType extends AbstractType
     }
 
     /**
-     * @param OptionsResolverInterface $resolver
+     * @param OptionsResolver $resolver
      */
-    public function setDefaultOptions(OptionsResolverInterface $resolver)
+    public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'translation_domain' => 'forms',
+            'translation_domain' => 'ArgonGameBundle',
             'intention'          => 'character_story_confirm',
         ));
     }

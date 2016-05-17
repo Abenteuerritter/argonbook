@@ -5,6 +5,6 @@
     {{ post.body|nl2br }}
   </main>
   <footer>
-    {{ "admin.news.post.footer"|trans({"%creator%": post.creator, "%published%": post.publishedAt|date}) }}
+    {{ "admin.news.footer"|trans({"%creator%": post.creator, "%published%": post.publishedAt|date}) }}
   </footer>
 </article>
