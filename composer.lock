@@ -1497,7 +1497,10 @@
                 "reference": "4.1.1",
                 "shasum": null
             },
-            "type": "library"
+            "type": "library",
+            "license": [
+                "MIT"
+            ]
         },
         {
             "name": "paragonie/random_compat",
@@ -2534,7 +2537,10 @@
                 "shasum": null
             },
             "type": "library",
-            "time": "2014-11-18 18:39:06"
+            "license": [
+                "LGPL-3.0"
+            ],
+            "time": "2016-05-11 07:08:58"
         }
     ],
     "packages-dev": [

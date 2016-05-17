@@ -5,23 +5,27 @@ header {
 
   h1 {
     @include zass-column(3);
-    margin-top:    0;
+    margin-top: 0;
     margin-bottom: 0;
     a {
+      font-weight: normal;
       text-decoration: none;
+      &:hover {
+        text-decoration: none;
+      }
     }
   }
 
   ul {
     @include zass-column(9);
-    margin-top:    0;
+    margin-top: 0;
     margin-bottom: 0;
-    padding-left:  0;
+    padding-left: 0;
     float: right;
     width: auto;
     li {
-      text-align:      center;
-      text-transform:  lowercase;
+      text-align: center;
+      text-transform: lowercase;
       list-style-type: none;
       margin: 9px;
       float: left;

@@ -1,11 +1,11 @@
 @charset "UTF-8";
 
-$background-color:                  white;
+$background-color:                  #ffffff;
 $foreground-color:                  #323435;
-$anchor-color:                      darken($foreground-color, 30%);
-$active-color:                      #00b1f3;
-$visited-color:                     red;
-$header-line-color:                 red;
+$acent-color:                       #ff4136;
+$anchor-color:                      #0074D9;
+$hover-color:                       $acent-color;
+$header-line-color:                 $acent-color;
 
 // 3rd party
 @import "waiting-for-dev/zass/sass/zass";

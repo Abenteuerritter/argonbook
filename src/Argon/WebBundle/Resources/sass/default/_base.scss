@@ -10,12 +10,9 @@ a {
   text-decoration: none;
   color: $anchor-color;
 
-  &:active {
-    color: $visited-color;
-  }
-
   &:hover, &:focus {
-    color: $active-color;
+    text-decoration: underline;
+    color: $hover-color;
   }
 }
 
@@ -25,4 +22,8 @@ section {
   padding: 0.67em;
   @include clearfix;
   @include zass-grid(false);
+}
+
+h1 {
+  margin-top: 0;
 }
