@@ -2,7 +2,7 @@
 
 admin:
   player:
-    title:     Players
+    players:   Players
     username:  Username
     name:      Name
     lastlogin: Last login

@@ -1,21 +1,21 @@
 {% extends "ArgonWebBundle::layout_admin.html.twig" %}
 {% set active = "character" %}
 
-{% block title %}{{ parent() }} - {{ "admin.character.title"|trans }} - {{ character.name }} - {{ "admin.character_experience.title"|trans }}{% endblock %}
+{% block title %}{{ parent() }} - {{ "admin.character.characters"|trans }} - {{ character.name }} - {{ "admin.character_experience.experience"|trans }}{% endblock %}
 
 {% block content %}
 <ol id="breadcrumb">
   <li><a href="{{ path("admin_dashboard") }}">{{ "admin.dashboard.title"|trans }}</a></li>
-  <li><a href="{{ path("admin_character") }}">{{ "admin.character.title"|trans }}</a></li>
+  <li><a href="{{ path("admin_character") }}">{{ "admin.character.characters"|trans }}</a></li>
   <li>{{ character.name }}</li>
-  <li class="active">{{ "admin.character_experience.title"|trans }}</li>
+  <li class="active">{{ "admin.character_experience.experience"|trans }}</li>
 </ol>
 <table>
   <thead>
     <tr>
       <th>{{ "admin.character_experience.at"|trans }}</th>
       <th>{{ "admin.character_experience.reason"|trans }}</th>
-      <th><span class="glyphicon glyphicon-signal"></span></th>
+      <th>&nbsp;</th>
     </tr>
   </thead>
   <tbody>

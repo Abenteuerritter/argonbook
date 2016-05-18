@@ -4,6 +4,7 @@ namespace Argon\GameBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class CharacterExperienceType extends AbstractType
@@ -16,7 +17,7 @@ class CharacterExperienceType extends AbstractType
     {
         $builder
             ->add('value')
-            ->add('reason')
+            ->add('reason', TextareaType::class)
         ;
     }
 

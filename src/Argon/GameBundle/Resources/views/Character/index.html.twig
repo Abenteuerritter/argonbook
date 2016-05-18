@@ -1,9 +1,9 @@
 {% extends "ArgonWebBundle::layout.html.twig" %}
 {% set active = "character" %}
 
-{% block title %}{{ parent() }} - {{ "character.title"|trans }}{% endblock %}
+{% block title %}{{ parent() }} - {{ "character.characters"|trans }}{% endblock %}
 
 {% block content %}
-  <h1>{{ "character.title"|trans }}</h1>
+  <h1>{{ "character.characters"|trans }}</h1>
   {{ render(controller("ArgonGameBundle:Block:characters")) }}
 {% endblock %}

@@ -1,7 +1,7 @@
 {% extends "ArgonWebBundle::layout.html.twig" %}
 {% set active = "character" %}
 
-{% block title %}{{ parent() }} - {{ "character.title"|trans }} - {{ character }} - {{ "character.edit"|trans }}{% endblock %}
+{% block title %}{{ parent() }} - {{ "character.characters"|trans }} - {{ character }} - {{ "character.edit"|trans }}{% endblock %}
 
 {% block content %}
 <h1>{{ "character.edit_title"|trans({"%character%": character}) }}</h1>
@@ -14,8 +14,8 @@
     <p class="success">{{ "character.story_confirmed"|trans }}</p>
     {% if character.note %}
       <dl>
-        <h3 class="panel-title">{{ "character.note"|trans }}</h3>
-        <p>{{ character.note|nl2br }}</p>
+        <dt>{{ "character.note"|trans }}</dt>
+        <dd>{{ character.note|nl2br }}</dd>
       </dl>
     {% endif %}
   {% endif %}

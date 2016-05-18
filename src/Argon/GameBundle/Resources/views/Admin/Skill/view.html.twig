@@ -1,12 +1,12 @@
 {% extends "ArgonWebBundle::layout_admin.html.twig" %}
 {% set active = "skill" %}
 
-{% block title %}{{ parent() }} - {{ "admin.skill.title"|trans }} - {{ entity }}{% endblock %}
+{% block title %}{{ parent() }} - {{ "admin.skill.skills"|trans }} - {{ entity }}{% endblock %}
 
 {% block content %}
 <ol id="breadcrumb">
   <li><a href="{{ path("admin_dashboard") }}">{{ "admin.dashboard.title"|trans }}</a></li>
-  <li><a href="{{ path("admin_skill") }}">{{ "admin.skill.title"|trans }}</a></li>
+  <li><a href="{{ path("admin_skill") }}">{{ "admin.skill.skills"|trans }}</a></li>
   {% set parts = [] %}
   {% for part in entity.slug|split("/") %}
     {% if loop.last %}

@@ -125,7 +125,9 @@ class CharacterController extends Controller
             'method' => 'POST',
         ));
 
-        $form->add('submit', SubmitType::class);
+        $form->add('submit', SubmitType::class, array(
+            'label' => 'admin.character.confirm_story_submit',
+        ));
 
         if ($request->isMethod('POST')) {
             $form->handleRequest($request);

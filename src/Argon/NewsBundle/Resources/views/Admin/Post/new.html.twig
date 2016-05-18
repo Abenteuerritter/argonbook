@@ -1,12 +1,12 @@
 {% extends "ArgonWebBundle::layout_admin.html.twig" %}
 {% set active = "news" %}
 
-{% block title %}{{ parent() }} - {{ "admin.news.title"|trans }} {{ "admin.news.new"|trans }}{% endblock %}
+{% block title %}{{ parent() }} - {{ "admin.news.news"|trans }} {{ "admin.news.new"|trans }}{% endblock %}
 
 {% block content %}
 <ol id="breadcrumb">
   <li><a href="{{ path("admin_dashboard") }}">{{ "admin.dashboard.title"|trans }}</a></li>
-  <li><a href="{{ path("admin_news") }}">{{ "admin.news.posts"|trans }}</a></li>
+  <li><a href="{{ path("admin_news") }}">{{ "admin.news.news"|trans }}</a></li>
   <li class="active">{{ "admin.news.new"|trans }}</li>
 </ol>
 {{ form(form) }}

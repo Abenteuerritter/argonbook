@@ -1,15 +1,15 @@
 {% extends "ArgonWebBundle::layout_admin.html.twig" %}
 {% set active = "skill" %}
 
-{% block title %}{{ parent() }} - {{ "admin.skill.title"|trans }}{% endblock %}
+{% block title %}{{ parent() }} - {{ "admin.skill.skills"|trans }}{% endblock %}
 
 {% block content %}
 <ol id="breadcrumb">
   <li><a href="{{ path("admin_dashboard") }}">{{ "admin.dashboard.title"|trans }}</a></li>
   {% if not ability %}
-    <li class="active">{{ "admin.skill.title"|trans }}</li>
+    <li class="active">{{ "admin.skill.skills"|trans }}</li>
   {% else %}
-    <li class="active"><a href="{{ path("admin_skill") }}">{{ "admin.skill.title"|trans }}</a> {{ "admin.skill.of_ability"|trans({"%ability%": ("character_ability.types." ~ ability)|trans}) }}</li>
+    <li class="active"><a href="{{ path("admin_skill") }}">{{ "admin.skill.skills"|trans }}</a> {{ "admin.skill.of_ability"|trans({"%ability%": ("character_ability.types." ~ ability)|trans}) }}</li>
   {% endif %}
 </ol>
 {{ include("ArgonGameBundle:Admin\\Partial\\Skill:list.html.twig", {"entities": entities, "show_ability": ability is null}) }}

@@ -6,7 +6,7 @@ news:
 
 admin:
   news:
-    posts:           News
+    news:            News
     title:           Title
     body:            Content
     creator:         Creator

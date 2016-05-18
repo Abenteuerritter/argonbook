@@ -1,18 +1,14 @@
 {% extends "ArgonWebBundle::layout.html.twig" %}
 {% set active = "character" %}
 
-{% block title %}{{ parent() }} - {{ "character.title"|trans }} - {{ character }} - {{ "character.skills"|trans }}{% endblock %}
+{% block title %}{{ parent() }} - {{ "character.characters"|trans }} - {{ character }} - {{ "character.skills"|trans }}{% endblock %}
 
 {% block content %}
 <h1>{{ "character.skills"|trans }}</h1>
 {{ form_start(form) }}
   <div id="progress-experience">
-    <div style="width: {{ ((character.skillsExperience * 100) / character.experience)|round }}%">
-        <span class="sr-only">{{ character.skillsExperience }}</span>
-    </div>
-    <div style="width: 0%">
-        <span class="sr-only">0</span>
-    </div>
+    <div style="width: {{ ((character.skillsExperience * 100) / character.experience)|round }}%"><span>{{ character.skillsExperience }}</span></div>
+    <div style="width: 0%"><span>0</span></div>
   </div>
   {{ form_widget(form.submit) }}
   <ul>
@@ -42,8 +38,8 @@
         </td>
         <td>{{ skill }}</td>
         <td>
-          <div class="input-group">
-            <span id="{{ skill.slug }}_level" class="input-group-addon level">{{ characterSkill.vars.value.level }}</span>
+          <div>
+            <span id="{{ skill.slug }}_level">{{ characterSkill.vars.value.level }}</span>
             {{
               form_widget(characterSkill.newLevel, {"attr": {
                 "data-level" : characterSkill.vars.value.level|default(0),

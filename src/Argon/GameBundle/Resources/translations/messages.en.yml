@@ -1,46 +1,7 @@
 ---
 
-#race:
-#  empty: __race.empty
-#
-#skill:
-#  name: __skill.name
-#  level: __skill.level
-#  price: __skill.price
-#  ability_empty: __skill.ability_empty
-#  empty: __skill.empty
-#
-#character_experience.stats.available: __character_experience.stats.available
-#character_experience.stats.total: __character_experience.stats.total
-#
-#character.name: __character.name
-#character.race: __character.race
-#character.abilities: __character.abilities
-#character.story: __character.story
-#character.experience: __character.experience
-#
-#character_experience.at: __character_experience.at
-#character_experience.reason: __character_experience.reason
-#character_experience.empty: __character_experience.empty
-#character_experience.stats.used_skills: __character_experience.stats.used_skills
-#
-#character_skill.empty: __character_skill.empty
-#character_skill.submit: __character_skills.submit
-#character_skill.updated: __character_skill.updated
-#
-#character_ability.types.STR: Strengh
-#character_ability.empty: __character_ability.empty
-#
-#character_game.submit: __character_game.submit
-#
-#admin.character_confirm_story.note: __admin.character_confirm_story.note
-#admin.character_confirm_story.note_help: __admin.character_confirm_story.note_help
-#admin.character_confirm_story.reason_placeholder: __admin.character_confirm_story.reason_placeholder
-#
-#admin.character_ability.empty: __admin.character_ability.empty
-
 character:
-  title:               My characters
+  characters:          My characters
   info:                Character
   name:                Name
   race:                Race
@@ -50,6 +11,7 @@ character:
   switch:              Switch
   skills:              Skills
   new:                 New character
+  new_title:           Create a new character
   game_submit:         Select game
   edit:                Edit
   edit_title:          Edit %character%
@@ -79,7 +41,7 @@ character_ability:
 character_experience:
   at:     Date
   reason: Reason
-  empty:  
+  empty:  Your character has not experience yet.
   stats:
     used_skills: used in skills
     available:   available
@@ -100,34 +62,35 @@ skill:
 
 admin:
   character:
-    title:         Characters
-    of_game:       of %game%
-    info:          Information
-    abilities:     Abilities
-    confirm_story: Confirm story
-    empty:         There are no characters in the system yet.
+    characters:           Characters
+    of_game:              of %game%
+    info:                 Information
+    abilities:            Abilities
+    confirm_story:        Confirm story
+    confirm_story_submit: Confirm story
+    empty:                There are no characters in the system yet.
 
   character_experience:
-    title:  Experience
-    at:     Date
-    reason: Reason
-    new:    Add experience
-    create: Create experience
-    empty:  This character has no experience.
+    experience: Experience
+    at:         Date
+    reason:     Reason
+    new:        Add experience
+    create:     Create experience
+    empty:      This character has no experience.
 
   character_skill:
-    title: Skills
-    empty: This character has no skills.
+    skills: Skills
+    empty:  This character has no skills.
 
   race:
-    title:      Races
+    races:      Races
     name:       Name
     name_empty: (no translation)
     modifier:   Modifier
     empty:      There are no races in the system yet.
 
   skill:
-    title:         Skills
+    skills:        Skills
     of_ability:    of %ability%
     name:          Name
     level:         Level

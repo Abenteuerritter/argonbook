@@ -1,15 +1,15 @@
 {% extends "ArgonWebBundle::layout_admin.html.twig" %}
 {% set active = "character" %}
 
-{% block title %}{{ parent() }} - {{ "admin.character.title"|trans }}{% endblock %}
+{% block title %}{{ parent() }} - {{ "admin.character.characters"|trans }}{% endblock %}
 
 {% block content %}
 <ol id="breadcrumb">
   <li><a href="{{ path("admin_dashboard") }}">{{ "admin.dashboard.title"|trans }}</a></li>
   {% if not game %}
-    <li class="active">{{ "admin.character.title"|trans }}</li>
+    <li class="active">{{ "admin.character.characters"|trans }}</li>
   {% else %}
-    <li class="active"><a href="{{ path("admin_character") }}">{{ "admin.character.title"|trans }}</a> {{ "admin.character.of_game"|trans({"%game%": game.info.fullname}) }}</li>
+    <li class="active"><a href="{{ path("admin_character") }}">{{ "admin.character.characters"|trans }}</a> {{ "admin.character.of_game"|trans({"%game%": game.info.fullname}) }}</li>
   {% endif %}
 </ol>
 {{ form(filter_form) }}

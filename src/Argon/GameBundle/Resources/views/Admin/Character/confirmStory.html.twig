@@ -1,29 +1,15 @@
 {% extends "ArgonWebBundle::layout_admin.html.twig" %}
 {% set active = "character" %}
 
-{% block title %}{{ parent() }} - {{ "admin.character.title"|trans }} - {{ character.name }} - {{ "admin.character.confirm_story"|trans }}{% endblock %}
+{% block title %}{{ parent() }} - {{ "admin.character.characters"|trans }} - {{ character.name }} - {{ "admin.character.confirm_story"|trans }}{% endblock %}
 
 {% block content %}
 <ol id="breadcrumb">
   <li><a href="{{ path("admin_dashboard") }}">{{ "admin.dashboard.title"|trans }}</a></li>
-  <li><a href="{{ path("admin_character") }}">{{ "admin.character.title"|trans }}</a></li>
+  <li><a href="{{ path("admin_character") }}">{{ "admin.character.characters"|trans }}</a></li>
   <li>{{ character.name }}</li>
   <li class="active">{{ "admin.character.confirm_story"|trans }}</li>
 </ol>
 {{ include("ArgonGameBundle:Partial\\Character:story.html.twig", {"character": character}) }}
-{{ form_start(form) }}
-  {{ form_errors(form) }}
-
-  {{
-    form_row(form.note, {
-      "admin.label"     : "admin.character_confirm_story.note"|trans,
-      "admin.help_text" : "admin.character_confirm_story.note_help"|trans
-    })
-  }}
-
-  {{ form_row(form.experience) }}
-  {{ form_row(form.reason, {"attr": {"placeholder": "admin.character_confirm_story.reason_placeholder"|trans}}) }}
-
-  {{ form_rest(form) }}
-{{ form_end(form) }}
+{{ form(form) }}
 {% endblock %}

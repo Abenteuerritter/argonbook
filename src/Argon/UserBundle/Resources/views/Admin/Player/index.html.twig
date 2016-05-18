@@ -1,12 +1,12 @@
 {% extends "ArgonWebBundle::layout_admin.html.twig" %}
 {% set active = "player" %}
 
-{% block title %}{{ parent() }} - {{ "admin.player.title"|trans }}{% endblock %}
+{% block title %}{{ parent() }} - {{ "admin.player.players"|trans }}{% endblock %}
 
 {% block content %}
 <ol id="breadcrumb">
   <li><a href="{{ path("admin_dashboard") }}">{{ "admin.dashboard.title"|trans }}</a></li>
-  <li class="active">{{ "admin.player.title"|trans }}</li>
+  <li class="active">{{ "admin.player.players"|trans }}</li>
 </ol>
 <table>
   <thead>

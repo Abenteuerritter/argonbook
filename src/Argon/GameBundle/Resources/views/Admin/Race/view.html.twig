@@ -1,12 +1,12 @@
 {% extends "ArgonWebBundle::layout_admin.html.twig" %}
 {% set active = "race" %}
 
-{% block title %}{{ parent() }} - {{ "admin.race.title"|trans }} - {{ entity }}{% endblock %}
+{% block title %}{{ parent() }} - {{ "admin.race.races"|trans }} - {{ entity }}{% endblock %}
 
 {% block content %}
 <ol id="breadcrumb">
   <li><a href="{{ path("admin_dashboard") }}">{{ "admin.dashboard.title"|trans }}</a></li>
-  <li><a href="{{ path("admin_race") }}">{{ "admin.race.title"|trans }}</a></li>
+  <li><a href="{{ path("admin_race") }}">{{ "admin.race.races"|trans }}</a></li>
   <li class="active">{{ entity.slug }}</li>
 </ol>
 <dl>
