@@ -4,14 +4,14 @@
 {% block title %}{{ parent() }} - {{ "character.title"|trans }} - {{ character }} - {{ "character.edit"|trans }}{% endblock %}
 
 {% block content %}
-<h1>{{ "character.edit"|trans }}</h1>
+<h1>{{ "character.edit_title"|trans({"%character%": character}) }}</h1>
 {{ form_start(form) }}
   {{ form_errors(form) }}
-  {{ form_row(form.story, {"attr": {"placeholder": "character.story_placeholder"|trans}}) }}
+  {{ form_row(form.story, {"attr": {"placeholder": "character.story_placeholder" }}) }}
   {% if character.storyConfirmedAt is null %}
-    <div class="warning">{{ "character.story_not_confirmed"|trans }}</div>
+    <p class="warning">{{ "character.story_not_confirmed"|trans }}</p>
   {% else %}
-    <div class="success">{{ "character.story_confirmed"|trans }}</div>
+    <p class="success">{{ "character.story_confirmed"|trans }}</p>
     {% if character.note %}
       <dl>
         <h3 class="panel-title">{{ "character.note"|trans }}</h3>

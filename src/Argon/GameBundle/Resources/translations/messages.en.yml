@@ -1,0 +1,140 @@
+---
+
+#race:
+#  empty: __race.empty
+#
+#skill:
+#  name: __skill.name
+#  level: __skill.level
+#  price: __skill.price
+#  ability_empty: __skill.ability_empty
+#  empty: __skill.empty
+#
+#character_experience.stats.available: __character_experience.stats.available
+#character_experience.stats.total: __character_experience.stats.total
+#
+#character.name: __character.name
+#character.race: __character.race
+#character.abilities: __character.abilities
+#character.story: __character.story
+#character.experience: __character.experience
+#
+#character_experience.at: __character_experience.at
+#character_experience.reason: __character_experience.reason
+#character_experience.empty: __character_experience.empty
+#character_experience.stats.used_skills: __character_experience.stats.used_skills
+#
+#character_skill.empty: __character_skill.empty
+#character_skill.submit: __character_skills.submit
+#character_skill.updated: __character_skill.updated
+#
+#character_ability.types.STR: Strengh
+#character_ability.empty: __character_ability.empty
+#
+#character_game.submit: __character_game.submit
+#
+#admin.character_confirm_story.note: __admin.character_confirm_story.note
+#admin.character_confirm_story.note_help: __admin.character_confirm_story.note_help
+#admin.character_confirm_story.reason_placeholder: __admin.character_confirm_story.reason_placeholder
+#
+#admin.character_ability.empty: __admin.character_ability.empty
+
+character:
+  title:               My characters
+  info:                Character
+  name:                Name
+  race:                Race
+  race_placeholder:    Select your character's race
+  abilities:           Abilities
+  experience:          Experience
+  switch:              Switch
+  skills:              Skills
+  new:                 New character
+  game_submit:         Select game
+  edit:                Edit
+  edit_title:          Edit %character%
+  edit_submit:         Edit
+  note:                Notes of the Director
+  story:               Story
+  story_draft:         Is the story only a draft?
+  story_placeholder:   What do your character know?
+  story_confirmed:     The character story has been confirmed.
+  story_not_confirmed: |
+      Your story is not confirmed. Write something for the organizators to
+      check and assign you new experience points.
+  submit:              Create character
+  empty:               You don't have any character created yet.
+  created:             Your character has been created.
+  updated:             Your character has been updated.
+
+character_ability:
+  help: Sort the abilities in order of priority.
+  types:
+    STR: Strength
+    DEX: Dexterity
+    CON: Constitution
+    INT: Intelligence
+    WIS: Wisdom
+
+character_experience:
+  at:     Date
+  reason: Reason
+  empty:  
+  stats:
+    used_skills: used in skills
+    available:   available
+    total:       total
+
+character_skill:
+  submit:  Buy skills
+  max:     MAX
+  empty:   Your character has not skills yet.
+  updated: Your skills were updated.
+
+skill:
+  ability_empty: General
+  name:          Name
+  price:         Price
+  level:         Level
+  empty:         There are no skills in the system yet.
+
+admin:
+  character:
+    title:         Characters
+    of_game:       of %game%
+    info:          Information
+    abilities:     Abilities
+    confirm_story: Confirm story
+    empty:         There are no characters in the system yet.
+
+  character_experience:
+    title:  Experience
+    at:     Date
+    reason: Reason
+    new:    Add experience
+    create: Create experience
+    empty:  This character has no experience.
+
+  character_skill:
+    title: Skills
+    empty: This character has no skills.
+
+  race:
+    title:      Races
+    name:       Name
+    name_empty: (no translation)
+    modifier:   Modifier
+    empty:      There are no races in the system yet.
+
+  skill:
+    title:         Skills
+    of_ability:    of %ability%
+    name:          Name
+    level:         Level
+    ability:       Ability
+    ability_empty: General
+    modifier:      Modifier
+    max:           Maximum
+    max_empty:     (no limit)
+    requirements:  Requirements
+    empty:         There are no skills in the system yet.

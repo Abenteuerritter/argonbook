@@ -69,7 +69,9 @@ class CharacterController extends Controller
             'method' => 'POST',
         ));
 
-        $form->add('submit', SubmitType::class);
+        $form->add('submit', SubmitType::class, array(
+            'label' => 'admin.character_experience.create',
+        ));
 
         if ($request->isMethod('POST')) {
             $form->handleRequest($request);

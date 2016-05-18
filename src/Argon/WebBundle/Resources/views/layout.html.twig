@@ -45,17 +45,16 @@
       </header>
       {% endblock %}
 
-      {% if app.request.hasPreviousSession %}
-        {% for class, messages in app.session.flashbag.all() %}
-          {% for message in messages %}
-            <div class="alert alert-{{ class }}">{{ message|trans }}</div>
-          {% endfor %}
-        {% endfor %}
-      {% endif %}
-
       {% block wrapper %}
       <main id="{{ active|default("default") }}">
         <section>
+          {% if app.request.hasPreviousSession %}
+            {% for class, messages in app.session.flashbag.all() %}
+              {% for message in messages %}
+                <p class="{{ class }}">{{ message|trans }}</p>
+              {% endfor %}
+            {% endfor %}
+          {% endif %}
           {% block content %}{% endblock %}
         </section>
       </main>

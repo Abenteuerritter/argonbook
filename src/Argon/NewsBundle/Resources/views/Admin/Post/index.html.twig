@@ -6,7 +6,7 @@
 {% block content %}
 <ol id="breadcrumb">
   <li><a href="{{ path("admin_dashboard") }}">{{ "admin.dashboard.title"|trans }}</a></li>
-  <li class="active">{{ "admin.news.title"|trans }}</li>
+  <li class="active">{{ "admin.news.posts"|trans }}</li>
 </ol>
 <table>
   <thead>
@@ -45,9 +45,11 @@
   <tfoot>
     <tr>
       <td colspan="3">
-        <a href="{{ path("admin_news_new") }}">{{ "admin.news.new"|trans }}</a>
       </td>
     </tr>
   </tfoot>
 </table>
+<ul>
+  <li><a href="{{ path("admin_news_new") }}">{{ "admin.news.new"|trans }}</a></li>
+</ul>
 {% endblock %}

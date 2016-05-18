@@ -6,10 +6,10 @@
 {% block content %}
 <ol id="breadcrumb">
   <li><a href="{{ path("admin_dashboard") }}">{{ "admin.dashboard.title"|trans }}</a></li>
-  <li><a href="{{ path("admin_news") }}">{{ "admin.news.title"|trans }}</a></li>
+  <li><a href="{{ path("admin_news") }}">{{ "admin.news.posts"|trans }}</a></li>
   <li><a href="{{ path("admin_news_view", {"slug": post.slug}) }}">{{ post }}</a></li>
   <li class="active">{{ "admin.news.publish"|trans }}</li>
 </ol>
-<div class="alert alert-warning">{{ "admin.news.publish_confirm"|trans({"%post%": post}) }}</div>
+<p class="warning">{{ "admin.news.publish_confirm"|trans({"%post%": post}) }}</p>
 {{ form(form) }}
 {% endblock %}

@@ -1,0 +1,24 @@
+---
+
+homepage:
+  title: Alternate Reality Games Oriented Network
+
+layout:
+  character:   Characters
+  profile:     My Profile
+  admin:       Administration
+  switch_exit: Exit
+  logout:      Logout
+  login:       Login
+
+admin:
+  layout:
+    player:    Players
+    news:      News
+    character: Characters
+    race:      Races
+    skill:     Skills
+
+  dashboard:
+    title:   Dashboard
+    version: Version

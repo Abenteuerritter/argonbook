@@ -6,7 +6,7 @@
 {% block content %}
 <ol id="breadcrumb">
   <li><a href="{{ path("admin_dashboard") }}">{{ "admin.dashboard.title"|trans }}</a></li>
-  <li><a href="{{ path("admin_news") }}">{{ "admin.news.title"|trans }}</a></li>
+  <li><a href="{{ path("admin_news") }}">{{ "admin.news.posts"|trans }}</a></li>
   <li class="active">{{ post }}</li>
 </ol>
 <dl>
@@ -29,7 +29,7 @@
 
   <dt>{{ "admin.news.body"|trans }}</dt>
   <dd>{{ post.body|nl2br }}</dd>
-</dd>
+</dl>
 <ul>
   {% if not post.isPublished %}
     <li><a href="{{ path("admin_news_publish", {"slug": post.slug}) }}">{{ "admin.news.publish"|trans }}</a></li>

@@ -104,7 +104,7 @@ class PostController extends Controller
         ));
 
         $form->add('submit', SubmitType::class, array(
-            'label' => 'admin.news.edit',
+            'label' => 'admin.news.edit_submit',
         ));
 
         if ($request->isMethod('POST')) {
@@ -115,7 +115,7 @@ class PostController extends Controller
                 $em->flush();
 
                 $request->getSession()->getFlashBag()
-                        ->add('success', 'admin.news.post.updated');
+                        ->add('success', 'admin.news.updated');
 
                 return $this->redirect($this->generateUrl('admin_news'));
             }

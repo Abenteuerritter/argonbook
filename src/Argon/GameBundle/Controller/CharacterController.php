@@ -40,7 +40,7 @@ class CharacterController extends Controller
         ));
 
         $form->add('submit', SubmitType::class, array(
-            'label' => 'character_game.submit',
+            'label' => 'character.game_submit',
         ));
 
         if ($request->isMethod('POST')) {
@@ -177,7 +177,7 @@ class CharacterController extends Controller
         ));
 
         $form->add('submit', SubmitType::class, array(
-            'label' => 'character_skills.submit',
+            'label' => 'character_skill.submit',
         ));
 
         if ($request->isMethod('POST')) {

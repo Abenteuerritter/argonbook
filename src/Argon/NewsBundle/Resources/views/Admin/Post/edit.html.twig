@@ -6,7 +6,7 @@
 {% block content %}
 <ol id="breadcrumb">
   <li><a href="{{ path("admin_dashboard") }}">{{ "admin.dashboard.title"|trans }}</a></li>
-  <li><a href="{{ path("admin_news") }}">{{ "admin.news.title"|trans }}</a></li>
+  <li><a href="{{ path("admin_news") }}">{{ "admin.news.posts"|trans }}</a></li>
   <li><a href="{{ path("admin_news_view", {"slug": post.slug}) }}">{{ post }}</a></li>
   <li class="active">{{ "admin.news.edit"|trans }}</li>
 </ol>

@@ -1,0 +1,25 @@
+---
+
+news:
+  latest: Latest posts
+  footer: "%creator% on %published%"
+
+admin:
+  news:
+    posts:           News
+    title:           Title
+    body:            Content
+    creator:         Creator
+    status:          Status
+    draft:           Draft
+    published_at:    Published at %date%
+    publish_confirm: Do you really want to publish %post%? This action cannot be undone.
+    empty:           There are no news posts in the system yet.
+    new:             New Post
+    publish:         Publish
+    create:          Create
+    edit:            Edit
+    edit_submit:     Edit
+    created:         News post has been created.
+    published:       News post has been published.
+    updated:         News post has been updated.

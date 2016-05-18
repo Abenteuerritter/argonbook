@@ -1,0 +1,9 @@
+---
+
+admin:
+  player:
+    title:     Players
+    username:  Username
+    name:      Name
+    lastlogin: Last login
+    empty:     There are no players in the system yet.
