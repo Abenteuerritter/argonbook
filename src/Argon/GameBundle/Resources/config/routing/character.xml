@@ -21,22 +21,22 @@
     </route>
     <route id="character_view" path="/character/{slug}" methods="GET">
         <default key="_controller">ArgonGameBundle:Character:view</default>
-        <requirement key="slug">\w+:\w+</requirement>
+        <requirement key="slug">[-\w]+:[-\w]+</requirement>
     </route>
     <route id="character_skills" path="/character/{slug}/skills" methods="GET">
         <default key="_controller">ArgonGameBundle:Character:skills</default>
-        <requirement key="slug">\w+:\w+</requirement>
+        <requirement key="slug">[-\w]+:[-\w]+</requirement>
     </route>
     <route id="character_skills_update" path="/character/{slug}/skills" methods="POST">
         <default key="_controller">ArgonGameBundle:Character:skills</default>
-        <requirement key="slug">\w+:\w+</requirement>
+        <requirement key="slug">[-\w]+:[-\w]+</requirement>
     </route>
     <route id="character_edit" path="/character/{slug}/edit" methods="GET">
         <default key="_controller">ArgonGameBundle:Character:edit</default>
-        <requirement key="slug">\w+:\w+</requirement>
+        <requirement key="slug">[-\w]+:[-\w]+</requirement>
     </route>
     <route id="character_edit_update" path="/character/{slug}/edit" methods="POST">
         <default key="_controller">ArgonGameBundle:Character:edit</default>
-        <requirement key="slug">\w+:\w+</requirement>
+        <requirement key="slug">[-\w]+:[-\w]+</requirement>
     </route>
 </routes>
