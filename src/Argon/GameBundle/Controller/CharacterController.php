@@ -43,17 +43,15 @@ class CharacterController extends Controller
             'label' => 'character.game_submit',
         ));
 
-        if ($request->isMethod('POST')) {
-            $form->handleRequest($request);
+        $form->handleRequest($request);
 
-            if ($form->isValid()) {
-                $data = $form->getData();
-                $game = $data['game'];
+        if ($form->isSubmitted() && $form->isValid()) {
+            $data = $form->getData();
+            $game = $data['game'];
 
-                return $this->redirect($this->generateUrl('character_new', array(
-                    'game' => $game->getName(),
-                )));
-            }
+            return $this->redirect($this->generateUrl('character_new', array(
+                'game' => $game->getName(),
+            )));
         }
 
         return $this->render('ArgonGameBundle:Character:game.html.twig', array(
@@ -99,19 +97,17 @@ class CharacterController extends Controller
             'label' => 'character.submit',
         ));
 
-        if ($request->isMethod('POST')) {
-            $form->handleRequest($request);
+        $form->handleRequest($request);
 
-            if ($form->isValid()) {
-                $em = $this->getDoctrine()->getManager();
-                $em->persist($character);
-                $em->flush();
+        if ($form->isSubmitted() && $form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($character);
+            $em->flush();
 
-                $request->getSession()->getFlashBag()
-                        ->add('success', 'character.created');
+            $request->getSession()->getFlashBag()
+                    ->add('success', 'character.created');
 
-                return $this->redirect($this->generateUrl('character'));
-            }
+            return $this->redirect($this->generateUrl('character'));
         }
 
         return $this->render('ArgonGameBundle:Character:new.html.twig', array(
@@ -180,36 +176,34 @@ class CharacterController extends Controller
             'label' => 'character_skill.submit',
         ));
 
-        if ($request->isMethod('POST')) {
-            $form->handleRequest($request);
+        $form->handleRequest($request);
 
-            if ($form->isValid()) {
-                $formData = $form->getData();
-                $manager = $this->getDoctrine()->getManager();
+        if ($form->isSubmitted() && $form->isValid()) {
+            $formData = $form->getData();
+            $manager = $this->getDoctrine()->getManager();
 
-                $characterSkills = $formData['characterSkills'];
+            $characterSkills = $formData['characterSkills'];
 
-                foreach ($characterSkills as $characterSkill) {
-                    if ($characterSkill->isNextRemoved()) {
-                        if ($characterSkill->getId() !== null) {
-                            $manager->remove($characterSkill);
-                        }
+            foreach ($characterSkills as $characterSkill) {
+                if ($characterSkill->isNextRemoved()) {
+                    if ($characterSkill->getId() !== null) {
+                        $manager->remove($characterSkill);
+                    }
+                } else {
+                    if ($characterSkill->getId() === null) {
+                        $manager->persist($characterSkill);
                     } else {
-                        if ($characterSkill->getId() === null) {
-                            $manager->persist($characterSkill);
-                        } else {
-                            // To be updated
-                        }
+                        // To be updated
                     }
                 }
-
-                $manager->flush();
-
-                $request->getSession()->getFlashBag()
-                        ->add('success', 'character_skill.updated');
-
-                return $this->redirect($this->generateUrl('character'));
             }
+
+            $manager->flush();
+
+            $request->getSession()->getFlashBag()
+                    ->add('success', 'character_skill.updated');
+
+            return $this->redirect($this->generateUrl('character'));
         }
 
         return $this->render('ArgonGameBundle:Character:skills.html.twig', array(
@@ -239,18 +233,16 @@ class CharacterController extends Controller
             'label' => 'character.edit_submit',
         ));
 
-        if ($request->isMethod('POST')) {
-            $form->handleRequest($request);
+        $form->handleRequest($request);
 
-            if ($form->isValid()) {
-                $manager = $this->getDoctrine()->getManager();
-                $manager->flush();
+        if ($form->isSubmitted() && $form->isValid()) {
+            $manager = $this->getDoctrine()->getManager();
+            $manager->flush();
 
-                $request->getSession()->getFlashBag()
-                        ->add('success', 'character.updated');
+            $request->getSession()->getFlashBag()
+                    ->add('success', 'character.updated');
 
-                return $this->redirect($this->generateUrl('character'));
-            }
+            return $this->redirect($this->generateUrl('character'));
         }
 
         return $this->render('ArgonGameBundle:Character:edit.html.twig', array(

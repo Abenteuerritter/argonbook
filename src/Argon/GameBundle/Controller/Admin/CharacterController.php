@@ -73,25 +73,23 @@ class CharacterController extends Controller
             'label' => 'admin.character_experience.create',
         ));
 
-        if ($request->isMethod('POST')) {
-            $form->handleRequest($request);
+        $form->handleRequest($request);
 
-            if ($form->isValid()) {
-                $character->addExperience(
-                    $characterExperience->getValue()
-                );
+        if ($form->isSubmitted() && $form->isValid()) {
+            $character->addExperience(
+                $characterExperience->getValue()
+            );
 
-                $em = $this->getDoctrine()->getManager();
-                $em->persist($characterExperience);
-                $em->flush();
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($characterExperience);
+            $em->flush();
 
-                $request->getSession()->getFlashBag()
-                        ->add('success', 'character_experience.created');
+            $request->getSession()->getFlashBag()
+                    ->add('success', 'character_experience.created');
 
-                return $this->redirect($this->generateUrl('admin_character_experience', array(
-                    'id' => $character->getId(),
-                )));
-            }
+            return $this->redirect($this->generateUrl('admin_character_experience', array(
+                'id' => $character->getId(),
+            )));
         }
 
         return $this->render('ArgonGameBundle:Admin\Character:newExperience.html.twig', array(
@@ -129,37 +127,35 @@ class CharacterController extends Controller
             'label' => 'admin.character.confirm_story_submit',
         ));
 
-        if ($request->isMethod('POST')) {
-            $form->handleRequest($request);
+        $form->handleRequest($request);
 
-            if ($form->isValid()) {
-                $data = $form->getData();
+        if ($form->isSubmitted() && $form->isValid()) {
+            $data = $form->getData();
 
-                if (empty($data['reason'])) {
-                    $data['reason'] = $this->get('translator')
-                        ->trans('character.story_confirm_reason', array(), 'admin');
-                }
-
-                $characterExperience = new CharacterExperience();
-                $characterExperience->setCharacter($character);
-                $characterExperience->setValue($data['experience']);
-                $characterExperience->setReason($data['reason']);
-
-                $character->setNote($data['note']);
-                $character->setStoryConfirmedAt(new \DateTime());
-                $character->addExperience(
-                    $characterExperience->getValue()
-                );
-
-                $em = $this->getDoctrine()->getManager();
-                $em->persist($characterExperience);
-                $em->flush();
-
-                $request->getSession()->getFlashBag()
-                        ->add('success', 'character.story_confirmed');
-
-                return $this->redirect($this->generateUrl('admin_character'));
+            if (empty($data['reason'])) {
+                $data['reason'] = $this->get('translator')
+                    ->trans('character.story_confirm_reason', array(), 'admin');
             }
+
+            $characterExperience = new CharacterExperience();
+            $characterExperience->setCharacter($character);
+            $characterExperience->setValue($data['experience']);
+            $characterExperience->setReason($data['reason']);
+
+            $character->setNote($data['note']);
+            $character->setStoryConfirmedAt(new \DateTime());
+            $character->addExperience(
+                $characterExperience->getValue()
+            );
+
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($characterExperience);
+            $em->flush();
+
+            $request->getSession()->getFlashBag()
+                    ->add('success', 'character.story_confirmed');
+
+            return $this->redirect($this->generateUrl('admin_character'));
         }
 
         return $this->render('ArgonGameBundle:Admin\Character:confirmStory.html.twig', array(

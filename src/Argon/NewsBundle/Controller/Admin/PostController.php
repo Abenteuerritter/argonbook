@@ -36,19 +36,17 @@ class PostController extends Controller
             'label' => 'admin.news.create',
         ));
 
-        if ($request->isMethod('POST')) {
-            $form->handleRequest($request);
+        $form->handleRequest($request);
 
-            if ($form->isValid()) {
-                $em = $this->getDoctrine()->getManager();
-                $em->persist($post);
-                $em->flush();
+        if ($form->isSubmitted() && $form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($post);
+            $em->flush();
 
-                $request->getSession()->getFlashBag()
-                        ->add('success', 'admin.news.created');
+            $request->getSession()->getFlashBag()
+                    ->add('success', 'admin.news.created');
 
-                return $this->redirect($this->generateUrl('admin_news'));
-            }
+            return $this->redirect($this->generateUrl('admin_news'));
         }
 
         return $this->render('ArgonNewsBundle:Admin\Post:new.html.twig', array(
@@ -76,18 +74,16 @@ class PostController extends Controller
             'label' => 'admin.news.publish',
         ));
 
-        if ($request->isMethod('POST')) {
-            $form->handleRequest($request);
+        $form->handleRequest($request);
 
-            if ($form->isValid()) {
-                $em = $this->getDoctrine()->getManager();
-                $em->flush();
+        if ($form->isSubmitted() && $form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $em->flush();
 
-                $request->getSession()->getFlashBag()
-                        ->add('success', 'admin.news.published');
+            $request->getSession()->getFlashBag()
+                    ->add('success', 'admin.news.published');
 
-                return $this->redirect($this->generateUrl('admin_news'));
-            }
+            return $this->redirect($this->generateUrl('admin_news'));
         }
 
         return $this->render('ArgonNewsBundle:Admin\Post:publish.html.twig', array(
@@ -107,18 +103,16 @@ class PostController extends Controller
             'label' => 'admin.news.edit_submit',
         ));
 
-        if ($request->isMethod('POST')) {
-            $form->handleRequest($request);
+        $form->handleRequest($request);
 
-            if ($form->isValid()) {
-                $em = $this->getDoctrine()->getManager();
-                $em->flush();
+        if ($form->isSubmitted() && $form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $em->flush();
 
-                $request->getSession()->getFlashBag()
-                        ->add('success', 'admin.news.updated');
+            $request->getSession()->getFlashBag()
+                    ->add('success', 'admin.news.updated');
 
-                return $this->redirect($this->generateUrl('admin_news'));
-            }
+            return $this->redirect($this->generateUrl('admin_news'));
         }
 
         return $this->render('ArgonNewsBundle:Admin\Post:edit.html.twig', array(
