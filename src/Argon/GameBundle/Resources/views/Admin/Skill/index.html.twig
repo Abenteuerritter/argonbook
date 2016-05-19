@@ -3,7 +3,7 @@
 
 {% block title %}{{ parent() }} - {{ "admin.skill.skills"|trans }}{% endblock %}
 
-{% block content %}
+{% block top %}
 <ol id="breadcrumb">
   <li><a href="{{ path("admin_dashboard") }}">{{ "admin.dashboard.title"|trans }}</a></li>
   {% if not ability %}
@@ -12,5 +12,8 @@
     <li class="active"><a href="{{ path("admin_skill") }}">{{ "admin.skill.skills"|trans }}</a> {{ "admin.skill.of_ability"|trans({"%ability%": ("character_ability.types." ~ ability)|trans}) }}</li>
   {% endif %}
 </ol>
+{% endblock %}
+
+{% block content %}
 {{ include("ArgonGameBundle:Admin\\Partial\\Skill:list.html.twig", {"entities": entities, "show_ability": ability is null}) }}
 {% endblock %}

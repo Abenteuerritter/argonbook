@@ -3,7 +3,7 @@
 
 {% block title %}{{ parent() }} - {{ "admin.news.news"|trans }} - {{ post }} - {{ "admin.news.publish"|trans }}{% endblock %}
 
-{% block content %}
+{% block top %}
 <ol id="breadcrumb">
   <li><a href="{{ path("admin_dashboard") }}">{{ "admin.dashboard.title"|trans }}</a></li>
   <li><a href="{{ path("admin_news") }}">{{ "admin.news.news"|trans }}</a></li>
@@ -11,5 +11,8 @@
   <li class="active">{{ "admin.news.publish"|trans }}</li>
 </ol>
 <p class="warning">{{ "admin.news.publish_confirm"|trans({"%post%": post}) }}</p>
+{% endblock %}
+
+{% block content %}
 {{ form(form) }}
 {% endblock %}

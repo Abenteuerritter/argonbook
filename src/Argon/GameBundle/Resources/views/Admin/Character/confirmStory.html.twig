@@ -3,13 +3,16 @@
 
 {% block title %}{{ parent() }} - {{ "admin.character.characters"|trans }} - {{ character.name }} - {{ "admin.character.confirm_story"|trans }}{% endblock %}
 
-{% block content %}
+{% block top %}
 <ol id="breadcrumb">
   <li><a href="{{ path("admin_dashboard") }}">{{ "admin.dashboard.title"|trans }}</a></li>
   <li><a href="{{ path("admin_character") }}">{{ "admin.character.characters"|trans }}</a></li>
   <li>{{ character.name }}</li>
   <li class="active">{{ "admin.character.confirm_story"|trans }}</li>
 </ol>
+{% endblock %}
+
+{% block content %}
 {{ include("ArgonGameBundle:Partial\\Character:story.html.twig", {"character": character}) }}
 {{ form(form) }}
 {% endblock %}

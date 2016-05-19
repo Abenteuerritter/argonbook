@@ -3,12 +3,15 @@
 
 {% block title %}{{ parent() }} - {{ "admin.race.races"|trans }} - {{ entity }}{% endblock %}
 
-{% block content %}
+{% block top %}
 <ol id="breadcrumb">
   <li><a href="{{ path("admin_dashboard") }}">{{ "admin.dashboard.title"|trans }}</a></li>
   <li><a href="{{ path("admin_race") }}">{{ "admin.race.races"|trans }}</a></li>
   <li class="active">{{ entity.slug }}</li>
 </ol>
+{% endblock %}
+
+{% block content %}
 <dl>
   <dt>
     <label>{{ "admin.race.name"|trans }}</label>

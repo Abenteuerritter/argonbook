@@ -3,7 +3,7 @@
 
 {% block title %}{{ parent() }} - {{ "admin.character.characters"|trans }}{% endblock %}
 
-{% block content %}
+{% block top %}
 <ol id="breadcrumb">
   <li><a href="{{ path("admin_dashboard") }}">{{ "admin.dashboard.title"|trans }}</a></li>
   {% if not game %}
@@ -12,6 +12,9 @@
     <li class="active"><a href="{{ path("admin_character") }}">{{ "admin.character.characters"|trans }}</a> {{ "admin.character.of_game"|trans({"%game%": game.info.fullname}) }}</li>
   {% endif %}
 </ol>
+{% endblock %}
+
+{% block content %}
 {{ form(filter_form) }}
 <table>
   <thead>

@@ -3,10 +3,13 @@
 
 {% block title %}{{ parent() }} - {{ "admin.dashboard.title"|trans }}{% endblock %}
 
-{% block content %}
+{% block top %}
 <ol id="breadcrumb">
   <li class="active">{{ "admin.dashboard.title"|trans }}</li>
 </ol>
+{% endblock %}
+
+{% block content %}
 <article>
   <h3>{{ "admin.dashboard.title"|trans }}</h3>
   <dl>

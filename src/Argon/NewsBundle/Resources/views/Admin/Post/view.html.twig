@@ -3,12 +3,15 @@
 
 {% block title %}{{ parent() }} - {{ "admin.news.news"|trans }} - {{ post }}{% endblock %}
 
-{% block content %}
+{% block top %}
 <ol id="breadcrumb">
   <li><a href="{{ path("admin_dashboard") }}">{{ "admin.dashboard.title"|trans }}</a></li>
   <li><a href="{{ path("admin_news") }}">{{ "admin.news.news"|trans }}</a></li>
   <li class="active">{{ post }}</li>
 </ol>
+{% endblock %}
+
+{% block content %}
 <dl>
   <dt>{{ "admin.news.title"|trans }}</dt>
   <dd>{{ post.title }}</dd>

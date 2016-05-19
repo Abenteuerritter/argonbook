@@ -3,7 +3,7 @@
 
 {% block title %}{{ parent() }} - {{ "admin.character.characters"|trans }} - {{ character.name }} - {{ "admin.character_experience.experience"|trans }} - {{ "admin.character_experience.new"|trans }}{% endblock %}
 
-{% block content %}
+{% block top %}
 <ol id="breadcrumb">
   <li><a href="{{ path("admin_dashboard") }}">{{ "admin.dashboard.title"|trans }}</a></li>
   <li><a href="{{ path("admin_character") }}">{{ "admin.character.characters"|trans }}</a></li>
@@ -11,5 +11,8 @@
   <li><a href="{{ path("admin_character_experience", {"id": character.id}) }}">{{ "admin.character_experience.experience"|trans }}</a></li>
   <li class="active">{{ "admin.character_experience.new"|trans }}</li>
 </ol>
+{% endblock %}
+
+{% block content %}
 {{ form(form) }}
 {% endblock %}

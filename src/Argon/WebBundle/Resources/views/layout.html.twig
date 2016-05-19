@@ -49,6 +49,7 @@
       {% block wrapper %}
       <main id="{{ active|default("default") }}">
         <section>
+          {% block top %}{% endblock %}
           {% if app.request.hasPreviousSession %}
             {% for class, messages in app.session.flashbag.all() %}
               {% for message in messages %}

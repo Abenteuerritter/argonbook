@@ -3,7 +3,7 @@
 
 {% block title %}{{ parent() }} - {{ "admin.skill.skills"|trans }} - {{ entity }}{% endblock %}
 
-{% block content %}
+{% block top %}
 <ol id="breadcrumb">
   <li><a href="{{ path("admin_dashboard") }}">{{ "admin.dashboard.title"|trans }}</a></li>
   <li><a href="{{ path("admin_skill") }}">{{ "admin.skill.skills"|trans }}</a></li>
@@ -17,6 +17,9 @@
     {% endif %}
   {% endfor %}
 </ol>
+{% endblock %}
+
+{% block content %}
 <dl>
   <dt>
     <label>{{ "admin.skill.ability"|trans }}</label>
