@@ -96,7 +96,7 @@
       <tr>
         <td>
           {% if skill.skill.abilityCode %}
-            <abbr title="{{ ("character_ability.types." ~ skill.skill.abilityCode)|trans({}, "forms") }} ({{ skill.skill.abilityCode }})">*</abbr>
+            <abbr title="{{ ("character_ability.types." ~ skill.skill.abilityCode)|trans }} ({{ skill.skill.abilityCode }})">*</abbr>
           {% else %}
             <abbr title="{{ "skill.ability_empty"|trans }}">*</abbr>
           {% endif %}
