@@ -38,6 +38,7 @@
               {% endif %}
             {% else %}
               <li><a href="{{ path("fos_user_security_login") }}">{{ "layout.login"|trans }}</a></li>
+              <li><a href="{{ path("fos_user_registration_register") }}">{{ "layout.register"|trans }}</a></li>
             {% endif %}
           </ul>
           {% endblock %}
@@ -60,7 +61,13 @@
       </main>
       {% endblock %}
 
-      {% block footer %}{% endblock %}
+      {% block footer %}
+      <footer>
+        <section>
+          <a href="{{ path("fos_user_registration_register") }}">{{ "layout.feedback"|trans }}</a>
+        </section>
+      </footer>
+      {% endblock %}
     {% endblock %}
     {% block javascripts %}{% endblock %}
   </body>

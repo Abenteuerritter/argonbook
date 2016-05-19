@@ -10,6 +10,8 @@ layout:
   switch_exit: Exit
   logout:      Logout
   login:       Login
+  register:    Register
+  feedback:    Contact us
 
 admin:
   layout:
