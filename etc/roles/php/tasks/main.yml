@@ -7,12 +7,20 @@
   with_items:
     - php5-common
     - php5-cli
-    - php5-intl
-    - php5-sqlite
-    - php5-mysql
-    - php5-curl
     - php5-fpm
   apt: name={{ item }} state=latest
+
+- name: install php extensions
+  with_items: "{{ php_extensions|union(php_extensions_cli)|union(php_extensions_fpm) }}"
+  apt: name=php5-{{ item }} state=latest
+
+- name: disable extensions for cli
+  with_items: "{{ php_extensions_fpm }}"
+  file: path=/etc/php5/cli/conf.d/20-{{ item }}.ini state=absent
+
+- name: disable extensions for fpm
+  with_items: "{{ php_extensions_cli }}"
+  file: path=/etc/php5/fpm/conf.d/20-{{ item }}.ini state=absent
 
 - name: conf.d
   file: path=/etc/php5/conf.d mode=0755 state=directory
@@ -49,19 +57,6 @@
 
 - name: install composer
   shell: curl -sS https://getcomposer.org/installer | \
-         php -- --install-dir=/usr/local/bin --filename=composer.phar
+         php -- --install-dir=/usr/local/bin --filename=composer
   args:
-    creates: /usr/local/bin/composer.phar
-
-- name: install phpdev tools
-  when: phpdev is defined and phpdev|bool
-  with_dict: "{{ phpdev_tools }}"
-  get_url: url={{ item.value }} dest=/usr/local/bin/{{ item.key }}.phar mode=0755
-
-- name: install xdebug
-  when: phpdev is defined and phpdev|bool
-  apt: name=php5-xdebug state=latest
-
-- name: disable xdebug for cli
-  when: phpdev is defined and phpdev|bool
-  file: path=/etc/php5/cli/conf.d/20-xdebug.ini state=absent
+    creates: /usr/local/bin/composer

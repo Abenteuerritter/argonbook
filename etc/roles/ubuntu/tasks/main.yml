@@ -7,7 +7,7 @@
   with_items: "{{ dependencies }}"
   apt: name={{ item }} state=latest
 
-- name: install  packages
+- name: install packages
   when: packages is defined
   with_items: "{{ packages }}"
   apt: name={{ item }} state=latest
