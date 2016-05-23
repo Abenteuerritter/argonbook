@@ -1,0 +1,8 @@
+{
+    "name": "argonbook",
+    "license": "MIT",
+    "dependencies": {
+        "gulp": "^3.9",
+        "gulp-sass": "^2.3"
+    }
+}
