@@ -1,0 +1,17 @@
+---
+
+- name: install composer
+  shell: curl -sL https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+  args:
+    creates: /usr/local/bin/composer
+
+- name: install nodejs source
+  shell: curl -sL https://deb.nodesource.com/setup_6.x | bash -
+  args:
+    creates: /etc/apt/sources.list.d/nodesource.list
+
+- name: install node
+  apt: name=nodejs install_recommends=no state=latest
+
+- name: install gulp
+  npm: name=gulp-cli global=yes state=latest

@@ -8,6 +8,5 @@
   apt: name={{ item }} state=latest
 
 - name: install packages
-  when: packages is defined
-  with_items: "{{ packages }}"
+  with_items: "{{ packages|default([]) }}"
   apt: name={{ item }} state=latest

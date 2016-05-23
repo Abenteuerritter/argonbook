@@ -8,19 +8,11 @@
     - php5-common
     - php5-cli
     - php5-fpm
+    - php5-intl
+    - php5-sqlite
+    - php5-mysql
+    - php5-curl
   apt: name={{ item }} state=latest
-
-- name: install php extensions
-  with_items: "{{ php_extensions|union(php_extensions_cli)|union(php_extensions_fpm) }}"
-  apt: name=php5-{{ item }} state=latest
-
-- name: disable extensions for cli
-  with_items: "{{ php_extensions_fpm }}"
-  file: path=/etc/php5/cli/conf.d/20-{{ item }}.ini state=absent
-
-- name: disable extensions for fpm
-  with_items: "{{ php_extensions_cli }}"
-  file: path=/etc/php5/fpm/conf.d/20-{{ item }}.ini state=absent
 
 - name: conf.d
   file: path=/etc/php5/conf.d mode=0755 state=directory
@@ -54,9 +46,3 @@
 
 - name: php5-fpm service state
   service: name=php5-fpm state=started enabled=yes
-
-- name: install composer
-  shell: curl -sS https://getcomposer.org/installer | \
-         php -- --install-dir=/usr/local/bin --filename=composer
-  args:
-    creates: /usr/local/bin/composer

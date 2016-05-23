@@ -12,3 +12,7 @@
   roles:
     - { role: php }
     - { role: httpd }
+
+- hosts: dev
+  roles:
+    - { role: build }

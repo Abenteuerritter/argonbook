@@ -8,7 +8,7 @@
   ; if the file is not found.
   cgi.fix_pathinfo = 0
 
-{% if environment == "dev" %}
+{% if "dev" in group_names %}
   ; Report everything when developing.
   error_reporting = E_ALL
   display_errors = On
