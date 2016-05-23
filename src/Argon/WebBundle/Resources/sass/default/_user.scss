@@ -1,9 +1,0 @@
-/*! _user.scss | customization to user pages */
-
-main#user {
-  /* position: relative; // @link https://github.com/capua/sass-utils/blob/master/mixins/center.scss */
-  section {
-    @include center;
-    @include zass-grid(false);
-  }
-}
