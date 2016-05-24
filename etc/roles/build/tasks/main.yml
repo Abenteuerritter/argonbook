@@ -5,9 +5,3 @@
     url: https://getcomposer.org/composer.phar
     dest: /usr/local/bin/composer
     mode: 0755
-
-- name: install ruby
-  apt: name=ruby state=latest
-
-- name: install sass
-  gem: name=sass user_install=no state=latest
