@@ -75,14 +75,6 @@ doctrine:
                 prefix:    Gedmo\Tree\Entity
                 is_bundle: false
 
-# Assetic Configuration
-assetic:
-    debug:          "%kernel.debug%"
-    use_controller: "%kernel.debug%"
-    filters:
-        cssrewrite: ~
-        sass:       { bin: /usr/local/bin/sass, load_paths: ["%kernel.root_dir%/../vendor/"] }
-
 # Swiftmailer Configuration
 swiftmailer:
     transport: "%mailer_transport%"
