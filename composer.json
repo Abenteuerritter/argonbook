@@ -31,69 +31,13 @@
         "sensio/framework-extra-bundle": "^3.0.2",
         "incenteev/composer-parameter-handler": "^2.0",
         "doctrine/doctrine-fixtures-bundle": "^2.3",
-        "friendsofsymfony/user-bundle": "^2.0@dev",
-        "knplabs/knp-paginator-bundle": "^2.5",
         "stof/doctrine-extensions-bundle": "^1.2",
-        "necolas/normalize.css": "^4.1",
-        "capua/sass-utils": "dev-master",
-        "waiting-for-dev/zass": "dev-master"
+        "friendsofsymfony/user-bundle": "^2.0@dev",
+        "knplabs/knp-paginator-bundle": "^2.5"
     },
     "require-dev": {
         "symfony/phpunit-bridge": "^3.0"
     },
-    "repositories": [
-        {
-            "type": "package",
-            "package": {
-                "name": "necolas/normalize.css",
-                "license": "MIT",
-                "version": "4.1.1",
-                "dist": {
-                    "type": "zip",
-                    "url": "https://github.com/necolas/normalize.css/archive/4.1.1.zip"
-                },
-                "source": {
-                    "type": "git",
-                    "url": "https://github.com/necolas/normalize.css",
-                    "reference": "4.1.1"
-                }
-            }
-        },
-        {
-            "type": "package",
-            "package": {
-                "name": "capua/sass-utils",
-                "license": "MIT",
-                "version": "dev-master",
-                "dist": {
-                    "type": "zip",
-                    "url": "https://github.com/capua/sass-utils/archive/master.zip"
-                },
-                "source": {
-                    "type": "git",
-                    "url": "https://github.com/capua/sass-utils.git",
-                    "reference": "master"
-                }
-            }
-        },
-        {
-            "type": "package",
-            "package": {
-                "name": "waiting-for-dev/zass",
-                "license": "LGPL-3.0",
-                "version": "dev-master",
-                "dist": {
-                    "type": "zip",
-                    "url": "https://github.com/waiting-for-dev/zass/archive/master.zip"
-                },
-                "source": {
-                    "type": "git",
-                    "url": "https://github.com/waiting-for-dev/zass.git",
-                    "reference": "master"
-                }
-            }
-        }
-    ],
     "scripts": {
         "post-install-cmd": [
             "Incenteev\\ParameterHandler\\ScriptHandler::buildParameters",

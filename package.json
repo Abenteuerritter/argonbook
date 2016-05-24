@@ -2,7 +2,6 @@
     "name": "argonbook",
     "license": "MIT",
     "dependencies": {
-        "gulp": "^3.9",
-        "gulp-sass": "^2.3"
+        "bootstrap": "^4.0.0-alpha.2"
     }
 }

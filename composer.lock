@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "dc998bb34a4f99ce8a9abc836cdc77f6",
-    "content-hash": "ad9d33ed39a6a9b8ab112fd6ae0632c2",
+    "hash": "88f38721aeac9215b32ed6490bbedd09",
+    "content-hash": "868ade9878cb72316dd1e791fee79bf9",
     "packages": [
         {
             "name": "behat/transliterator",
@@ -46,26 +46,6 @@
                 "transliterator"
             ],
             "time": "2015-09-28 16:26:35"
-        },
-        {
-            "name": "capua/sass-utils",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/capua/sass-utils.git",
-                "reference": "master"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://github.com/capua/sass-utils/archive/master.zip",
-                "reference": "master",
-                "shasum": null
-            },
-            "type": "library",
-            "license": [
-                "MIT"
-            ],
-            "time": "2016-04-29 23:15:08"
         },
         {
             "name": "doctrine/annotations",
@@ -1484,25 +1464,6 @@
             "time": "2016-04-12 18:29:35"
         },
         {
-            "name": "necolas/normalize.css",
-            "version": "4.1.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/necolas/normalize.css",
-                "reference": "4.1.1"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://github.com/necolas/normalize.css/archive/4.1.1.zip",
-                "reference": "4.1.1",
-                "shasum": null
-            },
-            "type": "library",
-            "license": [
-                "MIT"
-            ]
-        },
-        {
             "name": "paragonie/random_compat",
             "version": "v2.0.2",
             "source": {
@@ -2521,26 +2482,6 @@
                 "templating"
             ],
             "time": "2016-01-25 21:22:18"
-        },
-        {
-            "name": "waiting-for-dev/zass",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/waiting-for-dev/zass.git",
-                "reference": "master"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://github.com/waiting-for-dev/zass/archive/master.zip",
-                "reference": "master",
-                "shasum": null
-            },
-            "type": "library",
-            "license": [
-                "LGPL-3.0"
-            ],
-            "time": "2016-05-11 07:08:58"
         }
     ],
     "packages-dev": [
@@ -2603,9 +2544,7 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "friendsofsymfony/user-bundle": 20,
-        "capua/sass-utils": 20,
-        "waiting-for-dev/zass": 20
+        "friendsofsymfony/user-bundle": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,

@@ -82,7 +82,7 @@ assetic:
     filters:
         cssrewrite: ~
         scss:
-            load_paths: ["%kernel.root_dir%/../vendor"]
+            load_paths: ["%kernel.root_dir%/../node_modules/"]
 
 # Swiftmailer Configuration
 swiftmailer:
