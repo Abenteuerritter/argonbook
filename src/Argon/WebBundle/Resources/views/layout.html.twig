@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}{{ "Argonbook" }}{% endblock %}</title>
     {% block stylesheets %}
-      {% stylesheets filter="cssrewrite,scss" "@ArgonWebBundle/Resources/sass/argonbook.scss" %}
+      {% stylesheets filter="cssrewrite,sass" "@ArgonWebBundle/Resources/sass/argonbook.scss" %}
         <link rel="stylesheet" href="{{ asset_url }}">
       {% endstylesheets %}
     {% endblock %}

@@ -2,6 +2,7 @@
 
 dependencies:
   - curl
+  - software-properties-common
   - python-software-properties
   - python-setuptools
   - python-pip

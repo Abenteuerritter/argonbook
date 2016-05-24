@@ -6,7 +6,6 @@
 /vendor/*
 
 # Web stuff
-/node_modules/
 /web/uploads/*
 /web/bundles/*
 /web/fonts/*

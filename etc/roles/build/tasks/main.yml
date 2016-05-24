@@ -1,17 +1,13 @@
 ---
 
 - name: install composer
-  shell: curl -sL https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
-  args:
-    creates: /usr/local/bin/composer
+  get_url:
+    url: https://getcomposer.org/composer.phar
+    dest: /usr/local/bin/composer
+    mode: 0755
 
-- name: install nodejs source
-  shell: curl -sL https://deb.nodesource.com/setup_6.x | bash -
-  args:
-    creates: /etc/apt/sources.list.d/nodesource.list
+- name: install ruby
+  apt: name=ruby state=latest
 
-- name: install node
-  apt: name=nodejs install_recommends=no state=latest
-
-- name: install gulp
-  npm: name=gulp-cli global=yes state=latest
+- name: install sass
+  gem: name=sass user_install=no state=latest
