@@ -4,12 +4,14 @@
 {% block title %}{{ parent() }} - {{ "admin.news.news"|trans }} - {{ post }} - {{ "admin.news.publish"|trans }}{% endblock %}
 
 {% block top %}
-<ol id="breadcrumb">
-  <li><a href="{{ path("admin_dashboard") }}">{{ "admin.dashboard.title"|trans }}</a></li>
-  <li><a href="{{ path("admin_news") }}">{{ "admin.news.news"|trans }}</a></li>
-  <li><a href="{{ path("admin_news_view", {"slug": post.slug}) }}">{{ post }}</a></li>
-  <li class="active">{{ "admin.news.publish"|trans }}</li>
-</ol>
+<nav aria-label="{{ "admin.you_are_here"|trans }}" role="navigation">
+  <ul class="breadcrumbs">
+    <li><a href="{{ path("admin_dashboard") }}">{{ "admin.dashboard.title"|trans }}</a></li>
+    <li><a href="{{ path("admin_news") }}">{{ "admin.news.news"|trans }}</a></li>
+    <li><a href="{{ path("admin_news_view", {"slug": post.slug}) }}">{{ post }}</a></li>
+    <li>{{ "admin.news.publish"|trans }}</li>
+  </ul>
+</nav>
 <p class="warning">{{ "admin.news.publish_confirm"|trans({"%post%": post}) }}</p>
 {% endblock %}
 

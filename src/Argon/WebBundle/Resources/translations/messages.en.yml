@@ -14,6 +14,8 @@ layout:
   feedback:    Contact us
 
 admin:
+  you_are_here: "You are here:"
+
   layout:
     player:    Players
     news:      News

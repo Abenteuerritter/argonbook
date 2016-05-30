@@ -4,19 +4,21 @@
 {% block title %}{{ parent() }} - {{ "admin.skill.skills"|trans }} - {{ entity }}{% endblock %}
 
 {% block top %}
-<ol id="breadcrumb">
-  <li><a href="{{ path("admin_dashboard") }}">{{ "admin.dashboard.title"|trans }}</a></li>
-  <li><a href="{{ path("admin_skill") }}">{{ "admin.skill.skills"|trans }}</a></li>
-  {% set parts = [] %}
-  {% for part in entity.slug|split("/") %}
-    {% if loop.last %}
-      <li class="active">{{ part }}</li>
-    {% else %}
-      {% set parts = parts|merge([part]) %}
-      <li><a href="{{ path("admin_skill_view", {"slug": parts|join("/")}) }}">{{ part }}</a></li>
-    {% endif %}
-  {% endfor %}
-</ol>
+<nav aria-label="{{ "admin.you_are_here"|trans }}" role="navigation">
+  <ul class="breadcrumbs">
+    <li><a href="{{ path("admin_dashboard") }}">{{ "admin.dashboard.title"|trans }}</a></li>
+    <li><a href="{{ path("admin_skill") }}">{{ "admin.skill.skills"|trans }}</a></li>
+    {% set parts = [] %}
+    {% for part in entity.slug|split("/") %}
+      {% if loop.last %}
+        <li>{{ part }}</li>
+      {% else %}
+        {% set parts = parts|merge([part]) %}
+        <li class="disabled"><a href="{{ path("admin_skill_view", {"slug": parts|join("/")}) }}">{{ part }}</a></li>
+      {% endif %}
+    {% endfor %}
+  </ul>
+</nav>
 {% endblock %}
 
 {% block content %}

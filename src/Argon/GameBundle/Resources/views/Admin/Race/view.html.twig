@@ -4,11 +4,13 @@
 {% block title %}{{ parent() }} - {{ "admin.race.races"|trans }} - {{ entity }}{% endblock %}
 
 {% block top %}
-<ol id="breadcrumb">
-  <li><a href="{{ path("admin_dashboard") }}">{{ "admin.dashboard.title"|trans }}</a></li>
-  <li><a href="{{ path("admin_race") }}">{{ "admin.race.races"|trans }}</a></li>
-  <li class="active">{{ entity.slug }}</li>
-</ol>
+<nav aria-label="{{ "admin.you_are_here"|trans }}" role="navigation">
+  <ul class="breadcrumbs">
+    <li><a href="{{ path("admin_dashboard") }}">{{ "admin.dashboard.title"|trans }}</a></li>
+    <li><a href="{{ path("admin_race") }}">{{ "admin.race.races"|trans }}</a></li>
+    <li>{{ entity.slug }}</li>
+  </ul>
+</nav>
 {% endblock %}
 
 {% block content %}

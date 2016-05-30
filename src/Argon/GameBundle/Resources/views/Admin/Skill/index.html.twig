@@ -4,14 +4,16 @@
 {% block title %}{{ parent() }} - {{ "admin.skill.skills"|trans }}{% endblock %}
 
 {% block top %}
-<ol id="breadcrumb">
-  <li><a href="{{ path("admin_dashboard") }}">{{ "admin.dashboard.title"|trans }}</a></li>
-  {% if not ability %}
-    <li class="active">{{ "admin.skill.skills"|trans }}</li>
-  {% else %}
-    <li class="active"><a href="{{ path("admin_skill") }}">{{ "admin.skill.skills"|trans }}</a> {{ "admin.skill.of_ability"|trans({"%ability%": ("character_ability.types." ~ ability)|trans}) }}</li>
-  {% endif %}
-</ol>
+<nav aria-label="{{ "admin.you_are_here"|trans }}" role="navigation">
+  <ul class="breadcrumbs">
+    <li><a href="{{ path("admin_dashboard") }}">{{ "admin.dashboard.title"|trans }}</a></li>
+    {% if not ability %}
+      <li>{{ "admin.skill.skills"|trans }}</li>
+    {% else %}
+      <li><a href="{{ path("admin_skill") }}">{{ "admin.skill.skills"|trans }}</a> {{ "admin.skill.of_ability"|trans({"%ability%": ("character_ability.types." ~ ability)|trans}) }}</li>
+    {% endif %}
+  </ul>
+</nav>
 {% endblock %}
 
 {% block content %}

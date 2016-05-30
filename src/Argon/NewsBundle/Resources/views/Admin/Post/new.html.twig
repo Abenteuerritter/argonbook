@@ -4,11 +4,13 @@
 {% block title %}{{ parent() }} - {{ "admin.news.news"|trans }} {{ "admin.news.new"|trans }}{% endblock %}
 
 {% block top %}
-<ol id="breadcrumb">
-  <li><a href="{{ path("admin_dashboard") }}">{{ "admin.dashboard.title"|trans }}</a></li>
-  <li><a href="{{ path("admin_news") }}">{{ "admin.news.news"|trans }}</a></li>
-  <li class="active">{{ "admin.news.new"|trans }}</li>
-</ol>
+<nav aria-label="{{ "admin.you_are_here"|trans }}" role="navigation">
+  <ul class="breadcrumbs">
+    <li><a href="{{ path("admin_dashboard") }}">{{ "admin.dashboard.title"|trans }}</a></li>
+    <li><a href="{{ path("admin_news") }}">{{ "admin.news.news"|trans }}</a></li>
+    <li>{{ "admin.news.new"|trans }}</li>
+  </ul>
+</nav>
 {% endblock %}
 
 {% block content %}
