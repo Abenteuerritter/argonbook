@@ -3,7 +3,7 @@
 var gulp = require("gulp");
 var sass = require("gulp-sass");
  
-var SASS_ENTRYPOINT = "src/ArgonWeb/sass/argonbook.scss";
+var SASS_ENTRYPOINT = "src/Argon/WebBundle/Resources/sass/argonbook.scss";
 
 gulp.task('default', ['sass']);
 
