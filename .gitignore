@@ -6,6 +6,7 @@
 /vendor/*
 
 # Web stuff
+/src/Argon/WebBundle/Resources/public/css/
 /node_modules/
 /web/uploads/*
 /web/bundles/*
