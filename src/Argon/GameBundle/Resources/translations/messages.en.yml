@@ -20,7 +20,6 @@ character:
   story:               Story
   story_draft:         Is the story only a draft?
   story_placeholder:   What do your character know?
-  story_confirmed:     The character story has been confirmed.
   story_not_confirmed: |
       Your story is not confirmed. Write something for the organizators to
       check and assign you new experience points.
@@ -31,12 +30,12 @@ character:
 
 character_ability:
   help: Sort the abilities in order of priority.
-  types:
-    STR: Strength
-    DEX: Dexterity
-    CON: Constitution
-    INT: Intelligence
-    WIS: Wisdom
+
+character_ability.types.STR: Strength
+character_ability.types.DEX: Dexterity
+character_ability.types.CON: Constitution
+character_ability.types.INT: Intelligence
+character_ability.types.WIS: Wisdom
 
 character_experience:
   at:     Date
@@ -68,6 +67,7 @@ admin:
     abilities:            Abilities
     confirm_story:        Confirm story
     confirm_story_submit: Confirm story
+    story_confirmed:      The character story has been confirmed.
     empty:                There are no characters in the system yet.
 
   character_experience:
@@ -76,6 +76,7 @@ admin:
     reason:     Reason
     new:        Add experience
     create:     Create experience
+    created:    New experience has been added to the character.
     empty:      This character has no experience.
 
   character_skill:

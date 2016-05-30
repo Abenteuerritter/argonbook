@@ -13,11 +13,11 @@
         {{ character.race }}
       </td>
       <td>
-        <ul>
-          <li><a href="{{ path("character_view", {"slug": character.slug, "_switch": character.slug}) }}">{{ "character.switch"|trans }}</a></li>
-          <li><a href="{{ path("character_skills", {"slug": character.slug}) }}">{{ "character.skills"|trans }}</a></li>
-          <li><a href="{{ path("character_edit", {"slug": character.slug}) }}">{{ "character.edit"|trans }}</a></li>
-        </ul>
+        <div class="button-group align-right">
+          <a href="{{ path("character_view", {"slug": character.slug, "_switch": character.slug}) }}" class="warning button">{{ "character.switch"|trans }}</a>
+          <a href="{{ path("character_skills", {"slug": character.slug}) }}" class="button">{{ "character.skills"|trans }}</a>
+          <a href="{{ path("character_edit", {"slug": character.slug}) }}" class="button">{{ "character.edit"|trans }}</a>
+        </div>
       </td>
     </tr>
   {% else %}
@@ -26,11 +26,4 @@
     </tr>
   {% endfor %}
   </tbody>
-  <tfoot>
-    <tr>
-      <td colspan="2">
-        <a href="{{ path("character_game") }}">{{ "character.new"|trans }}</a>
-      </td>
-    </tr>
-  </tfoot>
 </table>

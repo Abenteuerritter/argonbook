@@ -10,7 +10,7 @@
     {% if not game %}
       <li>{{ "admin.character.characters"|trans }}</li>
     {% else %}
-      <li><a href="{{ path("admin_character") }}">{{ "admin.character.characters"|trans }}</a> {{ "admin.character.of_game"|trans({"%game%": game.info.fullname}) }}</li>
+      <li><a href="{{ path("admin_character") }}">{{ "admin.character.characters"|trans }}</a> &nbsp;{{ "admin.character.of_game"|trans({"%game%": game.info.fullname}) }}</li>
     {% endif %}
   </ul>
 </nav>

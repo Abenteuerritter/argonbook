@@ -38,11 +38,12 @@
   </tbody>
   <tfoot>
     <tr>
-      <td colspan="2">
-        <a href="{{ path("admin_character_experience_new", {"id": character.id}) }}">{{ "admin.character_experience.new"|trans }}</a>
-      </td>
+      <td colspan="2"></td>
       <td><strong>{{ character.availableExperience }}</strong></td>
     </tr>
   </tfoot>
 </table>
+<div class="button-group">
+  <a href="{{ path("admin_character_experience_new", {"id": character.id}) }}" class="button">{{ "admin.character_experience.new"|trans }}</a>
+</div>
 {% endblock %}

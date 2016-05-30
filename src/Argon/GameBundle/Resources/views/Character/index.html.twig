@@ -6,4 +6,7 @@
 {% block content %}
   <h1>{{ "character.characters"|trans }}</h1>
   {{ render(controller("ArgonGameBundle:Block:characters")) }}
+  <div class="button-group">
+    <a href="{{ path("character_game") }}" class="button">{{ "character.new"|trans }}</a>
+  </div>
 {% endblock %}

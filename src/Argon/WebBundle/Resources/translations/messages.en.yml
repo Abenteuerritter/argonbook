@@ -11,7 +11,6 @@ layout:
   logout:      Logout
   login:       Login
   register:    Register
-  feedback:    Contact us
 
 admin:
   you_are_here: "You are here:"

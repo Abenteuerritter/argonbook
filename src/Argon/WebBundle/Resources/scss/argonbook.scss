@@ -3,13 +3,4 @@
 
 $global-flexbox: true;
 
-@include foundation-global-styles;
-@include foundation-typography-base;
-
-@include foundation-form-text;
-@include foundation-form-checkbox;
-@include foundation-form-label;
-@include foundation-form-fieldset;
-@include foundation-form-select;
-
-@include foundation-breadcrumbs;
+@include foundation-everything(true);

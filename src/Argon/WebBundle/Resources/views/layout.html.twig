@@ -12,12 +12,15 @@
   </head>
   <body>
     {% block body %}
+    <div class="row medium-8 large-7 columns">
       {% block header %}
-      <header>
-        <section>
-          <h1><a href="{{ path("homepage") }}" title="{{ "Alternate Reality Games Oriented Network" }}">{{ "Argonbook" }}</a></h1>
+      <div class="top-bar">
+        <div class="top-bar-title">
+          <a href="{{ path("homepage") }}" title="{{ "Alternate Reality Games Oriented Network" }}"><strong>{{ "Argonbook" }}</strong></a>
+        </div>
+        <div class="top-bar-right">
           {% block nav %}
-          <ul>
+          <ul class="menu align-right">
             {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
               {% if is_granted('ROLE_USER') %}
                 <li><a href="{{ path("character") }}">{{ "layout.character"|trans }}</a></li>
@@ -37,34 +40,27 @@
             {% endif %}
           </ul>
           {% endblock %}
-        </section>
-      </header>
+        </div>
+      </div>
       {% endblock %}
 
       {% block wrapper %}
-      <main id="{{ active|default("default") }}">
-        <section>
-          {% block top %}{% endblock %}
-          {% if app.request.hasPreviousSession %}
-            {% for class, messages in app.session.flashbag.all() %}
-              {% for message in messages %}
-                <p class="{{ class }}">{{ message|trans }}</p>
-              {% endfor %}
+      <div class="{{ active|default("default") }}">
+        {% block top %}{% endblock %}
+        {% if app.request.hasPreviousSession %}
+          {% for class, messages in app.session.flashbag.all() %}
+            {% for message in messages %}
+              <div class="{{ class }} callout">
+                <p>{{ message|trans }}</p>
+              </div>
             {% endfor %}
-          {% endif %}
-          {% block content %}{% endblock %}
-        </section>
-      </main>
-      {% endblock %}
-
-      {% block footer %}
-      <footer>
-        <section>
-          <a href="{{ path("fos_user_registration_register") }}">{{ "layout.feedback"|trans }}</a>
-        </section>
-      </footer>
+          {% endfor %}
+        {% endif %}
+        {% block content %}{% endblock %}
+      </div>
       {% endblock %}
     {% endblock %}
+    </div>
     {% block javascripts %}{% endblock %}
   </body>
 </html>

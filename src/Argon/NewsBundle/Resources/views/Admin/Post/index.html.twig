@@ -35,10 +35,12 @@
         {% endif %}
       </td>
       <td>
-        {% if not post.isPublished %}
-          <a href="{{ path("admin_news_publish", {"slug": post.slug}) }}">{{ "admin.news.publish"|trans }}</a>
-        {% endif %}
-        <a href="{{ path("admin_news_edit", {"slug": post.slug}) }}">{{ "admin.news.edit"|trans }}</a>
+        <div class="button-group">
+          {% if not post.isPublished %}
+            <a href="{{ path("admin_news_publish", {"slug": post.slug}) }}" class="button">{{ "admin.news.publish"|trans }}</a>
+          {% endif %}
+          <a href="{{ path("admin_news_edit", {"slug": post.slug}) }}" class="button">{{ "admin.news.edit"|trans }}</a>
+        </div>
       </td>
     </tr>
   {% else %}
@@ -47,14 +49,8 @@
     </tr>
   {% endfor %}
   </tbody>
-  <tfoot>
-    <tr>
-      <td colspan="3">
-      </td>
-    </tr>
-  </tfoot>
 </table>
-<ul>
-  <li><a href="{{ path("admin_news_new") }}">{{ "admin.news.new"|trans }}</a></li>
-</ul>
+<div class="button-group">
+  <a href="{{ path("admin_news_new") }}" class="button">{{ "admin.news.new"|trans }}</a>
+</div>
 {% endblock %}

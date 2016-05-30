@@ -85,7 +85,7 @@ class CharacterController extends Controller
             $em->flush();
 
             $request->getSession()->getFlashBag()
-                    ->add('success', 'character_experience.created');
+                    ->add('success', 'admin.character_experience.created');
 
             return $this->redirect($this->generateUrl('admin_character_experience', array(
                 'id' => $character->getId(),
@@ -153,7 +153,7 @@ class CharacterController extends Controller
             $em->flush();
 
             $request->getSession()->getFlashBag()
-                    ->add('success', 'character.story_confirmed');
+                    ->add('success', 'admin.character.story_confirmed');
 
             return $this->redirect($this->generateUrl('admin_character'));
         }
