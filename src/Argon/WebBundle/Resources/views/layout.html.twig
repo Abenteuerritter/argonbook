@@ -12,12 +12,12 @@
     <link href="{{ asset("favicon.ico") }}" rel="icon" sizes="16x16" type="image/x-icon" />
   </head>
   <body>
+    {% block body %}
     <div class="off-canvas-wrapper" data-off-canvas-wrapper>
       <div class="off-canvas-wrapper-inner">
         <div id="off-canvas" class="off-canvas position-right reveal-for-large" data-off-canvas data-position="right">
           <!-- What is this for? -->
         </div>
-        {% block body %}
         <div class="off-canvas-content" data-off-canvas-content>
           {% block header %}
           <div class="top-bar">
@@ -52,7 +52,7 @@
           </div>
           {% endblock %}
           {% block wrapper %}
-          <div class="{{ active|default("default") }}">
+          <main class="{{ active|default("default") }}">
             {% block top %}{% endblock %}
             {% if app.request.hasPreviousSession %}
               {% for class, messages in app.session.flashbag.all() %}
@@ -64,12 +64,17 @@
               {% endfor %}
             {% endif %}
             {% block content %}{% endblock %}
-          </div>
+          </main>
           {% endblock %}
+          <footer>
+            {% block footer %}
+            <p>&copy; {{ "Argonbook" }} {{ "now"|date("Y") }} by <a href="#">{{ "Abenteuerritter" }}</a></p>
+            {% endblock %}
+          </footer>
         </div>
-        {% endblock %}
       </div>
     </div>
+    {% endblock %}
     {% block javascripts %}
     <script src="{{ asset("js/vendor.js") }}"></script>
     <script>

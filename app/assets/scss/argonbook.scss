@@ -1,15 +1,12 @@
-/*!
- * Argonbook
- */
-
 $global-flexbox: true;
 
 $foundation-palette: (
-  primary: #2199e8,
+  primary: #007095,
   secondary: #777,
   success: #3adb76,
   warning: #ffae00,
-  alert: #ec5840, // test #75507b
+  alert: #75507b,
+  footer: #63767e,
 );
 
 $black: #242b2e;
@@ -24,9 +21,23 @@ $offcanvas-background: #2e363a;
 $topbar-background: $body-background;
 
 @import "foundation-sites/scss/foundation";
-
 @include foundation-everything(true);
+
+/*! Argonbook | MIT | github.com/Abenteuerritter/argonbook */
+
+$section-padding: rem-calc(40);
 
 #off-canvas {
   height: 100%;
+}
+
+main {
+  padding: $section-padding;
+}
+footer {
+  font-size: rem-calc(12);
+  padding: $section-padding;
+}
+footer, footer a {
+  color: map-get($foundation-palette, footer);
 }
