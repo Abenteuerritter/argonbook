@@ -5,62 +5,76 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>{% block title %}{{ "Argonbook" }}{% endblock %}</title>
+    <meta name="application-name" content="{{ "Argonbook" }}">
     {% block stylesheets %}
-      <link rel="stylesheet" href="{{ asset("bundles/argonweb/css/argonbook.css") }}">
+      <link rel="stylesheet" href="{{ asset("css/argonbook.css") }}">
     {% endblock %}
-    <link href="{{ asset("favicon.ico") }}" rel="icon" type="image/x-icon" />
+    <link href="{{ asset("favicon.ico") }}" rel="icon" sizes="16x16" type="image/x-icon" />
   </head>
   <body>
-    {% block body %}
-    <div class="row medium-8 large-7 columns">
-      {% block header %}
-      <div class="top-bar">
-        <div class="top-bar-title">
-          <a href="{{ path("homepage") }}" title="{{ "Alternate Reality Games Oriented Network" }}"><strong>{{ "Argonbook" }}</strong></a>
+    <div class="off-canvas-wrapper" data-off-canvas-wrapper>
+      <div class="off-canvas-wrapper-inner">
+        <div id="off-canvas" class="off-canvas position-right reveal-for-large" data-off-canvas data-position="right">
+          <!-- What is this for? -->
         </div>
-        <div class="top-bar-right">
-          {% block nav %}
-          <ul class="menu align-right">
-            {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-              {% if is_granted('ROLE_USER') %}
-                <li><a href="{{ path("character") }}">{{ "layout.character"|trans }}</a></li>
-                <li><a href="{{ path("fos_user_profile_show") }}">{{ "layout.profile"|trans }}</a></li>
-              {% endif %}
-              {% if is_granted("ROLE_SUPER_ADMIN") %}
-                <li><a href="{{ path("admin_dashboard") }}">{{ "layout.admin"|trans }}</a></li>
-              {% endif %}
-              {% if is_granted("ROLE_PREVIOUS_ADMIN") %}
-                <li><a href="{{ path("character_view", {"slug": app.user.slug, "_switch": "_exit"}) }}">{{ "layout.switch_exit"|trans }}</a></li>
-              {% else %}
-                <li><a href="{{ path("fos_user_security_logout") }}">{{ "layout.logout"|trans }}</a></li>
-              {% endif %}
-            {% else %}
-              <li><a href="{{ path("fos_user_security_login") }}">{{ "layout.login"|trans }}</a></li>
-              <li><a href="{{ path("fos_user_registration_register") }}">{{ "layout.register"|trans }}</a></li>
+        {% block body %}
+        <div class="off-canvas-content" data-off-canvas-content>
+          {% block header %}
+          <div class="top-bar">
+            <div class="top-bar-title">
+              <a href="{{ path("homepage") }}" title="{{ "Alternate Reality Games Oriented Network" }}">
+                <strong>{{ "Argonbook" }}</strong>
+              </a>
+            </div>
+            <div class="top-bar-right">
+              {% block nav %}
+              <ul class="menu align-right">
+                {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                  {% if is_granted('ROLE_USER') %}
+                    <li><a href="{{ path("character") }}">{{ "layout.character"|trans }}</a></li>
+                    <li><a href="{{ path("fos_user_profile_show") }}">{{ "layout.profile"|trans }}</a></li>
+                  {% endif %}
+                  {% if is_granted("ROLE_SUPER_ADMIN") %}
+                    <li><a href="{{ path("admin_dashboard") }}">{{ "layout.admin"|trans }}</a></li>
+                  {% endif %}
+                  {% if is_granted("ROLE_PREVIOUS_ADMIN") %}
+                    <li><a href="{{ path("character_view", {"slug": app.user.slug, "_switch": "_exit"}) }}">{{ "layout.switch_exit"|trans }}</a></li>
+                  {% else %}
+                    <li><a href="{{ path("fos_user_security_logout") }}">{{ "layout.logout"|trans }}</a></li>
+                  {% endif %}
+                {% else %}
+                  <li><a href="{{ path("fos_user_security_login") }}">{{ "layout.login"|trans }}</a></li>
+                  <li><a href="{{ path("fos_user_registration_register") }}">{{ "layout.register"|trans }}</a></li>
+                {% endif %}
+              </ul>
+              {% endblock %}
+            </div>
+          </div>
+          {% endblock %}
+          {% block wrapper %}
+          <div class="{{ active|default("default") }}">
+            {% block top %}{% endblock %}
+            {% if app.request.hasPreviousSession %}
+              {% for class, messages in app.session.flashbag.all() %}
+                {% for message in messages %}
+                  <div class="{{ class }} callout">
+                    <p>{{ message|trans }}</p>
+                  </div>
+                {% endfor %}
+              {% endfor %}
             {% endif %}
-          </ul>
+            {% block content %}{% endblock %}
+          </div>
           {% endblock %}
         </div>
+        {% endblock %}
       </div>
-      {% endblock %}
-
-      {% block wrapper %}
-      <div class="{{ active|default("default") }}">
-        {% block top %}{% endblock %}
-        {% if app.request.hasPreviousSession %}
-          {% for class, messages in app.session.flashbag.all() %}
-            {% for message in messages %}
-              <div class="{{ class }} callout">
-                <p>{{ message|trans }}</p>
-              </div>
-            {% endfor %}
-          {% endfor %}
-        {% endif %}
-        {% block content %}{% endblock %}
-      </div>
-      {% endblock %}
-    {% endblock %}
     </div>
-    {% block javascripts %}{% endblock %}
+    {% block javascripts %}
+    <script src="{{ asset("js/vendor.js") }}"></script>
+    <script>
+      $(document).foundation();
+    </script>
+    {% endblock %}
   </body>
 </html>

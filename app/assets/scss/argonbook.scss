@@ -1,0 +1,32 @@
+/*!
+ * Argonbook
+ */
+
+$global-flexbox: true;
+
+$foundation-palette: (
+  primary: #2199e8,
+  secondary: #777,
+  success: #3adb76,
+  warning: #ffae00,
+  alert: #ec5840, // test #75507b
+);
+
+$black: #242b2e;
+$white: #e5e9eb;
+
+$body-background: $black;
+$body-font-color: $white;
+
+$offcanvas-size: 50%;
+$offcanvas-background: #2e363a;
+
+$topbar-background: $body-background;
+
+@import "foundation-sites/scss/foundation";
+
+@include foundation-everything(true);
+
+#off-canvas {
+  height: 100%;
+}
