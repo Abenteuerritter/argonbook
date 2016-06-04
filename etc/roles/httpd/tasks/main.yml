@@ -9,8 +9,9 @@
     - restart nginx
 
 - name: create domain host
-  template: src=nginx/sites-enabled/{{ domain }}.conf.j2
-            dest=/etc/nginx/sites-enabled/{{ domain }}.conf
+  template:
+    src: nginx/sites-enabled/{{ domain }}.conf.j2
+    dest: /etc/nginx/sites-enabled/{{ domain }}.conf
   notify:
     - restart nginx
 
