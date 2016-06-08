@@ -35,10 +35,10 @@
   <dt>{{ "admin.news.body"|trans }}</dt>
   <dd>{{ post.body|nl2br }}</dd>
 </dl>
-<ul>
+<div class="button-group">
   {% if not post.isPublished %}
-    <li><a href="{{ path("admin_news_publish", {"slug": post.slug}) }}">{{ "admin.news.publish"|trans }}</a></li>
+    <a href="{{ path("admin_news_publish", {"slug": post.slug}) }}" class="button">{{ "admin.news.publish"|trans }}</a>
   {% endif %}
-  <li><a href="{{ path("admin_news_edit", {"slug": post.slug}) }}">{{ "admin.news.edit"|trans }}</a></li>
-</ul>
+  <a href="{{ path("admin_news_edit", {"slug": post.slug}) }}" class="button">{{ "admin.news.edit"|trans }}</a>
+</div>
 {% endblock %}

@@ -34,6 +34,7 @@ class PostController extends Controller
 
         $form->add('submit', SubmitType::class, array(
             'label' => 'admin.news.create',
+            'attr'  => array('class' => 'button'),
         ));
 
         $form->handleRequest($request);
@@ -72,6 +73,7 @@ class PostController extends Controller
 
         $form->add('submit', SubmitType::class, array(
             'label' => 'admin.news.publish',
+            'attr'  => array('class' => 'button'),
         ));
 
         $form->handleRequest($request);
@@ -101,6 +103,7 @@ class PostController extends Controller
 
         $form->add('submit', SubmitType::class, array(
             'label' => 'admin.news.edit_submit',
+            'attr'  => array('class' => 'button'),
         ));
 
         $form->handleRequest($request);
