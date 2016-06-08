@@ -1,0 +1,31 @@
+{% extends "FOSUserBundle::layout.html.twig" %}
+
+{% block fos_user_content %}
+  {% if error %}
+  <div class="alert callout">
+    <p>{{ error.messageKey|trans(error.messageData, 'security') }}</p>
+  </div>
+  {% endif %}
+
+  <h4 class="text-center">{{ "security.login.title"|trans }}</h4>
+
+  <form action="{{ path("fos_user_security_check") }}" method="post">
+    <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+
+    <label for="username">{{ "security.login.username"|trans }}
+      <input type="text" id="username" name="_username" value="{{ last_username }}" required>
+    </label>
+
+    <label for="password">{{ "security.login.password"|trans }}
+      <input type="password" id="password" name="_password" required>
+    </label>
+
+    <input type="checkbox" id="remember_me" name="_remember_me" value="on">
+    <label for="remember_me">{{ "security.login.remember_me"|trans }}</label>
+
+    <p>
+      <input type="submit" class="button expanded" value="{{ "security.login.submit"|trans }}">
+    </p>
+    <p class="text-center"><a href="{{ path("fos_user_resetting_request") }}">{{ "security.login.reset_password"|trans }}</a></p>
+  </form>
+{% endblock fos_user_content %}

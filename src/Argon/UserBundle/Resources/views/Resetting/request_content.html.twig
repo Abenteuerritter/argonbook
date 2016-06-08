@@ -1,0 +1,12 @@
+<form action="{{ path("fos_user_resetting_send_email") }}" method="post">
+  {% if invalid_username is defined %}
+  <div class="alert callout">
+    <p>{{ "resetting.request.invalid_username"|trans({"%username%": invalid_username}) }}</p>
+  </div>
+  {% endif %}
+  <label for="username">{{ "resetting.request.username"|trans }}</label>
+  <input type="text" id="username" name="username" required="required">
+  <p>
+    <input type="submit" class="expanded button" value="{{ "resetting.request.submit"|trans }}">
+  </p>
+</form>

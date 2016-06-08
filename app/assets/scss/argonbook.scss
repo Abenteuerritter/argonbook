@@ -3,9 +3,9 @@ $global-flexbox: true;
 $foundation-palette: (
   primary: #007095,
   secondary: #777,
-  success: #3adb76,
+  success: #4f805d,
   warning: #ffae00,
-  alert: #75507b,
+  alert: #b0413e,
   footer: #63767e,
 );
 
@@ -18,25 +18,35 @@ $body-font-color: $white;
 $offcanvas-size: 50%;
 $offcanvas-background: #2e363a;
 
-$topbar-background: $body-background;
+$topbar-background:              $body-background;
+$callout-font-color:             $body-background;
+$breadcrumbs-item-color-current: $body-font-color;
+$table-background:               $body-background;
+$form-label-color:               $body-font-color;
 
 @import "foundation-sites/scss/foundation";
 @include foundation-everything(true);
 
 /*! Argonbook | MIT | github.com/Abenteuerritter/argonbook */
 
-$section-padding: rem-calc(40);
+$section-space: rem-calc(40);
 
-#off-canvas {
+.off-canvas {
   height: 100%;
 }
 
-main {
-  padding: $section-padding;
+.user {
+  color: $black;
+  background-color: $white;
+  padding: $section-space;
 }
+
+main, footer {
+  margin: $section-space;
+}
+
 footer {
   font-size: rem-calc(12);
-  padding: $section-padding;
 }
 footer, footer a {
   color: map-get($foundation-palette, footer);

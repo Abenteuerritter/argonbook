@@ -1,0 +1,6 @@
+<form action="{{ path("fos_user_registration_register") }}" method="post">
+  {{ form_widget(form) }}
+  <p>
+    <input type="submit" class="expanded button" value="{{ "registration.submit"|trans }}">
+  </p>
+</form>

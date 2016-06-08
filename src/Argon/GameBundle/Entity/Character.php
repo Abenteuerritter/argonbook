@@ -12,7 +12,7 @@ use Argon\GameBundle\User\GameProvider;
 
 class Character extends GameProvider implements UserInterface
 {
-    const ROLE_CHARACTER = 'ROLE_CHARACTER';
+    const ROLE_CHARACTER = 'ROLE_PJ';
 
     /**
      * @var integer

@@ -7,3 +7,25 @@ admin:
     name:      Name
     lastlogin: Last login
     empty:     There are no players in the system yet.
+
+security:
+  login:
+    title:       Log in to Argonbook
+    username:    Player
+    password:    Passphrase
+    remember_me: Remember
+    submit:      Log In
+    reset_password: Forgot your password?
+
+resetting:
+  request:
+    invalid_username: Player username %username% is not valid
+    username:         Player username
+    submit:           Request new passphrase
+  reset:
+    submit:           Change
+
+registration:
+  submit: Register
+
+go_back: Back
