@@ -7,3 +7,35 @@
 <h1>{{ "character.new_title"|trans }}</h1>
 {{ form(form) }}
 {% endblock %}
+
+{% block stylesheets %}
+{{ parent() }}
+<style type="text/css">
+.position-1 { font-size: 200%; }
+.position-2 { font-size: 150%; }
+.position-3 { font-size: 100%; }
+</style>
+{% endblock %}
+
+{% block javascripts %}
+{{ parent() }}
+<script type="text/javascript">
+    $(function() {
+        $("#character_abilities")
+            .find('input[id$="_modifier"]')
+            .attr('type', 'hidden')
+            .attr('unselectable', 'on')
+            .css('user-select', 'none')
+            .on('selectstart', false);
+
+        Sortable.create(document.getElementById("character_abilities"), {
+            onUpdate: function(event) {
+                $("#character_abilities").children().each(function(position, element) {
+                    $(element).find('label').removeClass().addClass('position-' + (position + 1).toString());
+                    $('input[id$="_modifier"]', element).val(position + 1);
+                });
+            }
+        });
+    });
+</script>
+{% endblock %}

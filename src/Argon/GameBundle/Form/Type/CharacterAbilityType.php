@@ -3,6 +3,8 @@
 namespace Argon\GameBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\FormView;
+use Symfony\Component\Form\FormInterface;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -19,6 +21,16 @@ class CharacterAbilityType extends AbstractType
         $builder->add('modifier', null, array(
             'required' => false,
         ));
+    }
+
+    /**
+     * @param FormView      $view
+     * @param FormInterface $form
+     * @param array         $options
+     */
+    public function finishView(FormView $view, FormInterface $form, array $options)
+    {
+        $view['modifier']->vars['label'] = $form->getData()->getCode();
     }
 
     /**

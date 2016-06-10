@@ -41,6 +41,7 @@ class CharacterController extends Controller
 
         $form->add('submit', SubmitType::class, array(
             'label' => 'character.game_submit',
+            'attr'  => array('class' => 'button'),
         ));
 
         $form->handleRequest($request);
@@ -95,6 +96,7 @@ class CharacterController extends Controller
 
         $form->add('submit', SubmitType::class, array(
             'label' => 'character.submit',
+            'attr'  => array('class' => 'button'),
         ));
 
         $form->handleRequest($request);
@@ -174,6 +176,7 @@ class CharacterController extends Controller
 
         $form->add('submit', SubmitType::class, array(
             'label' => 'character_skill.submit',
+            'attr'  => array('class' => 'button'),
         ));
 
         $form->handleRequest($request);
@@ -231,6 +234,7 @@ class CharacterController extends Controller
 
         $form->add('submit', SubmitType::class, array(
             'label' => 'character.edit_submit',
+            'attr'  => array('class' => 'button'),
         ));
 
         $form->handleRequest($request);
