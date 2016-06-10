@@ -1,32 +1,33 @@
 ---
 
 character:
-  characters:          My characters
-  info:                Character
-  name:                Name
-  race:                Race
-  race_placeholder:    Select your character's race
-  abilities:           Abilities
-  experience:          Experience
-  switch:              Switch
-  skills:              Skills
-  new:                 New character
-  new_title:           Create a new character
-  game_submit:         Select game
-  edit:                Edit
-  edit_title:          Edit %character%
-  edit_submit:         Edit
-  note:                Notes of the Director
-  story:               Story
-  story_draft:         Is the story only a draft?
-  story_placeholder:   What do your character know?
+  characters:           My characters
+  info:                 Character
+  name:                 Name
+  race:                 Race
+  race_placeholder:     Select your character's race
+  abilities:            Abilities
+  experience:           Experience
+  switch:               Switch
+  skills:               Skills
+  new:                  New character
+  new_title:            Create a new character
+  game_submit:          Select game
+  edit:                 Edit
+  edit_title:           Edit %character%
+  edit_submit:          Edit
+  note:                 Notes of the Director
+  story:                Story
+  story_draft:          Is the story only a draft?
+  story_placeholder:    What do your character know?
   story_not_confirmed: |
       Your story is not confirmed. Write something for the organizators to
       check and assign you new experience points.
-  submit:              Create character
-  empty:               You don't have any character created yet.
-  created:             Your character has been created.
-  updated:             Your character has been updated.
+  story_confirm_reason: Story confirmed
+  submit:               Create character
+  empty:                You don't have any character created yet.
+  created:              Your character has been created.
+  updated:              Your character has been updated.
 
 character_ability:
   help: Sort the abilities in order of priority.

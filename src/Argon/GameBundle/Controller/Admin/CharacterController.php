@@ -71,6 +71,7 @@ class CharacterController extends Controller
 
         $form->add('submit', SubmitType::class, array(
             'label' => 'admin.character_experience.create',
+            'attr'  => array('class' => 'button'),
         ));
 
         $form->handleRequest($request);
@@ -125,6 +126,7 @@ class CharacterController extends Controller
 
         $form->add('submit', SubmitType::class, array(
             'label' => 'admin.character.confirm_story_submit',
+            'attr'  => array('class' => 'button'),
         ));
 
         $form->handleRequest($request);
@@ -133,8 +135,7 @@ class CharacterController extends Controller
             $data = $form->getData();
 
             if (empty($data['reason'])) {
-                $data['reason'] = $this->get('translator')
-                    ->trans('character.story_confirm_reason', array(), 'admin');
+                $data['reason'] = $this->get('translator')->trans('character.story_confirm_reason');
             }
 
             $characterExperience = new CharacterExperience();

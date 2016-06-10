@@ -57,11 +57,11 @@
         </table>
       </td>
       <td>
-        <ul>
-          {% if character.isStoryNotConfirmed %}
-            <li><a href="{{ path("admin_character_confirm_story", {"id": character.id}) }}">{{ "admin.character.confirm_story"|trans }}</a></li>
-          {% endif %}
-        </ul>
+        <div class="button-group">
+        {% if character.isStoryNotConfirmed %}
+          <a href="{{ path("admin_character_confirm_story", {"id": character.id}) }}" class="button">{{ "admin.character.confirm_story"|trans }}</a>
+        {% endif %}
+        </div>
       </td>
     </tr>
   {% else %}
