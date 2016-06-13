@@ -54,6 +54,10 @@ $section-space: rem-calc(40);
   }
 }
 
+abbr {
+  text-decoration: none;
+}
+
 main, footer {
   margin: $section-space;
 }
