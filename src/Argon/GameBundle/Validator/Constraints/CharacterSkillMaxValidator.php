@@ -24,7 +24,7 @@ class CharacterSkillMaxValidator extends ConstraintValidator
 
             $violations = $this->context->getValidator()->validate($value->getNextLevel(), $range);
             if (count($violations) > 0) {
-                return $violations;
+                $this->context->getViolations()->addAll($violations);
             }
         }
     }
