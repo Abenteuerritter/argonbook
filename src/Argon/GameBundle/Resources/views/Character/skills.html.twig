@@ -1,28 +1,40 @@
 {% extends "ArgonWebBundle::layout.html.twig" %}
-{% set active = "character" %}
+{% set active = "character skills" %}
 
 {% block title %}{{ parent() }} - {{ "character.characters"|trans }} - {{ character }} - {{ "character.skills"|trans }}{% endblock %}
 
 {% block content %}
-<h1>{{ "character.skills"|trans }}</h1>
+<h1 id="skills">{{ "character.skills"|trans }}</h1>
 {{ form_start(form) }}
-  <div id="progress-experience">
-    <div style="width: {{ ((character.skillsExperience * 100) / character.experience)|round }}%"><span>{{ character.skillsExperience }}</span></div>
-    <div style="width: 0%"><span>0</span></div>
+  <div class="sticky-container" data-sticky-container>
+    <div class="sticky row" data-sticky data-top-anchor="skills:bottom" data-btm-anchor="skills-table:bottom" data-margin-top="0">
+      <div class="medium-8 columns">
+        <div class="progress">
+          <span class="progress-meter" id="progress-experience" style="width: {{ ((character.skillsExperience * 100) / character.experience)|round }}%">
+            <p class="progress-meter-text">{{ character.skillsExperience }}</p>
+          </span>
+        </div>
+      </div>
+      <div class="medium-2 columns">
+        {{ form_widget(form.submit) }}
+      </div>
+      <div class="medium-2 columns"
+        <ul>
+          <li><big id="experience-available">{{ character.availableExperience|default(0) }}</big> {{ "character_experience.stats.available"|trans }}</li>
+          <li><big id="experience">{{ character.experience|default(0) }}</big> {{ "character_experience.stats.total"|trans }}</li>
+        </ul>
+      </div>
+      {{ form_errors(form) }}
+    </div>
   </div>
-  {{ form_widget(form.submit) }}
-  <ul>
-    <li><big id="experience-available">{{ character.availableExperience|default(0) }}</big> {{ "character_experience.stats.available"|trans }}</li>
-    <li><big id="experience">{{ character.experience|default(0) }}</big> {{ "character_experience.stats.total"|trans }}</li>
-  </ul>
-  {{ form_errors(form) }}
-  <table>
+  <table id="skills-table">
     <thead>
       <tr>
         <th>&nbsp;</th>
         <th>{{ "skill.name"|trans }}</th>
-        <th>{{ "skill.level"|trans }}</th>
-        <th>{{ "skill.price"|trans }}</th>
+        <th class="text-right">{{ "skill.level"|trans }}</th>
+        <th>{{ "skill.buy"|trans }}</th>
+        <th class="text-right">{{ "skill.price"|trans }}</th>
       </tr>
     </thead>
     <tbody>
@@ -37,28 +49,61 @@
           {% endif %}
         </td>
         <td>{{ skill }}</td>
+        <td class="text-right"><span id="{{ skill.slug }}_level">{{ characterSkill.vars.value.level }}</span></td>
         <td>
-          <div>
-            <span id="{{ skill.slug }}_level">{{ characterSkill.vars.value.level }}</span>
-            {{
-              form_widget(characterSkill.newLevel, {"attr": {
-                "data-level" : characterSkill.vars.value.level|default(0),
-                "data-max"   : skill.max|default(-1),
-                "data-price" : characterSkill.vars.value.price
-              }})
-            }}
-          </div>
+          {{
+            form_widget(characterSkill.newLevel, {"attr": {
+              "data-level" : characterSkill.vars.value.level|default(0),
+              "data-max"   : skill.max|default(-1),
+              "data-price" : characterSkill.vars.value.price
+            }})
+          }}
           {{ form_errors(characterSkill.newLevel) }}
         </td>
-        <td>{{ characterSkill.vars.value.price }}</td>
+        <td class="text-right">{{ characterSkill.vars.value.price }}</td>
       </tr>
     {% else %}
       <tr class="warning">
-        <td colspan="4">{{ "skill.empty"|trans }}</td>
+        <td colspan="5">{{ "skill.empty"|trans }}</td>
       </tr>
     {% endfor %}
     </tbody>
   </table>
   {{ form_rest(form) }}
 {{ form_end(form) }}
+{% endblock %}
+
+{% block javascripts %}
+{{ parent() }}
+<script type="text/javascript">
+    $(function() {
+        var total = parseInt(
+            $("#experience").html()
+        );
+
+        $('input[type="number"]').change(function(event) {
+            updateExperience();
+        });
+
+        function updateExperience() {
+            var progress = 0;
+
+            $('input[type="number"]').each(function() {
+                var el = $(this);
+
+                var level = parseInt(el.data("level"));
+                var price = parseInt(el.data("price"));
+                var value = el.val() == "" ? 0 : parseInt(el.val());
+
+                progress += (level + value) * price;
+            });
+
+            $("#progress-experience")
+                .css("width", Math.round((progress * 100) / total).toString() + "%")
+                .find("p").html(progress);
+        }
+
+        updateExperience();
+    });
+</script>
 {% endblock %}

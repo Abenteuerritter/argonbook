@@ -44,6 +44,16 @@ $section-space: rem-calc(40);
   }
 }
 
+.skills {
+  .sticky {
+    width: 100%;
+    background-color: $body-background;
+  }
+  .is-stuck {
+    padding: ($section-space / 2) 0;
+  }
+}
+
 main, footer {
   margin: $section-space;
 }
