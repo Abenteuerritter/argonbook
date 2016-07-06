@@ -19,3 +19,7 @@
 
 - name: mysql service state
   service: name=mysql state=started enabled=yes
+
+- name: create db
+  when: db is defined
+  mysql_db: name={{ db }} state=present
