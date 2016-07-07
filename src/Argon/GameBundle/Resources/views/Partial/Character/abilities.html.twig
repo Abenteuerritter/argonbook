@@ -1,0 +1,3 @@
+{% for ability in character.abilities %}
+  <big class="position-{{ ability.modifier }}">{{ ("character_ability.types." ~ ability.code)|trans }}</big>
+{% endfor %}
