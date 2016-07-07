@@ -44,7 +44,7 @@ class CharacterProvider implements UserProviderInterface
 
         if (!$player instanceof Player) {
             throw new UnsupportedUserException(
-                'Only a player can switch to a chracter.'
+                'Only a player can switch to a character.'
             );
         }
 
