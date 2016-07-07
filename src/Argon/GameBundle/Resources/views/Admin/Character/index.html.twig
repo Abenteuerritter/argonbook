@@ -41,20 +41,7 @@
         <br>{{ character.race }}
       </td>
       <td>
-        <table>
-          <tbody>
-            {% for ability in character.abilities %}
-              <tr>
-                <td>{{ ability.modifier }}</td>
-                <td><abbr title="{{ ability.code }}">{{ ("character_ability.types." ~ ability.code)|trans }}</abbr></td>
-              </tr>
-            {% else %}
-              <tr class="warning">
-                <td colspan="2">{{ "admin.character_ability.empty"|trans }}</td>
-              </tr>
-            {% endfor %}
-          </tbody>
-        </table>
+        {{ include("ArgonGameBundle:Partial\\Character:abilities.html.twig", {"character": character}) }}
       </td>
       <td>
         <div class="button-group">

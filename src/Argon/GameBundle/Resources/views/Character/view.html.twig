@@ -20,20 +20,7 @@
 </article>
 <article>
   <h2>{{ "character.abilities"|trans }}</h2>
-  <table>
-    <tbody>
-    {% for ability in character.abilities %}
-      <tr>
-        <td>{{ ability.modifier }}</td>
-        <td><abbr title="{{ ability.code }}">{{ ("character_ability.types." ~ ability.code)|trans }}</abbr></td>
-      </tr>
-    {% else %}
-      <tr class="warning">
-        <td colspan="2">{{ "character_ability.empty"|trans }}</td>
-      </tr>
-    {% endfor %}
-    </tbody>
-  </table>
+  {{ include("ArgonGameBundle:Partial\\Character:abilities.html.twig", {"character": character}) }}
 </article>
 <article>
   <h2>{{ "character.story"|trans }}</h2>
@@ -42,7 +29,7 @@
 {% if character.note %}
   <article>
     <h2>{{ "character.note"|trans }}</h2>
-    <p>{{ character.note|nl2br }}</p>
+    {{ include("ArgonGameBundle:Partial\\Character:story.html.twig", {"character": character}) }}
   </article>
 {% endif %}
 <article>

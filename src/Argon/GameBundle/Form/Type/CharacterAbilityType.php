@@ -30,7 +30,7 @@ class CharacterAbilityType extends AbstractType
      */
     public function finishView(FormView $view, FormInterface $form, array $options)
     {
-        $view['modifier']->vars['label'] = $form->getData()->getCode();
+        $view['modifier']->vars['label'] = 'character_ability.types.' . $form->getData()->getCode();
     }
 
     /**
