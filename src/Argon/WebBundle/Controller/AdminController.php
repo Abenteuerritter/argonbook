@@ -10,4 +10,9 @@ class AdminController extends Controller
     {
         return $this->render('ArgonWebBundle:Admin:dashboard.html.twig');
     }
+
+    public function sinkAction()
+    {
+        return $this->render('ArgonWebBundle:Admin:sink.html.twig');
+    }
 }

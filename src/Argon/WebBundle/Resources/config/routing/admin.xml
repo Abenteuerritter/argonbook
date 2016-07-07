@@ -7,4 +7,7 @@
     <route id="admin_dashboard" path="/" methods="GET">
         <default key="_controller">ArgonWebBundle:Admin:dashboard</default>
     </route>
+    <route id="admin_sink" path="/sink" methods="GET">
+        <default key="_controller">ArgonWebBundle:Admin:sink</default>
+    </route>
 </routes>
