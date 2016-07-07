@@ -3,6 +3,7 @@
 namespace Argon\GameBundle\Entity;
 
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Security\Core\User\EquatableInterface;
 
 use Doctrine\Common\Collections\ArrayCollection;
 
@@ -10,7 +11,7 @@ use Argon\UserBundle\Entity\Player;
 use Argon\GameBundle\Entity\Race;
 use Argon\GameBundle\User\GameProvider;
 
-class Character extends GameProvider implements UserInterface
+class Character extends GameProvider implements UserInterface, EquatableInterface
 {
     const ROLE_CHARACTER = 'ROLE_PJ';
 
@@ -88,6 +89,23 @@ class Character extends GameProvider implements UserInterface
     public function __toString()
     {
         return $this->name;
+    }
+
+    /**
+     * (non-PHPdoc)
+     * @see \Symfony\Component\Security\Core\User\EquatableInterface::isEqualTo()
+     */
+    public function isEqualTo(UserInterface $user)
+    {
+        if (!$user instanceof Character) {
+            return false;
+        }
+
+        if ($user->getSlug() !== $this->getSlug()) {
+            return false;
+        }
+
+        return true;
     }
 
     /**
