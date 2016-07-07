@@ -3,7 +3,7 @@ $global-flexbox: true;
 $foundation-palette: (
   primary: #007095,
   secondary: #777,
-  success: #4f805d,
+  success: #003300,
   warning: #ffae00,
   alert: #b0413e,
   footer: #63767e,
@@ -19,6 +19,8 @@ $offcanvas-size: 50%;
 $offcanvas-background: #2e363a;
 
 $topbar-background:              $body-background;
+$callout-background:             $body-background;
+$callout-background-fade: 10%;
 $callout-font-color:             $body-background;
 $breadcrumbs-item-color-current: $body-font-color;
 $table-background:               $body-background;
