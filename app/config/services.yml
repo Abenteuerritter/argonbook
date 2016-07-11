@@ -7,3 +7,12 @@ services:
 #    service_name:
 #        class: AppBundle\Directory\ClassName
 #        arguments: ["@another_service_name", "plain_value", "%parameter_name%"]
+
+#    character_provider:
+#        class: Symfony\Component\Security\Core\User\ChainUserProvider
+#        arguments: [["@fos_user.user_provider.username_email", "@argon_game.security.character_provider"]]
+
+    security.user.provider.concrete.fos:
+        alias: fos_user.user_provider.username_email
+    security.user.provider.concrete.argon:
+        alias: argon_game.security.character_provider

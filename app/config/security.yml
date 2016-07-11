@@ -8,6 +8,9 @@ security:
             id: fos_user.user_provider.username_email
         argon_game_character:
             id: argon_game.security.character_provider
+        switch_user:
+            chain:
+                providers: [fos, argon]
 
     firewalls:
         # disables authentication for assets and the profiler, adapt it according to your needs
@@ -25,7 +28,7 @@ security:
             anonymous:    true
 
             switch_user:
-                provider:  argon_game_character
+                provider:  switch_user
                 parameter: _switch
                 role:      ROLE_ALLOWED_TO_SWITCH_CHARACTER
 
