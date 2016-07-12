@@ -74,6 +74,12 @@ doctrine:
                 dir:       "%kernel.root_dir%/../vendor/gedmo/doctrine-extensions/lib/Gedmo/Tree/Entity"
                 prefix:    Gedmo\Tree\Entity
                 is_bundle: false
+            fos_message:
+                type:      annotation
+                dir:       "%kernel.root_dir%/../vendor/friendsofsymfony/message/src/Driver/Doctrine/ORM/Entity"
+                prefix:    FOS\Message\Driver\Doctrine\ORM\Entity
+        resolve_target_entities:
+            FOS\Message\Model\PersonInterface: Argon\GameBundle\Entity\Character
 
 # Swiftmailer Configuration
 swiftmailer:

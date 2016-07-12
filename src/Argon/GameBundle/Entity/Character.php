@@ -2,6 +2,8 @@
 
 namespace Argon\GameBundle\Entity;
 
+use FOS\Message\Model\PersonInterface;
+
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Security\Core\User\EquatableInterface;
 
@@ -11,7 +13,7 @@ use Argon\UserBundle\Entity\Player;
 use Argon\GameBundle\Entity\Race;
 use Argon\GameBundle\User\GameProvider;
 
-class Character extends GameProvider implements UserInterface, EquatableInterface
+class Character extends GameProvider implements UserInterface, EquatableInterface, PersonInterface
 {
     const ROLE_CHARACTER = 'ROLE_PJ';
 
