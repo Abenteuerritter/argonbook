@@ -4,7 +4,7 @@ $foundation-palette: (
   primary: #007095,
   secondary: #777,
   success: #003300,
-  warning: #ffae00,
+  warning: #cc8b00,
   alert: #b0413e,
   footer: #63767e,
 );
@@ -21,7 +21,9 @@ $offcanvas-background: #2e363a;
 $topbar-background:              $body-background;
 $callout-background:             $body-background;
 $callout-background-fade: 10%;
-$callout-font-color:             $body-background;
+$callout-margin: 1rem 0;
+$callout-font-color:             $body-font-color;
+$callout-font-color-alt:         $body-font-color;
 $breadcrumbs-item-color-current: $body-font-color;
 $table-background:               $body-background;
 $form-label-color:               $body-font-color;
