@@ -40,7 +40,7 @@ class CharacterToUsernameTransformer implements DataTransformerInterface
         }
 
         if (!$value instanceof Character) {
-            throw new UnexpectedTypeException($value, 'Argon\GameBundle\Entity\Character');
+            throw new UnexpectedTypeException($value, 'Argon\\GameBundle\\Entity\\Character');
         }
 
         return $value->getSlug();

@@ -39,7 +39,7 @@ class CharacterAbilityType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'Argon\GameBundle\Entity\CharacterAbility',
+            'data_class' => 'Argon\\GameBundle\\Entity\\CharacterAbility',
             'intention'  => 'character_ability',
         ));
     }

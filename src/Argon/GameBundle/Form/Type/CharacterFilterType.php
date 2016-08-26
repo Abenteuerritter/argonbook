@@ -24,7 +24,7 @@ class CharacterFilterType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'Argon\GameBundle\Entity\CharacterFilter',
+            'data_class' => 'Argon\\GameBundle\\Entity\\CharacterFilter',
             'intention'  => 'character_filter',
         ));
     }

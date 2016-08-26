@@ -44,7 +44,7 @@ class CharacterEditType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'Argon\GameBundle\Entity\Character',
+            'data_class' => 'Argon\\GameBundle\\Entity\\Character',
             'intention'  => 'character_edit',
         ));
     }
