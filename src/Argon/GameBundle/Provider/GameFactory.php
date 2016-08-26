@@ -23,7 +23,7 @@ class GameFactory
     }
 
     /**
-     * @return multitype:\Argon\GameBundle\Provider\GameInterface
+     * @return \Argon\GameBundle\Provider\GameInterface[]|array
      */
     public function getGames()
     {
@@ -36,7 +36,7 @@ class GameFactory
      *
      * @param string $gameName
      *
-     * @return \Argon\GameBundle\Provider\GameInterface
+     * @return \Argon\GameBundle\Provider\GameInterface|null
      */
     public function create($gameName)
     {

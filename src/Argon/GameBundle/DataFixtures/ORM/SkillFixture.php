@@ -84,6 +84,7 @@ class SkillFixture implements FixtureInterface
 
     protected function createSkill(ObjectManager $manager, $ability, $name, $nameDE = null, $modifier = 1, $max = null, $required = array())
     {
+        /** @var \Gedmo\Translatable\Entity\Repository $repository */
         $repository = $manager->getRepository('Gedmo\\Translatable\\Entity\\Translation');
 
         $skill = new Skill();

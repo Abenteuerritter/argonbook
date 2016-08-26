@@ -102,7 +102,7 @@ class CharacterSkill
     }
 
     /**
-     * @return float
+     * @return integer
      */
     public function getNewLevelCost()
     {
@@ -126,7 +126,7 @@ class CharacterSkill
     }
 
     /**
-     * @return float
+     * @return integer
      */
     public function getPrice()
     {

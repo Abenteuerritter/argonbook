@@ -35,7 +35,7 @@ class CharacterProvider implements UserProviderInterface
     }
 
     /**
-     * (non-PHPdoc)
+     * {@inheritDoc}
      * @see \Symfony\Component\Security\Core\User\UserProviderInterface::loadUserByUsername()
      */
     public function loadUserByUsername($username)
@@ -62,7 +62,7 @@ class CharacterProvider implements UserProviderInterface
     }
 
     /**
-     * (non-PHPdoc)
+     * {@inheritDoc}
      * @see \Symfony\Component\Security\Core\User\UserProviderInterface::refreshUser()
      */
     public function refreshUser(UserInterface $user)
@@ -77,7 +77,7 @@ class CharacterProvider implements UserProviderInterface
     }
 
     /**
-     * (non-PHPdoc)
+     * {@inheritDoc}
      * @see \Symfony\Component\Security\Core\User\UserProviderInterface::supportsClass()
      */
     public function supportsClass($class)

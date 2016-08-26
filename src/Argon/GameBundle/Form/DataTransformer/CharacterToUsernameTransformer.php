@@ -51,7 +51,7 @@ class CharacterToUsernameTransformer implements DataTransformerInterface
      *
      * @param string $value
      *
-     * @return \Argon\GameBundle\Entity\Character
+     * @return \Argon\GameBundle\Entity\Character|null
      *
      * @throws \UnexpectedTypeException
      */

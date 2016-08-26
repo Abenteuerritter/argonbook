@@ -16,14 +16,14 @@ use Argon\GameBundle\Form\DataTransformer\CharacterToUsernameTransformer;
 class CharacterUsernameType extends AbstractType
 {
     /**
-     * @var UserToUsernameTransformer
+     * @var CharacterToUsernameTransformer
      */
     protected $usernameTransformer;
 
     /**
      * Constructor.
      *
-     * @param UserToUsernameTransformer $usernameTransformer
+     * @param CharacterToUsernameTransformer $usernameTransformer
      */
     public function __construct(CharacterToUsernameTransformer $usernameTransformer)
     {

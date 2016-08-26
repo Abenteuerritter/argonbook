@@ -29,6 +29,7 @@ class RaceFixture implements FixtureInterface
 
     protected function createRace(ObjectManager $manager, $name, $nameDE = null, $modifier = 1)
     {
+        /** @var \Gedmo\Translatable\Entity\Repository $repository */
         $repository = $manager->getRepository('Gedmo\\Translatable\\Entity\\Translation');
 
         $race = new Race();

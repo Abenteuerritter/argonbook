@@ -43,12 +43,12 @@ class Character extends GameProvider implements UserInterface, EquatableInterfac
     protected $experience = 0; // Initial experience
 
     /**
-     * @var \Doctrine\Common\Collections\Collection
+     * @var \Doctrine\Common\Collections\Collection|array
      */
     protected $abilities;
 
     /**
-     * @var \Doctrine\Common\Collections\Collection
+     * @var \Doctrine\Common\Collections\Collection|array
      */
     protected $skills;
 
@@ -103,6 +103,7 @@ class Character extends GameProvider implements UserInterface, EquatableInterfac
             return false;
         }
 
+        /** @var Character $user */
         if ($user->getSlug() !== $this->getSlug()) {
             return false;
         }
@@ -260,7 +261,7 @@ class Character extends GameProvider implements UserInterface, EquatableInterfac
     }
 
     /**
-     * @return \Argon\GameBundle\Entity\CharacterAbility
+     * @return \Argon\GameBundle\Entity\CharacterAbility|null
      */
     public function getAbility($abilityCode)
     {

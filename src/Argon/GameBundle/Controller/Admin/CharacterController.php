@@ -18,6 +18,7 @@ class CharacterController extends Controller
 {
     public function indexAction(Request $request)
     {
+        /** @var \Argon\GameBundle\Repository\CharacterRepository $repository */
         $repository = $this->getDoctrine()
                            ->getRepository('ArgonGameBundle:Character');
 

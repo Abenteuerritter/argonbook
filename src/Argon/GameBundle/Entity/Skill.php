@@ -13,7 +13,7 @@ class Skill implements Translatable
     protected $id;
 
     /**
-     * @var \Doctrine\Common\Collections\Collection
+     * @var \Doctrine\Common\Collections\Collection|array
      */
     protected $requirements;
 
