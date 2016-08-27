@@ -15,15 +15,18 @@ services:
 
     fos_message.driver:
         class: FOS\Message\Driver\Doctrine\ORM\DoctrineORMDriver
-        arguments: ["@doctrine.orm.entity_manager"]
+        arguments:
+            - "@doctrine.orm.entity_manager"
 
     fos_message.repository:
         class: FOS\Message\Repository
-        arguments: ["@fos_message.driver"]
+        arguments:
+            - "@fos_message.driver"
 
     fos_message.event_dispatcher:
         class: FOS\Message\EventDispatcher\SymfonyBridgeEventDispatcher
-        arguments: ["@event_dispatcher"]
+        arguments:
+            - "@event_dispatcher"
 
     fos_message.tagger:
         class: FOS\Message\Tagger
