@@ -103,7 +103,7 @@ class Character extends GameProvider implements UserInterface, EquatableInterfac
             return false;
         }
 
-        /** @var Character $user */
+        /** @var \Argon\GameBundle\Entity\Character $user */
         if ($user->getSlug() !== $this->getSlug()) {
             return false;
         }
