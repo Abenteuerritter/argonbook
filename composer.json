@@ -5,7 +5,7 @@
     "description": "Alternate Reality Games Oriented Network",
     "autoload": {
         "psr-4": {
-            "": "src/"
+            "Argon\\": "src/Argon/"
         },
         "classmap": [
             "app/AppKernel.php",
