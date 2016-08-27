@@ -1,13 +1,11 @@
 <?php
 
-namespace Argon\GameBundle\User;
-
-use Argon\GameBundle\Provider\GameInterface;
+namespace Argon\GameBundle\Provider;
 
 /**
- * Provides game interface to an entity.
+ * Implements GameProviderInterface
  */
-abstract class GameProvider
+trait GameProviderTrait
 {
     /**
      * @var \Argon\GameBundle\Provider\GameInterface

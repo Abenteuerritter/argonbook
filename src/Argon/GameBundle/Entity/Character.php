@@ -11,10 +11,16 @@ use Doctrine\Common\Collections\ArrayCollection;
 
 use Argon\UserBundle\Entity\Player;
 use Argon\GameBundle\Entity\Race;
-use Argon\GameBundle\User\GameProvider;
+use Argon\GameBundle\Provider\GameProviderInterface;
+use Argon\GameBundle\Provider\GameProviderTrait;
 
-class Character extends GameProvider implements UserInterface, EquatableInterface, PersonInterface
+class Character implements UserInterface, EquatableInterface, PersonInterface, GameProviderInterface
 {
+    use GameProviderTrait;
+
+    /**
+     * @var string
+     */
     const ROLE_CHARACTER = 'ROLE_PJ';
 
     /**

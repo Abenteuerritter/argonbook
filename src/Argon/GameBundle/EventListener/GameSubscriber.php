@@ -7,9 +7,9 @@ use Doctrine\ORM\Events;
 use Doctrine\ORM\Event\LifecycleEventArgs;
 
 use Argon\GameBundle\Provider\GameFactory;
+use Argon\GameBundle\Provider\GameProviderInterface;
 use Argon\GameBundle\Entity\Character;
 use Argon\GameBundle\Entity\CharacterExperience;
-use Argon\GameBundle\User\GameProvider;
 
 /**
  * Will initialize the game after the entity itself was loaded.
@@ -39,7 +39,7 @@ class GameSubscriber implements EventSubscriber
         $entity        = $args->getEntity();
         $entityManager = $args->getEntityManager();
 
-        if ($entity instanceof GameProvider && $entity instanceof Character) {
+        if ($entity instanceof GameProviderInterface && $entity instanceof Character) {
             $game     = $entity->getGame();
             $gameInfo = $game->getInfo();
             $value    = $game->getInitialExperience();
@@ -62,7 +62,7 @@ class GameSubscriber implements EventSubscriber
     {
         $entity = $args->getEntity();
 
-        if ($entity instanceof GameProvider) {
+        if ($entity instanceof GameProviderInterface) {
             $gameName = $entity->getGameName();
             $game     = $this->gameFactory->create($gameName);
 
