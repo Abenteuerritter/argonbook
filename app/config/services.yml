@@ -36,3 +36,6 @@ services:
         arguments:
             - "@fos_message.driver"
             - "@fos_message.event_dispatcher"
+
+    cebe.markdown:
+        class: cebe\markdown\GithubMarkdown
