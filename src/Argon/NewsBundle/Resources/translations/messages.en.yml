@@ -20,6 +20,7 @@ admin:
     create:          Create
     edit:            Edit
     edit_submit:     Edit
+    edit_preview:    Preview
     created:         News post has been created.
     published:       News post has been published.
     updated:         News post has been updated.

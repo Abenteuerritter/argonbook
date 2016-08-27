@@ -58,18 +58,16 @@ class PostController extends Controller
 
     public function viewAction(NewsPost $post)
     {
-        /** @var \cebe\markdown\Markdown  $markdownParser*/
-        $markdownParser = $this->get('cebe.markdown');
-
         return $this->render('ArgonNewsBundle:Admin\Post:view.html.twig', array(
             'post'          => $post,
-            'post_rendered' => $markdownParser->parse($post->getBody()),
+            'post_rendered' => $this->getMarkdownParser()->parse($post->getBody()),
         ));
     }
 
     public function publishAction(NewsPost $post, Request $request)
     {
         $post->setStatus(NewsPost::STATUS_PUBLISHED);
+
         $form = $this->createForm(PostPublishType::class, $post, array(
             'action' => $this->generateUrl('admin_news_publish', array('slug' => $post->getSlug())),
             'method' => 'POST',
@@ -100,9 +98,16 @@ class PostController extends Controller
 
     public function editAction(NewsPost $post, Request $request)
     {
+        $preview = false;
+
         $form = $this->createForm(PostType::class, $post, array(
             'action' => $this->generateUrl('admin_news_update', array('slug' => $post->getSlug())),
             'method' => 'POST',
+        ));
+
+        $form->add('preview', SubmitType::class, array(
+            'label' => 'admin.news.edit_preview',
+            'attr'  => array('class' => 'secondary button'),
         ));
 
         $form->add('submit', SubmitType::class, array(
@@ -113,23 +118,38 @@ class PostController extends Controller
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->flush();
+            $rawData = $request->request->get($form->getName());
 
-            $request->getSession()->getFlashBag()
-                    ->add('success', 'admin.news.updated');
+            if (isset($rawData['preview'])) {
+                $preview = $this->getMarkdownParser()->parse($post->getBody());
+            } else {
+                $em = $this->getDoctrine()->getManager();
+                $em->flush();
 
-            return $this->redirect($this->generateUrl('admin_news'));
+                $request->getSession()->getFlashBag()
+                        ->add('success', 'admin.news.updated');
+
+                return $this->redirect($this->generateUrl('admin_news'));
+            }
         }
 
         return $this->render('ArgonNewsBundle:Admin\Post:edit.html.twig', array(
-            'post' => $post,
-            'form' => $form->createView(),
+            'post'    => $post,
+            'preview' => $preview,
+            'form'    => $form->createView(),
         ));
     }
 
     protected function getRepository()
     {
         return $this->getDoctrine()->getRepository('ArgonNewsBundle:NewsPost');
+    }
+
+    /**
+     * @return \cebe\markdown\Markdown
+     */
+    protected function getMarkdownParser()
+    {
+        return $this->container->get('cebe.markdown');
     }
 }

@@ -15,5 +15,9 @@
 {% endblock %}
 
 {% block content %}
+{% if preview|default(false) %}
+{{ preview|raw }}
+<hr>
+{% endif %}
 {{ form(form) }}
 {% endblock %}
