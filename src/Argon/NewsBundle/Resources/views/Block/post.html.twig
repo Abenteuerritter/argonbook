@@ -1,7 +1,7 @@
 <article>
   <h4>{{ post.title }}</h4>
   <main>
-    {{ post.body|nl2br }}
+    {{ post_rendered|raw }}
   </main>
   <footer>
     {{ "news.footer"|trans({"%creator%": post.creator, "%published%": post.publishedAt|date}) }}

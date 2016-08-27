@@ -19,9 +19,13 @@ class BlockController extends Controller
 
     public function postAction(NewsPost $post, $position = null)
     {
+        /** @var \cebe\markdown\Markdown  $markdownParser*/
+        $markdownParser = $this->get('cebe.markdown');
+
         return $this->render('ArgonNewsBundle:Block:post.html.twig', array(
-            'post'     => $post,
-            'position' => $position,
+            'post_rendered' => $markdownParser->parse($post->getBody()),
+            'post'          => $post,
+            'position'      => $position,
         ));
     }
 

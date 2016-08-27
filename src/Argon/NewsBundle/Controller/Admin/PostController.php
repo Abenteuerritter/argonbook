@@ -58,8 +58,12 @@ class PostController extends Controller
 
     public function viewAction(NewsPost $post)
     {
+        /** @var \cebe\markdown\Markdown  $markdownParser*/
+        $markdownParser = $this->get('cebe.markdown');
+
         return $this->render('ArgonNewsBundle:Admin\Post:view.html.twig', array(
-            'post' => $post,
+            'post'          => $post,
+            'post_rendered' => $markdownParser->parse($post->getBody()),
         ));
     }
 
