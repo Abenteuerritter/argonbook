@@ -40,7 +40,7 @@
                   {% if is_granted("ROLE_PREVIOUS_ADMIN") %}
                     <li><a href="{{ path("character_view", {"slug": app.user.slug, "_switch": "_exit"}) }}">{{ "layout.switch_exit"|trans }}</a></li>
                   {% else %}
-                    <li><a href="{{ path("fos_user_security_logout") }}">{{ "layout.logout"|trans }}</a></li>
+                    <li><a href="{{ logout_path() }}">{{ "layout.logout"|trans }}</a></li>
                   {% endif %}
                 {% else %}
                   <li><a href="{{ path("fos_user_security_login") }}">{{ "layout.login"|trans }}</a></li>
