@@ -1,6 +1,7 @@
 {
   "name": "argonbook",
   "license": "MIT",
+  "private": true,
   "dependencies": {
     "foundation-sites": "^6.2",
     "gulp": "^3.9",
