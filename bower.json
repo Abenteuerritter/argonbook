@@ -1,0 +1,15 @@
+{
+  "name": "argonbook",
+  "description": "Alternate Reality Games Oriented Network",
+  "license": "MIT",
+  "homepage": "https://github.com/Abenteuerritter/argonbook",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components"
+  ],
+  "dependencies": {
+    "foundation-icon-fonts": "*"
+  }
+}

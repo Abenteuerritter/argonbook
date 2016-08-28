@@ -76,3 +76,9 @@ footer {
 footer, footer a {
   color: map-get($foundation-palette, footer);
 }
+
+/*! ZURB Foundation Fonts */
+// This is web/fonts/ where gulp is storing the fonts.
+$fi-path: "/fonts";
+
+@import "foundation-icon-fonts/_foundation-icons";
