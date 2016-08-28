@@ -5,34 +5,33 @@
 
 {% block content %}
 <h1>{{ character }}</h1>
-<article>
-  <h2>{{ "character.info"|trans }}</h2>
-  <dl>
-    <dt>
-      <label>{{ "character.name"|trans }}</label>
-    </dt>
-    <dd>{{ character.game.info.fullname }} / {{ character.name }}</dd>
-    <dt>
-      <label>{{ "character.race"|trans }}</label>
-    </dt>
-    <dd>{{ character.race }}</dd>
-  </dl>
-</article>
-<article>
-  <h2>{{ "character.abilities"|trans }}</h2>
-  {{ include("ArgonGameBundle:Partial\\Character:abilities.html.twig", {"character": character}) }}
-</article>
-<article>
-  <h2>{{ "character.story"|trans }}</h2>
-  <p>{{ character.story|nl2br }}</p>
-</article>
-{% if character.note %}
+<div class="row align-middle">
+  <div class="columns">{#}<h2>{{ "character.info"|trans }}</h2>{#}
+    <dl>
+      <dt>
+        <label>{{ "character.name"|trans }}</label>
+      </dt>
+      <dd>{{ character.game.info.fullname }} / {{ character.name }}</dd>
+      <dt>
+        <label>{{ "character.race"|trans }}</label>
+      </dt>
+      <dd>{{ character.race }}</dd>
+    </dl>
+  </div>
+  <div class="columns">{#}<h2>{{ "character.abilities"|trans }}</h2>{#}
+    {{ include("ArgonGameBundle:Partial\\Character:abilities.html.twig", {"character": character}) }}
+  </div>
+</div>
+{% if character.story %}
   <article>
-    <h2>{{ "character.note"|trans }}</h2>
+    <h2>{{ "character.story"|trans }}</h2>
     {{ include("ArgonGameBundle:Partial\\Character:story.html.twig", {"character": character}) }}
+    {% if character.note %}
+      <p><strong>{{ "character.note"|trans }}</strong> {{ character.note|nl2br }}</p>
+    {% endif %}
   </article>
 {% endif %}
-<article>
+<div class="row">
   <h2>{{ "character.experience"|trans }}</h2>
   <table>
     <thead>
@@ -67,8 +66,8 @@
       </tr>
     </tfoot>
   </table>
-</article>
-<article>
+</div>
+<div class="row">
   <h2>{{ "character.skills"|trans }}</h2>
   <table>
     <thead>
@@ -98,5 +97,5 @@
     {% endfor %}
     </tbody>
   </table>
-</article>
+</div>
 {% endblock %}
