@@ -41,6 +41,8 @@ twig:
     strict_variables: "%kernel.debug%"
     globals:
         project:      "%project%"
+    form_themes:
+        - "foundation_5_layout.html.twig"
 
 # Doctrine Configuration
 doctrine:
