@@ -34,7 +34,7 @@
           <a href="{{ path("admin_character", {"game": character.gameName}) }}">{{ character.game.info.fullname }}</a> /
         {% endif %}
         <abbr title="{{ character.player.username }}">{{ character.player.name|default(character.player.username) }}</abbr> /
-        {{ character.name }} (
+        <a href="{{ path("character_view", {"slug": character.slug}) }}">{{ character.name }}</a> (
           <a href="{{ path("admin_character_experience", {"id": character.id}) }}">{{ character.skillsExperience }}/{{ character.experience }}</a>
           <a href="{{ path("admin_character_skill", {"id": character.id}) }}">{{ character.skills|length }}</a>
         )
