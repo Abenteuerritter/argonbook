@@ -57,11 +57,11 @@
     <tfoot>
       <tr>
         <td colspan="3">
-          <ul>
-            <li><big>{{ character.skillsExperience|default(0) }}</big> {{ "character_experience.stats.used_skills"|trans }}</li>
-            <li><big>{{ character.availableExperience|default(0) }}</big> {{ "character_experience.stats.available"|trans }}</li>
-            <li><big>{{ character.experience|default(0) }}</big> {{ "character_experience.stats.total"|trans }}</li>
-          </ul>
+          <div class="row text-center">
+            <div class="columns"><big>{{ character.skillsExperience|default(0) }}</big> {{ "character_experience.stats.used_skills"|trans }}</div>
+            <div class="columns"><big>{{ character.availableExperience|default(0) }}</big> {{ "character_experience.stats.available"|trans }}</div>
+            <div class="columns"><big>{{ character.experience|default(0) }}</big> {{ "character_experience.stats.total"|trans }}</div>
+          </div>
         </td>
       </tr>
     </tfoot>
