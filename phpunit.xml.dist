@@ -21,7 +21,6 @@
         <testsuite name="ArgonBook Test Suite">
             <directory>tests/</directory>
             <directory>src/*/*Bundle/Tests/</directory>
-            <directory>src/*/Bundle/*Bundle/Tests/</directory>
         </testsuite>
     </testsuites>
 
@@ -31,8 +30,6 @@
             <exclude>
                 <directory>src/*/*Bundle/Resources/</directory>
                 <directory>src/*/*Bundle/Tests/</directory>
-                <directory>src/*/Bundle/*Bundle/Resources/</directory>
-                <directory>src/*/Bundle/*Bundle/Tests/</directory>
             </exclude>
         </whitelist>
     </filter>
