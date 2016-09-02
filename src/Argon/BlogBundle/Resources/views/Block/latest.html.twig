@@ -1,0 +1,6 @@
+{% if entities|length %}
+  <h3>{{ "blog.latest"|trans }}</h3>
+  {% for post in entities %}
+    {{ render(controller("ArgonBlogBundle:Block:post", {"post": post, "position": loop.index})) }}
+  {% endfor %}
+{% endif %}

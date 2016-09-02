@@ -13,8 +13,8 @@ _argon_user_admin:
     resource: "@ArgonUserBundle/Resources/config/routing/admin.xml"
     prefix: /admin
 
-_argon_news_admin:
-    resource: "@ArgonNewsBundle/Resources/config/routing/admin.xml"
+_argon_blog_admin:
+    resource: "@ArgonBlogBundle/Resources/config/routing/admin.xml"
     prefix: /admin
 
 _argon_game_admin:

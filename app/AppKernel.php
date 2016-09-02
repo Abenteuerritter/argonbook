@@ -21,7 +21,7 @@ class AppKernel extends Kernel
 
             new Argon\WebBundle\ArgonWebBundle(),
             new Argon\UserBundle\ArgonUserBundle(),
-            new Argon\NewsBundle\ArgonNewsBundle(),
+            new Argon\BlogBundle\ArgonBlogBundle(),
             new Argon\GameBundle\ArgonGameBundle(),
         ];
 

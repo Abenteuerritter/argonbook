@@ -1,0 +1,56 @@
+{% extends "ArgonWebBundle::layout_admin.html.twig" %}
+{% set active = "blog" %}
+
+{% block title %}{{ parent() }} - {{ "admin.blog.blog"|trans }}{% endblock %}
+
+{% block top %}
+<nav aria-label="{{ "admin.you_are_here"|trans }}" role="navigation">
+  <ul class="breadcrumbs">
+    <li><a href="{{ path("admin_dashboard") }}">{{ "admin.dashboard.title"|trans }}</a></li>
+    <li>{{ "admin.blog.blog"|trans }}</li>
+  </ul>
+</nav>
+{% endblock %}
+
+{% block content %}
+<table>
+  <thead>
+    <tr>
+      <th>{{ "admin.blog.title"|trans }}</th>
+      <th>{{ "admin.blog.status"|trans }}</th>
+      <th>&nbsp;</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for post in entities %}
+    <tr>
+      <td>
+        <a href="{{ path("admin_blog_view", {"slug": post.slug}) }}">{{ post }}</a>
+      </td>
+      <td>
+        {% if post.isPublished %}
+          {{ "admin.blog.published_at"|trans({"%date%": post.publishedAt|date}) }}
+        {% else %}
+          {{ "admin.blog.draft"|trans }}
+        {% endif %}
+      </td>
+      <td>
+        <div class="button-group">
+          {% if not post.isPublished %}
+            <a href="{{ path("admin_blog_publish", {"slug": post.slug}) }}" class="button">{{ "admin.blog.publish"|trans }}</a>
+          {% endif %}
+          <a href="{{ path("admin_blog_edit", {"slug": post.slug}) }}" class="button">{{ "admin.blog.edit"|trans }}</a>
+        </div>
+      </td>
+    </tr>
+  {% else %}
+    <tr class="warning">
+      <td colspan="3">{{ "admin.blog.empty"|trans }}</td>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+<div class="button-group">
+  <a href="{{ path("admin_blog_new") }}" class="button">{{ "admin.blog.new"|trans }}</a>
+</div>
+{% endblock %}

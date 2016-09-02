@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<routes xmlns="http://symfony.com/schema/routing"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/routing
+                        http://symfony.com/schema/routing/routing-1.0.xsd">
+
+    <route id="admin_blog" path="/blog" methods="GET">
+        <default key="_controller">ArgonBlogBundle:Admin\Post:index</default>
+    </route>
+    <route id="admin_blog_new" path="/blog/new" methods="GET">
+        <default key="_controller">ArgonBlogBundle:Admin\Post:new</default>
+    </route>
+    <route id="admin_blog_create" path="/blog/create" methods="POST">
+        <default key="_controller">ArgonBlogBundle:Admin\Post:new</default>
+    </route>
+    <route id="admin_blog_view" path="/blog/{slug}" methods="GET">
+        <default key="_controller">ArgonBlogBundle:Admin\Post:view</default>
+    </route>
+    <route id="admin_blog_publish" path="/blog/{slug}/publish" methods="GET,POST">
+        <default key="_controller">ArgonBlogBundle:Admin\Post:publish</default>
+    </route>
+    <route id="admin_blog_edit" path="/blog/{slug}/edit" methods="GET">
+        <default key="_controller">ArgonBlogBundle:Admin\Post:edit</default>
+    </route>
+    <route id="admin_blog_update" path="/blog/{slug}/update" methods="POST">
+        <default key="_controller">ArgonBlogBundle:Admin\Post:edit</default>
+    </route>
+</routes>

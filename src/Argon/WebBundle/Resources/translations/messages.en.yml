@@ -17,7 +17,7 @@ admin:
 
   layout:
     player:    Players
-    news:      News
+    blog:      Blog
     character: Characters
     race:      Races
     skill:     Skills
