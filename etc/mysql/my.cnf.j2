@@ -12,6 +12,9 @@ query_cache_size = 0
 query_cache_type = 0
 
 {% if "web" not in group_names %}
-; Memory usage for InnoDB pool
-innodb_buffer_pool_size = {{ (ansible_memtotal_mb * mysql_memory_perc|default(0.8))|int }}M
+    ; Memory usage for InnoDB pool
+    innodb_buffer_pool_size = {{ (ansible_memtotal_mb * mysql_memory_perc|default(0.8))|int }}M
+{% else %}
+    ; Default memory usage
+    innodb_buffer_pool_size = {{ db_buffer_pool_size|default('128M') }}
 {% endif %}
