@@ -4,7 +4,7 @@ namespace Argon\NewsBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
-use Argon\NewsBundle\Entity\NewsPost;
+use Argon\NewsBundle\Entity\Post;
 
 class BlockController extends Controller
 {
@@ -17,7 +17,7 @@ class BlockController extends Controller
         ));
     }
 
-    public function postAction(NewsPost $post, $position = null)
+    public function postAction(Post $post, $position = null)
     {
         return $this->render('ArgonNewsBundle:Block:post.html.twig', array(
             'post_rendered' => $this->getMarkdownParser()->parse($post->getBody()),
@@ -27,11 +27,11 @@ class BlockController extends Controller
     }
 
     /**
-     * @return \Argon\NewsBundle\Repository\NewsPostRepository
+     * @return \Argon\NewsBundle\Repository\PostRepository
      */
     protected function getRepository()
     {
-        return $this->getDoctrine()->getRepository('ArgonNewsBundle:NewsPost');
+        return $this->getDoctrine()->getRepository('ArgonNewsBundle:Post');
     }
 
     /**

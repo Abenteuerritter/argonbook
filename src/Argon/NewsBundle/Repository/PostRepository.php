@@ -4,7 +4,7 @@ namespace Argon\NewsBundle\Repository;
 
 use Doctrine\ORM\EntityRepository;
 
-class NewsPostRepository extends EntityRepository
+class PostRepository extends EntityRepository
 {
     public function findLatest($limit = 5)
     {

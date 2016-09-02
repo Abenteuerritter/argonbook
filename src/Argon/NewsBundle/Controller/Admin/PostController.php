@@ -6,7 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
-use Argon\NewsBundle\Entity\NewsPost;
+use Argon\NewsBundle\Entity\Post;
 
 use Argon\NewsBundle\Form\Type\PostType;
 use Argon\NewsBundle\Form\Type\PostPublishType;
@@ -24,7 +24,7 @@ class PostController extends Controller
 
     public function newAction(Request $request)
     {
-        $post = new NewsPost();
+        $post = new Post();
         $post->setCreator($this->getUser());
 
         $form = $this->createForm(PostType::class, $post, array(
@@ -56,7 +56,7 @@ class PostController extends Controller
         ));
     }
 
-    public function viewAction(NewsPost $post)
+    public function viewAction(Post $post)
     {
         return $this->render('ArgonNewsBundle:Admin\Post:view.html.twig', array(
             'post'          => $post,
@@ -64,9 +64,9 @@ class PostController extends Controller
         ));
     }
 
-    public function publishAction(NewsPost $post, Request $request)
+    public function publishAction(Post $post, Request $request)
     {
-        $post->setStatus(NewsPost::STATUS_PUBLISHED);
+        $post->setStatus(Post::STATUS_PUBLISHED);
 
         $form = $this->createForm(PostPublishType::class, $post, array(
             'action' => $this->generateUrl('admin_news_publish', array('slug' => $post->getSlug())),
@@ -96,7 +96,7 @@ class PostController extends Controller
         ));
     }
 
-    public function editAction(NewsPost $post, Request $request)
+    public function editAction(Post $post, Request $request)
     {
         $preview = false;
 
@@ -142,7 +142,7 @@ class PostController extends Controller
 
     protected function getRepository()
     {
-        return $this->getDoctrine()->getRepository('ArgonNewsBundle:NewsPost');
+        return $this->getDoctrine()->getRepository('ArgonNewsBundle:Post');
     }
 
     /**

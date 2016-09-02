@@ -5,15 +5,15 @@ namespace Argon\NewsBundle\DataFixtures\ORM;
 use Doctrine\Common\DataFixtures\FixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 
-use Argon\NewsBundle\Entity\NewsPost;
+use Argon\NewsBundle\Entity\Post;
 
-class NewsFixture implements FixtureInterface
+class PostFixture implements FixtureInterface
 {
     public function load(ObjectManager $manager)
     {
         $root = $manager->getRepository('ArgonUserBundle:Player')->findOneByUsername('root');
 
-        $hello = new NewsPost();
+        $hello = new Post();
         $hello->setCreator($root);
         $hello->setTitle('Hello World');
         $hello->setBody(<<<BODY
