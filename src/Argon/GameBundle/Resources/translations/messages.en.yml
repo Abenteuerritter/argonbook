@@ -48,10 +48,11 @@ character_experience:
     total:       total
 
 character_skill:
-  submit:  Buy skills
-  max:     MAX
-  empty:   Your character has not skills yet.
-  updated: Your skills were updated.
+  submit:    Buy skills
+  max:       MAX
+  empty:     Your character has not skills yet.
+  empty_3rd: This character has not skills yet.
+  updated:   Your skills were updated.
 
 skill:
   ability_empty: General
