@@ -121,7 +121,8 @@ class CharacterController extends Controller
     public function viewAction(Character $character)
     {
         $experiences = null;
-        $own = $this->isGranted('ROLE_PJ') && $character->isEqualTo($this->getUser());
+        $own = ($this->isGranted('ROLE_PJ') && $character->isEqualTo($this->getUser())) ||
+               ($this->isGranted('ROLE_PLAYER') && $character->getPlayer()->isEqualTo($this->getUser()));
 
         if ($own) {
             $experiences = $this->getDoctrine()
