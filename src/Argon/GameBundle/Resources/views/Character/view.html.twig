@@ -32,42 +32,6 @@
   </article>
 {% endif %}
 <div class="row">
-  <h2>{{ "character.experience"|trans }}</h2>
-  <table>
-    <thead>
-      <tr>
-        <th>{{ "character_experience.at"|trans }}</th>
-        <th>{{ "character_experience.reason"|trans }}</th>
-        <th>&nbsp;</th>
-      </tr>
-    </thead>
-    <tbody>
-    {% for experience in experiences %}
-      <tr>
-        <td>{{ experience.at|date }}</td>
-        <td>{{ experience.reason }}</td>
-        <td>{{ experience.value }}</td>
-      </tr>
-    {% else %}
-      <tr class="warning">
-        <td colspan="3">{{ "character_experience.empty"|trans }}</td>
-      </tr>
-    {% endfor %}
-    </tbody>
-    <tfoot>
-      <tr>
-        <td colspan="3">
-          <div class="row text-center">
-            <div class="columns"><big>{{ character.skillsExperience|default(0) }}</big> {{ "character_experience.stats.used_skills"|trans }}</div>
-            <div class="columns"><big>{{ character.availableExperience|default(0) }}</big> {{ "character_experience.stats.available"|trans }}</div>
-            <div class="columns"><big>{{ character.experience|default(0) }}</big> {{ "character_experience.stats.total"|trans }}</div>
-          </div>
-        </td>
-      </tr>
-    </tfoot>
-  </table>
-</div>
-<div class="row">
   <h2>{{ "character.skills"|trans }}</h2>
   <table>
     <thead>
@@ -92,10 +56,48 @@
       </tr>
     {% else %}
       <tr class="warning">
-        <td colspan="3">{{ "character_skill.empty"|trans }}</td>
+        <td colspan="3">{{ "character_skill.empty_3rd"|trans }}</td>
       </tr>
     {% endfor %}
     </tbody>
   </table>
 </div>
+{% if experiences %}
+  <div class="row">
+    <h2>{{ "character.experience"|trans }}</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>{{ "character_experience.at"|trans }}</th>
+          <th>{{ "character_experience.reason"|trans }}</th>
+          <th>&nbsp;</th>
+        </tr>
+      </thead>
+      <tbody>
+      {% for experience in experiences %}
+        <tr>
+          <td>{{ experience.at|date }}</td>
+          <td>{{ experience.reason }}</td>
+          <td>{{ experience.value }}</td>
+        </tr>
+      {% else %}
+        <tr class="warning">
+          <td colspan="3">{{ "character_experience.empty"|trans }}</td>
+        </tr>
+      {% endfor %}
+      </tbody>
+      <tfoot>
+        <tr>
+          <td colspan="3">
+            <div class="row text-center">
+              <div class="columns"><big>{{ character.skillsExperience|default(0) }}</big> {{ "character_experience.stats.used_skills"|trans }}</div>
+              <div class="columns"><big>{{ character.availableExperience|default(0) }}</big> {{ "character_experience.stats.available"|trans }}</div>
+              <div class="columns"><big>{{ character.experience|default(0) }}</big> {{ "character_experience.stats.total"|trans }}</div>
+            </div>
+          </td>
+        </tr>
+      </tfoot>
+    </table>
+  </div>
+{% endif %}
 {% endblock %}

@@ -120,9 +120,14 @@ class CharacterController extends Controller
 
     public function viewAction(Character $character)
     {
-        $experiences = $this->getDoctrine()
-                            ->getRepository('ArgonGameBundle:CharacterExperience')
-                            ->findByCharacter($character);
+        $experiences = null;
+        $own = $this->isGranted('ROLE_PJ') && $character->isEqualTo($this->getUser());
+
+        if ($own) {
+            $experiences = $this->getDoctrine()
+                                ->getRepository('ArgonGameBundle:CharacterExperience')
+                                ->findByCharacter($character);
+        }
 
         return $this->render('ArgonGameBundle:Character:view.html.twig', array(
             'character'   => $character,
