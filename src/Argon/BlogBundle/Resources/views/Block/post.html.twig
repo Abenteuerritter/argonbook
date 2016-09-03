@@ -1,9 +1,14 @@
-<article>
-  <h4>{{ post.title }}</h4>
-  <main>
-    {{ post_rendered|raw }}
-  </main>
-  <footer>
-    {{ "blog.footer"|trans({"%creator%": post.creator, "%published%": post.publishedAt|date}) }}
-  </footer>
-</article>
+<div class="media-object stack-for-small">
+  {#}
+  <div class="media-object-section">
+    <div class="thumbnail">
+      <img src= "assets/img/generic/rectangle-1.jpg">
+    </div>
+  </div>
+  {#}
+  <div class="media-object-section main-section">
+    <h4>{{ post.title }}</h4>
+    <div class="post">{{ post_rendered|raw }}</div>
+    <small class="meta">{{ "blog.footer"|trans({"%creator%": post.creator, "%published%": post.publishedAt|date}) }}</small>
+  </div>
+</div>
