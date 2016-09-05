@@ -44,6 +44,14 @@ twig:
     form_themes:
         - "foundation_5_layout.html.twig"
 
+# Swiftmailer Configuration
+swiftmailer:
+    transport: "%mailer_transport%"
+    host:      "%mailer_host%"
+    username:  "%mailer_user%"
+    password:  "%mailer_password%"
+    spool:     { type: memory }
+
 # Doctrine Configuration
 doctrine:
     dbal:
@@ -78,13 +86,15 @@ doctrine:
         resolve_target_entities:
             FOS\Message\Model\PersonInterface: Argon\GameBundle\Entity\Character
 
-# Swiftmailer Configuration
-swiftmailer:
-    transport: "%mailer_transport%"
-    host:      "%mailer_host%"
-    username:  "%mailer_user%"
-    password:  "%mailer_password%"
-    spool:     { type: memory }
+# Doctrine Extensions Configuration
+stof_doctrine_extensions:
+    default_locale: "%locale%"
+    orm:
+        default:
+            sluggable:     true
+            translatable:  true
+            tree:          true
+            timestampable: true
 
 # FOSUser Configuration
 fos_user:
@@ -105,13 +115,3 @@ vich_uploader:
             namer:
                 service: vich_uploader.namer_property
                 options: { property: 'slug' }
-
-# Doctrine Extensions Configuration
-stof_doctrine_extensions:
-    default_locale: "%locale%"
-    orm:
-        default:
-            sluggable:     true
-            translatable:  true
-            tree:          true
-            timestampable: true
