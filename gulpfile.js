@@ -36,18 +36,10 @@ gulp.task('sass', function() {
     .pipe(gulp.dest(SASS_DEST));
 });
 
-gulp.task('sass:watch', function() {
-  gulp.watch(SASS_SRC, ['sass']);
-});
-
 gulp.task('js', function() {
   gulp.src(JS_SRC)
     .pipe(concat('vendor.js'))
     .pipe(gulp.dest(JS_DEST));
-});
-
-gulp.task('js:watch', function() {
-  gulp.watch(JS_SRC, ['js']);
 });
 
 gulp.task('fonts', function() {
