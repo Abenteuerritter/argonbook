@@ -8,7 +8,7 @@ imports:
 parameters:
     project:
         name:        argonbook
-        version:     1.16
+        version:     1.17
     locale: en
 
 framework:
