@@ -15,7 +15,6 @@
 /web/js/*
 
 # Application Data
-/etc/build/
 /var/*
 /var/cache/*
 /var/logs/*
@@ -30,4 +29,5 @@
 
 # Provisioning
 /etc/*.retry
+/etc/build/
 
