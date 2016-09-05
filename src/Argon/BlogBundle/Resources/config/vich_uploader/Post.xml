@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<vich_uploader class="Argon\BlogBundle\Entity\Post">
+  <field mapping="blog_post_image" name="image" filename_property="image_path" />
+</vich_uploader>

@@ -23,6 +23,7 @@
         <field name="body" column="body" type="text">
             <gedmo:translatable />
         </field>
+        <field name="imagePath" column="image_path" type="string" length="130" nullable="true" />
         <field name="createdAt" column="created_at" type="datetime">
             <gedmo:timestampable on="create"/>
         </field>

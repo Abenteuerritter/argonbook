@@ -98,6 +98,13 @@ fos_user:
 # VichUploader Configuration
 vich_uploader:
     db_driver: orm
+    mappings:
+        blog_post_image:
+            uri_prefix:         /uploads/blog
+            upload_destination: "%kernel.root_dir%/../web/uploads/blog"
+            namer:
+                service: vich_uploader.namer_property
+                options: { property: 'slug' }
 
 # Doctrine Extensions Configuration
 stof_doctrine_extensions:

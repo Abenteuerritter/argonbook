@@ -2,6 +2,7 @@
 
 namespace Argon\BlogBundle\Entity;
 
+use Symfony\Component\HttpFoundation\File\File as Image;
 use Argon\UserBundle\Entity\Player as Creator;
 
 class Post
@@ -38,6 +39,16 @@ class Post
      * @var string
      */
     protected $body;
+
+    /**
+     * @var string
+     */
+    protected $imagePath;
+
+    /**
+     * @var \Symfony\Component\HttpFoundation\File\File
+     */
+    protected $image;
 
     /**
      * @var \DateTime
@@ -142,6 +153,30 @@ class Post
     public function getBody()
     {
         return $this->body;
+    }
+
+    /**
+     * @return string
+     */
+    public function getImagePath()
+    {
+        return $this->imagePath;
+    }
+
+    /**
+     * @param \Symfony\Component\HttpFoundation\File\File $image
+     */
+    public function setImage(Image $image)
+    {
+        $this->image = $image;
+    }
+
+    /**
+     * @return \Symfony\Component\HttpFoundation\File\File
+     */
+    public function getImage()
+    {
+        return $this->image;
     }
 
     /**
