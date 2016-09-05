@@ -5,4 +5,15 @@ ignored:
   - app/config/parameters.yml
   - var/logs/
   - var/sessions/
+  - web/uploads/
   - web/app_dev.php
+
+# Paths that are created in the build and must be removed on cleanup
+artifacts:
+  - vendor/           # composer
+  - bower_components/ # bower
+  - node_modules/     # npm
+  - web/bundles/
+  - web/fonts/        # gulp
+  - web/css/
+  - web/js/

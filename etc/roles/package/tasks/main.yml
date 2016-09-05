@@ -8,6 +8,11 @@
 - name: clone version
   git: repo="{{ build_repo }}" dest="{{ build_dir }}" version="{{ version }}" force=yes
 
+- name: cleanup
+  when: cleanup is defined and cleanup|bool
+  with_items: "{{ artifacts }}"
+  file: path="{{ build_dir }}/{{ item }}" state=absent
+
 - name: install node modules
   npm: path="{{ build_dir }}" state=latest production=yes
 
