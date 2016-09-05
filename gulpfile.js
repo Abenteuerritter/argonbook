@@ -30,7 +30,7 @@ var // Configuration
 gulp.task('default', ['sass', 'js', 'fonts']);
 
 gulp.task('sass', function() {
-  return gulp.src(SASS_SRC)
+  gulp.src(SASS_SRC)
     .pipe(plumber())
     .pipe(sass.sync(SASS_OPTIONS).on('error', sass.logError))
     .pipe(gulp.dest(SASS_DEST));
@@ -41,7 +41,7 @@ gulp.task('sass:watch', function() {
 });
 
 gulp.task('js', function() {
-  return gulp.src(JS_SRC)
+  gulp.src(JS_SRC)
     .pipe(concat('vendor.js'))
     .pipe(gulp.dest(JS_DEST));
 });
@@ -51,6 +51,6 @@ gulp.task('js:watch', function() {
 });
 
 gulp.task('fonts', function() {
-  return gulp.src(FONT_SRC)
+  gulp.src(FONT_SRC)
     .pipe(gulp.dest(FONT_DEST));
 });
