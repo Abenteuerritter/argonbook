@@ -5,3 +5,4 @@ shared:
   - app/config/parameters.yml
   - var/logs
   - var/sessions
+  - web/uploads
