@@ -19,4 +19,4 @@
   service: name=nginx state=started enabled=yes
 
 - name: append user to www-data
-  user: name={{ ansible_ssh_user }} groups=www-data append=yes state=present
+  user: name={{ user }} groups=www-data append=yes state=present

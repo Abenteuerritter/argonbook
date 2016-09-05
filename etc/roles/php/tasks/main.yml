@@ -35,8 +35,8 @@
 
 - name: run php5-fpm as normal user
   with_dict:
-    user: "{{ ansible_ssh_user }}"
-    group: "{{ ansible_ssh_user }}"
+    user: "{{ user }}"
+    group: www-data
   lineinfile:
     dest: /etc/php5/fpm/pool.d/www.conf
     regexp: "^{{ item.key }}"

@@ -4,7 +4,7 @@ upstream argonbook {
 
 server {
     listen 80;
-    root /home/{{ ansible_ssh_user }}/argonbook/web;
+    root /home/{{ user }}/argonbook/web;
 
     access_log /var/log/nginx/argonbook-access.log;
     error_log /var/log/nginx/argonbook-error.log;
