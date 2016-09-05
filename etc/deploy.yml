@@ -1,21 +1,20 @@
 ---
 
-- hosts: dev
-  become: no
+- hosts: build
   gather_facts: no
   tasks:
     - name: set default config
       set_fact:
         build_repo: /home/vagrant/argonbook
         build_dir: /home/vagrant/argonbook/var/build
-        ignored: [app/config/parameters.yml, web/app_dev.php]
+        ignored: [app/config/parameters.yml, var/logs/, var/sessions/, web/app_dev.php]
 
     - name: get lastest version
       when: version is not defined
       set_fact: version="{{ (lookup('file', '../app/config/config.yml')|from_yaml).parameters.project.version }}"
 
     - name: clone version
-      git: repo="{{ build_repo }}" dest="{{ build_dir }}" version="{{ version }}"
+      git: repo="{{ build_repo }}" dest="{{ build_dir }}" version="{{ version }}" force=yes
 
     - name: install node modules
       npm: path="{{ build_dir }}" state=latest production=yes
@@ -25,16 +24,18 @@
 
     - name: install composer vendor packages
       composer: command=install working_dir="{{ build_dir }}" no_dev=yes optimize_autoloader=yes
+      environment:
+        SYMFONY_ENV: prod
 
     - name: install public assets
       command: gulp chdir="{{ build_dir }}"
 
     - name: remove ignored files
-      file: path="{{ build_dir }}/{{ item }}" state=absent
       with_items: "{{ ignored }}"
+      file: path="{{ build_dir }}/{{ item }}" state=absent
 
     - name: build version
-      command: tar -cpzf "{{ build_dir }}/argonbook_{{ version }}.tar.gz" -C "{{ build_dir }}" app/ bin/ src/ var/cache/ vendor/ web/
+      command: tar -cpzf "{{ build_dir }}/argonbook_{{ version }}.tar.gz" -C "{{ build_dir }}" app/ bin/ src/ var/ vendor/ web/
 
     - name: download version
       fetch:
@@ -43,7 +44,6 @@
         flat: yes
 
 - hosts: web
-  become: no
   gather_facts: no
   tasks:
     - name: set default config
