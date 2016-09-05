@@ -95,6 +95,10 @@ fos_user:
         address:     no-reply@argonbook.eu
         sender_name: Argonbook
 
+# VichUploader Configuration
+vich_uploader:
+    db_driver: orm
+
 # Doctrine Extensions Configuration
 stof_doctrine_extensions:
     default_locale: "%locale%"
