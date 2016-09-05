@@ -1,9 +1,10 @@
 'use strict';
  
-var gulp   = require('gulp');
-var util   = require('gulp-util');
-var sass   = require('gulp-sass');
-var concat = require('gulp-concat');
+var gulp    = require('gulp');
+var util    = require('gulp-util');
+var sass    = require('gulp-sass');
+var concat  = require('gulp-concat');
+var plumber = require('gulp-plumber');
 
 var // Configuration
   FONT_DEST = 'web/fonts/',
@@ -30,6 +31,7 @@ gulp.task('default', ['sass', 'js', 'fonts']);
 
 gulp.task('sass', function() {
   return gulp.src(SASS_SRC)
+    .pipe(plumber())
     .pipe(sass.sync(SASS_OPTIONS).on('error', sass.logError))
     .pipe(gulp.dest(SASS_DEST));
 });
