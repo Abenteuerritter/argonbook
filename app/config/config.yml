@@ -105,14 +105,3 @@ fos_user:
     from_email:
         address:     no-reply@argonbook.eu
         sender_name: Argonbook
-
-# VichUploader Configuration
-vich_uploader:
-    db_driver: orm
-    mappings:
-        blog_post_image:
-            uri_prefix:         /uploads/blog
-            upload_destination: "%kernel.root_dir%/../web/uploads/blog"
-            namer:
-                service: vich_uploader.namer_property
-                options: { property: slug }

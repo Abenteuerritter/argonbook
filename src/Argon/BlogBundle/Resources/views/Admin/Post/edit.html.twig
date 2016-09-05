@@ -17,7 +17,7 @@
 {% block content %}
 {% if preview|default(false) %}
   {% if post.imagePath %}
-    <img src="{{ vich_uploader_asset(post, 'image') }}" alt="{{ post.title }}">
+    <img src="{{ asset(post.imagePath) }}" alt="{{ post.title }}">
   {% endif %}
   {{ preview|raw }}
   <hr>

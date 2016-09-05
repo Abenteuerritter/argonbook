@@ -38,7 +38,7 @@
   <dt>{{ "admin.blog.image"|trans }}</dt>
   <dd>
     {% if post.imagePath %}
-      <a href="{{ vich_uploader_asset(post, 'image') }}">{{ post.imagePath }}</a>
+      <a href="{{ asset(post.imagePath) }}">{{ post.imagePath }}</a>
     {% else %}
       <p class="warning">{{ "admin.blog.image_empty"|trans }}</p>
     {% endif %}
