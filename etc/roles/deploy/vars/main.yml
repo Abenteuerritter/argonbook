@@ -1,0 +1,7 @@
+---
+
+# Files to track as shared (dirs should not end with slash)
+shared:
+  - app/config/parameters.yml
+  - var/logs
+  - var/sessions

@@ -1,0 +1,36 @@
+---
+
+# Retrieve version from local if not found
+- name: get lastest version
+  when: version is not defined
+  set_fact: version="{{ (lookup('file', '../app/config/config.yml')|from_yaml).parameters.project.version }}"
+
+- name: clone version
+  git: repo="{{ build_repo }}" dest="{{ build_dir }}" version="{{ version }}" force=yes
+
+- name: install node modules
+  npm: path="{{ build_dir }}" state=latest production=yes
+
+- name: install bower components
+  bower: path="{{ build_dir }}" state=latest production=yes
+
+- name: install composer vendor packages
+  composer: command=install working_dir="{{ build_dir }}" no_dev=yes optimize_autoloader=yes
+  environment:
+    SYMFONY_ENV: prod
+
+- name: install public assets
+  command: gulp chdir="{{ build_dir }}"
+
+- name: remove ignored files
+  with_items: "{{ ignored }}"
+  file: path="{{ build_dir }}/{{ item }}" state=absent
+
+- name: build version
+  command: tar -cpzf "{{ build_dir }}/argonbook_{{ version }}.tar.gz" -C "{{ build_dir }}" app/ bin/ src/ var/ vendor/ web/
+
+- name: download version
+  fetch:
+    src: "{{ build_dir }}/argonbook_{{ version }}.tar.gz"
+    dest: build/
+    flat: yes

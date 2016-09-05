@@ -1,0 +1,5 @@
+---
+
+# Assume that build group is set to dev machine
+build_repo: /home/vagrant/argonbook
+build_dir: "{{ build_repo }}/var/build"

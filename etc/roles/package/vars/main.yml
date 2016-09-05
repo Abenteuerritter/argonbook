@@ -1,0 +1,8 @@
+---
+
+# Paths to be removed before package
+ignored:
+  - app/config/parameters.yml
+  - var/logs/
+  - var/sessions/
+  - web/app_dev.php
