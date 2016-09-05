@@ -53,7 +53,7 @@
 
     - name: write version file
       copy:
-        content: "{{ version }} at {{ lookup('pipe', 'date +%Y-%m-%d\\ %H:%M:%S') }}\n"
+        content: "{{ version }} at {{ lookup('pipe', 'date +%Y-%m-%d\\ %H:%M:%S') }} by {{ lookup('env', 'USER') }}\n"
         dest: "{{ working_dir }}/releases/{{ release }}/version.txt"
         owner: "{{ user }}"
         group: www-data
