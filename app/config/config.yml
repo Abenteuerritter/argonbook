@@ -43,6 +43,7 @@ twig:
         project:      "%project%"
     form_themes:
         - "foundation_5_layout.html.twig"
+        - "VichUploaderBundle:Form:fields.html.twig"
 
 # Swiftmailer Configuration
 swiftmailer:
@@ -114,4 +115,4 @@ vich_uploader:
             upload_destination: "%kernel.root_dir%/../web/uploads/blog"
             namer:
                 service: vich_uploader.namer_property
-                options: { property: 'slug' }
+                options: { property: slug }

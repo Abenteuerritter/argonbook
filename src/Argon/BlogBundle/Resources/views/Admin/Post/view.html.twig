@@ -34,6 +34,15 @@
 
   <dt>{{ "admin.blog.body"|trans }}</dt>
   <dd>{{ post_rendered|raw }}</dd>
+
+  <dt>{{ "admin.blog.image"|trans }}</dt>
+  <dd>
+    {% if post.imagePath %}
+      <a href="{{ vich_uploader_asset(post, 'image') }}">{{ post.imagePath }}</a>
+    {% else %}
+      <p class="warning">{{ "admin.blog.image_empty"|trans }}</p>
+    {% endif %}
+  </dd>
 </dl>
 <div class="button-group">
   {% if not post.isPublished %}

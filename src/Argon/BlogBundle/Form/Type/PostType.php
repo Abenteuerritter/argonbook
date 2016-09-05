@@ -5,6 +5,7 @@ namespace Argon\BlogBundle\Form\Type;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Vich\UploaderBundle\Form\Type\VichImageType;
 
 class PostType extends AbstractType
 {
@@ -17,6 +18,7 @@ class PostType extends AbstractType
         $builder
             ->add('title')
             ->add('body', null, ['attr' => ['data-help' => 'Post body supports Markdown format']])
+            ->add('image', VichImageType::class)
         ;
     }
 

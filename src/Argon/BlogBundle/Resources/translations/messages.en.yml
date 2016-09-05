@@ -9,6 +9,8 @@ admin:
     blog:            Blog
     title:           Title
     body:            Content
+    image:           Image
+    image_empty:     No image has been yet selected for this post.
     creator:         Creator
     status:          Status
     draft:           Draft
