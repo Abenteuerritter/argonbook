@@ -50,47 +50,65 @@
       set_fact:
         keep_releases: 5
         working_dir: /srv/www/argonbook.eu
-        shared: [app/config/parameters.yml, var/logs/, var/sessions/]
+        shared: [app/config/parameters.yml, var/logs, var/sessions]
 
     - name: set release
       when: not release is defined
       set_fact: release="{{ lookup('pipe', 'date +%Y%m%d%H%M%S') }}"
 
-    - name: create working dir
-      file: path="{{ working_dir }}/releases/{{ release }}" state=directory
+    - name: create release dir
+      file:
+        path: "{{ working_dir }}/releases/{{ release }}"
+        state: directory
+        owner: "{{ user }}"
+        group: www-data
 
     - name: create shared dir
-      file: path="{{ working_dir }}/shared/{{ item|dirname }}" state=directory mode=0777
       with_items: "{{ shared }}"
+      file:
+        path: "{{ working_dir }}/shared/{{ item|dirname }}"
+        state: directory
+        owner: "{{ user }}"
+        group: www-data
 
     - name: create parameters.yml
       template:
         src: ../app/config/parameters.yml.j2
         dest: "{{ working_dir }}/shared/app/config/parameters.yml"
+        owner: "{{ user }}"
+        group: www-data
 
     - name: upload version
       unarchive:
         src: build/argonbook_{{ version }}.tar.gz
         dest: "{{ working_dir }}/releases/{{ release }}"
+        owner: "{{ user }}"
+        group: www-data
 
     - name: create shared symlink
+      with_items: "{{ shared }}"
       file:
         src: "{{ working_dir }}/shared/{{ item }}"
         path: "{{ working_dir }}/releases/{{ release }}/{{ item }}"
-        state: link
         force: yes
-      with_items: "{{ shared }}"
+        state: link
+        owner: "{{ user }}"
+        group: www-data
 
     - name: write version file
       copy:
         content: "{{ version }} at {{ lookup('pipe', 'date +%Y-%m-%d_%H:%M:%S') }}\n"
         dest: "{{ working_dir }}/releases/{{ release }}/version.txt"
+        owner: "{{ user }}"
+        group: www-data
 
     - name: create current symlink
       file:
         src: "{{ working_dir }}/releases/{{ release }}"
         path: "{{ working_dir }}/current"
         state: link
+        owner: "{{ user }}"
+        group: www-data
       notify:
         - restart nginx
         - restart php5-fpm
