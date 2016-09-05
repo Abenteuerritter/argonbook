@@ -9,6 +9,7 @@ Configuration variables and it's defaults.
 | `user`                |         | User to run as               |
 | `domain`              |         | Hostname                     |
 | `packages`            | `[]`    | List of packages to install  |
+| `php_timezone`        | `UTC`   | PHP timezone                 |
 | `php_memory_limit`    | `128M`  | Maximum PHP memory usage     |
 | `db_buffer_pool_size` | `128M`  | InnoDB buffer pool size      |
 
