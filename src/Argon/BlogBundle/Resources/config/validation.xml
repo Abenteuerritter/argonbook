@@ -12,7 +12,12 @@
             <constraint name="NotBlank" />
         </property>
         <property name="image">
-            <constraint name="Image" />
+            <constraint name="Image">
+                <option name="minWidth">64</option>
+                <option name="maxWidth">496</option>
+                <option name="minHeight">64</option>
+                <option name="maxHeight">256</option>
+            </constraint>
         </property>
     </class>
 </constraint-mapping>
