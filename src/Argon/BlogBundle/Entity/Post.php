@@ -203,6 +203,14 @@ class Post
     }
 
     /**
+     * Mark post as modified.
+     */
+    public function setModified()
+    {
+        $this->modifiedAt = new \DateTime;
+    }
+
+    /**
      * @return \DateTime
      */
     public function getModifiedAt()

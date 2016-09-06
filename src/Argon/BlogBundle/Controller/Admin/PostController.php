@@ -123,6 +123,8 @@ class PostController extends Controller
             if (isset($rawData['preview'])) {
                 $preview = $this->getMarkdownParser()->parse($post->getBody());
             } else {
+                $post->setModified();
+
                 $em = $this->getDoctrine()->getManager();
                 $em->flush();
 
