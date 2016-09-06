@@ -4,6 +4,8 @@ namespace Argon\BlogBundle\Entity;
 
 use Symfony\Component\HttpFoundation\File\File as Image;
 
+use Doctrine\Common\Collections\ArrayCollection;
+
 use Argon\UserBundle\Entity\Player as Creator;
 
 class Post
@@ -76,9 +78,19 @@ class Post
      */
     protected $allowedExtensions = ['png', 'jpg', 'jpeg', 'gif'/* deal with it*/];
 
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    protected $comments;
+
     public function __toString()
     {
         return $this->getTitle();
+    }
+
+    public function __construct()
+    {
+        $this->comments = new ArrayCollection;
     }
 
     /**
@@ -239,5 +251,13 @@ class Post
     public function isPublished()
     {
         return $this->getStatus() === self::STATUS_PUBLISHED;
+    }
+
+    /**
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getComments()
+    {
+        return $this->comments;
     }
 }

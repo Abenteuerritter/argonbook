@@ -32,5 +32,10 @@
         <field name="publishedAt" column="published_at" type="datetime" nullable="true">
             <gedmo:timestampable on="change" field="status" value="1"/>
         </field>
+        <one-to-many field="comments" target-entity="Argon\BlogBundle\Entity\Comment" mapped-by="post">
+            <order-by>
+                <order-by-field name="createdAt" direction="ASC" />
+            </order-by>
+        </one-to-many>
     </entity>
 </doctrine-mapping>
