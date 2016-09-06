@@ -3,6 +3,7 @@
 namespace Argon\BlogBundle\Entity;
 
 use Symfony\Component\HttpFoundation\File\File as Image;
+
 use Argon\UserBundle\Entity\Player as Creator;
 
 class Post
