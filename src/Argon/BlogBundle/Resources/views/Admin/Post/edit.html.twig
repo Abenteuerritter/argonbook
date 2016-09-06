@@ -16,6 +16,11 @@
 
 {% block content %}
 {% if preview|default(false) %}
+  {% if post.imagePath %}
+    <a href="{{ asset(post.imagePath) }}">
+      <img src="{{ asset(post.imagePath) }}" alt="{{ post.title }}">
+    </a>
+  {% endif %}
   {{ preview|raw }}
   <hr>
 {% endif %}
