@@ -67,6 +67,16 @@ $section-space: rem-calc(40);
   padding: rem-calc(10 16);
 }
 
+.pagination {
+  span {
+    display: inline-block;
+  }
+  .first, .previous, .page, .next, .last {
+    background-color: $white;
+    color: $black;
+  }
+}
+
 abbr {
   text-decoration: none;
 }
