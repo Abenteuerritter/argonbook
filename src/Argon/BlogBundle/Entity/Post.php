@@ -168,9 +168,8 @@ class Post
     {
         if ($this->imagePath === null) {
             foreach ($this->allowedExtensions as $ext) {
-                $path = __DIR__ . '/../../../../web/uploads/blog/' . $this->slug . '.' . $ext;
-                if (is_readable($path)) {
-                    $this->imagePath = $path;
+                if (is_readable(__DIR__ . '/../../../../web/uploads/blog/' . $this->slug . '.' . $ext)) {
+                    $this->imagePath = 'uploads/blog/' . $this->slug . '.' . $ext;
                 }
             }
         }

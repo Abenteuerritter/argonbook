@@ -33,9 +33,8 @@ class ImageUploaderListener
     {
         $image = $post->getImage();
 
-        var_dump($image);
         if ($image instanceof UploadedFile) {
-            $image->move(__DIR__ . '/../../../web/uploads/blog', $post->getSlug() . '.' . $image->guessExtension());
+            $image->move(__DIR__ . '/../../../../web/uploads/blog', $post->getSlug() . '.' . $image->guessExtension());
         }
     }
 }
