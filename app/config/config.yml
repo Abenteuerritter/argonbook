@@ -43,7 +43,6 @@ twig:
         project:      "%project%"
     form_themes:
         - "foundation_5_layout.html.twig"
-        - "VichUploaderBundle:Form:fields.html.twig"
 
 # Swiftmailer Configuration
 swiftmailer:
