@@ -70,6 +70,11 @@ class Post
      */
     protected $locale;
 
+    /**
+     * @var array|string[]
+     */
+    protected $allowedExtensions = ['png', 'jpg', 'jpeg', 'gif'/* deal with it*/];
+
     public function __toString()
     {
         return $this->getTitle();
@@ -160,6 +165,15 @@ class Post
      */
     public function getImagePath()
     {
+        if ($this->imagePath === null) {
+            foreach ($this->allowedExtensions as $ext) {
+                $path = __DIR__ . '/../../../../web/uploads/blog/' . $this->slug . '.' . $ext;
+                if (is_readable($path)) {
+                    $this->imagePath = $path;
+                }
+            }
+        }
+
         return $this->imagePath;
     }
 
