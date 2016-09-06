@@ -1,11 +1,11 @@
 <div class="media-object stack-for-small">
-  {#}
+  {% if post.imagePath %}
   <div class="media-object-section">
     <div class="thumbnail">
-      <img src= "assets/img/generic/rectangle-1.jpg">
+      <img src="{{ asset(post.imagePath) }}" alt="{{ post.title }}">
     </div>
   </div>
-  {#}
+  {% endif %}
   <div class="media-object-section main-section">
     <h4>{{ post.title }}</h4>
     <div class="post">{{ post_rendered|raw }}</div>
