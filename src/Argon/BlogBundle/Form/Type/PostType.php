@@ -18,7 +18,7 @@ class PostType extends AbstractType
         $builder
             ->add('title')
             ->add('body', null, ['attr' => ['data-help' => 'Post body supports Markdown format']])
-            ->add('image', FileType::class)
+            ->add('image', FileType::class, ['required' => false])
         ;
     }
 
