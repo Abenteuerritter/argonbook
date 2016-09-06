@@ -1,0 +1,14 @@
+<div class="comment media-object">
+  {#}
+  <div class="media-object-section">
+    <div class="thumbnail">
+      <img src="{{ asset(comment.creator.imagePath) }}" alt="{{ comment.creator.username }}">
+    </div>
+  </div>
+  {#}
+  <div class="media-object-section main-section">
+    <p class="data">{{ comment.body }}<br>
+      <small class="meta">{{ "blog.comment.footer"|trans({"%creator%": comment.creator, "%created%": comment.createdAt|date}) }}</small>
+    </p>
+  </div>
+</div>

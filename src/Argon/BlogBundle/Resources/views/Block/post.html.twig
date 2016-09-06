@@ -8,7 +8,8 @@
   {% endif %}
   <div class="media-object-section main-section">
     <h4>{{ post.title }}</h4>
-    <div class="post">{{ post_rendered|raw }}</div>
-    <small class="meta">{{ "blog.footer"|trans({"%creator%": post.creator, "%published%": post.publishedAt|date}) }}</small>
+    <div class="post">{{ post_rendered|raw }}
+      <small class="meta">{{ "blog.footer"|trans({"%creator%": post.creator, "%published%": post.publishedAt|date}) }}</small>
+    </div>
   </div>
 </div>

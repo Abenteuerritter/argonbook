@@ -4,6 +4,9 @@ blog:
   latest: Latest posts
   footer: "%creator% on %published%"
 
+  comment:
+    footer: "%creator% on %created%"
+
 admin:
   blog:
     blog:            Blog
@@ -19,6 +22,7 @@ admin:
     empty:           There are no posts in the system yet.
     new:             New Post
     publish:         Publish
+    comments:        Comments
     create:          Create
     edit:            Edit
     edit_submit:     Edit
@@ -26,3 +30,6 @@ admin:
     created:         Post has been created.
     published:       Post has been published.
     updated:         Post has been updated.
+
+    comment:
+      comment:      Comments

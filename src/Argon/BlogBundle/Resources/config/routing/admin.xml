@@ -25,4 +25,8 @@
     <route id="admin_blog_update" path="/blog/{slug}/update" methods="POST">
         <default key="_controller">ArgonBlogBundle:Admin\Post:edit</default>
     </route>
+
+    <route id="admin_blog_comment" path="/blog/{slug}/comments" methods="GET">
+        <default key="_controller">ArgonBlogBundle:Admin\Comment:index</default>
+    </route>
 </routes>

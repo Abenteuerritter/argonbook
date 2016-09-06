@@ -5,6 +5,7 @@ namespace Argon\BlogBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 use Argon\BlogBundle\Entity\Post;
+use Argon\BlogBundle\Entity\Comment;
 
 class BlockController extends Controller
 {
@@ -23,6 +24,13 @@ class BlockController extends Controller
             'post_rendered' => $this->getMarkdownParser()->parse($post->getBody()),
             'post'          => $post,
             'position'      => $position,
+        ));
+    }
+
+    public function commentAction(Comment $comment)
+    {
+        return $this->render('ArgonBlogBundle:Block:comment.html.twig', array(
+            'comment' => $comment,
         ));
     }
 
