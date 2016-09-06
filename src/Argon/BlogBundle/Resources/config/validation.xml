@@ -5,9 +5,6 @@
                         http://symfony.com/schema/dic/constraint-mapping/constraint-mapping-1.0.xsd">
 
     <class name="Argon\BlogBundle\Entity\Post">
-        <property name="slug">
-            <constraint name="NotBlank" />
-        </property>
         <property name="title">
             <constraint name="NotBlank" />
         </property>
