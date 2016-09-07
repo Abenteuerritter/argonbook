@@ -39,10 +39,11 @@ class BlockController extends Controller
         ));
     }
 
-    public function commentAction(Comment $comment)
+    public function commentAction(Comment $comment, $position = null)
     {
         return $this->render('ArgonBlogBundle:Block:comment.html.twig', array(
-            'comment' => $comment,
+            'comment'  => $comment,
+            'position' => $position,
         ));
     }
 

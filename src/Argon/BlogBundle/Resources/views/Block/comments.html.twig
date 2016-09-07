@@ -1,7 +1,7 @@
 {% if entities|length %}
   <h4>{{ "blog.comment.latest"|trans }}</h4>
   {% for comment in entities %}
-    {{ render(controller("ArgonBlogBundle:Block:comment", {"comment": comment})) }}
+    {{ render(controller("ArgonBlogBundle:Block:comment", {"comment": comment, "position": loop.index})) }}
   {% endfor %}
   {{ knp_pagination_render(entities) }}
 {% endif %}
