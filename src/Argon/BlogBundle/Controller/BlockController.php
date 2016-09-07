@@ -24,6 +24,17 @@ class BlockController extends Controller
             'post_rendered' => $this->getMarkdownParser()->parse($post->getBody()),
             'post'          => $post,
             'position'      => $position,
+            'show_links'    => $position !== null,
+        ));
+    }
+
+    public function commentsAction(Post $post, $page = 1)
+    {
+        $pagination = $this->get('knp_paginator')->paginate($post->getComments(), $page);
+
+        return $this->render('ArgonBlogBundle:Block:comments.html.twig', array(
+            'post'     => $post,
+            'entities' => $pagination,
         ));
     }
 

@@ -8,8 +8,16 @@
   {% endif %}
   <div class="media-object-section main-section">
     <h4>{{ post.title }}</h4>
-    <div class="post">{{ post_rendered|raw }}
+    <div class="post">{{ post_rendered|raw }}</div>
+    <div class="meta">
       <small class="meta">{{ "blog.footer"|trans({"%creator%": post.creator, "%published%": post.publishedAt|date}) }}</small>
+      {% if show_links is defined and show_links %}
+        <div class="small button-group">
+          <a href="{{ path('blog_post', {"slug": post.slug}) }}" class="button">{{ "blog.comments"|trans }}
+           <span class="secondary badge">{{ post.comments|length }}</span>
+          </a>
+        </div>
+      {% endif %}
     </div>
   </div>
 </div>

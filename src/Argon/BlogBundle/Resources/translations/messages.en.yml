@@ -1,10 +1,13 @@
 ---
 
 blog:
-  latest: Latest posts
-  footer: "%creator% on %published%"
+  blog:     Blog
+  latest:   Latest posts
+  footer:   "%creator% on %published%"
 
+  comments: Comments
   comment:
+    latest: Latest comments
     footer: "%creator% on %created%"
 
 admin:

@@ -1,0 +1,9 @@
+{% extends "ArgonWebBundle::layout.html.twig" %}
+{% set active = "blog" %}
+
+{% block title %}{{ parent() }} - {{ "blog.blog"|trans }} - {{ post }}{% endblock %}
+
+{% block content %}
+  {{ render(controller("ArgonBlogBundle:Block:post", {"post": post})) }}
+  {{ render(controller("ArgonBlogBundle:Block:comments", {"post": post, "page": app.request.request.getInt("page", 1)})) }}
+{% endblock %}
