@@ -21,10 +21,11 @@ class BlockController extends Controller
     public function postAction(Post $post, $position = null)
     {
         return $this->render('ArgonBlogBundle:Block:post.html.twig', array(
-            'post_rendered' => $this->getMarkdownParser()->parse($post->getBody()),
-            'post'          => $post,
-            'position'      => $position,
-            'show_links'    => $position !== null,
+            'post_rendered'  => $this->getMarkdownParser()->parse($post->getBody()),
+            'post'           => $post,
+            'position'       => $position,
+            'show_big_title' => $position === null,
+            'show_links'     => $position !== null,
         ));
     }
 
