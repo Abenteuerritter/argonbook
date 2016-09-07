@@ -64,16 +64,16 @@ $section-space: rem-calc(40);
 
 .comment {
   border: 1px solid darken($body-font-color, 50%);
-  padding: rem-calc(10 16);
+  padding: rem-calc(16 0);
 }
 
 .pagination {
+  background-color: map-get($foundation-palette, secondary);
+  padding: rem-calc(1 3);
   span {
     display: inline-block;
-  }
-  .first, .previous, .page, .next, .last {
-    background-color: $white;
-    color: $black;
+    font-size: 80%;
+    font-family: monospace;
   }
 }
 
