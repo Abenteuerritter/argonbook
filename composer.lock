@@ -1052,12 +1052,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/FriendsOfSymfony/FOSUserBundle.git",
-                "reference": "b7b93061dbaccec6acbedab7f200869e20909861"
+                "reference": "af6bc6bf4ec303be3a82e1f64b0e6ac9e8ff00c7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/FriendsOfSymfony/FOSUserBundle/zipball/b7b93061dbaccec6acbedab7f200869e20909861",
-                "reference": "b7b93061dbaccec6acbedab7f200869e20909861",
+                "url": "https://api.github.com/repos/FriendsOfSymfony/FOSUserBundle/zipball/af6bc6bf4ec303be3a82e1f64b0e6ac9e8ff00c7",
+                "reference": "af6bc6bf4ec303be3a82e1f64b0e6ac9e8ff00c7",
                 "shasum": ""
             },
             "require": {
@@ -1116,7 +1116,7 @@
             "keywords": [
                 "User management"
             ],
-            "time": "2016-09-02 11:25:50"
+            "time": "2016-09-07 09:22:55"
         },
         {
             "name": "gedmo/doctrine-extensions",
@@ -1642,16 +1642,16 @@
         },
         {
             "name": "sensio/distribution-bundle",
-            "version": "v5.0.8",
+            "version": "v5.0.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sensiolabs/SensioDistributionBundle.git",
-                "reference": "f8ace5c71ee309492b027ef71215577f5a52b4ea"
+                "reference": "e5e0d8d06b07864b2752bd865537b0817edf4c5a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sensiolabs/SensioDistributionBundle/zipball/f8ace5c71ee309492b027ef71215577f5a52b4ea",
-                "reference": "f8ace5c71ee309492b027ef71215577f5a52b4ea",
+                "url": "https://api.github.com/repos/sensiolabs/SensioDistributionBundle/zipball/e5e0d8d06b07864b2752bd865537b0817edf4c5a",
+                "reference": "e5e0d8d06b07864b2752bd865537b0817edf4c5a",
                 "shasum": ""
             },
             "require": {
@@ -1690,7 +1690,7 @@
                 "configuration",
                 "distribution"
             ],
-            "time": "2016-08-17 18:16:49"
+            "time": "2016-09-06 01:05:01"
         },
         {
             "name": "sensio/framework-extra-bundle",
