@@ -1,7 +1,7 @@
 ---
 
 - name: add php repository
-  apt_repository: repo=ppa:ondrej/php5 update_cache=yes state=present
+  apt_repository: repo=ppa:ondrej/php update_cache=yes state=present
 
 - name: install php
   with_items:
