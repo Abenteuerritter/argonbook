@@ -6,16 +6,21 @@
     dest: /usr/local/bin/composer
     mode: 0755
 
-- name: nodejs key
-  apt_key:
-    url: https://deb.nodesource.com/gpgkey/nodesource.gpg.key
-    state: present
+#- name: nodejs key
+#  apt_key:
+#    url: https://deb.nodesource.com/gpgkey/nodesource.gpg.key
+#    state: present
 
-- name: nodejs repository
-  apt_repository:
-    repo: deb https://deb.nodesource.com/node_6.x {{ ansible_distribution_release }} main
-    update_cache: yes
-    state: present
+#- name: nodejs repository
+#  apt_repository:
+#    repo: deb https://deb.nodesource.com/node_6.x {{ ansible_distribution_release }} main
+#    update_cache: yes
+#    state: present
+
+# ^^ https://github.com/ansible/ansible/issues/12161
+
+- name: setup nodejs
+  shell: curl -sL https://deb.nodesource.com/setup_6.x | bash -
 
 - name: install nodejs
   apt: name=nodejs state=latest
