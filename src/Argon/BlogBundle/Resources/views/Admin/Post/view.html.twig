@@ -50,7 +50,9 @@
   {% if not post.isPublished %}
     <a href="{{ path("admin_blog_publish", {"slug": post.slug}) }}" class="button">{{ "admin.blog.publish"|trans }}</a>
   {% else %}
-    <a href="{{ path("admin_blog_comment", {"slug": post.slug}) }}" class="button"><span class="secondary badge">{{ post.comments|length }}</span> {{ "admin.blog.comments"|trans }}</a>
+    <a href="{{ path("admin_blog_comment", {"slug": post.slug}) }}" class="button">{{ "admin.blog.comments"|trans }}
+      <span class="secondary badge">{{ post.comments|length }}</span>
+    </a>
   {% endif %}
   <a href="{{ path("admin_blog_edit", {"slug": post.slug}) }}" class="button">{{ "admin.blog.edit"|trans }}</a>
 </div>
