@@ -9,23 +9,13 @@
     <li><a href="{{ path("admin_dashboard") }}">{{ "admin.dashboard.title"|trans }}</a></li>
     <li><a href="{{ path("admin_blog") }}">{{ "admin.blog.blog"|trans }}</a></li>
     <li><a href="{{ path("admin_blog_view", {"slug": post.slug}) }}">{{ post }}</a></li>
-    <li>{{ "admin.blog.comment.comment"|trans }}</li>
+    <li>{{ comment }}</li>
+    <li>{{ "admin.blog.comment.delete"|trans }}</li>
   </ul>
 </nav>
+<p class="warning">{{ "admin.blog.comment.delete_confirm"|trans({"%comment%": comment}) }}</p>
 {% endblock %}
 
 {% block content %}
-  {% for comment in entities %}
-    <div class="row">
-      <div class="columns">
-        {{ render(controller("ArgonBlogBundle:Block:comment", {"comment": comment})) }}
-      </div>
-      <div class="small-2 columns">
-        <div class="button-group">
-          <a href="{{ path("admin_blog_comment_delete", {"slug": comment.post.slug, "id": comment.id}) }}" class="alert button">{{ "admin.blog.comment.delete"|trans }}</a>
-        </div>
-      </div>
-    </div>
-  {% endfor %}
-  {{ knp_pagination_render(entities) }}
+{{ form(form) }}
 {% endblock %}
