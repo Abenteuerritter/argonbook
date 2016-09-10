@@ -14,10 +14,10 @@
     {% endif %}
     <main class="user">
       {% block fos_user_content %}{% endblock %}
+      <div class="outside">
+        <a href="{{ path("homepage") }}">{{ "go_back"|trans }}</a>
+      </div>
     </main>
-    <footer>
-      <a href="{{ path("homepage") }}" class="expanded button">{{ "go_back"|trans }}</a>
-    </footer>
   </div>
 </div>
 {% endblock %}

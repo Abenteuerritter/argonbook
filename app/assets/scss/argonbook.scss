@@ -50,6 +50,14 @@ $section-space: rem-calc(40);
   label {
     color: $black;
   }
+  position: relative;
+  .outside {
+    position: absolute;
+    bottom: - rem-calc(28);
+    right: $section-space;
+    a { color: $white; }
+    a:hover { color: darker($white 40%) }
+  }
 }
 
 .skills {
