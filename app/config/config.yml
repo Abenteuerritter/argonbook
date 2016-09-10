@@ -104,3 +104,6 @@ fos_user:
     from_email:
         address:     no-reply@argonbook.eu
         sender_name: Argonbook
+    profile:
+        form:
+            type:    Argon\UserBundle\Form\Type\ProfileFormType
