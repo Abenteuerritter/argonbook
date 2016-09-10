@@ -29,6 +29,10 @@ registration:
   submit: Register
 
 change_password:
-    submit: Change password
+  submit: Change password
+
+profile:
+  edit:
+    submit: Edit preferences
 
 go_back: Back
