@@ -28,4 +28,7 @@ resetting:
 registration:
   submit: Register
 
+change_password:
+    submit: Change password
+
 go_back: Back

@@ -26,6 +26,8 @@
     <p>
       <input type="submit" class="button expanded" value="{{ "security.login.submit"|trans }}">
     </p>
-    <p class="text-center"><a href="{{ path("fos_user_resetting_request") }}">{{ "security.login.reset_password"|trans }}</a></p>
+    <p class="text-center">
+      <a href="{{ path("fos_user_resetting_request") }}">{{ "security.login.reset_password"|trans }}</a>
+    </p>
   </form>
 {% endblock fos_user_content %}

@@ -1,0 +1,19 @@
+<div class="profile media-object">
+  {#}
+  <div class="media-object-section">
+    <div class="thumbnail">
+      <img src="{{ asset(user.imagePath) }}" alt="{{ user.username }}">
+    </div>
+  </div>
+  {#}
+  <div class="media-object-section main-section">
+    <h4>{{ user.name|default(user.username) }}
+      {% if user.name %}
+        <small>{{ user.username }}</small>
+      {% endif %}
+    </h4>
+  </div>
+</div>
+<p class="text-center">
+  <a href="{{ path("fos_user_change_password") }}">{{ "change_password.submit"|trans }}</a>
+</p>
