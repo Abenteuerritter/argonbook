@@ -10,10 +10,10 @@
             <generator strategy="AUTO" />
         </id>
         <many-to-one field="post" target-entity="Argon\BlogBundle\Entity\Post" inversed-by="comments" fetch="EXTRA_LAZY">
-            <join-column name="post_id" referenced-column-name="id" />
+            <join-column name="post_id" referenced-column-name="id" nullable="false" />
         </many-to-one>
         <many-to-one field="creator" target-entity="\Argon\UserBundle\Entity\Player">
-            <join-column name="creator_id" referenced-column-name="id" />
+            <join-column name="creator_id" referenced-column-name="id" nullable="false" />
         </many-to-one>
         <field name="body" column="body" type="text" />
         <field name="createdAt" column="created_at" type="datetime">

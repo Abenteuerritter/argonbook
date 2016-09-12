@@ -11,7 +11,7 @@
             <generator strategy="AUTO" />
         </id>
         <many-to-one field="creator" target-entity="\Argon\UserBundle\Entity\Player">
-            <join-column name="creator_id" referenced-column-name="id" />
+            <join-column name="creator_id" referenced-column-name="id" nullable="false" />
         </many-to-one>
         <field name="status" column="status" type="integer" />
         <field name="slug" type="string" length="90" unique="true">
