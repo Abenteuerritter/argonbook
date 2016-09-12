@@ -11,5 +11,9 @@
         <service id="argon_blog.form.post_publish" class="Argon\BlogBundle\Form\Type\PostPublishType">
             <tag name="form.type" />
         </service>
+
+        <service id="argon_blog.form.comment" class="Argon\BlogBundle\Form\Type\CommentType">
+            <tag name="form.type" />
+        </service>
     </services>
 </container>

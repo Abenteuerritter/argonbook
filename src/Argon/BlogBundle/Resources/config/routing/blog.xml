@@ -7,4 +7,7 @@
     <route id="blog_post" path="/blog/{slug}" methods="GET">
         <default key="_controller">ArgonBlogBundle:Post:view</default>
     </route>
+    <route id="blog_comment_create" path="/blog/{slug}/comment" methods="GET,POST">
+        <default key="_controller">ArgonBlogBundle:Comment:create</default>
+    </route>
 </routes>

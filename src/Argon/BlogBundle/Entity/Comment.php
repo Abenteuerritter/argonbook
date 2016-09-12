@@ -44,9 +44,10 @@ class Comment
     /**
      * @param \Argon\BlogBundle\Entity\Post $post
      */
-    public function __consutrct(Post $post)
+    public function __construct(Post $post, Creator $creator)
     {
         $this->post = $post;
+        $this->creator = $creator;
     }
 
     /**
@@ -63,14 +64,6 @@ class Comment
     public function getPost()
     {
         return $this->post;
-    }
-
-    /**
-     * @param \Argon\UserBundle\Entity\Player $creator
-     */
-    public function setCreator(Creator $creator)
-    {
-        $this->creator = $creator;
     }
 
     /**

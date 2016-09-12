@@ -5,6 +5,10 @@
                         http://symfony.com/schema/dic/constraint-mapping/constraint-mapping-1.0.xsd">
 
     <class name="Argon\BlogBundle\Entity\Post">
+        <property name="creator">
+            <constraint name="NotNull" />
+            <constraint name="Valid" />
+        </property>
         <property name="title">
             <constraint name="NotBlank" />
         </property>
@@ -18,6 +22,19 @@
                 <option name="minHeight">64</option>
                 <option name="maxHeight">256</option>
             </constraint>
+        </property>
+    </class>
+    <class name="Argon\BlogBundle\Entity\Comment">
+        <property name="post">
+            <constraint name="NotNull" />
+            <constraint name="Valid" />
+        </property>
+        <property name="creator">
+            <constraint name="NotNull" />
+            <constraint name="Valid" />
+        </property>
+        <property name="body">
+            <constraint name="NotBlank" />
         </property>
     </class>
 </constraint-mapping>
