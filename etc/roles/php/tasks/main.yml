@@ -1,7 +1,19 @@
 ---
 
-- name: add php repository
+- name: add ondrej php repository
+  when: ansible_distribution == 'Ubuntu'
   apt_repository: repo=ppa:ondrej/php update_cache=yes state=present
+
+- name: add dotdeb repository key
+  when: ansible_distribution == 'Debian'
+  apt_key: url=https://www.dotdeb.org/dotdeb.gpg state=present
+
+- name: add dotdeb repository
+  when: ansible_distribution == 'Debian'
+  with_items:
+    - deb http://packages.dotdeb.org {{ ansible_distribution_release }} all
+    - deb-src http://packages.dotdeb.org {{ ansible_distribution_release }} all
+  apt_repository: repo="{{ item }}" update_cache=yes state=present
 
 - name: install php
   with_items:
