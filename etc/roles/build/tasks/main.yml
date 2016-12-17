@@ -21,6 +21,8 @@
 
 - name: setup nodejs
   shell: curl -sL https://deb.nodesource.com/setup_6.x | bash -
+  args:
+    warn: no
 
 - name: install nodejs
   apt: name=nodejs state=latest
