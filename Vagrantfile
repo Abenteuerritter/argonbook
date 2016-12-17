@@ -2,7 +2,7 @@
 # vi: set ft=ruby sw=2 ts=2 :
 
 Vagrant.configure("2") do |config|
-  config.vm.box = "ubuntu/trusty64"
+  config.vm.box = "debian/jessie64"
 
   config.vm.define "argonbook.local" do |dev|
     dev.vm.hostname = "argonbook.local"
