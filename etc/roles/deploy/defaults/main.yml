@@ -4,4 +4,4 @@
 working_dir: /srv/www/argonbook.eu
 
 # Max releases to keep
-keep_releases: 5
+keep_releases: 2
