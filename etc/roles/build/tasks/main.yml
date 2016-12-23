@@ -1,5 +1,8 @@
 ---
 
+- name: install git
+  apt: name=git state=latest
+
 - name: install composer
   get_url:
     url: https://getcomposer.org/composer.phar
