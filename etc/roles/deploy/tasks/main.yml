@@ -45,7 +45,7 @@
       with_items: "{{ shared }}"
       file:
         src: "{{ working_dir }}/shared/{{ item }}"
-        path: "{{ working_dir }}/releases/{{ release }}/{{ item }}"
+        path: "{{ working_dir }}/releases/{{ release }}/{{ item[:-1] if item[-1] == '/' else item }}"
         force: yes
         state: link
         owner: "{{ user }}"
