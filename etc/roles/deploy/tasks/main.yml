@@ -3,7 +3,7 @@
 # Retrieve version from local if not found
 - name: get lastest version
   when: version is not defined
-  set_fact: version="{{ (lookup('file', '../app/config/config.yml')|from_yaml).parameters.project.version }}"
+  set_fact: version="v{{ (lookup('file', '../app/config/config.yml')|from_yaml).parameters.project.version }}"
 
 # Set realese to current date if not found
 - name: set release
