@@ -19,4 +19,5 @@
 - hosts: build
   become: yes
   roles:
+    - { role: php, php_fpm: no }
     - { role: build }
