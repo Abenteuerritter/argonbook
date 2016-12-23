@@ -33,6 +33,8 @@
 
 - name: build version
   command: tar -cpzf "{{ build_dir }}/argonbook_{{ version }}.tar.gz" -C "{{ build_dir }}" app/ bin/ src/ var/ vendor/ web/
+  args:
+    warn: no
 
 - name: download version
   fetch:
