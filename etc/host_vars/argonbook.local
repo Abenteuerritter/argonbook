@@ -1,0 +1,7 @@
+---
+
+user                : vagrant
+domain              : argonbook.local
+db                  : argonbook
+db_buffer_pool_size : 392M
+php_memory_limit    : 392M
