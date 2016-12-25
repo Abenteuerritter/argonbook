@@ -3,3 +3,5 @@
 user                : argonbook
 domain              : argonbook.eu
 db                  : argonbook
+db_buffer_pool_size : 768M
+php_memory_limit    : 768M
