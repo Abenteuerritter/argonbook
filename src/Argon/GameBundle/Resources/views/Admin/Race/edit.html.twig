@@ -1,0 +1,19 @@
+{% extends "ArgonWebBundle::layout_admin.html.twig" %}
+{% set active = "race" %}
+
+{% block title %}{{ parent() }} - {{ "admin.race.races"|trans }} - {{ race }} - {{ "admin.race.edit"|trans }}{% endblock %}
+
+{% block top %}
+<nav aria-label="{{ "admin.you_are_here"|trans }}" role="navigation">
+  <ul class="breadcrumbs">
+    <li><a href="{{ path("admin_dashboard") }}">{{ "admin.dashboard.title"|trans }}</a></li>
+    <li><a href="{{ path("admin_race") }}">{{ "admin.race.races"|trans }}</a></li>
+    <li>{{ race.slug }}</li>
+    <li><a href="{{ path("admin_race_edit", {"slug": race.slug}) }}">{{ "admin.race.edit"|trans }}</a></li>
+  </ul>
+</nav>
+{% endblock %}
+
+{% block content %}
+{{ form(form) }}
+{% endblock %}

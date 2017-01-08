@@ -92,11 +92,15 @@ admin:
     empty:  This character has no skills.
 
   race:
-    races:      Races
-    name:       Name
-    name_empty: (no translation)
-    modifier:   Modifier
-    empty:      There are no races in the system yet.
+    races:       Races
+    name:        Name
+    name_empty:  (no translation)
+    modifier:    Modifier
+    genres:      Genres
+    empty:       There are no races in the system yet.
+    edit:        Edit
+    edit_submit: Edit
+    updated:     Race updated.
 
   skill:
     skills:        Skills

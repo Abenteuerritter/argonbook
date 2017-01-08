@@ -29,5 +29,18 @@
     <label>{{ "admin.race.modifier"|trans }}</label>
   </dt>
   <dd>{{ entity.modifier }}</dd>
+  <dt>
+    <label>{{ "admin.race.genres"|trans }}</label>
+  </dt>
+  <dd>
+    <div class="genres">
+    {% for genre in entity.genres %}
+      <span class="label {{ genre|lower }}">{{ ("genres." ~ genre)|trans }}</span>
+    {% endfor %}
+    </div>
+  </dd>
 </dl>
+<div class="button-group">
+  <a href="{{ path("admin_race_edit", {"slug": entity.slug}) }}" class="button">{{ "admin.race.edit"|trans }}</a>
+</div>
 {% endblock %}

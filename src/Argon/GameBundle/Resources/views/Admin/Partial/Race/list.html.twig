@@ -2,16 +2,30 @@
   <thead>
     <tr>
       <th>{{ "admin.race.name"|trans }}</th>
+      <th>{{ "admin.race.genres"|trans }}</th>
+      <th>&nbsp;</th>
     </tr>
   </thead>
   <tbody>
   {% for race in entities %}
     <tr>
       <td><a href="{{ path("admin_race_view", {"slug": race.slug}) }}">{{ race }}</a></td>
+      <td>
+        <div class="genres">
+        {% for genre in race.genres %}
+          <span class="label {{ genre|lower }}">{{ ("genres." ~ genre)|trans }}</span>
+        {% endfor %}
+        </div>
+      </td>
+      <td>
+        <div class="button-group">
+          <a href="{{ path("admin_race_edit", {"slug": race.slug}) }}" class="button">{{ "admin.race.edit"|trans }}</a>
+        </div>
+      </td>
     </tr>
   {% else %}
     <tr class="warning">
-      <td colspan="1">{{ "admin.race.empty"|trans }}</td>
+      <td colspan="2">{{ "admin.race.empty"|trans }}</td>
     </tr>
   {% endfor %}
   </tbody>

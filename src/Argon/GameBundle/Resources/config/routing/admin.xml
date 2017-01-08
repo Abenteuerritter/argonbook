@@ -32,6 +32,12 @@
     <route id="admin_race_view" path="/race/{slug}" methods="GET">
         <default key="_controller">ArgonGameBundle:Admin\Race:view</default>
     </route>
+    <route id="admin_race_edit" path="/race/{slug}/edit" methods="GET">
+        <default key="_controller">ArgonGameBundle:Admin\Race:edit</default>
+    </route>
+    <route id="admin_race_edit_update" path="/race/{slug}/edit" methods="POST">
+        <default key="_controller">ArgonGameBundle:Admin\Race:edit</default>
+    </route>
 
     <route id="admin_skill" path="/skills" methods="GET">
         <default key="_controller">ArgonGameBundle:Admin\Skill:index</default>
