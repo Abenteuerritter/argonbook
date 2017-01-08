@@ -90,6 +90,7 @@ class CharacterController extends Controller
         }
 
         $form = $this->createForm(CharacterType::class, $character, array(
+            'game'   => $game,
             'action' => $this->generateUrl('character_create', array('game' => $gameName)),
             'method' => 'POST',
         ));

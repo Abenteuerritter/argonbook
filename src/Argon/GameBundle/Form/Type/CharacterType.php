@@ -9,6 +9,10 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
+use Doctrine\ORM\EntityRepository;
+
+use Argon\GameBundle\Provider\GameInterface;
+
 class CharacterType extends AbstractType
 {
     /**
@@ -23,7 +27,16 @@ class CharacterType extends AbstractType
                 'entry_type' => CharacterAbilityType::class,
             ))
             ->add('race', null, array(
-                'placeholder' => 'character.race_placeholder',
+                'placeholder'   => 'character.race_placeholder',
+                'query_builder' => function(EntityRepository $repository) use ($options) {
+                    $queryBuilder = $repository->createQueryBuilder('r');
+                    if (isset($options['game']) && $options['game'] instanceof GameInterface) {
+                        $queryBuilder->where(
+                            $queryBuilder->expr()->in('r.genres', $options['game']->getGenres())
+                        );
+                    }
+                    return $queryBuilder;
+                },
             ))
             ->add('story', null, array(
                 'required' => false,
@@ -51,6 +64,9 @@ class CharacterType extends AbstractType
         $resolver->setDefaults(array(
             'data_class' => 'Argon\\GameBundle\\Entity\\Character',
             'intention'  => 'character',
+
+            // Which game does this character belong to?
+            'game' => null,
         ));
     }
 }

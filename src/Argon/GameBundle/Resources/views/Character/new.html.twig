@@ -11,6 +11,11 @@
     {% if game.info.description[app.request.locale] is defined %}
       <p>{{ game.info.description[app.request.locale] }}</p>
     {% endif %}
+    <div class="genres">
+    {% for genre in game.genres %}
+      <span class="label {{ genre|lower }}">{{ ("genres." ~ genre)|trans }}</span>
+    {% endfor %}
+    </div>
   </div>
   <div class="large-8 columns">{{ form(form) }}</div>
 </div>
