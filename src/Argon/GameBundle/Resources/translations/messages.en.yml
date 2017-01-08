@@ -38,6 +38,11 @@ character_ability.types.CON: Constitution
 character_ability.types.INT: Intelligence
 character_ability.types.WIS: Wisdom
 
+genres.FAN: Fantasy
+genres.MID: Middle-Age
+genres.VAM: Vampires
+genres.SFI: Science Fiction
+
 character_experience:
   at:     Date
   reason: Reason
