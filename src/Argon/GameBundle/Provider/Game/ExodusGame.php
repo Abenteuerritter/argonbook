@@ -32,6 +32,14 @@ class ExodusGame implements GameInterface
     /**
      * @return array
      */
+    public function getGenres()
+    {
+        return array('MID');
+    }
+
+    /**
+     * @return array
+     */
     public function getAbilities()
     {
         return array('STR', 'DEX', 'WIS');

@@ -17,5 +17,6 @@
             <gedmo:translatable />
         </field>
         <field name="modifier" column="modifier" type="integer" />
+        <field name="genres" column="genres" type="simple_array" />
     </entity>
 </doctrine-mapping>

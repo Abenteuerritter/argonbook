@@ -17,6 +17,11 @@ interface GameInterface
     /**
      * @return array
      */
+    public function getGenres();
+
+    /**
+     * @return array
+     */
     public function getAbilities();
 
     /**

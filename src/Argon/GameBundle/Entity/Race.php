@@ -27,6 +27,11 @@ class Race implements Translatable
     protected $modifier;
 
     /**
+     * @var array
+     */
+    protected $genres = array();
+
+    /**
      * @var string
      */
     protected $locale;
@@ -74,6 +79,30 @@ class Race implements Translatable
     public function getModifier()
     {
         return $this->modifier;
+    }
+
+    /**
+     * @param string $genre
+     */
+    public function addGenre($genre)
+    {
+        $this->genres[] = $genre;
+    }
+
+    /**
+     * @param array $genres
+     */
+    public function setGenres($genres)
+    {
+        $this->genres = $genres;
+    }
+
+    /**
+     * @return array
+     */
+    public function getGenres()
+    {
+        return $this->genres;
     }
 
     /**
