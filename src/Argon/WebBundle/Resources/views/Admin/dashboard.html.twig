@@ -12,11 +12,21 @@
 {% endblock %}
 
 {% block content %}
-<article>
-  <h3>{{ "admin.dashboard.title"|trans }}</h3>
-  <dl>
-    <dt>{{ "admin.dashboard.version"|trans }}</dt>
-    <dd>{{ project.version }}</dd>
-  </dl>
-</article>
+<div class="row">
+  <div class="small-9 columns">
+    <h3>{{ "admin.dashboard.whatsnew"|trans }}</h3>
+    <h5>1.22</h5>
+    <ul>
+      <li>Games and races now have genres,</li>
+      <li>On new game, only races from the game's genres are shown.</li>
+    </ul>
+  </div>
+  <div class="small-3 columns">
+    <h3>{{ "admin.dashboard.title"|trans }}</h3>
+    <dl>
+      <dt>{{ "admin.dashboard.version"|trans }}</dt>
+      <dd>{{ project.version }}</dd>
+    </dl>
+  </div>
+</div>
 {% endblock %}

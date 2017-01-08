@@ -23,5 +23,6 @@ admin:
     skill:     Skills
 
   dashboard:
-    title:   Dashboard
-    version: Version
+    title:    Dashboard
+    whatsnew: What's new?
+    version:  Version
