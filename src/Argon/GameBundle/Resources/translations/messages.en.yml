@@ -20,6 +20,7 @@ character:
   story:                Story
   story_draft:          Is the story only a draft?
   story_placeholder:    What do your character know?
+  story_confirmed:      This story has been confirmed.
   story_not_confirmed: |
       Your story is not confirmed. Write something for the organizators to
       check and assign you new experience points.
