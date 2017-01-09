@@ -9,13 +9,17 @@
   {% for character in entities %}
     <tr>
       <td>
-        {{ character.game.info.fullname }} / <a href="{{ path("character_view", {"slug": character.slug}) }}">{{ character.name }}</a> ({{ character.skillsExperience }}/{{ character.experience }})<br>
+        {{ render(controller("ArgonGameBundle:Block:characterNick", {"character": character})) }}
+        <br>
         {{ character.race }}
       </td>
       <td>
         <div class="button-group align-right">
           <a href="{{ path("character_view", {"slug": character.slug, "_switch": character.slug}) }}" class="warning button">{{ "character.switch"|trans }}</a>
-          <a href="{{ path("character_skills", {"slug": character.slug}) }}" class="button">{{ "character.skills"|trans }}</a>
+          <a href="{{ path("character_skills", {"slug": character.slug}) }}" class="button">
+            <span class="secondary badge">{{ character.skills|length }}</span>
+            <span>{{ "character.skills"|trans }}</span>
+          </a>
           <a href="{{ path("character_edit", {"slug": character.slug}) }}" class="button">{{ "character.edit"|trans }}</a>
         </div>
       </td>

@@ -20,6 +20,7 @@ class ExodusGame implements GameInterface
     public function getInfo()
     {
         return array(
+            'callsign' => 'E',
             'fullname' => 'Exodus',
             'category' => 'LARP',
 

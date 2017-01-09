@@ -1,0 +1,27 @@
+<span class="label">{{ character.game.info.callsign }}</span>
+
+{% spaceless %}
+  {% if showPlayer %}
+    <abbr title="{{ character.player.name|default(character.player.username) }}">{{ character.player.username }}</abbr>
+    <span>:</span>
+  {% endif %}
+  <a href="{{ path("character_view", {"slug": character.slug}) }}">{{ character.name }}</a>
+{% endspaceless %}
+
+{% if showStats %}
+  (
+  {% if linkExperience %}
+    <a href="{{ linkExperience }}">
+      <span class="fi-graph-trend"></span>
+      <span class="experience">{{ character.skillsExperience }}/{{ character.experience }}</span>
+    </a>
+  {% endif %}
+
+  {% if linkSkills %}
+    <a href="{{ linkSkills }}">
+      <span class="fi-wrench"></span>
+      <span class="skills">{{ character.skills|length }}</span>
+    </a>
+  {% endif %}
+  )
+{% endif %}
