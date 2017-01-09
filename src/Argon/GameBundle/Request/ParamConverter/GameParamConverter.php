@@ -52,6 +52,6 @@ class GameParamConverter implements ParamConverterInterface
      */
     public function supports(ParamConverter $configuration)
     {
-        return is_subclass_of($configuration->getClass(), GameInterface::class);
+        return $configuration->getClass() === GameInterface::class;
     }
 }

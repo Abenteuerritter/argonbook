@@ -19,7 +19,7 @@ use Argon\GameBundle\Form\Character\CharacterGameType;
 use Argon\GameBundle\Form\Character\CharacterSkillsType;
 use Argon\GameBundle\Form\Type\CharacterType;
 
-use Argon\GameBundle\Provider\Game\ExodusGame;
+use Argon\GameBundle\Provider\GameInterface;
 
 class CharacterController extends Controller
 {
@@ -62,7 +62,7 @@ class CharacterController extends Controller
         ));
     }
 
-    public function newAction(Request $request, ExodusGame $game)
+    public function newAction(Request $request, GameInterface $game)
     {
         $this->denyAccessUnlessGranted('ROLE_PLAYER', null,
             'You must be logged in to create a new character.');
