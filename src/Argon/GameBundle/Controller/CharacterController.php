@@ -121,11 +121,14 @@ class CharacterController extends Controller
 
     public function viewAction(Character $character)
     {
+        $storyNote   = null;
         $experiences = null;
+
         $own = ($this->isGranted('ROLE_PJ') && $character->isEqualTo($this->getUser())) ||
                ($this->isGranted('ROLE_PLAYER') && $character->getPlayer()->isEqualTo($this->getUser()));
 
-        if ($own) {
+        if ($own || $this->isGranted('ROLE_DIRECTOR')) {
+            $storyNote   = $this->getMarkdownParser()->parse($character->getNote());
             $experiences = $this->getDoctrine()
                                 ->getRepository('ArgonGameBundle:CharacterExperience')
                                 ->findByCharacter($character);
@@ -133,6 +136,7 @@ class CharacterController extends Controller
 
         return $this->render('ArgonGameBundle:Character:view.html.twig', array(
             'character'   => $character,
+            'story_note'  => $storyNote,
             'experiences' => $experiences,
         ));
     }
@@ -257,8 +261,17 @@ class CharacterController extends Controller
         }
 
         return $this->render('ArgonGameBundle:Character:edit.html.twig', array(
-            'character' => $character,
-            'form'      => $form->createView(),
+            'character'  => $character,
+            'story_note' => $this->getMarkdownParser()->parse($character->getNote()),
+            'form'       => $form->createView(),
         ));
+    }
+
+    /**
+     * @return \cebe\markdown\Markdown
+     */
+    protected function getMarkdownParser()
+    {
+        return $this->container->get('cebe.markdown');
     }
 }

@@ -12,10 +12,10 @@
     <p class="warning">{{ "character.story_not_confirmed"|trans }}</p>
   {% else %}
     <p class="success">{{ "character.story_confirmed"|trans }}</p>
-    {% if character.note %}
+    {% if story_note %}
       <dl>
         <dt>{{ "character.note"|trans }}</dt>
-        <dd>{{ character.note|nl2br }}</dd>
+        <dd>{{ story_note|raw }}</dd>
       </dl>
     {% endif %}
   {% endif %}
