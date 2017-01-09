@@ -6,7 +6,10 @@
 {% block content %}
 <h1>{{ character }}</h1>
 <div class="row align-middle">
-  <div class="columns">{#}<h2>{{ "character.info"|trans }}</h2>{#}
+  <div class="small-2 columns">{#}<h2>{{ "character.level"|trans }}</h2>{#}
+    <big class="level lead">{{ character.level }}</big>
+  </div>
+  <div class="small-5 columns">{#}<h2>{{ "character.info"|trans }}</h2>{#}
     <dl>
       <dt>
         <label>{{ "character.name"|trans }}</label>
@@ -18,7 +21,7 @@
       <dd>{{ character.race }}</dd>
     </dl>
   </div>
-  <div class="columns">{#}<h2>{{ "character.abilities"|trans }}</h2>{#}
+  <div class="small-5 columns">{#}<h2>{{ "character.abilities"|trans }}</h2>{#}
     {{ include("ArgonGameBundle:Partial\\Character:abilities.html.twig", {"character": character}) }}
   </div>
 </div>
