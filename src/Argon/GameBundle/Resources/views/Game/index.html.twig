@@ -1,0 +1,23 @@
+{% extends "ArgonWebBundle::layout.html.twig" %}
+{% set active = "game" %}
+
+{% block title %}{{ parent() }} - {{ "game.games"|trans }}{% endblock %}
+
+{% block content %}
+  <h1>{{ "game.games"|trans }}</h1>
+  {% for game in games %}
+  	<div class="media-object">
+      <!--
+      <div class="media-object-section">
+        <img src= "http://placeimg.com/200/200/people">
+      </div>
+        -->
+      <div class="media-object-section">
+        <h4>{{ game.info.fullname }}</h4>
+        {% if game.info.description[app.request.locale] is defined %}
+          <p>{{ game.info.description[app.request.locale] }}</p>
+        {% endif %}
+      </div>
+    </div>
+  {% endfor %}
+{% endblock %}

@@ -4,6 +4,9 @@ _argon_web:
 _argon_blog:
     resource: "@ArgonBlogBundle/Resources/config/routing/blog.xml"
 
+_argon_game_game:
+    resource: "@ArgonGameBundle/Resources/config/routing/game.xml"
+
 _argon_game_character:
     resource: "@ArgonGameBundle/Resources/config/routing/character.xml"
 

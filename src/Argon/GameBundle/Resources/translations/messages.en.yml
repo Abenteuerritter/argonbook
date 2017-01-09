@@ -1,5 +1,8 @@
 ---
 
+game:
+  games: Games
+
 character:
   characters:           My characters
   info:                 Character
