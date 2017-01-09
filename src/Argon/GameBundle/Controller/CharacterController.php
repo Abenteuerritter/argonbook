@@ -19,6 +19,8 @@ use Argon\GameBundle\Form\Character\CharacterGameType;
 use Argon\GameBundle\Form\Character\CharacterSkillsType;
 use Argon\GameBundle\Form\Type\CharacterType;
 
+use Argon\GameBundle\Provider\Game\ExodusGame;
+
 class CharacterController extends Controller
 {
     public function indexAction(Request $request)
@@ -60,22 +62,12 @@ class CharacterController extends Controller
         ));
     }
 
-    public function newAction(Request $request, $game)
+    public function newAction(Request $request, ExodusGame $game)
     {
         $this->denyAccessUnlessGranted('ROLE_PLAYER', null,
             'You must be logged in to create a new character.');
 
         $player = $this->getUser();
-
-        // {{{ TODO: Rewrite me with Parameter Converter
-        $gameName    = $game;
-        $gameFactory = $this->container->get('argon_game.provider.game_factory');
-        $game        = $gameFactory->create($gameName);
-        // }}}
-
-        if (null === $game) {
-            throw $this->createNotFoundException(sprintf('Game %s not found.', $gameName));
-        }
 
         $character = new Character();
         $character->setPlayer($player);
@@ -91,7 +83,7 @@ class CharacterController extends Controller
 
         $form = $this->createForm(CharacterType::class, $character, array(
             'game'   => $game,
-            'action' => $this->generateUrl('character_create', array('game' => $gameName)),
+            'action' => $this->generateUrl('character_create', array('game' => $game->getName())),
             'method' => 'POST',
         ));
 

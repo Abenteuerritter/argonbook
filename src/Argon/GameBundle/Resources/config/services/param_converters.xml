@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<container xmlns="http://symfony.com/schema/dic/services"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/dic/services
+                        http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <services>
+        <service id="argon_game.request.game_param_converter" class="Argon\GameBundle\Request\ParamConverter\GameParamConverter">
+    		<argument type="service" id="argon_game.provider.game_factory" />
+            <tag name="request.param_converter" converter="game" priority="10" />
+        </service>
+    </services>
+</container>
