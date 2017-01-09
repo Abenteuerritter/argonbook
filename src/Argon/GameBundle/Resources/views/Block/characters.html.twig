@@ -10,6 +10,10 @@
     <tr>
       <td>
         {{ render(controller("ArgonGameBundle:Block:characterNick", {"character": character})) }}
+        (
+          <span class="fi-graph-bar"></span>
+          <span class="experience">{{ character.skillsExperience }}/{{ character.experience }}</span>
+        )
         <br>
         {{ character.race }}
       </td>
