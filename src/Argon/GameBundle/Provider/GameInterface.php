@@ -2,6 +2,8 @@
 
 namespace Argon\GameBundle\Provider;
 
+use Argon\GameBundle\Entity\Character;
+
 interface GameInterface
 {
     /**
@@ -28,4 +30,9 @@ interface GameInterface
      * @return integer
      */
     public function getInitialExperience();
+
+    /**
+     * @return integer
+     */
+    public function calculateLevel(Character $character);
 }

@@ -435,4 +435,14 @@ class Character implements UserInterface, EquatableInterface, PersonInterface, G
     {
         return $this->note;
     }
+
+    /**
+     * Calculates the level of the character by game mechanics.
+     *
+     * @return integer
+     */
+    public function getLevel()
+    {
+        return $this->getGame()->calculateLevel($this);
+    }
 }

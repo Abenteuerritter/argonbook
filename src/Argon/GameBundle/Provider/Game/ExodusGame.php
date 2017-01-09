@@ -3,6 +3,7 @@
 namespace Argon\GameBundle\Provider\Game;
 
 use Argon\GameBundle\Provider\GameInterface;
+use Argon\GameBundle\Entity\Character;
 
 class ExodusGame implements GameInterface
 {
@@ -52,5 +53,13 @@ class ExodusGame implements GameInterface
     public function getInitialExperience()
     {
         return 3;
+    }
+
+    /**
+     * @return integer
+     */
+    public function calculateLevel(Character $character)
+    {
+        return abs(round(exp($character->getExperience() / 10)));
     }
 }
