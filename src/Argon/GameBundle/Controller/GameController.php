@@ -20,5 +20,8 @@ class GameController extends Controller
 
     public function viewAction(GameInterface $game)
     {
+        return $this->render('ArgonGameBundle:Game:view.html.twig', array(
+            'game' => $game,
+        ));
     }
 }

@@ -7,8 +7,7 @@
     <route id="game" path="/games" methods="GET">
         <default key="_controller">ArgonGameBundle:Game:index</default>
     </route>
-    <route id="game_view" path="/game/{slug}" methods="GET">
+    <route id="game_view" path="/game/{game}" methods="GET">
         <default key="_controller">ArgonGameBundle:Game:view</default>
-        <requirement key="slug">[-\w]+:[-\w]+</requirement>
     </route>
 </routes>

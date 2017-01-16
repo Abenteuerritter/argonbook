@@ -70,7 +70,7 @@ $section-space: rem-calc(40);
   }
 }
 
-.comment {
+.game.media-object, .comment {
   border: 1px solid darken($body-font-color, 50%);
   padding: rem-calc(16 0);
 }

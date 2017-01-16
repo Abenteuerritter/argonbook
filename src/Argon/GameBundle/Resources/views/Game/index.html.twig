@@ -6,14 +6,14 @@
 {% block content %}
   <h1>{{ "game.games"|trans }}</h1>
   {% for game in games %}
-  	<div class="media-object">
-      <!--
+    <div class="game media-object">
+      {#
       <div class="media-object-section">
-        <img src= "http://placeimg.com/200/200/people">
+        <img src= "http://placeimg.com/50/50/games">
       </div>
-        -->
+      #}
       <div class="media-object-section">
-        <h4>{{ game.info.fullname }}</h4>
+        <h4><a href="{{ path("game_view", {"game": game.name}) }}">{{ game.info.fullname }}</a></h4>
         {% if game.info.description[app.request.locale] is defined %}
           <p>{{ game.info.description[app.request.locale] }}</p>
         {% endif %}
