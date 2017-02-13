@@ -30,6 +30,7 @@
   register: php_configured
 
 - name: configuration link
+  ignore_errors: yes # when conf.d is symlinked
   with_items: "{{ ['cli']|union(['fpm'] if php_fpm|bool else []) }}"
   file:
     src: /etc/php5/conf.d/90-custom.ini
