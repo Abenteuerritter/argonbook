@@ -4,6 +4,12 @@ upstream argonbook {
 
 server {
     listen 80;
+    server_name www.argonbook.eu;
+    return 301 http://argonbook.eu$request_uri;
+}
+
+server {
+    listen 80;
     server_name argonbook.eu;
     root /srv/www/argonbook.eu/current/web;
 
