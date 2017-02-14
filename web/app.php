@@ -7,8 +7,6 @@ use Symfony\Component\ClassLoader\ApcClassLoader;
  * @var Composer\Autoload\ClassLoader
  */
 $loader = require __DIR__ . '/../app/autoload.php';
-$loader->unregister();
-
 include_once __DIR__ . '/../var/bootstrap.php.cache';
 
 // Enable APC for autoloading to improve performance.
