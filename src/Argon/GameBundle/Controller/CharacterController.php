@@ -147,7 +147,7 @@ class CharacterController extends Controller
         $characterSkills = new ArrayCollection();
         $skills          = $this->getDoctrine()
                                 ->getRepository('ArgonGameBundle:Skill')
-                                ->findAll();
+                                ->findAllByGame($character->getGame());
 
         foreach ($skills as $skill) {
             $found = $character->getSkills()->filter(function ($characterSkill) use ($skill) {
