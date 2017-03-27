@@ -11,8 +11,11 @@ use Argon\BlogBundle\Form\Type\CommentType;
 
 class PostController extends Controller
 {
-    public function viewAction(Post $post)
+    public function viewAction($slug)
     {
+        /** @var Post $post */
+        $post = $this->getDoctrine()->getRepository(Post::class)->findOneBySlug($slug);
+
         if ($this->isGranted('ROLE_PLAYER')) {
             $player  = $this->getUser();
             $comment = new Comment($post, $player);

@@ -45,6 +45,6 @@ class BlockController extends Controller
      */
     protected function getRepository()
     {
-        return $this->getDoctrine()->getRepository('ArgonGameBundle:Character');
+        return $this->getDoctrine()->getRepository(Character::class);
     }
 }

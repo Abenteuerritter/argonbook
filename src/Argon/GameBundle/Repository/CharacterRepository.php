@@ -10,17 +10,15 @@ class CharacterRepository extends EntityRepository
 {
     public function findOneByPlayerAndUsername(Player $player, $username)
     {
-        return $this
-            ->createQueryBuilder('pj')
-            ->where('pj.player = :player')
-            ->andWhere('pj.slug = :username')
-            ->setParameters(array(
-                'player'   => $player,
-                'username' => $username,
-            ))
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
+        $builder = $this->createQueryBuilder('pj');
+        $builder->where('pj.player = :player');
+        $builder->andWhere('pj.slug = :username');
+        $builder->setParameters(array(
+            'player'   => $player,
+            'username' => $username,
+        ));
+
+        return $builder->getQuery()->getOneOrNullResult();
     }
 
     /**
@@ -28,14 +26,12 @@ class CharacterRepository extends EntityRepository
      */
     public function createQuery()
     {
-        return $this->createQueryBuilder('c')
-                    ->addSelect('r')
-                    ->addSelect('ca')
-                    ->addSelect('cs')
-                    ->innerJoin('c.race', 'r')
-                    ->innerJoin('c.abilities', 'ca')
-                    ->leftJoin('c.skills', 'cs')
-                    ->getQuery();
+        $builder = $this->createQueryBuilder('c');
+        $builder->innerJoin('c.race', 'r')->addSelect('r');
+        $builder->innerJoin('c.abilities', 'ca')->addSelect('ca');
+        $builder->leftJoin('c.skills', 'cs')->addSelect('cs');
+
+        return $builder->getQuery();
     }
 
     /**
@@ -43,17 +39,12 @@ class CharacterRepository extends EntityRepository
      */
     public function createQueryByGameName($gameName)
     {
-        return $this->createQueryBuilder('c')
-                    ->addSelect('r')
-                    ->addSelect('ca')
-                    ->addSelect('cs')
-                    ->innerJoin('c.race', 'r')
-                    ->innerJoin('c.abilities', 'ca')
-                    ->leftJoin('c.skills', 'cs')
-                    ->where('c.gameName = :gameName')
-                    ->setParameters(array(
-                        'gameName' => $gameName,
-                    ))
-                    ->getQuery();
+        $builder = $this->createQuery();
+        $builder->where('c.gameName = :gameName');
+        $builder->setParameters(array(
+            'gameName' => $gameName,
+        ));
+
+        return $builder->getQuery();
     }
 }

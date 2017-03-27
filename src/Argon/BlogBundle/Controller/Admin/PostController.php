@@ -56,16 +56,21 @@ class PostController extends Controller
         ));
     }
 
-    public function viewAction(Post $post)
+    public function viewAction($slug)
     {
+        /** @var Post $post */
+        $post = $this->getRepository()->findOneBySlug($slug);
+
         return $this->render('ArgonBlogBundle:Admin\Post:view.html.twig', array(
             'post'          => $post,
             'post_rendered' => $this->getMarkdownParser()->parse($post->getBody()),
         ));
     }
 
-    public function publishAction(Post $post, Request $request)
+    public function publishAction(Request $request, $slug)
     {
+        /** @var Post $post */
+        $post = $this->getRepository()->findOneBySlug($slug);
         $post->setStatus(Post::STATUS_PUBLISHED);
 
         $form = $this->createForm(PostPublishType::class, $post, array(
@@ -96,8 +101,11 @@ class PostController extends Controller
         ));
     }
 
-    public function editAction(Post $post, Request $request)
+    public function editAction(Request $request, $slug)
     {
+        /** @var Post $post */
+        $post = $this->getRepository()->findOneBySlug($slug);
+
         $preview = false;
 
         $form = $this->createForm(PostType::class, $post, array(

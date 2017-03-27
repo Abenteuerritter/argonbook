@@ -29,7 +29,7 @@
     <route id="admin_blog_comment" path="/blog/{slug}/comments" methods="GET">
         <default key="_controller">ArgonBlogBundle:Admin\Comment:index</default>
     </route>
-    <route id="admin_blog_comment_delete" path="/blog/{slug}/comments/{id}/delete" methods="GET,POST">
+    <route id="admin_blog_comment_delete" path="/blog/{slug}/comment/{comment}/delete" methods="GET,POST">
         <default key="_controller">ArgonBlogBundle:Admin\Comment:delete</default>
     </route>
 </routes>

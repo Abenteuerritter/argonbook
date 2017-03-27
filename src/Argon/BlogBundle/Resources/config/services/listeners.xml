@@ -6,6 +6,7 @@
 
     <services>
         <service id="argon_blog.listener.image_uploader" class="Argon\BlogBundle\EventListener\ImageUploaderListener">
+            <tag name="doctrine.event_listener" event="postLoad" />
             <tag name="doctrine.event_listener" event="prePersist" />
             <tag name="doctrine.event_listener" event="preUpdate" />
         </service>

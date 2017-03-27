@@ -20,15 +20,21 @@ class RaceController extends Controller
         ));
     }
 
-    public function viewAction(Race $race)
+    public function viewAction($slug)
     {
+        /** @var Race $race */
+        $race = $this->getRepository()->findOneBySlug($slug);
+
         return $this->render('ArgonGameBundle:Admin/Race:view.html.twig', array(
             'entity' => $race,
         ));
     }
 
-    public function editAction(Race $race, Request $request)
+    public function editAction(Request $request, $slug)
     {
+        /** @var Race $race */
+        $race = $this->getRepository()->findOneBySlug($slug);
+
         $form = $this->createForm(RaceEditType::class, $race, array(
             'action' => $this->generateUrl('admin_race_edit_update', array('slug' => $race->getSlug())),
             'method' => 'POST',
@@ -59,6 +65,6 @@ class RaceController extends Controller
 
     protected function getRepository()
     {
-        return $this->getDoctrine()->getRepository('ArgonGameBundle:Race');
+        return $this->getDoctrine()->getRepository(Race::class);
     }
 }

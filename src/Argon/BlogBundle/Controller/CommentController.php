@@ -12,10 +12,13 @@ use Argon\BlogBundle\Form\Type\CommentType;
 
 class CommentController extends Controller
 {
-    public function createAction(Post $post, Request $request)
+    public function createAction(Request $request, $slug)
     {
         $this->denyAccessUnlessGranted('ROLE_PLAYER', null,
             'You must be logged as a player to add a new comment.');
+
+        /** @var Post $post */
+        $post = $this->getDoctrine()->getRepository(Post::class)->findOneBySlug($slug);
 
         $player  = $this->getUser();
         $comment = new Comment($post, $player);

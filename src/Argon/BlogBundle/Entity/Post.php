@@ -3,6 +3,7 @@
 namespace Argon\BlogBundle\Entity;
 
 use Symfony\Component\HttpFoundation\File\File as Image;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 use Doctrine\Common\Collections\ArrayCollection;
 
@@ -44,11 +45,6 @@ class Post
     protected $body;
 
     /**
-     * @var string
-     */
-    protected $imagePath;
-
-    /**
      * @var \Symfony\Component\HttpFoundation\File\File
      */
     protected $image;
@@ -72,11 +68,6 @@ class Post
      * @var string
      */
     protected $locale;
-
-    /**
-     * @var array|string[]
-     */
-    protected $allowedExtensions = ['png', 'jpg', 'jpeg', 'gif'/* deal with it*/];
 
     /**
      * @var \Doctrine\Common\Collections\Collection
@@ -174,27 +165,28 @@ class Post
     }
 
     /**
-     * @return string
+     * @return string|null
      */
     public function getImagePath()
     {
-        if ($this->imagePath === null) {
-            foreach ($this->allowedExtensions as $ext) {
-                if (is_readable(__DIR__ . '/../../../../web/uploads/blog/' . $this->slug . '.' . $ext)) {
-                    $this->imagePath = 'uploads/blog/' . $this->slug . '.' . $ext;
-                }
-            }
+        if ($this->image instanceof UploadedFile) {
+            return null; // TODO image preview
+            return $this->image->__toString();
         }
 
-        return $this->imagePath;
+        if ($this->image instanceof Image) {
+            return 'uploads/blog/' . $this->image->getBasename();
+        }
     }
 
     /**
-     * @param \Symfony\Component\HttpFoundation\File\File $image
+     * @param \Symfony\Component\HttpFoundation\File\File|null $image
      */
-    public function setImage(Image $image)
+    public function setImage(Image $image = null)
     {
-        $this->image = $image;
+        if ($image) {
+            $this->image = $image;
+        }
     }
 
     /**

@@ -18,10 +18,6 @@ class CharacterController extends Controller
 {
     public function indexAction(Request $request)
     {
-        /** @var \Argon\GameBundle\Repository\CharacterRepository $repository */
-        $repository = $this->getDoctrine()
-                           ->getRepository('ArgonGameBundle:Character');
-
         $filter     = new CharacterFilter();
         $filterForm = $this->createForm(CharacterFilterType::class, $filter);
 
@@ -32,9 +28,9 @@ class CharacterController extends Controller
             $gameFactory = $this->container->get('argon_game.provider.game_factory');
             $game        = $gameFactory->create($gameName);
 
-            $query = $repository->createQueryByGameName($gameName);
+            $query = $this->getRepository()->createQueryByGameName($gameName);
         } else {
-            $query = $repository->createQuery();
+            $query = $this->getRepository()->createQuery();
         }
 
         $pagination = $this->get('knp_paginator')->paginate($query,
@@ -48,8 +44,12 @@ class CharacterController extends Controller
         ));
     }
 
-    public function experienceAction(Character $character)
+    public function experienceAction($id)
     {
+        /** @var Character $character */
+        $character = $this->getRepository()->findOneById($id);
+
+        /** @var CharacterExperience[]|array $entities */
         $entities = $this->getDoctrine()
                          ->getRepository('ArgonGameBundle:CharacterExperience')
                          ->findByCharacter($character);
@@ -60,8 +60,11 @@ class CharacterController extends Controller
         ));
     }
 
-    public function newExperienceAction(Character $character, Request $request)
+    public function newExperienceAction(Request $request, $id)
     {
+        /** @var Character $character */
+        $character = $this->getRepository()->findOneById($id);
+
         $characterExperience = new CharacterExperience();
         $characterExperience->setCharacter($character);
 
@@ -100,8 +103,12 @@ class CharacterController extends Controller
         ));
     }
 
-    public function skillAction(Character $character)
+    public function skillAction($id)
     {
+        /** @var Character $character */
+        $character = $this->getRepository()->findOneById($id);
+
+        /** @var CharacterSkill[]|array $entities */
         $entities = $this->getDoctrine()
                          ->getRepository('ArgonGameBundle:CharacterSkill')
                          ->findByCharacter($character);
@@ -112,8 +119,11 @@ class CharacterController extends Controller
         ));
     }
 
-    public function confirmStoryAction(Character $character, Request $request)
+    public function confirmStoryAction(Request $request, $id)
     {
+        /** @var Character $character */
+        $character = $this->getRepository()->findOneById($id);
+
         if (!$character->isStoryNotConfirmed()) {
             return $this->createNotFoundException(
                 sprintf('Story for %s not available to confirm.', (string) $character)
@@ -164,5 +174,13 @@ class CharacterController extends Controller
             'character' => $character,
             'form'      => $form->createView(),
         ));
+    }
+
+    /**
+     * @return \Argon\GameBundle\Repository\CharacterRepository
+     */
+    protected function getRepository()
+    {
+        return $this->getDoctrine()->getRepository(Character::class);
     }
 }

@@ -13,10 +13,10 @@
     <route id="character_game_redirect" path="/new" methods="POST">
         <default key="_controller">ArgonGameBundle:Character:game</default>
     </route>
-    <route id="character_new" path="/new/{game}" methods="GET">
+    <route id="character_new" path="/new/{gameName}" methods="GET">
         <default key="_controller">ArgonGameBundle:Character:new</default>
     </route>
-    <route id="character_create" path="/new/{game}" methods="POST">
+    <route id="character_create" path="/new/{gameName}" methods="POST">
         <default key="_controller">ArgonGameBundle:Character:new</default>
     </route>
     <route id="character_view" path="/character/{slug}" methods="GET">

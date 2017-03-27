@@ -25,15 +25,21 @@ class SkillController extends Controller
         ));
     }
 
-    public function viewAction(Skill $skill)
+    public function viewAction($slug)
     {
+        /** @var Skill $skill */
+        $skill = $this->getRepository()->findOneBySlug($slug);
+
         return $this->render('ArgonGameBundle:Admin/Skill:view.html.twig', array(
             'entity' => $skill,
         ));
     }
 
+    /**
+     * @return \Argon\GameBundle\Repository\SkillRepository
+     */
     protected function getRepository()
     {
-        return $this->getDoctrine()->getRepository('ArgonGameBundle:Skill');
+        return $this->getDoctrine()->getRepository(Skill::class);
     }
 }

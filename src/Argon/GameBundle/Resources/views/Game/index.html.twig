@@ -13,7 +13,7 @@
       </div>
       #}
       <div class="media-object-section">
-        <h4><a href="{{ path("game_view", {"game": game.name}) }}">{{ game.info.fullname }}</a></h4>
+        <h4><a href="{{ path("game_view", {"gameName": game.name}) }}">{{ game.info.fullname }}</a></h4>
         {% if game.info.description[app.request.locale] is defined %}
           <p>{{ game.info.description[app.request.locale] }}</p>
         {% endif %}

@@ -62,12 +62,15 @@ class CharacterController extends Controller
         ));
     }
 
-    public function newAction(Request $request, GameInterface $game)
+    public function newAction(Request $request, $gameName)
     {
         $this->denyAccessUnlessGranted('ROLE_PLAYER', null,
             'You must be logged in to create a new character.');
 
         $player = $this->getUser();
+
+        /** @var GameInterface $game */
+        $game = $this->getGameFactory()->create($gameName);
 
         $character = new Character();
         $character->setPlayer($player);
@@ -83,7 +86,7 @@ class CharacterController extends Controller
 
         $form = $this->createForm(CharacterType::class, $character, array(
             'game'   => $game,
-            'action' => $this->generateUrl('character_create', array('game' => $game->getName())),
+            'action' => $this->generateUrl('character_create', array('gameName' => $game->getName())),
             'method' => 'POST',
         ));
 
@@ -111,8 +114,11 @@ class CharacterController extends Controller
         ));
     }
 
-    public function viewAction(Character $character)
+    public function viewAction($slug)
     {
+        /** @var Character $character */
+        $character = $this->getRepository()->findOneBySlug($slug);
+
         $storyNote   = null;
         $experiences = null;
 
@@ -133,12 +139,15 @@ class CharacterController extends Controller
         ));
     }
 
-    public function skillsAction(Character $character, Request $request)
+    public function skillsAction(Request $request, $slug)
     {
         $this->denyAccessUnlessGranted('ROLE_PLAYER', null,
             'You must be logged in to update this character.');
 
         $player = $this->getUser();
+
+        /** @var Character $character */
+        $character = $this->getRepository()->findOneBySlug($slug);
 
         if ($player !== $character->getPlayer()) {
             throw new AccessDeniedException();
@@ -219,12 +228,15 @@ class CharacterController extends Controller
         ));
     }
 
-    public function editAction(Character $character, Request $request)
+    public function editAction(Request $request, $slug)
     {
         $this->denyAccessUnlessGranted('ROLE_PLAYER', null,
             'You must be logged in to update this character.');
 
         $player = $this->getUser();
+
+        /** @var Character $character */
+        $character = $this->getRepository()->findOneBySlug($slug);
 
         if ($player !== $character->getPlayer()) {
             throw new AccessDeniedException();
@@ -257,6 +269,22 @@ class CharacterController extends Controller
             'story_note' => $this->getMarkdownParser()->parse($character->getNote()),
             'form'       => $form->createView(),
         ));
+    }
+
+    /**
+     * @return \Argon\GameBundle\Repository\CharacterRepository
+     */
+    protected function getRepository()
+    {
+        return $this->getDoctrine()->getRepository(Character::class);
+    }
+
+    /**
+     * @return \Argon\GameBundle\Provider\GameFactory
+     */
+    protected function getGameFactory()
+    {
+        return $this->get('argon_game.provider.game_factory');
     }
 
     /**

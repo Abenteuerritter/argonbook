@@ -22,7 +22,7 @@
       </div>
       <div class="small-2 columns">
         <div class="button-group">
-          <a href="{{ path("admin_blog_comment_delete", {"slug": comment.post.slug, "id": comment.id}) }}" class="alert button">{{ "admin.blog.comment.delete"|trans }}</a>
+          <a href="{{ path("admin_blog_comment_delete", {"slug": comment.post.slug, "comment": comment.id}) }}" class="alert button">{{ "admin.blog.comment.delete"|trans }}</a>
         </div>
       </div>
     </div>

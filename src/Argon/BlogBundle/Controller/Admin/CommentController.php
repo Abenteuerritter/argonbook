@@ -12,8 +12,11 @@ use Argon\BlogBundle\Form\Type\CommentDeleteType;
 
 class CommentController extends Controller
 {
-    public function indexAction(Post $post, Request $request)
+    public function indexAction(Request $request, $slug)
     {
+        /** @var Post $post */
+        $post = $this->getDoctrine()->getRepository(Post::class)->findOneBySlug($slug);
+
         $pagination = $this->get('knp_paginator')->paginate($post->getComments(),
             $request->query->getInt('page', 1)
         );
@@ -24,8 +27,14 @@ class CommentController extends Controller
         ));
     }
 
-    public function deleteAction(Post $post, Comment $comment, Request $request)
+    public function deleteAction(Request $request, $slug, $comment)
     {
+        /** @var Post $post */
+        $post = $this->getDoctrine()->getRepository(Post::class)->findOneBySlug($slug);
+
+        /** @var Comment $comment */
+        $comment = $this->getDoctrine()->getRepository(Comment::class)->findOneById($comment);
+
         if (!$post->getComments()->contains($comment)) {
             $request->getSession()->getFlashBag()
                     ->add('error', 'admin.blog.comment.belong_error');
@@ -37,8 +46,8 @@ class CommentController extends Controller
 
         $form = $this->createForm(CommentDeleteType::class, $comment, array(
             'action' => $this->generateUrl('admin_blog_comment_delete', array(
-                'slug' => $post->getSlug(),
-                'id'   => $comment->getId(),
+                'slug'    => $post->getSlug(),
+                'comment' => $comment->getId(),
             )),
             'method' => 'POST',
         ));
