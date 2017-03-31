@@ -7,14 +7,6 @@ var concat  = require('gulp-concat');
 var plumber = require('gulp-plumber');
 
 var // Configuration
-  FONT_DEST = 'web/fonts/',
-  FONT_SRC  = [
-    'bower_components/foundation-icon-fonts/foundation-icons.eot',
-    'bower_components/foundation-icon-fonts/foundation-icons.woff',
-    'bower_components/foundation-icon-fonts/foundation-icons.ttf',
-    'bower_components/foundation-icon-fonts/foundation-icons.svg'
-  ],
-
   SASS_DEST    = 'web/css/',
   SASS_SRC     = 'app/assets/scss/argonbook.scss',
   SASS_OPTIONS = {outputStyle: 'compressed', includePaths: ['node_modules', 'bower_components']},
@@ -24,6 +16,14 @@ var // Configuration
     'bower_components/jquery/dist/jquery.min.js',
     'bower_components/Sortable/Sortable.min.js',
     'bower_components/foundation-sites/dist/js/foundation.min.js',
+  ],
+
+  FONT_DEST = 'web/fonts/',
+  FONT_SRC  = [
+    'bower_components/foundation-icon-fonts/foundation-icons.eot',
+    'bower_components/foundation-icon-fonts/foundation-icons.woff',
+    'bower_components/foundation-icon-fonts/foundation-icons.ttf',
+    'bower_components/foundation-icon-fonts/foundation-icons.svg'
   ]
 ;
 
