@@ -53,7 +53,7 @@ class CharacterController extends Controller
             $game = $data['game'];
 
             return $this->redirect($this->generateUrl('character_new', array(
-                'game' => $game->getName(),
+                'gameName' => $game->getName(),
             )));
         }
 
