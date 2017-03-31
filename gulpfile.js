@@ -21,7 +21,7 @@ var // Configuration
 
   JS_DEST = 'web/js/',
   JS_SRC  = [
-    'node_modules/jquery/dist/jquery.min.js',
+    'bower_components/jquery/dist/jquery.min.js',
     'node_modules/foundation-sites/dist/js/foundation.min.js',
     'node_modules/sortablejs/Sortable.min.js',
   ]
