@@ -23,7 +23,7 @@ var // Configuration
   JS_SRC  = [
     'bower_components/jquery/dist/jquery.min.js',
     'bower_components/Sortable/Sortable.min.js',
-    'node_modules/foundation-sites/dist/js/foundation.min.js',
+    'bower_components/foundation-sites/dist/js/foundation.min.js',
   ]
 ;
 
