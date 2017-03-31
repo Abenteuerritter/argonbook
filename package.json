@@ -3,7 +3,6 @@
   "license": "MIT",
   "private": true,
   "dependencies": {
-    "bower": "^1.7",
     "foundation-sites": "^6.2",
     "gulp": "^3.9",
     "gulp-concat": "^2.6",
