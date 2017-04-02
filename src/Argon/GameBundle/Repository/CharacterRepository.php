@@ -39,7 +39,7 @@ class CharacterRepository extends EntityRepository
      */
     public function createQueryByGameName($gameName)
     {
-        $builder = $this->createQuery();
+        $builder = $this->createQueryBuilder('c');
         $builder->where('c.gameName = :gameName');
         $builder->setParameters(array(
             'gameName' => $gameName,
