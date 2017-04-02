@@ -6,6 +6,8 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
+use Doctrine\ORM\EntityRepository;
+
 use Argon\GameBundle\Entity\Skill;
 
 class SkillEditType extends AbstractType
@@ -19,6 +21,21 @@ class SkillEditType extends AbstractType
         $builder
             ->add('modifier')
             ->add('max')
+            ->add('requirements', null, array(
+                'expanded'      => true,
+                'multiple'      => true,
+                'query_builder' => function(EntityRepository $repository) use ($options) {
+                    $queryBuilder = $repository->createQueryBuilder('r');
+                    if (
+                        isset($options['exclude_requirement_skill'])
+                        && $options['exclude_requirement_skill'] instanceof Skill
+                    ) {
+                        $queryBuilder->where('r.id != :exclude_skill');
+                        $queryBuilder->setParameter('exclude_skill', $options['exclude_requirement_skill']->getId());
+                    }
+                    return $queryBuilder;
+                },
+            ))
         ;
     }
 
@@ -30,6 +47,8 @@ class SkillEditType extends AbstractType
         $resolver->setDefaults(array(
             'data_class' => Skill::class,
             'intention'  => 'skill_edit',
+
+            'exclude_requirement_skill' => null,
         ));
     }
 }

@@ -45,6 +45,8 @@ class SkillController extends Controller
         $form = $this->createForm(SkillEditType::class, $skill, array(
             'action' => $this->generateUrl('admin_skill_edit_update', array('slug' => $skill->getSlug())),
             'method' => 'POST',
+
+            'exclude_requirement_skill' => $skill,
         ));
 
         $form->add('submit', SubmitType::class, array(
