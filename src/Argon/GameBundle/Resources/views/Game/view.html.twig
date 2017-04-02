@@ -4,5 +4,34 @@
 {% block title %}{{ parent() }} - {{ game.name }}{% endblock %}
 
 {% block content %}
+  <h1>{{ game.info.fullname }}</h1>
+  {% if game.info.description[app.request.locale] is defined %}
+    <p>{{ game.info.description[app.request.locale] }}</p>
+  {% endif %}
 
+  <h2>{{ "game.characters"|trans }}</h2>
+  {% for row in characters|batch(3) %}
+    <div class="row small-up-2 medium-up-3">
+      {% for character in row %}
+        <div class="column">
+          <div class="card">
+            <div class="card-section">
+              {{ render(controller("ArgonGameBundle:Block:characterNick", {"character": character})) }}
+              (
+                <span class="fi-graph-bar"></span>
+                <span class="experience">{{ character.skillsExperience }}/{{ character.experience }}</span>
+              )
+              <br>
+              {{ character.race }}
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  {% else %}
+    <div class="warning callout">
+      <p>{{ "game.character_empty"|trans }}</p>
+    </div>
+  {% endfor %}
+  {{ knp_pagination_render(characters) }}
 {% endblock %}
