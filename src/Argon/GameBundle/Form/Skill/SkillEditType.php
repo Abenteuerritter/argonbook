@@ -6,6 +6,8 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
+use Argon\GameBundle\Entity\Skill;
+
 class SkillEditType extends AbstractType
 {
     /**
@@ -26,7 +28,7 @@ class SkillEditType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'Argon\\GameBundle\\Entity\\Skill',
+            'data_class' => Skill::class,
             'intention'  => 'skill_edit',
         ));
     }

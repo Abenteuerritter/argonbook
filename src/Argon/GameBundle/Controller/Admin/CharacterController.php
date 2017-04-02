@@ -8,6 +8,7 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
 use Argon\GameBundle\Entity\Character;
 use Argon\GameBundle\Entity\CharacterExperience;
+use Argon\GameBundle\Entity\CharacterSkill;
 use Argon\GameBundle\Entity\CharacterFilter;
 
 use Argon\GameBundle\Form\Type\CharacterFilterType;
@@ -51,7 +52,7 @@ class CharacterController extends Controller
 
         /** @var CharacterExperience[]|array $entities */
         $entities = $this->getDoctrine()
-                         ->getRepository('ArgonGameBundle:CharacterExperience')
+                         ->getRepository(CharacterExperience::class)
                          ->findByCharacter($character);
 
         return $this->render('ArgonGameBundle:Admin\Character:experience.html.twig', array(
@@ -110,7 +111,7 @@ class CharacterController extends Controller
 
         /** @var CharacterSkill[]|array $entities */
         $entities = $this->getDoctrine()
-                         ->getRepository('ArgonGameBundle:CharacterSkill')
+                         ->getRepository(CharacterSkill::class)
                          ->findByCharacter($character);
 
         return $this->render('ArgonGameBundle:Admin\Character:skill.html.twig', array(

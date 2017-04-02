@@ -8,6 +8,8 @@ use Symfony\Component\Form\FormEvents;
 use Symfony\Component\Form\FormEvent;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
+use Argon\GameBundle\Entity\Character;
+
 class CharacterEditType extends AbstractType
 {
     /**
@@ -44,7 +46,7 @@ class CharacterEditType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'Argon\\GameBundle\\Entity\\Character',
+            'data_class' => Character::class,
             'intention'  => 'character_edit',
         ));
     }

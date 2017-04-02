@@ -40,7 +40,7 @@ class CharacterToUsernameTransformer implements DataTransformerInterface
         }
 
         if (!$value instanceof Character) {
-            throw new UnexpectedTypeException($value, 'Argon\\GameBundle\\Entity\\Character');
+            throw new UnexpectedTypeException($value, Character::class);
         }
 
         return $value->getSlug();
@@ -66,7 +66,7 @@ class CharacterToUsernameTransformer implements DataTransformerInterface
         }
 
         $entity = $this->entityManager
-                       ->getRepository('ArgonGameBundle:Character')
+                       ->getRepository(Character::class)
                        ->findOneBySlug($value);
 
         return $entity;

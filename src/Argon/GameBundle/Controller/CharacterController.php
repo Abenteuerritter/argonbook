@@ -12,7 +12,9 @@ use Doctrine\Common\Collections\Criteria;
 
 use Argon\GameBundle\Entity\Character;
 use Argon\GameBundle\Entity\CharacterAbility;
+use Argon\GameBundle\Entity\CharacterExperience;
 use Argon\GameBundle\Entity\CharacterSkill;
+use Argon\GameBundle\Entity\Skill;
 
 use Argon\GameBundle\Form\Character\CharacterEditType;
 use Argon\GameBundle\Form\Character\CharacterGameType;
@@ -128,7 +130,7 @@ class CharacterController extends Controller
         if ($own || $this->isGranted('ROLE_DIRECTOR')) {
             $storyNote   = $this->getMarkdownParser()->parse($character->getNote());
             $experiences = $this->getDoctrine()
-                                ->getRepository('ArgonGameBundle:CharacterExperience')
+                                ->getRepository(CharacterExperience::class)
                                 ->findByCharacter($character);
         }
 
@@ -155,7 +157,7 @@ class CharacterController extends Controller
 
         $characterSkills = new ArrayCollection();
         $skills          = $this->getDoctrine()
-                                ->getRepository('ArgonGameBundle:Skill')
+                                ->getRepository(Skill::class)
                                 ->findAllByGame($character->getGame());
 
         foreach ($skills as $skill) {

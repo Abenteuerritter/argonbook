@@ -7,6 +7,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 use Argon\GameBundle\Form\Type\GenreType;
+use Argon\GameBundle\Entity\Race;
 
 class RaceEditType extends AbstractType
 {
@@ -28,7 +29,7 @@ class RaceEditType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'Argon\\GameBundle\\Entity\\Race',
+            'data_class' => Race::class,
             'intention'  => 'race_edit',
         ));
     }
