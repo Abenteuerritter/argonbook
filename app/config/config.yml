@@ -107,3 +107,8 @@ fos_user:
     profile:
         form:
             type:    Argon\UserBundle\Form\Type\ProfileFormType
+
+# KnpPaginator Configuration
+knp_paginator:
+    template:
+        pagination: 'KnpPaginatorBundle:Pagination:foundation_v5_pagination.html.twig'

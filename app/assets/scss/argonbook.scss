@@ -76,13 +76,7 @@ $section-space: rem-calc(40);
 }
 
 .pagination {
-  background-color: map-get($foundation-palette, secondary);
-  padding: rem-calc(1 3);
-  span {
-    display: inline-block;
-    font-size: 80%;
-    font-family: monospace;
-  }
+  background-color: map-get($foundation-palette, primary);
 }
 
 abbr {
