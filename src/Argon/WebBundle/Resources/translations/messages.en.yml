@@ -4,6 +4,7 @@ homepage:
   title: Alternate Reality Games Oriented Network
 
 layout:
+  games:       Games
   character:   Characters
   profile:     My Profile
   admin:       Administration
