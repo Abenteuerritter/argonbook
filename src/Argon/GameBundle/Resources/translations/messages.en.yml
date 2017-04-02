@@ -1,10 +1,11 @@
 ---
 
 game:
-  games:           Games
-  characters:      Characters
-  character:       Character
-  character_empty: There are still not characters for this game.
+  games:            Games
+  characters:       Characters
+  character:        Character
+  character_empty:  There are still not characters for this game.
+  create_character: Create a new character for this game
 
 character:
   characters:           My characters
