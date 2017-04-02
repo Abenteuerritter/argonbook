@@ -58,6 +58,14 @@ class Skill implements Translatable
     }
 
     /**
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
      * @param \Argon\GameBundle\Entity\Skill $requirement
      */
     public function addRequirement(Skill $requirement)
