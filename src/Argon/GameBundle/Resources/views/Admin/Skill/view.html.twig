@@ -58,4 +58,7 @@
     {{ include("ArgonGameBundle:Admin\\Partial\\Skill:list.html.twig", {"entities": entity.requirements, "show_ability": false}) }}
   </dd>
 </dl>
+<div class="button-group">
+  <a href="{{ path("admin_skill_edit", {"slug": entity.slug}) }}" class="button">{{ "admin.skill.edit"|trans }}</a>
+</div>
 {% endblock %}

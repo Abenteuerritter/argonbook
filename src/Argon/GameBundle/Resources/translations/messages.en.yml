@@ -118,3 +118,6 @@ admin:
     max_empty:     (no limit)
     requirements:  Requirements
     empty:         There are no skills in the system yet.
+    edit:          Edit
+    edit_submit:   Edit
+    updated:       Skill updated.

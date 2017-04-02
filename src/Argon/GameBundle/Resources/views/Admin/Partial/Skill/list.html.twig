@@ -7,6 +7,7 @@
       <th>{{ "admin.skill.name"|trans }}</th>
       <th>{{ "admin.skill.modifier"|trans }}</th>
       <th>{{ "admin.skill.max"|trans }}</th>
+      <th>&nbsp;</th>
     </tr>
   </thead>
   <tbody>
@@ -29,10 +30,15 @@
           {{ skill.max }}
         {% endif %}
       </td>
+      <td>
+        <div class="button-group">
+          <a href="{{ path("admin_skill_edit", {"slug": skill.slug}) }}" class="button">{{ "admin.skill.edit"|trans }}</a>
+        </div>
+      </td>
     </tr>
   {% else %}
       <tr class="warning">
-          <td colspan="{{ 3 + (show_ability ? 1 : 0) }}">{{ "admin.skill.empty"|trans }}</td>
+          <td colspan="{{ 4 + (show_ability ? 1 : 0) }}">{{ "admin.skill.empty"|trans }}</td>
       </tr>
   {% endfor %}
   </tbody>
