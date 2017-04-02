@@ -8,8 +8,8 @@
   <ul class="breadcrumbs">
     <li><a href="{{ path("admin_dashboard") }}">{{ "admin.dashboard.title"|trans }}</a></li>
     <li><a href="{{ path("admin_race") }}">{{ "admin.race.races"|trans }}</a></li>
-    <li>{{ race.slug }}</li>
-    <li><a href="{{ path("admin_race_edit", {"slug": race.slug}) }}">{{ "admin.race.edit"|trans }}</a></li>
+    <li><a href="{{ path("admin_race_view", {"slug": race.slug}) }}">{{ race.slug }}</a></li>
+    <li>{{ "admin.race.edit"|trans }}</li>
   </ul>
 </nav>
 {% endblock %}
