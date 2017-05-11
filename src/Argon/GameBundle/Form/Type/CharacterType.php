@@ -51,6 +51,8 @@ class CharacterType extends AbstractType
      */
     public function finishView(FormView $view, FormInterface $form, array $options)
     {
+        $view['abilities']->vars['help'] = 'character.abilities_help';
+
         foreach ($view['abilities']->children as $ability) {
             $ability->vars['label'] = false;
         }
