@@ -25,6 +25,10 @@
 {{ parent() }}
 <script type="text/javascript">
     $(function() {
+        $("#character_abilities").children().attr('data-id', function() {
+            return $(this).find('label[for$="_modifier"]').text().toLowerCase();
+        });
+
         $("#character_abilities")
             .find('input[id$="_modifier"]')
             .attr('type', 'hidden')
@@ -32,13 +36,29 @@
             .css('user-select', 'none')
             .on('selectstart', false);
 
-        Sortable.create(document.getElementById("character_abilities"), {
-            onUpdate: function(event) {
-                $("#character_abilities").children().each(function(position, element) {
-                    $(element).find('label').removeClass().addClass('position-' + (position + 1).toString());
-                    $('input[id$="_modifier"]', element).val(position + 1);
-                });
-            }
+        var updateValues = function() {
+            $("#character_abilities").children().each(function(position, element) {
+                $(element).find('label').removeClass().addClass('position-' + (position + 1).toString());
+                $('input[id$="_modifier"]', element).val(position + 1);
+            });
+        };
+
+        var abilities = Sortable.create(document.getElementById("character_abilities"), {
+            onUpdate: updateValues
+        });
+
+        $('#character_abilities').find('label[for$="_modifier"]').wrapInner(function() {
+            return $('<a href="#"></a>').click(function() {
+                var first = $(this).text().toLowerCase();
+
+                abilities.sort([first].concat(abilities.toArray().filter(function(ability) {
+                    return ability !== first;
+                })));
+
+                updateValues();
+
+                return false;
+            });
         });
     });
 </script>
