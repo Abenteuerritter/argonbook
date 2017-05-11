@@ -28,6 +28,7 @@ $callout-font-color-alt:         $body-font-color;
 $breadcrumbs-item-color-current: $body-font-color;
 $table-background:               $body-background;
 $form-label-color:               $body-font-color;
+$helptext-color:                 $body-font-color;
 
 @import "foundation-sites/scss/foundation";
 @include foundation-everything(true);

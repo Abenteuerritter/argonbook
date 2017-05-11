@@ -43,6 +43,7 @@ twig:
         project:      "%project%"
     form_themes:
         - "foundation_5_layout.html.twig"
+        - "ArgonWebBundle::form_layout.html.twig"
 
 # Swiftmailer Configuration
 swiftmailer:
