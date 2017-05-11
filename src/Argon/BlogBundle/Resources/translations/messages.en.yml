@@ -18,6 +18,7 @@ admin:
     blog:            Blog
     title:           Title
     body:            Content
+    body_help:       You can use markdown
     image:           Image
     image_empty:     No image has been yet selected for this post.
     creator:         Creator

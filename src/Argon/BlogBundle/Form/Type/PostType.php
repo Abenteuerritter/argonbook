@@ -3,6 +3,8 @@
 namespace Argon\BlogBundle\Form\Type;
 
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\FormView;
+use Symfony\Component\Form\FormInterface;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -17,9 +19,19 @@ class PostType extends AbstractType
     {
         $builder
             ->add('title')
-            ->add('body', null, ['attr' => ['data-help' => 'Post body supports Markdown format']])
+            ->add('body')
             ->add('image', FileType::class, ['required' => false])
         ;
+    }
+
+    /**
+     * @param FormView      $view
+     * @param FormInterface $form
+     * @param array         $options
+     */
+    public function finishView(FormView $view, FormInterface $form, array $options)
+    {
+        $view['body']->vars['help'] = 'admin.blog.body_help';
     }
 
     /**
