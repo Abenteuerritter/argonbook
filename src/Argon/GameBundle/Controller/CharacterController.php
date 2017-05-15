@@ -176,12 +176,7 @@ class CharacterController extends Controller
             $characterSkills[] = $characterSkill;
         }
 
-        // {{{ Order By Price
-        $criteria = new Criteria();
-        $criteria->orderBy(array('price' => Criteria::ASC));
-
-        $characterSkills = $characterSkills->matching($criteria);
-        // }}}
+        $characterSkills = $characterSkills->matching(new Criteria(null, array('price' => Criteria::ASC)));
 
         $form = $this->createForm(CharacterSkillsType::class, array('characterSkills' => $characterSkills), array(
             'action' => $this->generateUrl('character_skills_update', array('slug' => $character->getSlug())),
