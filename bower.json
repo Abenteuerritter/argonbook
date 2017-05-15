@@ -11,6 +11,7 @@
   ],
   "dependencies": {
     "jquery": "^2.2",
+    "number-polyfill": "jonstipe/number-polyfill",
     "Sortable": "^1.4",
     "foundation-sites": "^6.2",
     "foundation-icon-fonts": "*"
