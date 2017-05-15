@@ -35,6 +35,11 @@ $helptext-color:                 $body-font-color;
 
 /*! Argonbook | MIT | github.com/Abenteuerritter/argonbook */
 
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  opacity: 1;
+}
+
 $section-space: rem-calc(40);
 
 .position-1 { font-size: 200%; }
