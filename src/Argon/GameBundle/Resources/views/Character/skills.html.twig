@@ -129,5 +129,29 @@
 
         update();
     });
+
+    $(function() {
+        var max = 0;
+
+        $('input[type="number"]')
+            .each(function() {
+                var price = parseInt(
+                    $(this).data("price")
+                );
+
+                if (max < price) {
+                    max = price;
+                }
+            })
+            .each(function() {
+                var el = $(this);
+
+                var price = parseInt(el.data("price"));
+                var perc  = 100 - price * 100 / max;
+
+                el.parents("tr").css("background-color", "hsl(" + perc + ", 20%, 50%)");
+            })
+        ;
+    });
 </script>
 {% endblock %}
