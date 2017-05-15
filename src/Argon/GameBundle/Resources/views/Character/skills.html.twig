@@ -87,18 +87,23 @@
             var val = el.val() == "" ? 0 : parseInt(el.val());
             var max = parseInt(el.data("max"));
 
-            if (val < 0) {
+            if (val < 0 || val == 0) {
                 el.val("");
-            }
-
-            if (max > 0 && val > max) {
+            } else if (max > 0 && val > max) {
                 el.val(max);
+            } else {
+                var progress = get();
+
+                if (progress > total) {
+                    val -= progress - total;
+                    el.val(val == 0 ? "" : val);
+                }
             }
 
-            updateExperience();
+            update();
         });
 
-        function updateExperience() {
+        function get() {
             var progress = 0;
 
             $('input[type="number"]').each(function() {
@@ -111,12 +116,18 @@
                 progress += (level + value) * price;
             });
 
+            return progress;
+        }
+
+        function update() {
+            var progress = get();
+
             $("#progress-experience")
                 .css("width", Math.round((progress * 100) / total).toString() + "%")
                 .find("p").html(progress);
         }
 
-        updateExperience();
+        update();
     });
 </script>
 {% endblock %}
