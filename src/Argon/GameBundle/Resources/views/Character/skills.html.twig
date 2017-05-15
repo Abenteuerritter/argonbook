@@ -82,6 +82,19 @@
         );
 
         $('input[type="number"]').change(function(event) {
+            var el = $(this);
+
+            var val = el.val() == "" ? 0 : parseInt(el.val());
+            var max = parseInt(el.data("max"));
+
+            if (val < 0) {
+                el.val("");
+            }
+
+            if (max > 0 && val > max) {
+                el.val(max);
+            }
+
             updateExperience();
         });
 
