@@ -4,6 +4,8 @@ namespace Argon\GameBundle\Entity;
 
 use Gedmo\Translatable\Translatable;
 
+use Argon\GameBundle\Provider\GameInterface;
+
 class Race implements Translatable
 {
     /**
@@ -103,6 +105,18 @@ class Race implements Translatable
     public function getGenres()
     {
         return $this->genres;
+    }
+
+    /**
+     * Returns true if the race support the given game.
+     *
+     * @param GameInterface $game
+     *
+     * @return boolean
+     */
+    public function supportGame(GameInterface $game)
+    {
+        return count(array_intersect($game->getGenres(), $this->getGenres())) > 0;
     }
 
     /**
