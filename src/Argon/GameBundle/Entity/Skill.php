@@ -45,6 +45,11 @@ class Skill implements Translatable
     /**
      * @var string
      */
+    protected $description;
+
+    /**
+     * @var string
+     */
     protected $locale;
 
     public function __construct()
@@ -159,6 +164,22 @@ class Skill implements Translatable
     public function getMax()
     {
         return $this->max;
+    }
+
+    /**
+     * @param string $description
+     */
+    public function setDescription($description = null)
+    {
+        $this->description = $description;
+    }
+
+    /**
+     * @return string
+     */
+    public function getDescription()
+    {
+        return $this->description;
     }
 
     /**

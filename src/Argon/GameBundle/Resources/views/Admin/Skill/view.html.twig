@@ -52,6 +52,16 @@
     {% endif %}
   </dd>
   <dt>
+    <label>{{ "admin.skill.description"|trans }}</label>
+  </dt>
+  <dd>
+    {% if description %}
+      {{ description|raw }}
+    {% else %}
+      <em>{{ "admin.skill.description_empty"|trans }}</em>
+    {% endif %}
+  </dd>
+  <dt>
     <label>{{ "admin.skill.requirements"|trans }}</label>
   </dt>
   <dd>

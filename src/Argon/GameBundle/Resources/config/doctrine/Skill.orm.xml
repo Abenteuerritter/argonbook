@@ -29,5 +29,8 @@
         </field>
         <field name="modifier" column="modifier" type="integer" />
         <field name="max" column="max" type="integer" nullable="true" />
+        <field name="description" column="description" type="text" nullable="true">
+            <gedmo:translatable />
+        </field>
     </entity>
 </doctrine-mapping>

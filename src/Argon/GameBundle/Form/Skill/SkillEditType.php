@@ -21,6 +21,7 @@ class SkillEditType extends AbstractType
         $builder
             ->add('modifier')
             ->add('max')
+            ->add('description')
             ->add('requirements', null, array(
                 'expanded'      => true,
                 'multiple'      => true,

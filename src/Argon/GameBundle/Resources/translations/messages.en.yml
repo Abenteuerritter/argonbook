@@ -112,17 +112,19 @@ admin:
     updated:     Race updated.
 
   skill:
-    skills:        Skills
-    of_ability:    of %ability%
-    name:          Name
-    level:         Level
-    ability:       Ability
-    ability_empty: General
-    modifier:      Modifier
-    max:           Maximum
-    max_empty:     (no limit)
-    requirements:  Requirements
-    empty:         There are no skills in the system yet.
-    edit:          Edit
-    edit_submit:   Edit
-    updated:       Skill updated.
+    skills:            Skills
+    of_ability:        of %ability%
+    name:              Name
+    level:             Level
+    ability:           Ability
+    ability_empty:     General
+    modifier:          Modifier
+    max:               Maximum
+    max_empty:         (no limit)
+    description:       Description
+    description_empty: (no description)
+    requirements:      Requirements
+    empty:             There are no skills in the system yet.
+    edit:              Edit
+    edit_submit:       Edit
+    updated:           Skill updated.
