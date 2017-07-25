@@ -9,9 +9,9 @@
   {{ form_errors(form) }}
   {{ form_row(form.story, {"attr": {"placeholder": "character.story_placeholder" }}) }}
   {% if character.storyConfirmedAt is null %}
-    <p class="warning">{{ "character.story_not_confirmed"|trans }}</p>
+    <p class="callout warning">{{ "character.story_not_confirmed"|trans }}</p>
   {% else %}
-    <p class="success">{{ "character.story_confirmed"|trans }}</p>
+    <p class="callout success">{{ "character.story_confirmed"|trans }}</p>
     {% if character.note %}
       <dl>
         <dt>{{ "character.note"|trans }}</dt>
