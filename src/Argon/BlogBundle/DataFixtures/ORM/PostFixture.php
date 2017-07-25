@@ -17,7 +17,7 @@ class PostFixture implements FixtureInterface
         $hello->setCreator($root);
         $hello->setTitle('Hello World');
         $hello->setBody(<<<BODY
-Hello. This is Argonbook's first blog post.
+Hello. This is Argonbook's **first** blog post.
 BODY
         );
 
