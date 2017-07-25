@@ -72,7 +72,7 @@ skill:
   ability_empty: General
   name:          Name
   price:         Price
-  level:         Current Level
+  level:         Level
   buy:           Adquire
   empty:         There are no skills in the system yet.
 

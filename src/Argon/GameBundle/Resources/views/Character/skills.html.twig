@@ -43,9 +43,9 @@
       <tr class="ability-{{ skill.abilityCode|default("all")|lower }}">
         <td>
           {% if skill.abilityCode %}
-            <abbr title="{{ ("character_ability.types." ~ skill.abilityCode)|trans }} ({{ skill.abilityCode }})">*</abbr>
+            <abbr title="{{ ("character_ability.types." ~ skill.abilityCode)|trans }}">{{ skill.abilityCode }}</abbr>
           {% else %}
-            <abbr title="{{ "skill.ability_empty"|trans }}">*</abbr>
+            <abbr title="{{ "skill.ability_empty"|trans }}">&mdash;</abbr>
           {% endif %}
         </td>
         <td>{{ skill }}</td>

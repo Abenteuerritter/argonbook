@@ -40,6 +40,13 @@ input[type=number]::-webkit-outer-spin-button {
   opacity: 1;
 }
 
+abbr[title] {
+  text-decoration: none;
+  &:hover {
+    color: map-get($foundation-palette, success);
+  }
+}
+
 $section-space: rem-calc(40);
 
 .position-1 { font-size: 200%; }
