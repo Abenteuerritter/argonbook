@@ -62,8 +62,7 @@ class PostController extends Controller
         $post = $this->getRepository()->findOneBySlug($slug);
 
         return $this->render('ArgonBlogBundle:Admin\Post:view.html.twig', array(
-            'post'          => $post,
-            'post_rendered' => $this->getMarkdownParser()->parse($post->getBody()),
+            'post' => $post,
         ));
     }
 
@@ -129,7 +128,7 @@ class PostController extends Controller
             $rawData = $request->request->get($form->getName());
 
             if (isset($rawData['preview'])) {
-                $preview = $this->getMarkdownParser()->parse($post->getBody());
+                $preview = $post->getBody();
             } else {
                 $post->setModified();
 
@@ -156,13 +155,5 @@ class PostController extends Controller
     protected function getRepository()
     {
         return $this->getDoctrine()->getRepository('ArgonBlogBundle:Post');
-    }
-
-    /**
-     * @return \cebe\markdown\Markdown
-     */
-    protected function getMarkdownParser()
-    {
-        return $this->container->get('cebe.markdown');
     }
 }

@@ -33,7 +33,7 @@
   </dd>
 
   <dt>{{ "admin.blog.body"|trans }}</dt>
-  <dd>{{ post_rendered|raw }}</dd>
+  <dd>{{ post.body|markdown|raw }}</dd>
 
   <dt>{{ "admin.blog.image"|trans }}</dt>
   <dd>

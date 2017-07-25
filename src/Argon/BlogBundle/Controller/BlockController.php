@@ -21,7 +21,6 @@ class BlockController extends Controller
     public function postAction(Post $post, $position = null)
     {
         return $this->render('ArgonBlogBundle:Block:post.html.twig', array(
-            'post_rendered'  => $this->getMarkdownParser()->parse($post->getBody()),
             'post'           => $post,
             'position'       => $position,
             'show_big_title' => $position === null,
@@ -53,13 +52,5 @@ class BlockController extends Controller
     protected function getRepository()
     {
         return $this->getDoctrine()->getRepository('ArgonBlogBundle:Post');
-    }
-
-    /**
-     * @return \cebe\markdown\Markdown
-     */
-    protected function getMarkdownParser()
-    {
-        return $this->container->get('cebe.markdown');
     }
 }

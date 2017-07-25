@@ -121,14 +121,12 @@ class CharacterController extends Controller
         /** @var Character $character */
         $character = $this->getRepository()->findOneBySlug($slug);
 
-        $storyNote   = null;
-        $experiences = null;
-
         $own = ($this->isGranted('ROLE_PJ') && $character->isEqualTo($this->getUser())) ||
                ($this->isGranted('ROLE_PLAYER') && $character->getPlayer()->isEqualTo($this->getUser()));
 
+        $experiences = null;
+
         if ($own || $this->isGranted('ROLE_DIRECTOR')) {
-            $storyNote   = $this->getMarkdownParser()->parse($character->getNote());
             $experiences = $this->getDoctrine()
                                 ->getRepository(CharacterExperience::class)
                                 ->findByCharacter($character);
@@ -136,7 +134,6 @@ class CharacterController extends Controller
 
         return $this->render('ArgonGameBundle:Character:view.html.twig', array(
             'character'   => $character,
-            'story_note'  => $storyNote,
             'experiences' => $experiences,
         ));
     }
@@ -262,9 +259,8 @@ class CharacterController extends Controller
         }
 
         return $this->render('ArgonGameBundle:Character:edit.html.twig', array(
-            'character'  => $character,
-            'story_note' => $this->getMarkdownParser()->parse($character->getNote()),
-            'form'       => $form->createView(),
+            'character' => $character,
+            'form'      => $form->createView(),
         ));
     }
 
@@ -282,13 +278,5 @@ class CharacterController extends Controller
     protected function getGameFactory()
     {
         return $this->get('argon_game.provider.game_factory');
-    }
-
-    /**
-     * @return \cebe\markdown\Markdown
-     */
-    protected function getMarkdownParser()
-    {
-        return $this->container->get('cebe.markdown');
     }
 }

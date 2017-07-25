@@ -11,7 +11,7 @@
   {% endif %}
   <div class="media-object-section main-section">
     {% if not show_big_title %}<h4>{{ post.title }}</h4>{% endif %}
-    <div class="post">{{ post_rendered|raw }}</div>
+    <div class="post">{{ post.body|markdown|raw }}</div>
     <div class="meta">
       <small class="meta">{{ "blog.footer"|trans({"%creator%": post.creator, "%published%": post.publishedAt|date}) }}</small>
       {% if show_links %}

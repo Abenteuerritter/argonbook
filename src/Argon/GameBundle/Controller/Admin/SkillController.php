@@ -33,8 +33,7 @@ class SkillController extends Controller
         $skill = $this->getRepository()->findOneBySlug($slug);
 
         return $this->render('ArgonGameBundle:Admin/Skill:view.html.twig', array(
-            'entity'      => $skill,
-            'description' => $this->getMarkdownParser()->parse($skill->getDescription()),
+            'entity' => $skill,
         ));
     }
 
@@ -79,13 +78,5 @@ class SkillController extends Controller
     protected function getRepository()
     {
         return $this->getDoctrine()->getRepository(Skill::class);
-    }
-
-    /**
-     * @return \cebe\markdown\Markdown
-     */
-    protected function getMarkdownParser()
-    {
-        return $this->container->get('cebe.markdown');
     }
 }

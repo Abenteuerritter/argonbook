@@ -21,7 +21,7 @@
       <img src="{{ asset(post.imagePath) }}" alt="{{ post.title }}">
     </a>
   {% endif %}
-  {{ preview|raw }}
+  {{ preview|markdown|raw }}
   <hr>
 {% endif %}
 {{ form(form) }}

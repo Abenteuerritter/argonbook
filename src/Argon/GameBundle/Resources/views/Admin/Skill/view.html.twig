@@ -55,8 +55,8 @@
     <label>{{ "admin.skill.description"|trans }}</label>
   </dt>
   <dd>
-    {% if description %}
-      {{ description|raw }}
+    {% if entity.description %}
+      {{ entity.description|markdown|raw }}
     {% else %}
       <em>{{ "admin.skill.description_empty"|trans }}</em>
     {% endif %}
