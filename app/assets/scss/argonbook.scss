@@ -75,6 +75,9 @@ $section-space: rem-calc(40);
   .is-stuck {
     padding: ($section-space / 2) 0;
   }
+  #skills-table input {
+    margin-bottom: 0;
+  }
 }
 
 .game.media-object, .comment {
