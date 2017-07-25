@@ -48,7 +48,12 @@
             <abbr title="{{ "skill.ability_empty"|trans }}">&mdash;</abbr>
           {% endif %}
         </td>
-        <td>{{ skill }}</td>
+        <td>
+          <em>{{ skill }}</em>
+          {% if skill.description %}
+            {{ skill.description|markdown|raw }}
+          {% endif %}
+        </td>
         <td class="text-right"><span id="{{ skill.slug }}_level">{{ characterSkill.vars.value.level }}</span></td>
         <td>
           {{
