@@ -46,6 +46,10 @@ $section-space: rem-calc(40);
 .position-2 { font-size: 150%; }
 .position-3 { font-size: 100%; }
 
+.help-text {
+  margin-bottom: 0;
+}
+
 .off-canvas {
   height: 100%;
 }
@@ -64,6 +68,12 @@ $section-space: rem-calc(40);
     right: $section-space;
     a { color: $white; }
     a:hover { color: darker($white 40%) }
+  }
+}
+
+.character {
+  #character_abilities {
+    margin-bottom: 1em;
   }
 }
 
