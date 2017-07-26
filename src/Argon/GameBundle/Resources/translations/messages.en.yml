@@ -23,7 +23,7 @@ character:
   game_submit:          Select game
   edit:                 Edit
   edit_title:           Edit %character%
-  edit_submit:          Edit
+  edit_submit:          Save
   note:                 Notes of the Director
   story:                Story
   story_draft:          Is the story only a draft?
@@ -108,7 +108,7 @@ admin:
     genres:      Genres
     empty:       There are no races in the system yet.
     edit:        Edit
-    edit_submit: Edit
+    edit_submit: Save
     updated:     Race updated.
 
   skill:
@@ -126,5 +126,5 @@ admin:
     requirements:      Requirements
     empty:             There are no skills in the system yet.
     edit:              Edit
-    edit_submit:       Edit
+    edit_submit:       Save
     updated:           Skill updated.

@@ -32,7 +32,7 @@ admin:
     comments:        Comments
     create:          Create
     edit:            Edit
-    edit_submit:     Edit
+    edit_submit:     Save
     edit_preview:    Preview
     preview_warning: Cannot preview new image. Sorry :|
     created:         Post has been created.
