@@ -34,6 +34,7 @@ admin:
     edit:            Edit
     edit_submit:     Edit
     edit_preview:    Preview
+    preview_warning: Cannot preview new image. Sorry :|
     created:         Post has been created.
     published:       Post has been published.
     updated:         Post has been updated.

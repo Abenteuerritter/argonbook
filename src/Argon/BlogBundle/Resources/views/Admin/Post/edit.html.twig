@@ -16,13 +16,43 @@
 
 {% block content %}
 {% if preview|default(false) %}
-  {% if post.imagePath %}
-    <a href="{{ asset(post.imagePath) }}">
-      <img src="{{ asset(post.imagePath) }}" alt="{{ post.title }}">
-    </a>
-  {% endif %}
   {{ preview|markdown|raw }}
   <hr>
 {% endif %}
-{{ form(form) }}
+{{ form_start(form) }}
+  <div class="row">
+    <div class="medium-4 columns">
+      {% if post.imagePath %}
+        <a href="{{ asset(post.imagePath) }}">
+          <img src="{{ asset(post.imagePath) }}" alt="{{ post.title }}">
+        </a>
+      {% endif %}
+      {{ form_widget(form.image) }}
+    </div>
+    <div class="medium-8 columns">
+      {{ form_row(form.title) }}
+      {{ form_row(form.body) }}
+    </div>
+  </div>
+  <div class="button-group">
+    {{ form_widget(form.submit) }}
+    {{ form_widget(form.preview) }}
+    <span id="post_preview_warning" class="callout small warning hide">{{ "admin.blog.preview_warning"|trans }}</span>
+  </div>
+  {{ form_rest(form) }}
+{{ form_end(form) }}
+{% endblock %}
+
+{% block javascripts %}
+{{ parent() }}
+<script type="text/javascript">
+    $(function() {
+        $('#post_image').change(function() {
+            $("#post_preview")
+                .addClass("disabled")
+                .attr("disabled", "disabled");
+            $("#post_preview_warning").removeClass("hide");
+        });
+    });
+</script>
 {% endblock %}
