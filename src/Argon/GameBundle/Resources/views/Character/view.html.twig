@@ -38,7 +38,7 @@
       </thead>
       <tbody>
       {% for skill in character.skills %}
-        <tr>
+        <tr class="ability-{{ skill.skill.abilityCode|default("all")|lower }}">
           <td>
             {% if skill.skill.abilityCode %}
               <abbr title="{{ ("character_ability.types." ~ skill.skill.abilityCode)|trans }} ({{ skill.skill.abilityCode }})">*</abbr>
