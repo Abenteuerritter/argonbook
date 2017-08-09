@@ -7,6 +7,9 @@
     <route id="character" path="/characters" methods="GET">
         <default key="_controller">ArgonGameBundle:Character:index</default>
     </route>
+    <route id="character_switch" path="/characters/switch" methods="GET">
+        <default key="_controller">ArgonGameBundle:Character:switch</default>
+    </route>
     <route id="character_game" path="/new" methods="GET">
         <default key="_controller">ArgonGameBundle:Character:game</default>
     </route>

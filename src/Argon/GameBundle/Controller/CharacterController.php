@@ -33,6 +33,30 @@ class CharacterController extends Controller
         return $this->render('ArgonGameBundle:Character:index.html.twig');
     }
 
+    public function switchAction(Request $request)
+    {
+        $this->denyAccessUnlessGranted('ROLE_PLAYER', null,
+            'You must be logged in to switch to a character.');
+
+        $player = $this->getUser();
+        $query = $this->getDoctrine()->getRepository(Character::class)->createQueryByPlayer($player);
+
+        $pagination = $this->get('knp_paginator')->paginate($query,
+            $request->query->getInt('page', 1)
+        );
+
+        $next = $request->query->get('next');
+
+        if (!empty($next)) {
+            $next .= strpos($next, '?') === false ? '?' : '&';
+        }
+
+        return $this->render('ArgonGameBundle:Character:switch.html.twig', array(
+            'characters' => $pagination,
+            'next' => $next,
+        ));
+    }
+
     public function gameAction(Request $request)
     {
         $this->denyAccessUnlessGranted('ROLE_PLAYER', null,

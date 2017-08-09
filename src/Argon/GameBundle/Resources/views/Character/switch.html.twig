@@ -1,0 +1,15 @@
+{% extends "ArgonWebBundle::layout_plain.html.twig" %}
+
+{% block title %}{{ parent() }} - {{ "character.switch"|trans }}{% endblock %}
+
+{% block content %}
+  <p>{{ "character.switch_to_continue"|trans }}</p>
+  <ul class="characters">
+    {% for character in characters %}
+      <li>
+        {{ include("ArgonGameBundle:Partial\\Character:card.html.twig", {"character": character, "switch_to": next}) }}
+      </li>
+    {% endfor %} 
+  </ul>
+  {{ knp_pagination_render(characters) }}
+{% endblock %}

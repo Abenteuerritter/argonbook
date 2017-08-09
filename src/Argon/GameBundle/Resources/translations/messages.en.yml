@@ -17,6 +17,7 @@ character:
   abilities_help:       Drag & drop to re-order your abilities
   experience:           Experience
   switch:               Switch
+  switch_to_continue:   Switch to continue
   skills:               Skills
   new:                  New character
   new_title:            Create a new character

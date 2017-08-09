@@ -17,11 +17,11 @@
   <h2>{{ "game.characters"|trans }}</h2>
   {% for row in characters|batch(3) %}
     <div class="row small-up-2 medium-up-3">
-      <div class="column">
       {% for character in row %}
+      <div class="column">
         {{ include("ArgonGameBundle:Partial\\Character:card.html.twig", {"character": character}) }}
-      {% endfor %}
       </div>
+      {% endfor %}
     </div>
   {% else %}
     <div class="warning callout">

@@ -48,4 +48,18 @@ class CharacterRepository extends EntityRepository
 
         return $builder->getQuery();
     }
+
+    /**
+     * @return \Doctrine\ORM\Query
+     */
+    public function createQueryByPlayer(Player $player)
+    {
+        $builder = $this->createQueryBuilder('c');
+        $builder->where('c.player = :player');
+        $builder->setParameters(array(
+            'player' => $player,
+        ));
+
+        return $builder->getQuery();
+    }
 }

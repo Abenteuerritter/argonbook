@@ -82,6 +82,20 @@ $section-space: rem-calc(40);
   }
 }
 
+ul.characters {
+  list-style-type: none;
+  margin: 0;
+  li {
+    position: relative;
+    .button-switch {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+    }
+  }
+}
+
 .character {
   #character_abilities {
     margin-bottom: 1em;
