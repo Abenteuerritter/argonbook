@@ -1,23 +1,4 @@
-{% extends "ArgonWebBundle::layout.html.twig" %}
-
-{% block body %}
-<div class="row align-center align-middle">
-  <div class="medium-6 column">
-    {% if app.request.hasPreviousSession %}
-      {% for class, messages in app.session.flashbag.all() %}
-        {% for message in messages %}
-          <div class="{{ class }} callout">
-            <p>{{ message|trans }}</p>
-          </div>
-        {% endfor %}
-      {% endfor %}
-    {% endif %}
-    <main class="user">
-      {% block fos_user_content %}{% endblock %}
-      <div class="outside">
-        <a href="{{ path("homepage") }}">{{ "go_back"|trans }}</a>
-      </div>
-    </main>
-  </div>
-</div>
+{% extends "ArgonWebBundle::layout_plain.html.twig" %}
+{% block content %}
+  {% block fos_user_content %}{% endblock %}
 {% endblock %}
