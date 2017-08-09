@@ -26,7 +26,6 @@ framework:
         engines: ['twig']
     default_locale:  "%locale%"
     trusted_hosts:   ~
-    trusted_proxies: ~
     session:
         # http://symfony.com/doc/current/reference/configuration/framework.html#handler-id
         handler_id:  session.handler.native_file
@@ -111,5 +110,6 @@ fos_user:
 
 # KnpPaginator Configuration
 knp_paginator:
+    page_range: 15
     template:
         pagination: 'KnpPaginatorBundle:Pagination:foundation_v5_pagination.html.twig'
