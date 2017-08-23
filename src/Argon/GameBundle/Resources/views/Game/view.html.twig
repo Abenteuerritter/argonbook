@@ -30,9 +30,9 @@
   {% endfor %}
   {{ knp_pagination_render(characters) }}
 
-  {% if is_granted("ROLE_PLAYER") %}
   <div class="button-group">
+  {% if is_granted("ROLE_PLAYER") %}
     <a href="{{ path("character_new", {"gameName": game.name}) }}" class="button">{{ "game.create_character"|trans }}</a>
-  </div>
   {% endif %}
+  </div>
 {% endblock %}

@@ -21,8 +21,6 @@ use Argon\GameBundle\Form\Character\CharacterGameType;
 use Argon\GameBundle\Form\Character\CharacterSkillsType;
 use Argon\GameBundle\Form\Type\CharacterType;
 
-use Argon\GameBundle\Provider\GameInterface;
-
 class CharacterController extends Controller
 {
     public function indexAction(Request $request)
@@ -95,7 +93,7 @@ class CharacterController extends Controller
 
         $player = $this->getUser();
 
-        /** @var GameInterface $game */
+        /** @var \Argon\GameBundle\Provider\GameInterface $game */
         $game = $this->getGameFactory()->create($gameName);
 
         $character = new Character();

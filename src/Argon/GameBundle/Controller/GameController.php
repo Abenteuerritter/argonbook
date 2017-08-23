@@ -6,7 +6,6 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
 use Argon\GameBundle\Entity\Character;
-use Argon\GameBundle\Provider\GameInterface;
 
 class GameController extends Controller
 {
@@ -22,7 +21,7 @@ class GameController extends Controller
 
     public function viewAction(Request $request, $gameName)
     {
-        /** @var GameInterface $game */
+        /** @var \Argon\GameBundle\Provider\GameInterface $game */
         $game = $this->getGameFactory()->create($gameName);
 
         $query = $this->getDoctrine()->getRepository(Character::class)->createQueryByGameName($gameName);
