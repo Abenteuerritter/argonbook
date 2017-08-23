@@ -145,6 +145,10 @@ class CharacterController extends Controller
         /** @var Character $character */
         $character = $this->getRepository()->findOneBySlug($slug);
 
+        if ($character === null) {
+            throw $this->createNotFoundException('Character not found.');
+        }
+
         $own = ($this->isGranted('ROLE_PJ') && $character->isEqualTo($this->getUser())) ||
                ($this->isGranted('ROLE_PLAYER') && $character->getPlayer()->isEqualTo($this->getUser()));
 
@@ -171,6 +175,10 @@ class CharacterController extends Controller
 
         /** @var Character $character */
         $character = $this->getRepository()->findOneBySlug($slug);
+
+        if ($character === null) {
+            throw $this->createNotFoundException('Character not found.');
+        }
 
         if ($player !== $character->getPlayer()) {
             throw new AccessDeniedException();
@@ -255,6 +263,10 @@ class CharacterController extends Controller
 
         /** @var Character $character */
         $character = $this->getRepository()->findOneBySlug($slug);
+
+        if ($character === null) {
+            throw $this->createNotFoundException('Character not found.');
+        }
 
         if ($player !== $character->getPlayer()) {
             throw new AccessDeniedException();
