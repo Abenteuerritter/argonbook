@@ -19,6 +19,8 @@ character:
   switch:               Switch
   switch_to_continue:   Switch to continue
   skills:               Skills
+  add_to_friendlist:    Add to friendlist
+  view_friendship:      View friendship
   new:                  New character
   new_title:            Create a new character
   game_submit:          Select game
@@ -76,6 +78,19 @@ skill:
   level:         Level
   buy:           Adquire
   empty:         There are no skills in the system yet.
+
+friendlist:
+  title:           Friendlist
+  empty:           You have no friends, yet.
+  noego:           You cannot be friend with yourself.
+  not_friend:      You are not friends of %character% yet.
+  not_accepted:    Friendship is not yet accepted by %character%.
+  relation_with:   Relation with %character%
+  relation_submit: Confirm my friendship
+  relation_accept: Accept friendship
+  requested_at:    Friendship was requested on %requested_at%.
+  accepted_at:     Friendship was accepted on %accepted_at%.
+  pending:         Pending
 
 admin:
   character:

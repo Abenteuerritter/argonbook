@@ -107,4 +107,14 @@
   </div>
 </div>
 {% endif %}
+
+<div class="button-group">
+{% if is_granted("ROLE_PJ") and not character.isEqualTo(app.user) %}
+  {% if character in friends %}
+    <a href="{{ path("friendlist_relation", {"slug": character.slug}) }}" class="button">{{ "character.view_friendship"|trans }}</a>
+  {% else %}
+    <a href="{{ path("friendlist_relation", {"slug": character.slug}) }}" class="button">{{ "character.add_to_friendlist"|trans }}</a>
+  {% endif %}
+{% endif %}
+</div>
 {% endblock %}

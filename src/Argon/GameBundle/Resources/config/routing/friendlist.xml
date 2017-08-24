@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<routes xmlns="http://symfony.com/schema/routing"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/routing
+                        http://symfony.com/schema/routing/routing-1.0.xsd">
+
+    <route id="friendlist" path="/friendlist" methods="GET">
+        <default key="_controller">ArgonGameBundle:Friendlist:index</default>
+    </route>
+    <route id="friendlist_relation" path="/friendlist/{slug}" methods="GET">
+        <default key="_controller">ArgonGameBundle:Friendlist:relation</default>
+        <requirement key="slug">[-\w]+:[-\w]+</requirement>
+    </route>
+    <route id="friendlist_relation_create" path="/friendlist/{slug}" methods="POST">
+        <default key="_controller">ArgonGameBundle:Friendlist:relationCreate</default>
+        <requirement key="slug">[-\w]+:[-\w]+</requirement>
+    </route>
+    <route id="friendlist_relation_accept" path="/friendlist/{slug}/accept" methods="POST">
+        <default key="_controller">ArgonGameBundle:Friendlist:relationAccept</default>
+        <requirement key="slug">[-\w]+:[-\w]+</requirement>
+    </route>
+</routes>

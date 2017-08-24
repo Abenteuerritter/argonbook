@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<doctrine-mapping
+      xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
+                          http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+    <entity name="Argon\GameBundle\Entity\Friend" repository-class="Argon\GameBundle\Repository\FriendRepository" table="friendlist">
+        <id name="id" type="integer" column="id">
+            <generator strategy="AUTO" />
+        </id>
+        <many-to-one field="leftCharacter" target-entity="Argon\GameBundle\Entity\Character">
+            <join-column name="left_character_id" referenced-column-name="id" nullable="false" />
+        </many-to-one>
+        <field name="leftCreatedAt" column="left_created_at" type="datetime" />
+        <many-to-one field="rightCharacter" target-entity="Argon\GameBundle\Entity\Character">
+            <join-column name="right_character_id" referenced-column-name="id" nullable="false" />
+        </many-to-one>
+        <field name="rightAcceptedAt" column="right_accepted_at" type="datetime" nullable="true" />
+    </entity>
+</doctrine-mapping>

@@ -2,10 +2,13 @@
 
 namespace Argon\GameBundle\Controller;
 
+use Doctrine\Common\Collections\ArrayCollection;
+
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
 use Argon\GameBundle\Entity\Character;
+use Argon\GameBundle\Entity\Friend;
 
 class GameController extends Controller
 {

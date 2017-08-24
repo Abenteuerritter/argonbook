@@ -65,6 +65,10 @@ $section-space: rem-calc(40);
   margin: 0;
 }
 
+.small.button {
+  padding: 0.46em 0.60em;
+}
+
 .plain {
   color: $black;
   background-color: $white;
@@ -87,7 +91,7 @@ ul.characters {
   margin: 0;
   li {
     position: relative;
-    .button-switch {
+    .thumb.button {
       position: absolute;
       top: 0;
       right: 0;

@@ -6,7 +6,7 @@
     </tr>
   </thead>
   <tbody>
-  {% for character in entities %}
+  {% for character in characters %}
     <tr>
       <td>
         {{ render(controller("ArgonGameBundle:Block:characterNick", {"character": character})) }}
@@ -19,12 +19,19 @@
       </td>
       <td>
         <div class="button-group align-right">
-          <a href="{{ path("character_view", {"slug": character.slug, "_switch": character.slug}) }}" class="warning button">{{ "character.switch"|trans }}</a>
-          <a href="{{ path("character_skills", {"slug": character.slug}) }}" class="button">
-            <span class="secondary badge">{{ character.skills|length }}</span>
-            <span>{{ "character.skills"|trans }}</span>
-          </a>
-          <a href="{{ path("character_edit", {"slug": character.slug}) }}" class="button">{{ "character.edit"|trans }}</a>
+          {% if showSwitch %}
+            <a href="{{ linkSwitch|default(path("character_view", {"slug": character.slug}) ~ "?") ~ "_switch=" ~ character.slug }}" class="warning button">{{ "character.switch"|trans }}</a>
+          {% endif %}
+          {% if showEdit %}
+            <a href="{{ path("character_skills", {"slug": character.slug}) }}" class="button">
+              <span class="secondary badge">{{ character.skills|length }}</span>
+              <span>{{ "character.skills"|trans }}</span>
+            </a>
+            <a href="{{ path("character_edit", {"slug": character.slug}) }}" class="button">{{ "character.edit"|trans }}</a>
+          {% endif %}
+          {% if showAccept %}
+            <a href="{{ path("friendlist_relation", {"slug": character.slug}) }}" class="button">{{ "friendlist.relation_accept"|trans }}</a>
+          {% endif %}
         </div>
       </td>
     </tr>

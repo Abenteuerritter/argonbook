@@ -7,8 +7,10 @@
     )
     <br>
     {{ character.race }}
-    {% if switch_to is defined %}
-      <a href="{{ switch_to|default(path("character_view", {"slug": character.slug}) ~ "&") ~ "_switch=" ~ character.slug }}" class="button-switch button">{{ "character.switch"|trans }}</a>
+    <div class="button-group">
+    {% if linkSwitch is defined and is_granted("ROLE_PLAYER") %}
+      <a href="{{ linkSwitch|default(path("character_view", {"slug": character.slug}) ~ "?") ~ "_switch=" ~ character.slug }}" class="thumb button">{{ "character.switch"|trans }}</a>
     {% endif %}
+    </div>
   </div>
 </div>

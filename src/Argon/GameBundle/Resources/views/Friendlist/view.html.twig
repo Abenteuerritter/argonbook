@@ -1,0 +1,28 @@
+{% extends "ArgonWebBundle::layout.html.twig" %}
+{% set active = "friendlist" %}
+
+{% block title %}{{ parent() }} - {{ "friendlist.title"|trans }} - {{ "friendlist.relation_with"|trans({"%character%": rightCharacter}) }}{% endblock %}
+
+{% block content %}
+  {% if leftCharacter.isEqualTo(rightCharacter) %}
+    <div class="warning callout">
+      <p>{{ "friendlist.noego"|trans }}</p>
+    </div>
+  {% elseif not relation %}
+    <div class="info callout">
+      <p>{{ "friendlist.not_friend"|trans({"%character%": rightCharacter}) }}</p>
+    </div>
+    {{ form(createForm) }}
+  {% else %}
+    <h1>{{ "friendlist.relation_with"|trans({"%character%": rightCharacter}) }}</h1>
+    <ul>
+      <li>{{ "friendlist.requested_at"|trans({"%requested_at%": relation.leftCreatedAt|date}) }}</li>
+    {% if relation.isAccepted() %}
+      <li>{{ "friendlist.accepted_at"|trans({"%accepted_at%": relation.rightAcceptedAt|date}) }}</li>
+    {% else %}
+      <li>{{ "friendlist.not_accepted"|trans({"%character%": relation.rightCharacter}) }}</li>
+    {% endif %}
+    </ul>
+    {% if acceptForm %}{{ form(acceptForm) }}{% endif %}
+  {% endif %}
+{% endblock %}

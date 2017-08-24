@@ -7,7 +7,7 @@
   <ul class="characters">
     {% for character in characters %}
       <li>
-        {{ include("ArgonGameBundle:Partial\\Character:card.html.twig", {"character": character, "switch_to": next}) }}
+        {{ include("ArgonGameBundle:Partial\\Character:card.html.twig", {"character": character, "linkSwitch": next}) }}
       </li>
     {% endfor %} 
   </ul>

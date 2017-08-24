@@ -15,6 +15,7 @@ use Argon\GameBundle\Entity\CharacterAbility;
 use Argon\GameBundle\Entity\CharacterExperience;
 use Argon\GameBundle\Entity\CharacterSkill;
 use Argon\GameBundle\Entity\Skill;
+use Argon\GameBundle\Entity\Friend;
 
 use Argon\GameBundle\Form\Character\CharacterEditType;
 use Argon\GameBundle\Form\Character\CharacterGameType;
@@ -158,9 +159,20 @@ class CharacterController extends Controller
                                 ->findByCharacter($character);
         }
 
+        $friendsOf = null;
+        $friends   = array();
+
+        if ($this->isGranted('ROLE_PJ')) {
+            $friendsOf = $this->getUser();
+            $friends   = $this->getDoctrine()->getRepository(Friend::class)->findAcceptedByCharacter($friendsOf);
+        }
+
         return $this->render('ArgonGameBundle:Character:view.html.twig', array(
             'character'   => $character,
             'experiences' => $experiences,
+            'friends'     => (new ArrayCollection($friends))->map(function(Friend $r) use($friendsOf) {
+                return $r->getFriendOf($friendsOf);
+            }),
         ));
     }
 
