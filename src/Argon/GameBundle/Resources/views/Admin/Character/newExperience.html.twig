@@ -8,7 +8,8 @@
   <ul class="breadcrumbs">
     <li><a href="{{ path("admin_dashboard") }}">{{ "admin.dashboard.title"|trans }}</a></li>
     <li><a href="{{ path("admin_character") }}">{{ "admin.character.characters"|trans }}</a></li>
-    <li class="disabled">{{ character.name }}</li>
+    <li class="disabled">{{ character.player }}</li>
+    <li><a href="{{ path("character_view", {"slug": character.slug}) }}">{{ character.name }}</a></li>
     <li><a href="{{ path("admin_character_experience", {"id": character.id}) }}">{{ "admin.character_experience.experience"|trans }}</a></li>
     <li>{{ "admin.character_experience.new"|trans }}</li>
   </ul>
