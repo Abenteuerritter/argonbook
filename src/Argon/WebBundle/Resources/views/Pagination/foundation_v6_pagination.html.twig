@@ -1,0 +1,82 @@
+{#
+/**
+ * @file
+ * Foundation 6 pagination control implementation.
+ *
+ * View that can be used with the pagination module
+ * from the Foundation 6 for Sites
+ * http://foundation.zurb.com/sites/docs/pagination.html
+ *
+ * @author Juan M Martínez <jm@guide42.com>
+ */
+#}
+
+{% if pageCount > 1 %}
+    <ul class="pagination" role="navigation">
+        {% if previous is defined %}
+            <li class="pagination-previous">
+                <a href="{{ path(route, query|merge({(pageParameterName): previous})) }}">
+                    {{ 'label_previous'|trans({}, 'KnpPaginatorBundle') }}
+                </a>
+            </li>
+        {% else %}
+            <li class="pagination-previous disabled">
+                {{ 'label_previous'|trans({}, 'KnpPaginatorBundle') }}
+            </li>
+        {% endif %}
+
+        {% if startPage > 1 %}
+            <li>
+                <a href="{{ path(route, query|merge({(pageParameterName): 1})) }}">1</a>
+            </li>
+            {% if startPage == 3 %}
+                <li>
+                    <a href="{{ path(route, query|merge({(pageParameterName): 2})) }}">2</a>
+                </li>
+            {% elseif startPage != 2 %}
+                <li class="ellipsis" aria-hidden="true"></li>
+            {% endif %}
+        {% endif %}
+
+        {% for page in pagesInRange %}
+            {% if page != current %}
+                <li>
+                    <a href="{{ path(route, query|merge({(pageParameterName): page})) }}">
+                        {{ page }}
+                    </a>
+                </li>
+            {% else %}
+                <li class="current">{{ page }}</li>
+            {% endif %}
+        {% endfor %}
+
+        {% if pageCount > endPage %}
+            {% if pageCount > (endPage + 1) %}
+                {% if pageCount > (endPage + 2) %}
+                    <li class="ellipsis" aria-hidden="true"></li>
+                {% else %}
+                    <li>
+                        <a href="{{ path(route, query|merge({(pageParameterName): (pageCount - 1)})) }}">
+                            {{ pageCount -1 }}
+                        </a>
+                    </li>
+                {% endif %}
+            {% endif %}
+            <li>
+                <a href="{{ path(route, query|merge({(pageParameterName): pageCount})) }}">{{ pageCount }}</a>
+            </li>
+        {% endif %}
+
+        {% if next is defined %}
+            <li class="pagination-next">
+                <a href="{{ path(route, query|merge({(pageParameterName): next})) }}">
+                    {{ 'label_next'|trans({}, 'KnpPaginatorBundle') }}
+                </a>
+            </li>
+        {% else %}
+            <li class="pagination-next disabled">
+                {{ 'label_next'|trans({}, 'KnpPaginatorBundle') }}
+            </li>
+        {% endif %}
+    </ul>
+{% endif %}

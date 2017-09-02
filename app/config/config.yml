@@ -112,4 +112,4 @@ fos_user:
 knp_paginator:
     page_range: 15
     template:
-        pagination: 'KnpPaginatorBundle:Pagination:foundation_v5_pagination.html.twig'
+        pagination: 'ArgonWebBundle:Pagination:foundation_v6_pagination.html.twig'
