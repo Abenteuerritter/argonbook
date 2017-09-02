@@ -16,11 +16,11 @@
 
 {% block content %}
   {% for comment in entities %}
-    <div class="row">
-      <div class="columns">
+    <div class="grid-x">
+      <div class="cell">
         {{ render(controller("ArgonBlogBundle:Block:comment", {"comment": comment})) }}
       </div>
-      <div class="small-2 columns">
+      <div class="small-2 cell">
         <div class="button-group">
           <a href="{{ path("admin_blog_comment_delete", {"slug": comment.post.slug, "comment": comment.id}) }}" class="alert button">{{ "admin.blog.comment.delete"|trans }}</a>
         </div>

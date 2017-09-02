@@ -20,8 +20,8 @@
   <hr>
 {% endif %}
 {{ form_start(form) }}
-  <div class="row">
-    <div class="medium-4 columns">
+  <div class="grid-x">
+    <div class="medium-4 cell">
       {% if post.imagePath %}
         <a href="{{ asset(post.imagePath) }}">
           <img src="{{ asset(post.imagePath) }}" alt="{{ post.title }}">
@@ -29,7 +29,7 @@
       {% endif %}
       {{ form_widget(form.image) }}
     </div>
-    <div class="medium-8 columns">
+    <div class="medium-8 cell">
       {{ form_row(form.title) }}
       {{ form_row(form.body) }}
     </div>

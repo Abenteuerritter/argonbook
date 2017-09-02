@@ -16,9 +16,9 @@
 
   <h2>{{ "game.characters"|trans }}</h2>
   {% for row in characters|batch(3) %}
-    <div class="row small-up-2 medium-up-3">
+    <div class="grid-x grid-padding-x small-up-2 medium-up-3">
       {% for character in row %}
-      <div class="column">
+      <div class="cell">
         {{ include("ArgonGameBundle:Partial\\Character:card.html.twig", {"character": character}) }}
       </div>
       {% endfor %}

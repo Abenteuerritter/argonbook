@@ -5,11 +5,11 @@
 
 {% block content %}
 <h1>{{ character }}</h1>
-<div class="row align-middle">
-  <div class="small-2 columns">{#}<h2>{{ "character.level"|trans }}</h2>{#}
+<div class="grid-x align-middle">
+  <div class="small-2 cell">{#}<h2>{{ "character.level"|trans }}</h2>{#}
     <big class="level stat">{{ character.level }}</big>
   </div>
-  <div class="small-5 columns">{#}<h2>{{ "character.info"|trans }}</h2>{#}
+  <div class="small-5 cell">{#}<h2>{{ "character.info"|trans }}</h2>{#}
     <dl>
       <dt>
         <label>{{ "character.name"|trans }}</label>
@@ -21,12 +21,12 @@
       <dd>{{ character.race }}</dd>
     </dl>
   </div>
-  <div class="small-5 columns">{#}<h2>{{ "character.abilities"|trans }}</h2>{#}
+  <div class="small-5 cell">{#}<h2>{{ "character.abilities"|trans }}</h2>{#}
     {{ include("ArgonGameBundle:Partial\\Character:abilities.html.twig", {"character": character}) }}
   </div>
 </div>
-<div class="row">
-  <div class="large-8 columns">
+<div class="grid-x">
+  <div class="large-8 cell">
     <h2>{{ "character.skills"|trans }}</h2>
     <table>
       <thead>
@@ -58,7 +58,7 @@
     </table>
   </div>
   {% if character.story %}
-  <div class="large-4 columns">
+  <div class="large-4 cell">
     <h2>{{ "character.story"|trans }}</h2>
     {{ include("ArgonGameBundle:Partial\\Character:story.html.twig", {"character": character}) }}
     {% if character.note %}
@@ -68,8 +68,8 @@
   {% endif %}
 </div>
 {% if experiences %}
-<div class="row">
-  <div class="large-12 columns">
+<div class="grid-x">
+  <div class="large-12 cell">
     <h2>{{ "character.experience"|trans }}</h2>
     <table>
       <thead>
@@ -95,10 +95,10 @@
       <tfoot>
         <tr>
           <td colspan="3">
-            <div class="row text-center">
-              <div class="columns"><big>{{ character.skillsExperience|default(0) }}</big> {{ "character_experience.stats.used_skills"|trans }}</div>
-              <div class="columns"><big>{{ character.availableExperience|default(0) }}</big> {{ "character_experience.stats.available"|trans }}</div>
-              <div class="columns"><big>{{ character.experience|default(0) }}</big> {{ "character_experience.stats.total"|trans }}</div>
+            <div class="grid-x text-center">
+              <div class="cell"><big>{{ character.skillsExperience|default(0) }}</big> {{ "character_experience.stats.used_skills"|trans }}</div>
+              <div class="cell"><big>{{ character.availableExperience|default(0) }}</big> {{ "character_experience.stats.available"|trans }}</div>
+              <div class="cell"><big>{{ character.experience|default(0) }}</big> {{ "character_experience.stats.total"|trans }}</div>
             </div>
           </td>
         </tr>

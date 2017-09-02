@@ -1,8 +1,8 @@
 {% extends "ArgonWebBundle::layout.html.twig" %}
 
 {% block body %}
-<div class="row align-center align-middle">
-  <div class="medium-6 column">
+<div class="grid-x align-center align-middle">
+  <div class="medium-6 large-4 cell">
     {% if app.request.hasPreviousSession %}
       {% for class, messages in app.session.flashbag.all() %}
         {% for message in messages %}

@@ -6,9 +6,9 @@
 {% block content %}
   <h1>{{ "friendlist.title"|trans }}</h1>
   {% for row in friends|batch(3) %}
-    <div class="row small-up-2 medium-up-3">
+    <div class="grid-x grid-padding-x small-up-2 medium-up-3">
       {% for friend in row %}
-      <div class="column">
+      <div class="cell">
         {{ include("ArgonGameBundle:Partial\\Character:card.html.twig", {"character": friend.getFriendOf(app.user)}) }}
       </div>
       {% endfor %}

@@ -5,8 +5,8 @@
 
 {% block content %}
 <h1>{{ "character.new_title"|trans }}</h1>
-<div class="row">
-  <div class="large-4 columns">
+<div class="grid-x">
+  <div class="large-4 cell">
     <h3>{{ game.info.fullname }}</h3>
     {% if game.info.description[app.request.locale] is defined %}
       <p>{{ game.info.description[app.request.locale] }}</p>
@@ -17,7 +17,7 @@
     {% endfor %}
     </div>
   </div>
-  <div class="large-8 columns">{{ form(form) }}</div>
+  <div class="large-8 cell">{{ form(form) }}</div>
 </div>
 {% endblock %}
 

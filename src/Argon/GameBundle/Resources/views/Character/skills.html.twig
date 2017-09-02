@@ -7,18 +7,18 @@
 <h1 id="skills">{{ "character.skills"|trans }}</h1>
 {{ form_start(form) }}
   <div class="sticky-container" data-sticky-container>
-    <div class="sticky row" data-sticky data-top-anchor="skills:bottom" data-btm-anchor="skills-table:bottom" data-margin-top="0">
-      <div class="medium-8 columns">
+    <div class="sticky grid-x grid-padding-x" data-sticky data-top-anchor="skills:bottom" data-btm-anchor="skills-table:bottom" data-margin-top="0">
+      <div class="medium-8 cell">
         <div class="progress">
           <span class="progress-meter" id="progress-experience" style="width: {{ ((character.skillsExperience * 100) / character.experience)|round }}%">
             <p class="progress-meter-text">{{ character.skillsExperience }}</p>
           </span>
         </div>
       </div>
-      <div class="medium-2 columns">
+      <div class="medium-2 cell">
         {{ form_widget(form.submit) }}
       </div>
-      <div class="medium-2 columns">
+      <div class="medium-2 cell">
         <ul>
           <li><big id="experience-available">{{ character.availableExperience|default(0) }}</big> {{ "character_experience.stats.available"|trans }}</li>
           <li><big id="experience">{{ character.experience|default(0) }}</big> {{ "character_experience.stats.total"|trans }}</li>
