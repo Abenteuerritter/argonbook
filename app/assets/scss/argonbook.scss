@@ -15,7 +15,7 @@ $white: #e5e9eb;
 $body-background: $black;
 $body-font-color: $white;
 
-$offcanvas-size: 50%;
+$offcanvas-sizes: ( medium: 30%, large: 50% );
 $offcanvas-background: #2e363a;
 
 $topbar-background:              $body-background;
