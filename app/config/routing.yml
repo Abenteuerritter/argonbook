@@ -13,6 +13,9 @@ _argon_game_character:
 _argon_game_friendlist:
     resource: "@ArgonGameBundle/Resources/config/routing/friendlist.xml"
 
+_argon_game_messenger:
+    resource: "@ArgonGameBundle/Resources/config/routing/messenger.xml"
+
 # ADMIN
 _argon_web_admin:
     resource: "@ArgonWebBundle/Resources/config/routing/admin.xml"

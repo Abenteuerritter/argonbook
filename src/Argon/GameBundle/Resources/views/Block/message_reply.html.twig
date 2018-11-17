@@ -1,0 +1,12 @@
+<div class="media-object">
+  <div class="media-object-section">
+    <h2>{{ "messenger.reply"|trans }}</h2>
+    {{ form_start(form) }}
+      {{ form_widget(form.subject, {"attr": {"placeholder": "messenger.subject"|trans}}) }}
+      {{ form_widget(form.body, {"attr": {"placeholder": "messenger.body"|trans}}) }}
+      <div class="button-group">
+        {{ form_widget(form.submit) }}
+      </div>
+    {{ form_end(form) }}
+  </div>
+</div>

@@ -3,8 +3,12 @@
 namespace Argon\GameBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+
+use FOS\Message\Model\Conversation;
 
 use Argon\GameBundle\Entity\Character;
+use Argon\GameBundle\Form\Messenger\MessageReplyType;
 
 class BlockController extends Controller
 {
@@ -46,6 +50,42 @@ class BlockController extends Controller
             'linkExperience' => $linkExperience,
             'linkSkills'     => $linkSkills,
             'character'      => $character,
+        ));
+    }
+
+    public function messageAction() {}
+
+    public function messageReplyAction(Character $recipient, Conversation $conversation = null)
+    {
+        $data = null;
+
+        if ($conversation) {
+            $action = $this->generateUrl('messenger_reply', array(
+                'slug' => $recipient->getSlug(),
+                'id'   => $conversation->getId(),
+            ));
+
+            $data = array(
+                'subject' => $conversation->getSubject(),
+            );
+        } else {
+            $action = $this->generateUrl('messenger_reply', array('slug' => $recipient->getSlug()));
+        }
+
+        $form = $this->createForm(MessageReplyType::class, $data, array(
+            'action' => $action,
+            'method' => 'POST',
+        ));
+
+        $form->add('submit', SubmitType::class, array(
+            'label' => 'messenger.send',
+            'attr'  => array('class' => 'button'),
+        ));
+
+        return $this->render('ArgonGameBundle:Block:message_reply.html.twig', array(
+            'form'         => $form->createView(),
+            'recipient'    => $recipient,
+            'conversation' => $conversation,
         ));
     }
 

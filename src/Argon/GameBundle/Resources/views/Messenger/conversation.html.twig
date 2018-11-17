@@ -1,0 +1,14 @@
+{% extends "ArgonWebBundle::layout.html.twig" %}
+{% set active = "message" %}
+
+{% block title %}{{ parent() }} - {{ "messenger.title"|trans }} - {{ "messenger.conversation"|trans({"%recipient%": recipient}) }}{% endblock %}
+
+{% block content %}
+  <h1>{{ "messenger.conversation"|trans({"%recipient%": recipient}) }}</h1>
+  {% for conversation in conversations %}
+    <h2>{{ conversation.subject }}</h2>
+    {% for message in conversation.messages %}
+    {% endfor %}
+  {% endfor %}
+  {{ render(controller("ArgonGameBundle:Block:messageReply", {"recipient": recipient, "conversation": conversations ? conversations|last : null})) }}
+{% endblock %}

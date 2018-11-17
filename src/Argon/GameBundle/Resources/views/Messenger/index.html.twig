@@ -1,0 +1,8 @@
+{% extends "ArgonWebBundle::layout.html.twig" %}
+{% set active = "message" %}
+
+{% block title %}{{ parent() }} - {{ "messenger.title"|trans }}{% endblock %}
+
+{% block content %}
+  <h1>{{ "messenger.title"|trans }}</h1>
+{% endblock %}

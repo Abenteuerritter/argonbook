@@ -21,6 +21,7 @@ character:
   skills:               Skills
   add_to_friendlist:    Add to friendlist
   view_friendship:      View friendship
+  send_message:         Send message
   new:                  New character
   new_title:            Create a new character
   game_submit:          Select game
@@ -91,6 +92,14 @@ friendlist:
   requested_at:    Friendship was requested on %requested_at%.
   accepted_at:     Friendship was accepted on %accepted_at%.
   pending:         Pending
+
+messenger:
+  title:        Messages
+  conversation: Conversation with %recipient%
+  reply:        Reply
+  subject:      Subject
+  body:         Message
+  send:         Send
 
 admin:
   character:

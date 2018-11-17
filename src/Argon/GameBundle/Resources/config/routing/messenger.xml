@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<routes xmlns="http://symfony.com/schema/routing"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/routing
+                        http://symfony.com/schema/routing/routing-1.0.xsd">
+
+    <route id="messenger" path="/messages" methods="GET">
+        <default key="_controller">ArgonGameBundle:Messenger:index</default>
+    </route>
+    <route id="messenger_conversation" path="/messages/{slug}" methods="GET">
+        <default key="_controller">ArgonGameBundle:Messenger:view</default>
+        <requirement key="slug">[-\w]+:[-\w]+</requirement>
+    </route>
+    <route id="messenger_reply" path="/messages/{slug}" methods="POST">
+        <default key="_controller">ArgonGameBundle:Messenger:reply</default>
+        <requirement key="slug">[-\w]+:[-\w]+</requirement>
+    </route>
+</routes>

@@ -6,7 +6,8 @@ homepage:
 layout:
   games:       Games
   character:   Characters
-  friendlist:  Friendlist
+  friendlist:  Friends
+  messenger:   Messenger
   profile:     My Profile
   admin:       Administration
   switch_exit: Exit

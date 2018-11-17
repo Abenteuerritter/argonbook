@@ -33,6 +33,7 @@
                 {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
                   {% if is_granted("ROLE_PJ") %}
                     <li><a href="{{ path("friendlist") }}">{{ "layout.friendlist"|trans }}</a></li>
+                    <li><a href="{{ path("messenger") }}">{{ "layout.messenger"|trans }}</a></li>
                   {% endif %}
                   {% if is_granted("ROLE_USER") %}
                     <li><a href="{{ path("character") }}">{{ "layout.character"|trans }}</a></li>
