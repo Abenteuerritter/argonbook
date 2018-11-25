@@ -20,3 +20,7 @@
 - name: create db
   when: db is defined
   mysql_db: name={{ db }} state=present
+
+- name: create user
+  when: db is defined and user is defined
+  mysql_user: name={{ user }} priv={{ db }}.*:DELETE,INSERT,SELECT,UPDATE state=present
