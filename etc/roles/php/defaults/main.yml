@@ -10,6 +10,7 @@ php_packages:
   - php{{ php_version }}-sqlite3
   - php{{ php_version }}-mysql
   - php{{ php_version }}-curl
+  - php{{ php_version }}-xml
 
 php_fpm: yes
 php_fpm_package: php{{ php_version }}-fpm
