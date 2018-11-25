@@ -22,10 +22,19 @@
 
 # ^^ https://github.com/ansible/ansible/issues/12161
 
+- name: download nodejs
+  get_url:
+    url: https://deb.nodesource.com/setup_{{ nodejs_version }}.x
+    dest: /tmp/setup_nodejs{{ nodejs_version }}.sh
+    mode: 777
+  run_once: yes
+  register: nodejs_download
+
 - name: setup nodejs
-  shell: curl -sL https://deb.nodesource.com/setup_6.x | bash -
+  when: nodejs_download.changed
+  command: /tmp/setup_nodejs{{ nodejs_version }}.sh
   args:
-    warn: no
+    creates: /etc/apt/sources.list.d/nodesource.list
 
 - name: install nodejs
   apt: name=nodejs state=latest
