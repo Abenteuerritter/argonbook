@@ -19,12 +19,12 @@
   apt: name={{ php_packages|union([php_fpm_package] if php_fpm|bool else []) }} state=latest
 
 - name: conf.d
-  file: path=/etc/php5/conf.d mode=0755 state=directory
+  file: path=/etc/php/{{ php_version }}/conf.d mode=0755 state=directory
 
 - name: configure
   template:
-    src: php5/php.ini.j2
-    dest: /etc/php5/conf.d/90-custom.ini
+    src: php/php.ini.j2
+    dest: /etc/php/{{ php_version }}/conf.d/90-custom.ini
     mode: 0644
   register: php_configured
 
@@ -32,27 +32,27 @@
   ignore_errors: yes # when conf.d is symlinked
   with_items: "{{ ['cli']|union(['fpm'] if php_fpm|bool else []) }}"
   file:
-    src: /etc/php5/conf.d/90-custom.ini
-    dest: /etc/php5/{{ item }}/conf.d/90-custom.ini
+    src: /etc/php/{{ php_version }}/conf.d/90-custom.ini
+    dest: /etc/php/{{ php_version }}/{{ item }}/conf.d/90-custom.ini
     state: link
 
-- name: run php5-fpm as normal user
+- name: run php-fpm as normal user
   when: php_fpm|bool
   with_dict:
     user: "{{ user }}"
     group: www-data
   lineinfile:
-    dest: /etc/php5/fpm/pool.d/www.conf
+    dest: /etc/php/{{ php_version }}/fpm/pool.d/www.conf
     regexp: "^{{ item.key }}"
     line: "{{ item.key }} = {{ item.value }}"
     state: present
   notify:
-    - restart php5-fpm
+    - restart php-fpm
 
-- name: php5-fpm service state
+- name: php-fpm service state
   when: php_fpm|bool
-  service: name=php5-fpm state=started enabled=yes
+  service: name=php{{ php_version }}-fpm state=started enabled=yes
 
-- name: restart php5-fpm when configured
-  when: php_fpm|bool and php_configured
-  service: name=php5-fpm state=restarted
+- name: restart php-fpm when configured
+  when: php_fpm|bool and php_configured.changed
+  service: name=php{{ php_version }}-fpm state=restarted
