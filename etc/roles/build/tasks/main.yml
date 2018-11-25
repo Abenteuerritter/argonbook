@@ -1,10 +1,7 @@
 ---
 
 - name: install build requirements
-  with_items:
-    - git
-    - unzip
-  apt: name={{ item }} state=latest
+  apt: name={{ ['git', 'unzip'] }} state=latest
 
 - name: install composer
   get_url:

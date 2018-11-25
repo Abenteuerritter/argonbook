@@ -4,10 +4,7 @@
   apt: name=python-mysqldb state=latest
 
 - name: install mysql
-  with_items:
-    - mysql-server
-    - mysql-client
-  apt: name={{ item }} state=latest
+  apt: name={{ ['mysql-server', 'mysql-client'] }} state=latest
 
 - name: configure
   template:

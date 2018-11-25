@@ -16,8 +16,7 @@
   apt_repository: repo=ppa:ondrej/php update_cache=yes state=present
 
 - name: install php
-  with_items: "{{ php_packages|union([php_fpm_package] if php_fpm|bool else []) }}"
-  apt: name={{ item }} state=latest
+  apt: name={{ php_packages|union([php_fpm_package] if php_fpm|bool else []) }} state=latest
 
 - name: conf.d
   file: path=/etc/php5/conf.d mode=0755 state=directory

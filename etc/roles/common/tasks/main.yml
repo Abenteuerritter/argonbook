@@ -4,9 +4,7 @@
   apt: update_cache=yes upgrade=dist cache_valid_time=3600
 
 - name: install dependencies
-  with_items: "{{ dependencies }}"
-  apt: name={{ item }} state=latest
+  apt: name={{ dependencies }} state=latest
 
 - name: install packages
-  with_items: "{{ packages|default([]) }}"
-  apt: name={{ item }} state=latest
+  apt: name={{ packages|default([]) }} state=latest
