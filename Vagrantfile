@@ -1,8 +1,12 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby sw=2 ts=2 :
 
+unless Vagrant.has_plugin?("vagrant-hostmanager")
+  raise "error: vagrant-hostmanager plugin missing"
+end
+
 Vagrant.configure("2") do |config|
-  config.vm.box = "debian/jessie64"
+  config.vm.box = "debian/stretch64"
 
   config.vm.define "argonbook.local" do |dev|
     dev.vm.hostname = "argonbook.local"
@@ -11,7 +15,7 @@ Vagrant.configure("2") do |config|
     dev.vm.synced_folder ".", "/home/vagrant/argonbook", type: "nfs"
   end
 
-  config.hostmanager.enabled     = true
+  config.hostmanager.enabled = true
   config.hostmanager.manage_host = true
 
   ["vmware_fusion", "vmware_workstation", "virtualbox"].each do |provider|
