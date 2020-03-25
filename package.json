@@ -3,15 +3,15 @@
   "license": "MIT",
   "private": true,
   "dependencies": {
-    "gulp": "^3.9",
-    "gulp-concat": "^2.6",
-    "gulp-plumber": "^1.1.0",
-    "gulp-sass": "^2.3",
     "@fe/Sortable": "RubaXa/Sortable#^1.4",
     "@fe/foundation-icon-fonts": "zurb/foundation-icon-fonts#*",
     "@fe/foundation-sites": "zurb/foundation-sites#^6.2",
     "@fe/jquery": "jquery/jquery-dist#^3.2",
     "@fe/number-polyfill": "jonstipe/number-polyfill#*",
-    "@fe/what-input": "ten1seven/what-input#>=4.1.0"
+    "@fe/what-input": "ten1seven/what-input#>=4.1.0",
+    "gulp": "^3.9",
+    "gulp-concat": "^2.6",
+    "gulp-plumber": "^1.2",
+    "gulp-sass": "^4.0"
   }
 }
