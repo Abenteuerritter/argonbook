@@ -16,9 +16,6 @@
 - name: install node modules
   npm: path="{{ build_dir }}" state=latest production=yes
 
-- name: install bower components
-  bower: path="{{ build_dir }}" state=latest production=yes
-
 - name: install composer vendor packages
   composer: command=install working_dir="{{ build_dir }}" no_dev=yes optimize_autoloader=yes
   environment:
