@@ -14,7 +14,6 @@ $apcLoader = new ApcClassLoader('argonbook', $loader);
 $apcLoader->register(true);
 
 $kernel = new AppKernel('prod', false);
-$kernel->loadClassCache();
 $kernel = new AppCache($kernel);
 
 // When using the HttpCache, you need to call the method in your front
