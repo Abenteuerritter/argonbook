@@ -111,6 +111,12 @@ class FriendlistController extends Controller
         /** @var Character $leftCharacter */
         $leftCharacter = $this->getUser();
 
+        // Workaround so when is persisted through the ´Friend´ entity
+        // doesn't throw the following error:
+        //     A new entity was found through the relationship
+        // Because ´getUser()´ use a different ´EntityManager´.
+        $leftCharacter = $this->getDoctrine()->getRepository(Character::class)->findOneById($leftCharacter->getId());
+
         /** @var Character $rightCharacter */
         $rightCharacter = $this->getDoctrine()->getRepository(Character::class)->findOneBySlug($slug);
 
@@ -124,7 +130,7 @@ class FriendlistController extends Controller
 
         if ($createForm->isSubmitted() && $createForm->isValid()) {
             $em = $this->getDoctrine()->getManagerForClass(Friend::class);
-            $em->merge(new Friend($leftCharacter, $rightCharacter));
+            $em->persist(new Friend($leftCharacter, $rightCharacter));
             $em->flush();
         }
 
