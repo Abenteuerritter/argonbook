@@ -7,17 +7,11 @@
     "gulp-concat": "^2.6",
     "gulp-plumber": "^1.1.0",
     "gulp-sass": "^2.3",
-    "@bower_components/Sortable": "RubaXa/Sortable#^1.4",
-    "@bower_components/foundation-icon-fonts": "zurb/foundation-icon-fonts#*",
-    "@bower_components/foundation-sites": "zurb/foundation-sites#^6.2",
-    "@bower_components/jquery": "jquery/jquery-dist#^3.2",
-    "@bower_components/number-polyfill": "jonstipe/number-polyfill#*",
-    "@bower_components/what-input": "ten1seven/what-input#>=4.1.0"
-  },
-  "engines": {
-    "yarn": ">= 1.0.0"
-  },
-  "scripts": {
-    "postinstall": "node -e \"try { require('fs').symlinkSync(require('path').resolve('node_modules/@bower_components'), 'bower_components', 'junction') } catch (e) { }\""
+    "@fe/Sortable": "RubaXa/Sortable#^1.4",
+    "@fe/foundation-icon-fonts": "zurb/foundation-icon-fonts#*",
+    "@fe/foundation-sites": "zurb/foundation-sites#^6.2",
+    "@fe/jquery": "jquery/jquery-dist#^3.2",
+    "@fe/number-polyfill": "jonstipe/number-polyfill#*",
+    "@fe/what-input": "ten1seven/what-input#>=4.1.0"
   }
 }

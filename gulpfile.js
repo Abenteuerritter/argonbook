@@ -1,5 +1,5 @@
 'use strict';
- 
+
 var gulp    = require('gulp');
 var util    = require('gulp-util');
 var sass    = require('gulp-sass');
@@ -9,22 +9,22 @@ var plumber = require('gulp-plumber');
 var // Configuration
   SASS_DEST    = 'web/css/',
   SASS_SRC     = 'app/assets/scss/argonbook.scss',
-  SASS_OPTIONS = { outputStyle: 'compressed', includePaths: ['node_modules', 'bower_components'] },
+  SASS_OPTIONS = { outputStyle: 'compressed', includePaths: ['node_modules', 'node_modules/@fe'] },
 
   JS_DEST = 'web/js/',
   JS_SRC  = [
-    'bower_components/jquery/dist/jquery.min.js',
-    'bower_components/number-polyfill/number-polyfill.min.js',
-    'bower_components/Sortable/Sortable.min.js',
-    'bower_components/foundation-sites/dist/js/foundation.min.js',
+    'node_modules/@fe/jquery/dist/jquery.min.js',
+    'node_modules/@fe/number-polyfill/number-polyfill.min.js',
+    'node_modules/@fe/Sortable/Sortable.min.js',
+    'node_modules/@fe/foundation-sites/dist/js/foundation.min.js',
   ],
 
   FONT_DEST = 'web/fonts/',
   FONT_SRC  = [
-    'bower_components/foundation-icon-fonts/foundation-icons.eot',
-    'bower_components/foundation-icon-fonts/foundation-icons.woff',
-    'bower_components/foundation-icon-fonts/foundation-icons.ttf',
-    'bower_components/foundation-icon-fonts/foundation-icons.svg'
+    'node_modules/@fe/foundation-icon-fonts/foundation-icons.eot',
+    'node_modules/@fe/foundation-icon-fonts/foundation-icons.woff',
+    'node_modules/@fe/foundation-icon-fonts/foundation-icons.ttf',
+    'node_modules/@fe/foundation-icon-fonts/foundation-icons.svg'
   ]
 ;
 

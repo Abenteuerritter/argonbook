@@ -2,27 +2,27 @@
 # yarn lockfile v1
 
 
-"@bower_components/Sortable@RubaXa/Sortable#^1.4":
+"@fe/Sortable@RubaXa/Sortable#^1.4":
   version "1.10.2"
   resolved "https://codeload.github.com/RubaXa/Sortable/tar.gz/2addddd67387b6e4b6b5e51806eb698f0a3eee88"
 
-"@bower_components/foundation-icon-fonts@zurb/foundation-icon-fonts#*":
+"@fe/foundation-icon-fonts@zurb/foundation-icon-fonts#*":
   version "0.0.0"
   resolved "https://codeload.github.com/zurb/foundation-icon-fonts/tar.gz/afed003521ff971bc614de68bba2676e16ce39f4"
 
-"@bower_components/foundation-sites@zurb/foundation-sites#^6.2":
+"@fe/foundation-sites@zurb/foundation-sites#^6.2":
   version "6.6.1"
   resolved "https://codeload.github.com/zurb/foundation-sites/tar.gz/ef9389ea56bac2654b81e04b28f1cfad6d743c33"
 
-"@bower_components/jquery@jquery/jquery-dist#^3.2":
+"@fe/jquery@jquery/jquery-dist#^3.2":
   version "3.4.1"
   resolved "https://codeload.github.com/jquery/jquery-dist/tar.gz/15bc73803f76bc53b654b9fdbbbc096f56d7c03d"
 
-"@bower_components/number-polyfill@jonstipe/number-polyfill#*":
+"@fe/number-polyfill@jonstipe/number-polyfill#*":
   version "0.0.0"
   resolved "https://codeload.github.com/jonstipe/number-polyfill/tar.gz/cc8ea7d7e74cb07dff2be23ccd273789fcbde314"
 
-"@bower_components/what-input@ten1seven/what-input#>=4.1.0":
+"@fe/what-input@ten1seven/what-input#>=4.1.0":
   version "5.2.7"
   resolved "https://codeload.github.com/ten1seven/what-input/tar.gz/c257a433214003c18b09378a3f0fd21c6cfc6299"
 
