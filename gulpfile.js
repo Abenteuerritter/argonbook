@@ -8,7 +8,7 @@ var plumber = require('gulp-plumber');
 var // Configuration
   SASS_DEST    = 'web/css/',
   SASS_SRC     = 'app/assets/scss/argonbook.scss',
-  SASS_OPTIONS = { outputStyle: 'compressed', includePaths: ['node_modules', 'node_modules/@fe'] },
+  SASS_OPTIONS = { outputStyle: 'compressed', includePaths: ['node_modules'] },
 
   JS_DEST = 'web/js/',
   JS_SRC  = [
