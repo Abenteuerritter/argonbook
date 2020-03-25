@@ -6,7 +6,6 @@
 /vendor/*
 
 # Web stuff
-/bower_components/
 /node_modules/
 /web/uploads/*
 /web/bundles/*
