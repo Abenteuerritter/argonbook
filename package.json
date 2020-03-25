@@ -9,7 +9,7 @@
     "@fe/jquery": "jquery/jquery-dist#^3.2",
     "@fe/number-polyfill": "jonstipe/number-polyfill#*",
     "@fe/what-input": "ten1seven/what-input#>=4.1.0",
-    "gulp": "^3.9",
+    "gulp": "^4.0",
     "gulp-concat": "^2.6",
     "gulp-plumber": "^1.2",
     "gulp-sass": "^4.0"

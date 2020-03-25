@@ -31,10 +31,8 @@ function errorHandler() {
   this.emit('end');
 }
 
-gulp.task('default', ['sass', 'js', 'fonts']);
-
 gulp.task('sass', function() {
-  gulp.src(SASS_SRC)
+  return gulp.src(SASS_SRC)
     .pipe(plumber({ errorHandler: errorHandler }))
     .pipe(sass.sync(SASS_OPTIONS).on('error', sass.logError))
     .on('error', process.exit.bind(process, 1))
@@ -42,14 +40,16 @@ gulp.task('sass', function() {
 });
 
 gulp.task('js', function() {
-  gulp.src(JS_SRC)
+  return gulp.src(JS_SRC)
     .pipe(plumber({ errorHandler: errorHandler }))
     .pipe(concat('vendor.js'))
     .pipe(gulp.dest(JS_DEST));
 });
 
 gulp.task('fonts', function() {
-  gulp.src(FONT_SRC)
+  return gulp.src(FONT_SRC)
     .pipe(plumber({ errorHandler: errorHandler }))
     .pipe(gulp.dest(FONT_DEST));
 });
+
+gulp.task('default', gulp.series(['sass', 'js', 'fonts']));
