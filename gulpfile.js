@@ -12,18 +12,19 @@ var // Configuration
 
   JS_DEST = 'web/js/',
   JS_SRC  = [
-    'node_modules/@fe/jquery/dist/jquery.min.js',
-    'node_modules/@fe/number-polyfill/number-polyfill.min.js',
-    'node_modules/@fe/Sortable/Sortable.min.js',
-    'node_modules/@fe/foundation-sites/dist/js/foundation.min.js',
+    'node_modules/jquery/dist/jquery.min.js',
+    'node_modules/what-input/dist/what-input.min.js',
+    'node_modules/foundation-sites/dist/js/foundation.min.js',
+    'node_modules/number-polyfill/number-polyfill.min.js',
+    'node_modules/sortablejs/Sortable.min.js',
   ],
 
   FONT_DEST = 'web/fonts/',
   FONT_SRC  = [
-    'node_modules/@fe/foundation-icon-fonts/foundation-icons.eot',
-    'node_modules/@fe/foundation-icon-fonts/foundation-icons.woff',
-    'node_modules/@fe/foundation-icon-fonts/foundation-icons.ttf',
-    'node_modules/@fe/foundation-icon-fonts/foundation-icons.svg'
+    'node_modules/foundation-icon-fonts/foundation-icons.eot',
+    'node_modules/foundation-icon-fonts/foundation-icons.woff',
+    'node_modules/foundation-icon-fonts/foundation-icons.ttf',
+    'node_modules/foundation-icon-fonts/foundation-icons.svg'
   ]
 ;
 
