@@ -16,7 +16,7 @@ framework:
     translator:      { fallbacks: ["%locale%"] }
     secret:          "%secret%"
     router:
-        resource: "%kernel.root_dir%/config/routing.yml"
+        resource: "%kernel.project_dir%/app/config/routing.yml"
         strict_requirements: ~
     form:            ~
     csrf_protection: ~
@@ -29,7 +29,7 @@ framework:
     session:
         # http://symfony.com/doc/current/reference/configuration/framework.html#handler-id
         handler_id:  session.handler.native_file
-        save_path:   "%kernel.root_dir%/../var/sessions/%kernel.environment%"
+        save_path:   "%kernel.project_dir%/var/sessions/%kernel.environment%"
     fragments:       ~
     http_method_override: true
     assets:          ~
@@ -64,7 +64,7 @@ doctrine:
         charset:  UTF8
         # if using pdo_sqlite as your database driver:
         #   1. add the path in parameters.yml
-        #     e.g. database_path: "%kernel.root_dir%/data/data.db3"
+        #     e.g. database_path: "%kernel.project_dir%/var/data.db3"
         #   2. Uncomment database_path in parameters.yml.dist
         #   3. Uncomment next line:
         #     path:     "%database_path%"
@@ -76,12 +76,12 @@ doctrine:
         mappings:
             gedmo_translatable:
                 type:      annotation
-                dir:       "%kernel.root_dir%/../vendor/gedmo/doctrine-extensions/lib/Gedmo/Translatable/Entity"
+                dir:       "%kernel.project_dir%/vendor/gedmo/doctrine-extensions/lib/Gedmo/Translatable/Entity"
                 prefix:    Gedmo\Translatable\Entity
                 is_bundle: false
             fos_message:
                 type:      annotation
-                dir:       "%kernel.root_dir%/../vendor/friendsofsymfony/message/src/Driver/Doctrine/ORM/Entity"
+                dir:       "%kernel.project_dir%/vendor/friendsofsymfony/message/src/Driver/Doctrine/ORM/Entity"
                 prefix:    FOS\Message\Driver\Doctrine\ORM\Entity
         resolve_target_entities:
             FOS\Message\Model\PersonInterface: Argon\GameBundle\Entity\Character
