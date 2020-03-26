@@ -12,11 +12,6 @@
             "app/AppCache.php"
         ]
     },
-    "autoload-dev": {
-        "psr-4": {
-            "Tests\\": "tests/"
-        }
-    },
     "require": {
         "php": ">=7.3",
         "symfony/symfony": "^3.0",
@@ -30,8 +25,5 @@
         "friendsofsymfony/message": "^1.0@dev",
         "knplabs/knp-paginator-bundle": "^4.1",
         "cebe/markdown": "^1.2"
-    },
-    "require-dev": {
-        "symfony/phpunit-bridge": "^3.0"
     }
 }
