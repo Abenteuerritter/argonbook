@@ -24,7 +24,6 @@
         "symfony/swiftmailer-bundle": "^3.3",
         "doctrine/orm": "^2.7",
         "doctrine/doctrine-bundle": "^1.12",
-        "incenteev/composer-parameter-handler": "^2.0",
         "doctrine/doctrine-fixtures-bundle": "^2.3",
         "stof/doctrine-extensions-bundle": "^1.2",
         "friendsofsymfony/user-bundle": "^2.0@beta",
@@ -34,18 +33,5 @@
     },
     "require-dev": {
         "symfony/phpunit-bridge": "^3.0"
-    },
-    "scripts": {
-        "post-install-cmd": [
-            "Incenteev\\ParameterHandler\\ScriptHandler::buildParameters"
-        ],
-        "post-update-cmd": [
-            "Incenteev\\ParameterHandler\\ScriptHandler::buildParameters"
-        ]
-    },
-    "extra": {
-        "incenteev-parameters": {
-            "file": "app/config/parameters.yml"
-        }
     }
 }
