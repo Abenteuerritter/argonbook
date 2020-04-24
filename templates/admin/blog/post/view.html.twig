@@ -1,0 +1,59 @@
+{% extends "layout_admin.html.twig" %}
+{% set active = "blog" %}
+
+{% block title %}{{ parent() }} - {{ "admin.blog.blog"|trans }} - {{ post }}{% endblock %}
+
+{% block top %}
+<nav aria-label="{{ "admin.you_are_here"|trans }}" role="navigation">
+  <ul class="breadcrumbs">
+    <li><a href="{{ path("admin_dashboard") }}">{{ "admin.dashboard.title"|trans }}</a></li>
+    <li><a href="{{ path("admin_blog") }}">{{ "admin.blog.blog"|trans }}</a></li>
+    <li>{{ post }}</li>
+  </ul>
+</nav>
+{% endblock %}
+
+{% block content %}
+<dl>
+  <dt>{{ "admin.blog.title"|trans }}</dt>
+  <dd>{{ post.title }}</dd>
+
+  <dt>{{ "admin.blog.status"|trans }}</dt>
+  <dd>
+  {% if post.isPublished %}
+    {{ "admin.blog.published_at"|trans({"%date%": post.publishedAt|date}) }}
+  {% else %}
+    {{ "admin.blog.draft"|trans }}
+  {% endif %}
+  </dd>
+
+  <dt>{{ "admin.blog.creator"|trans }}</dt>
+  <dd>
+    <abbr title="{{ post.creator.username }}">{{ post.creator.name|default(post.creator.username) }}</abbr>
+  </dd>
+
+  <dt>{{ "admin.blog.body"|trans }}</dt>
+  <dd>{{ post.body|markdown|raw }}</dd>
+
+  <dt>{{ "admin.blog.image"|trans }}</dt>
+  <dd>
+    {% if post.imagePath %}
+      <a href="{{ asset(post.imagePath) }}">
+        <img src="{{ asset(post.imagePath) }}" alt="{{ post.title }}">
+      </a>
+    {% else %}
+      <p class="warning">{{ "admin.blog.image_empty"|trans }}</p>
+    {% endif %}
+  </dd>
+</dl>
+<div class="button-group">
+  {% if not post.isPublished %}
+    <a href="{{ path("admin_blog_publish", {"slug": post.slug}) }}" class="button">{{ "admin.blog.publish"|trans }}</a>
+  {% else %}
+    <a href="{{ path("admin_blog_comment", {"slug": post.slug}) }}" class="button">{{ "admin.blog.comments"|trans }}
+      <span class="secondary badge">{{ post.comments|length }}</span>
+    </a>
+  {% endif %}
+  <a href="{{ path("admin_blog_edit", {"slug": post.slug}) }}" class="button">{{ "admin.blog.edit"|trans }}</a>
+</div>
+{% endblock %}

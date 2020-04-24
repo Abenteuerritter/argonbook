@@ -1,0 +1,51 @@
+{% extends "layout_admin.html.twig" %}
+{% set active = "dashboard" %}
+
+{% block title %}{{ parent() }} - {{ "admin.dashboard.title"|trans }}{% endblock %}
+
+{% block top %}
+<nav aria-label="{{ "admin.you_are_here"|trans }}" role="navigation">
+  <ul class="breadcrumbs">
+    <li>{{ "admin.dashboard.title"|trans }}</li>
+  </ul>
+</nav>
+{% endblock %}
+
+{% block content %}
+<div class="grid-x">
+  <div class="small-9 cell">
+    <h3>{{ "admin.dashboard.whatsnew"|trans }}</h3>
+    <h5>1.26</h5>
+    <ul>
+      <li>Characters now have a <a href="{{ path("character_switch", {"next": path("friendlist")}) }}">friendlist</a> and can add other characters as friends,</li>
+      <li>Skills now accepts a description as markdown.</li>
+    </ul>
+    <h5>1.25</h5>
+    <ul>
+      <li>Abilities in registration form now accepts to be clicked to move it first,</li>
+      <li>Price limits in buy skills.</li>
+    </ul>
+    <h5>1.24</h5>
+    <ul>
+      <li>A public list of <a href="{{ path("games") }}">games</a>,</li>
+      <li>Skills can be edited in admin.</li>
+    </ul>
+    <h5>1.23</h5>
+    <ul>
+      <li>A character level is calculated by the game and shown next to the nick like this <span class="label">E7</span>.</li>
+    </ul>
+    <h5>1.22</h5>
+    <ul>
+      <li>Games and races now have genres,</li>
+      <li>On new game, only races from the game's genres are shown.</li>
+    </ul>
+  </div>
+  <div class="small-3 cell">
+    <h3>{{ "admin.dashboard.title"|trans }}</h3>
+    <dl>
+      <dt>{{ "admin.dashboard.version"|trans }}</dt>
+      <dd>{{ project.version }}</dd>
+    </dl>
+  </div>
+</div>
+{% endblock %}

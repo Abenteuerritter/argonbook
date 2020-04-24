@@ -1,0 +1,18 @@
+{% extends "layout_admin.html.twig" %}
+{% set active = "blog" %}
+
+{% block title %}{{ parent() }} - {{ "admin.blog.blog"|trans }} {{ "admin.blog.new"|trans }}{% endblock %}
+
+{% block top %}
+<nav aria-label="{{ "admin.you_are_here"|trans }}" role="navigation">
+  <ul class="breadcrumbs">
+    <li><a href="{{ path("admin_dashboard") }}">{{ "admin.dashboard.title"|trans }}</a></li>
+    <li><a href="{{ path("admin_blog") }}">{{ "admin.blog.blog"|trans }}</a></li>
+    <li>{{ "admin.blog.new"|trans }}</li>
+  </ul>
+</nav>
+{% endblock %}
+
+{% block content %}
+{{ form(form) }}
+{% endblock %}

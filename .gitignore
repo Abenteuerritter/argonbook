@@ -1,9 +1,11 @@
 *~
 
 # Symfony
-/bin/symfony_requirements
-/web/config.php
 /vendor/*
+
+# Configuration
+.env.local
+.env.*.local
 
 # Web stuff
 /node_modules/
@@ -19,11 +21,7 @@
 /var/logs/*
 /var/sessions/*
 
-# Configuration files
-/app/config/parameters.ini
-/app/config/parameters.yml
-
-# Vagrant
+# Development
 .vagrant/
 
 # Provisioning

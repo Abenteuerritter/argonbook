@@ -19,7 +19,7 @@
 - name: install composer vendor packages
   composer: command=install working_dir="{{ build_dir }}" no_dev=yes optimize_autoloader=yes
   environment:
-    SYMFONY_ENV: prod
+    ARGON_ENV: prod
 
 - name: install public assets
   command: gulp chdir="{{ build_dir }}"

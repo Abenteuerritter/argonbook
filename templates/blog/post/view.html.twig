@@ -1,0 +1,23 @@
+{% extends "layout.html.twig" %}
+{% set active = "blog" %}
+
+{% block title %}{{ parent() }} - {{ "blog.blog"|trans }} - {{ post }}{% endblock %}
+
+{% block content %}
+  {{ render(controller("Blog:Block:post", {"post": post})) }}
+  {{ render(controller("Blog:Block:comments", {"post": post, "page": app.request.request.getInt("page", 1)})) }}
+  {% if new_comment_form %}
+    <div class="comment media-object">
+      {#}
+      <div class="media-object-section">
+        <div class="thumbnail">
+          <img src="{{ asset(app.user.imagePath) }}" alt="{{ app.user.username }}">
+        </div>
+      </div>
+      {#}
+      <div class="media-object-section main-section">
+        {{ form(new_comment_form) }}
+      </div>
+    </div>
+  {% endif %}
+{% endblock %}

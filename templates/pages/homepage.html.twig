@@ -1,0 +1,12 @@
+{% extends "layout.html.twig" %}
+{% set active = "homepage" %}
+
+{% block title %}{{ parent() }} - {{ "homepage.title"|trans }}{% endblock %}
+
+{% block content %}
+  {% if not is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+
+  {% endif %}
+
+  {{ render(controller("Blog:Block:latest")) }}
+{% endblock %}

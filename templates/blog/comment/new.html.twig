@@ -1,0 +1,19 @@
+{% extends "layout.html.twig" %}
+{% set active = "blog" %}
+
+{% block title %}{{ parent() }} - {{ "blog.blog"|trans }} - {{ post }} - {{ "blog.comment.new"|trans }}{% endblock %}
+
+{% block content %}
+  <div class="comment media-object">
+    {#}
+    <div class="media-object-section">
+      <div class="thumbnail">
+        <img src="{{ asset(app.user.imagePath) }}" alt="{{ app.user.username }}">
+      </div>
+    </div>
+    {#}
+    <div class="media-object-section main-section">
+      {{ form(form) }}
+    </div>
+  </div>
+{% endblock %}
